@@ -1,0 +1,88 @@
+1. Requirements:
+
+Java
+Perl
+R
+
+2. Installation instructions:
+
+Additional requirements for R:
+gplots
+plotrix
+
+To install these packages for R:
+
+Enter the R environment
+>R
+
+Install gplots
+>install.packages("gplots")
+
+Select a CRAN mirror and the package will be automatically downloaded and 
+installed.
+
+Install plotrix
+>install.packages("plotrix")
+
+The previously selected CRAN mirror will be used and the package will be 
+automatically downloaded and installed.
+
+Exit the R environment
+>q()
+
+3. Instructions for use
+
+First generate data using SCATTR.jar
+
+<name> is the desired label of the output such as jfreechart_src, 
+jfreechart_test /path/to/directory is the highest level directory containing 
+the code to be analyzed; for jfreechart_src, use the path to the jfreechart 
+source directory
+
+>java -jar SCATT.jar <name> /path/to/directory
+
+All data must be collected into the 3 files src.txt, test.txt, and full.txt 
+located in SCATTR/data.  This data must have the proper column headers as shown 
+in the samples and the applications must appear in the same order across all 
+files.  The format must be correct, no extra line breaks or unneccessary text, 
+or else histo_translate.pl will not work.
+
+Once the data is collected and properly formatted, execute 
+SCATTR/histo_translate.pl to translate the previously collected data into a 
+format that can be used to generate histogram graphs.  These new data files 
+will be located in SCATTR/data as ccn_histo.txt, javadoc_histo.txt, and 
+ncss_histo.txt.
+
+>./histo_translate.pl
+
+Now that the data exists, the graphs can be generated using R.  Simply run the 
+gen_graphs.R Rscript with the desired command arguments to generate the desired 
+graphs.
+
+To generate just scatter plots with no linear regression line of best fit:
+
+>Rscript gen_graphs.R s
+
+To generate just scatter plots with linear regression enabled:
+
+>Rscript gen_graphs.R r
+
+To generate just the histograms:
+
+>Rscript gen_graphs.R h
+
+To generate just the bar charts:
+
+>Rscript gen_graphs.R b
+
+To generate all graphs with linear regression enabled for the scatter plots, 
+execute the script with no command arguments:
+
+>Rscript gen_graphs.R
+
+The graphs will be generated and saved in the SCATTR/graphs directory along 
+with extra statistical analysis data from the scatter plot linear regression 
+calculations. 
+
+I have included jfreechart in the sample directory.  That directory also 
+contains all the base data collected as part of lab 2.

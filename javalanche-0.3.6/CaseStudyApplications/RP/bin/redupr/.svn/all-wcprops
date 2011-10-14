@@ -1,0 +1,155 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr
+END
+GreedySyntheticExperiment.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr/GreedySyntheticExperiment.class
+END
+FastByteArrayInputStream.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr/FastByteArrayInputStream.class
+END
+RandomSyntheticExperiment.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr/RandomSyntheticExperiment.class
+END
+Util.class
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr/Util.class
+END
+TestReduceUsingGreedy.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr/TestReduceUsingGreedy.class
+END
+FastByteArrayOutputStream.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr/FastByteArrayOutputStream.class
+END
+ReduceUsingGreedy.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr/ReduceUsingGreedy.class
+END
+SingleTest.class
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr/SingleTest.class
+END
+MyGreedySyntheticExperiment.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr/MyGreedySyntheticExperiment.class
+END
+RequirementSubset.class
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr/RequirementSubset.class
+END
+TestSetCover.class
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr/TestSetCover.class
+END
+SetCover.class
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr/SetCover.class
+END
+AllTests.class
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr/AllTests.class
+END
+Pair.class
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr/Pair.class
+END
+DelayedGreedySyntheticExperiment.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr/DelayedGreedySyntheticExperiment.class
+END
+ReduceUsingDelayedGreedy.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr/ReduceUsingDelayedGreedy.class
+END
+TestReduceUsingDelayedGreedy.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr/TestReduceUsingDelayedGreedy.class
+END
+KWaySyntheticExperiment.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr/KWaySyntheticExperiment.class
+END
+HarroldGuptaSoffaSyntheticExperiment.class
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr/HarroldGuptaSoffaSyntheticExperiment.class
+END
+SingleTestSubset.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr/SingleTestSubset.class
+END
+ReduceUsingKWay.class
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr/ReduceUsingKWay.class
+END
+ReduceUsingHarroldGuptaSoffa.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr/ReduceUsingHarroldGuptaSoffa.class
+END
+TestReduceUsingHarroldGuptaSoffa.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr/TestReduceUsingHarroldGuptaSoffa.class
+END
+TestReduceUsingKWay.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr/TestReduceUsingKWay.class
+END
+GenerateCoverageEffectivenessData.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/RP/bin/redupr/GenerateCoverageEffectivenessData.class
+END

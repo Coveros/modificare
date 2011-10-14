@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="MARS" name="test.sudoku.TestSudoku" tests="0" time="58.959" timestamp="2011-03-24T02:23:35">
+  <properties>
+    <property name="java.vendor" value="Sun Microsystems Inc." />
+    <property name="lib.dir" value="../..//lib/" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="sun.management.compiler" value="HotSpot Tiered Compilers" />
+    <property name="ant.file.mutation-include" value="/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/src/main/resources/coverage-include.xml" />
+    <property name="run.mutations.verbose" value="-verbose" />
+    <property name="os.name" value="Linux" />
+    <property name="sun.boot.class.path" value="/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/resources.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/rt.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/jsse.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/jce.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/charsets.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/modules/jdk.boot.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/classes" />
+    <property name="javalanche.maxmemory" value="2048m" />
+    <property name="sun.desktop" value="gnome" />
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="ant.home" value="/usr/share/ant" />
+    <property name="java.runtime.version" value="1.6.0_24-b07" />
+    <property name="mutation.test.suite" value="test.sudoku.TestSudoku" />
+    <property name="user.name" value="nelliott" />
+    <property name="project.prefix" value="src.sudoku" />
+    <property name="user.language" value="en" />
+    <property name="field.file" value="invariant-files//field-results.ser" />
+    <property name="javalanche.properties.add" value=" " />
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/i386" />
+    <property name="proj.shortname" value="jvl-mu" />
+    <property name="run.mutations.mutation.javaagent" value="-javaagent:../..//javaagent.jar" />
+    <property name="run.mutations.listener" value="-Djavalanche.mutation.test.listener=de.unisb.cs.st.javalanche.mutation.runtime.jmx.JmxMutationTestListener" />
+    <property name="javalanche" value="../../" />
+    <property name="ant.project.name" value="Javalanche - Mutation Testing" />
+    <property name="java.version" value="1.6.0_24" />
+    <property name="user.timezone" value="" />
+    <property name="javalanche.single.task.mode" value="false" />
+    <property name="sun.arch.data.model" value="32" />
+    <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/endorsed" />
+    <property name="sun.cpu.isalist" value="" />
+    <property name="ant.file.javalanche-import" value="/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/import.xml" />
+    <property name="sun.jnu.encoding" value="UTF-8" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="classes.add" value="" />
+    <property name="cp" value="./:./lib/junit.jar" />
+    <property name="file.separator" value="/" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="java.class.version" value="50.0" />
+    <property name="user.country" value="US" />
+    <property name="java.home" value="/usr/lib/jvm/java-6-sun-1.6.0.24/jre" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="adabu2.resultfilename" value="invariant-files//src.sudoku-trace.out" />
+    <property name="ant.file" value="/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/CaseStudyApplications/SK/javalanche.xml" />
+    <property name="os.version" value="2.6.32-29-generic-pae" />
+    <property name="ant.file.javalanche-include" value="/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/src/main/resources/mutation-build.xml" />
+    <property name="run.mutations.mutation.file" value="-Dmutation.file=./mutation-files/mutation-task-src_sudoku-01.txt" />
+    <property name="path.separator" value=":" />
+    <property name="java.vm.version" value="19.1-b02" />
+    <property name="javalanche.mutation.javaagent" value="../..//javaagent.jar" />
+    <property name="invariant.dir" value="invariant-files/" />
+    <property name="mutation.package.prefix" value="src.sudoku" />
+    <property name="ant.library.dir" value="/usr/share/ant/lib" />
+    <property name="mutation.file" value="./mutation-files/mutation-task-src_sudoku-01.txt" />
+    <property name="javalanche.dist.dir" value="../../" />
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="run.mutations.mutation.run.mode" value="-Dmutation.run.mode=mutation" />
+    <property name="project.test.suite" value="test.sudoku.TestSudoku" />
+    <property name="javalanche.arg.line" value="  -javaagent:../..//javaagent.jar -Xmx2048m -Dmutation.run.mode=mutation -Dmutation.package.prefix=src.sudoku -Dmutation.test.suite=test.sudoku.TestSudoku -Dmutation.file=./mutation-files/mutation-task-src_sudoku-01.txt -Dmutation.result.file=result-./mutation-files/mutation-task-src_sudoku-01.txt -Djavalanche.mutation.test.listener=de.unisb.cs.st.javalanche.mutation.runtime.jmx.JmxMutationTestListener -Djavalanche.single.task.mode=false" />
+    <property name="user.home" value="/home/nelliott" />
+    <property name="java.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="run.mutations.memory" value="-Xmx2048m" />
+    <property name="java.library.path" value="/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/i386/server:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/i386:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/../lib/i386:/usr/java/packages/lib/i386:/lib:/usr/lib" />
+    <property name="java.vendor.url" value="http://java.sun.com/" />
+    <property name="javalanche.mutation.output.dir" value="/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/CaseStudyApplications/SK/mutation-files" />
+    <property name="java.vm.vendor" value="Sun Microsystems Inc." />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="java.class.path" value="/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/src/main/resources:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/adabu2-core-0.4-SNAPSHOT.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/adabu2-hoare-0.4-SNAPSHOT.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/adabu2-tracer-0.4-modified.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/antlr-2.7.6.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/asm-3.0.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/asm-all-3.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/asm-commons-3.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/asm-tree-3.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/asm-util-3.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/bytecodeTransformer-0.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/c3p0-0.9.1.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/cglib-2.1_3.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/commons-collections-3.2.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/commons-io-1.4.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/commons-lang-2.3.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/commons-logging-1.0.4.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/dom4j-1.6.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/ds-util-0.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/easymock-2.3.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/ehcache-1.2.3.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/freemarker-2.3.4.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/google-collect-snapshot-20080530.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/hamcrest-all-1.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/hibernate-3.2.2.ga.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/hibernate-annotations-3.3.0.ga.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/hibernate-commons-annotations-3.3.0.ga.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/hibernate-tools-3.2.0.beta9a.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/hsqldb-1.8.0.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/invariants-0.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/j2h-1.3.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/javalanche-mutation-0.3.6.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/jgrapht-jdk1.5-0.7.3.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/jta-1.0.1B.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/jtidy-r8-20060801.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/junit-4.7.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/log4j-1.2.14.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/mysql-connector-java-nightly.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/persistence-api-1.0.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/prefuse-beta-20060220.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/sibrelib-local.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/util-0.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/xpp3_min-1.1.3.4.O.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/xstream-1.2.2.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/CaseStudyApplications/SK:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/CaseStudyApplications/SK/lib/junit.jar:/usr/share/java/ant-launcher-1.7.1.jar:/usr/share/ant/lib/ant.jar:/usr/share/ant/lib/ant-junit.jar:../..//javaagent.jar" />
+    <property name="ant.version" value="Apache Ant version 1.7.1 compiled on September 8 2010" />
+    <property name="mutation.run.mode" value="mutation" />
+    <property name="run.mutations.single.task.mode" value="-Djavalanche.single.task.mode=false" />
+    <property name="ant.file.additionalTasks" value="/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/src/main/resources/mutation-add-tasks.xml" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="javalanche.jars.dir" value="../..//lib" />
+    <property name="java.vm.specification.version" value="1.0" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="sun.os.patch.level" value="unknown" />
+    <property name="javalanche.invariant.javaagent" value="../..//lib/invariants-0.1.jar" />
+    <property name="java.io.tmpdir" value="/tmp" />
+    <property name="adabu.javaagent" value="../..//lib/adabu2-tracer-0.4-modified.jar" />
+    <property name="prefix" value="src.sudoku" />
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi" />
+    <property name="javalanche.dir" value="/home/nelliott/elliotn-senior-comp/javalanche-0.3.6" />
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment" />
+    <property name="os.arch" value="i386" />
+    <property name="invariant.checker.file" value="invariant-files//src.sudoku-invariant-checkers.ser" />
+    <property name="testsuite" value="test.sudoku.TestSudoku" />
+    <property name="javalanche.mutation.test.listener" value="de.unisb.cs.st.javalanche.mutation.runtime.jmx.JmxMutationTestListener" />
+    <property name="java.ext.dirs" value="/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/ext:/usr/java/packages/lib/ext" />
+    <property name="user.dir" value="/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/CaseStudyApplications/SK" />
+    <property name="run.mutations.javalanche.package.prefix" value="-Dmutation.package.prefix=src.sudoku" />
+    <property name="adabu.boot.jars" value="../..//lib/adabu2-core-0.4-SNAPSHOT.jar:../..//lib/adabu2-hoare-0.4-SNAPSHOT.jar:../..//lib/adabu2-tracer-0.4-modified.jar:../..//lib/invariants-0.1.jar:../..//lib/asm-all-3.1.jar:../..//lib/commons-collections-3.2.1.jar:../..//lib/commons-io-1.4.jar:../..//lib/log4j-1.2.14.jar:../..//lib/util-0.1.jar" />
+    <property name="line.separator" value="
+" />
+    <property name="java.vm.name" value="Java HotSpot(TM) Server VM" />
+    <property name="basedir" value="/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/CaseStudyApplications/SK" />
+    <property name="methods.add" value="" />
+    <property name="ant.java.version" value="1.6" />
+    <property name="ant.core.lib" value="/usr/share/ant/lib/ant.jar" />
+    <property name="ant.file.Javalanche - Mutation Testing" value="/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/CaseStudyApplications/SK/javalanche.xml" />
+    <property name="file.encoding" value="UTF-8" />
+    <property name="mutation.result.file" value="result-./mutation-files/mutation-task-src_sudoku-01.txt" />
+    <property name="run.mutations.mutation.result.file" value="-Dmutation.result.file=result-./mutation-files/mutation-task-src_sudoku-01.txt" />
+    <property name="javalanche.location" value="../../" />
+    <property name="mutation.jars.dir" value="../..//lib/" />
+    <property name="mutation.base.dir" value="../../" />
+    <property name="java.specification.version" value="1.6" />
+    <property name="run.mutations.javalanche.project.test.suite" value="-Dmutation.test.suite=test.sudoku.TestSudoku" />
+  </properties>
+  <system-out><![CDATA[Applying 1th mutation with id 2. Running 25 tests
+Applying 2th mutation with id 3. Running 25 tests
+Applying 3th mutation with id 4. Running 25 tests
+Applying 4th mutation with id 5. Running 22 tests
+Applying 5th mutation with id 6. Running 22 tests
+Applying 6th mutation with id 7. Running 22 tests
+Applying 7th mutation with id 57. Running 4 tests
+Applying 8th mutation with id 58. Running 4 tests
+Applying 9th mutation with id 59. Running 4 tests
+Applying 10th mutation with id 60. Running 4 tests
+Applying 11th mutation with id 61. Running 4 tests
+Applying 12th mutation with id 62. Running 4 tests
+Applying 13th mutation with id 63. Running 4 tests
+Applying 14th mutation with id 64. Running 4 tests
+Applying 15th mutation with id 65. Running 4 tests
+Applying 16th mutation with id 66. Running 4 tests
+Applying 17th mutation with id 67. Running 4 tests
+Applying 18th mutation with id 68. Running 4 tests
+Applying 19th mutation with id 69. Running 4 tests
+Applying 20th mutation with id 70. Running 4 tests
+Applying 21th mutation with id 71. Running 4 tests
+Applying 22th mutation with id 72. Running 3 tests
+Applying 23th mutation with id 73. Running 3 tests
+Applying 24th mutation with id 74. Running 3 tests
+Applying 25th mutation with id 75. Running 3 tests
+Applying 26th mutation with id 76. Running 4 tests
+Applying 27th mutation with id 77. Running 4 tests
+Applying 28th mutation with id 78. Running 4 tests
+Applying 29th mutation with id 79. Running 4 tests
+Applying 30th mutation with id 80. Running 4 tests
+Applying 31th mutation with id 81. Running 4 tests
+Applying 32th mutation with id 82. Running 4 tests
+Applying 33th mutation with id 83. Running 4 tests
+Applying 34th mutation with id 84. Running 4 tests
+Applying 35th mutation with id 85. Running 4 tests
+Applying 36th mutation with id 86. Running 4 tests
+Applying 37th mutation with id 87. Running 4 tests
+Applying 38th mutation with id 88. Running 4 tests
+Applying 39th mutation with id 89. Running 4 tests
+Applying 40th mutation with id 90. Running 4 tests
+Applying 41th mutation with id 91. Running 4 tests
+Applying 42th mutation with id 92. Running 4 tests
+Applying 43th mutation with id 93. Running 4 tests
+Applying 44th mutation with id 94. Running 4 tests
+Applying 45th mutation with id 95. Running 4 tests
+Applying 46th mutation with id 96. Running 4 tests
+Applying 47th mutation with id 97. Running 4 tests
+Applying 48th mutation with id 98. Running 4 tests
+Applying 49th mutation with id 99. Running 4 tests
+Applying 50th mutation with id 100. Running 4 tests
+Applying 51th mutation with id 101. Running 4 tests
+Applying 52th mutation with id 102. Running 5 tests
+Applying 53th mutation with id 103. Running 5 tests
+Applying 54th mutation with id 104. Running 5 tests
+Applying 55th mutation with id 105. Running 5 tests
+Applying 56th mutation with id 106. Running 5 tests
+Applying 57th mutation with id 107. Running 5 tests
+Applying 58th mutation with id 108. Running 5 tests
+Applying 59th mutation with id 109. Running 5 tests
+Applying 60th mutation with id 110. Running 5 tests
+Applying 61th mutation with id 111. Running 5 tests
+Applying 62th mutation with id 112. Running 3 tests
+Applying 63th mutation with id 113. Running 3 tests
+Applying 64th mutation with id 114. Running 3 tests
+Applying 65th mutation with id 115. Running 3 tests
+Applying 66th mutation with id 116. Running 3 tests
+Applying 67th mutation with id 117. Running 3 tests
+Applying 68th mutation with id 118. Running 2 tests
+Applying 69th mutation with id 119. Running 3 tests
+Applying 70th mutation with id 120. Running 3 tests
+Applying 71th mutation with id 121. Running 1 tests
+Applying 72th mutation with id 122. Running 1 tests
+Applying 73th mutation with id 123. Running 1 tests
+Applying 74th mutation with id 124. Running 1 tests
+Applying 75th mutation with id 125. Running 1 tests
+Applying 76th mutation with id 126. Running 4 tests
+Applying 77th mutation with id 127. Running 4 tests
+Applying 78th mutation with id 128. Running 4 tests
+Applying 79th mutation with id 129. Running 4 tests
+Applying 80th mutation with id 130. Running 1 tests
+Applying 81th mutation with id 131. Running 1 tests
+Applying 82th mutation with id 132. Running 1 tests
+Applying 83th mutation with id 133. Running 1 tests
+Applying 84th mutation with id 134. Running 1 tests
+Applying 85th mutation with id 135. Running 1 tests
+Applying 86th mutation with id 136. Running 1 tests
+Applying 87th mutation with id 139. Running 1 tests
+Applying 88th mutation with id 140. Running 1 tests
+Applying 89th mutation with id 141. Running 1 tests
+Applying 90th mutation with id 142. Running 1 tests
+Applying 91th mutation with id 143. Running 1 tests
+Applying 92th mutation with id 144. Running 2 tests
+Applying 93th mutation with id 145. Running 2 tests
+Applying 94th mutation with id 146. Running 1 tests
+Applying 95th mutation with id 147. Running 1 tests
+Applying 96th mutation with id 148. Running 1 tests
+Applying 97th mutation with id 149. Running 1 tests
+Applying 98th mutation with id 150. Running 1 tests
+Applying 99th mutation with id 151. Running 1 tests
+Applying 100th mutation with id 152. Running 1 tests
+Applying 101th mutation with id 153. Running 1 tests
+Applying 102th mutation with id 154. Running 1 tests
+Applying 103th mutation with id 155. Running 1 tests
+Applying 104th mutation with id 156. Running 1 tests
+Applying 105th mutation with id 157. Running 1 tests
+Applying 106th mutation with id 158. Running 1 tests
+Applying 107th mutation with id 159. Running 1 tests
+Applying 108th mutation with id 160. Running 1 tests
+Applying 109th mutation with id 161. Running 1 tests
+Applying 110th mutation with id 170. Running 4 tests
+Applying 111th mutation with id 171. Running 4 tests
+Applying 112th mutation with id 172. Running 4 tests
+Applying 113th mutation with id 173. Running 4 tests
+Applying 114th mutation with id 174. Running 4 tests
+Applying 115th mutation with id 175. Running 4 tests
+Applying 116th mutation with id 176. Running 4 tests
+Applying 117th mutation with id 177. Running 4 tests
+Applying 118th mutation with id 178. Running 4 tests
+Applying 119th mutation with id 179. Running 4 tests
+Applying 120th mutation with id 180. Running 4 tests
+Applying 121th mutation with id 181. Running 4 tests
+Applying 122th mutation with id 182. Running 25 tests
+Applying 123th mutation with id 183. Running 25 tests
+Applying 124th mutation with id 184. Running 23 tests
+Applying 125th mutation with id 185. Running 23 tests
+Applying 126th mutation with id 186. Running 23 tests
+Applying 127th mutation with id 187. Running 1 tests
+Applying 128th mutation with id 188. Running 1 tests
+Applying 129th mutation with id 189. Running 1 tests
+Applying 130th mutation with id 190. Running 22 tests
+Applying 131th mutation with id 191. Running 22 tests
+Applying 132th mutation with id 192. Running 22 tests
+Applying 133th mutation with id 193. Running 22 tests
+Applying 134th mutation with id 194. Running 22 tests
+Applying 135th mutation with id 195. Running 22 tests
+Applying 136th mutation with id 196. Running 22 tests
+Applying 137th mutation with id 197. Running 22 tests
+Applying 138th mutation with id 198. Running 22 tests
+Applying 139th mutation with id 199. Running 22 tests
+Applying 140th mutation with id 200. Running 22 tests
+Applying 141th mutation with id 201. Running 22 tests
+Applying 142th mutation with id 202. Running 22 tests
+Applying 143th mutation with id 203. Running 22 tests
+Applying 144th mutation with id 204. Running 22 tests
+Applying 145th mutation with id 205. Running 9 tests
+Applying 146th mutation with id 206. Running 9 tests
+Applying 147th mutation with id 207. Running 9 tests
+Applying 148th mutation with id 208. Running 9 tests
+Applying 149th mutation with id 209. Running 9 tests
+Applying 150th mutation with id 210. Running 8 tests
+Applying 151th mutation with id 211. Running 8 tests
+Applying 152th mutation with id 212. Running 8 tests
+Applying 153th mutation with id 213. Running 8 tests
+Applying 154th mutation with id 214. Running 22 tests
+Applying 155th mutation with id 215. Running 22 tests
+Applying 156th mutation with id 216. Running 22 tests
+Applying 157th mutation with id 217. Running 22 tests
+Applying 158th mutation with id 218. Running 22 tests
+Applying 159th mutation with id 219. Running 8 tests
+Applying 160th mutation with id 220. Running 8 tests
+Applying 161th mutation with id 221. Running 8 tests
+Applying 162th mutation with id 222. Running 22 tests
+Applying 163th mutation with id 223. Running 22 tests
+Applying 164th mutation with id 234. Running 22 tests
+Applying 165th mutation with id 235. Running 22 tests
+Applying 166th mutation with id 236. Running 22 tests
+Applying 167th mutation with id 237. Running 22 tests
+Applying 168th mutation with id 238. Running 22 tests
+Applying 169th mutation with id 239. Running 22 tests
+Applying 170th mutation with id 240. Running 22 tests
+Applying 171th mutation with id 241. Running 22 tests
+Applying 172th mutation with id 242. Running 22 tests
+Applying 173th mutation with id 243. Running 22 tests
+Applying 174th mutation with id 244. Running 4 tests
+Applying 175th mutation with id 245. Running 4 tests
+Applying 176th mutation with id 246. Running 4 tests
+Applying 177th mutation with id 248. Running 8 tests
+Applying 178th mutation with id 249. Running 8 tests
+Applying 179th mutation with id 250. Running 4 tests
+Applying 180th mutation with id 251. Running 4 tests
+Applying 181th mutation with id 252. Running 4 tests
+Applying 182th mutation with id 253. Running 4 tests
+Applying 183th mutation with id 254. Running 4 tests
+Applying 184th mutation with id 255. Running 4 tests
+Applying 185th mutation with id 256. Running 4 tests
+Applying 186th mutation with id 257. Running 4 tests
+Applying 187th mutation with id 258. Running 6 tests
+Applying 188th mutation with id 259. Running 6 tests
+Applying 189th mutation with id 260. Running 6 tests
+Applying 190th mutation with id 261. Running 6 tests
+Applying 191th mutation with id 262. Running 9 tests
+Applying 192th mutation with id 263. Running 9 tests
+Applying 193th mutation with id 264. Running 9 tests
+Applying 194th mutation with id 265. Running 9 tests
+Applying 195th mutation with id 266. Running 9 tests
+Applying 196th mutation with id 267. Running 9 tests
+Applying 197th mutation with id 268. Running 9 tests
+Applying 198th mutation with id 269. Running 9 tests
+Applying 199th mutation with id 270. Running 9 tests
+Applying 200th mutation with id 271. Running 9 tests
+Applying 201th mutation with id 272. Running 4 tests
+Applying 202th mutation with id 273. Running 4 tests
+Applying 203th mutation with id 274. Running 4 tests
+Applying 204th mutation with id 275. Running 4 tests
+Applying 205th mutation with id 276. Running 4 tests
+Applying 206th mutation with id 277. Running 6 tests
+Applying 207th mutation with id 278. Running 6 tests
+Applying 208th mutation with id 279. Running 6 tests
+Applying 209th mutation with id 280. Running 6 tests
+Applying 210th mutation with id 281. Running 6 tests
+Applying 211th mutation with id 282. Running 6 tests
+Applying 212th mutation with id 283. Running 4 tests
+Applying 213th mutation with id 284. Running 4 tests
+Applying 214th mutation with id 285. Running 4 tests
+Applying 215th mutation with id 286. Running 4 tests
+Applying 216th mutation with id 287. Running 4 tests
+Applying 217th mutation with id 288. Running 4 tests
+Applying 218th mutation with id 289. Running 11 tests
+Applying 219th mutation with id 290. Running 11 tests
+Applying 220th mutation with id 291. Running 11 tests
+Applying 221th mutation with id 292. Running 11 tests
+Applying 222th mutation with id 293. Running 11 tests
+Applying 223th mutation with id 294. Running 11 tests
+Applying 224th mutation with id 295. Running 11 tests
+Applying 225th mutation with id 296. Running 11 tests
+Applying 226th mutation with id 297. Running 11 tests
+Applying 227th mutation with id 298. Running 11 tests
+Applying 228th mutation with id 299. Running 11 tests
+Applying 229th mutation with id 300. Running 11 tests
+Applying 230th mutation with id 301. Running 11 tests
+Applying 231th mutation with id 302. Running 11 tests
+Applying 232th mutation with id 303. Running 11 tests
+Applying 233th mutation with id 304. Running 11 tests
+Applying 234th mutation with id 305. Running 11 tests
+Applying 235th mutation with id 306. Running 11 tests
+Applying 236th mutation with id 307. Running 11 tests
+Applying 237th mutation with id 308. Running 11 tests
+Applying 238th mutation with id 309. Running 11 tests
+Applying 239th mutation with id 310. Running 11 tests
+Applying 240th mutation with id 311. Running 11 tests
+Applying 241th mutation with id 312. Running 11 tests
+Applying 242th mutation with id 313. Running 11 tests
+Applying 243th mutation with id 314. Running 11 tests
+Applying 244th mutation with id 315. Running 11 tests
+Applying 245th mutation with id 316. Running 11 tests
+Applying 246th mutation with id 317. Running 11 tests
+Applying 247th mutation with id 318. Running 11 tests
+Applying 248th mutation with id 319. Running 11 tests
+Applying 249th mutation with id 320. Running 4 tests
+Applying 250th mutation with id 321. Running 4 tests
+Applying 251th mutation with id 322. Running 4 tests
+Applying 252th mutation with id 323. Running 4 tests
+Applying 253th mutation with id 324. Running 4 tests
+Applying 254th mutation with id 325. Running 4 tests
+Applying 255th mutation with id 326. Running 4 tests
+Applying 256th mutation with id 327. Running 2 tests
+Applying 257th mutation with id 328. Running 4 tests
+Applying 258th mutation with id 329. Running 4 tests
+Applying 259th mutation with id 330. Running 4 tests
+Applying 260th mutation with id 331. Running 4 tests
+Applying 261th mutation with id 332. Running 4 tests
+Applying 262th mutation with id 333. Running 4 tests
+Applying 263th mutation with id 334. Running 4 tests
+Applying 264th mutation with id 335. Running 4 tests
+Applying 265th mutation with id 336. Running 3 tests
+Applying 266th mutation with id 337. Running 4 tests
+Applying 267th mutation with id 338. Running 4 tests
+Applying 268th mutation with id 339. Running 4 tests
+Applying 269th mutation with id 340. Running 4 tests
+Applying 270th mutation with id 341. Running 4 tests
+Applying 271th mutation with id 342. Running 4 tests
+Applying 272th mutation with id 343. Running 4 tests
+Applying 273th mutation with id 344. Running 1 tests
+Applying 274th mutation with id 345. Running 1 tests
+Applying 275th mutation with id 346. Running 1 tests
+Applying 276th mutation with id 347. Running 4 tests
+Applying 277th mutation with id 348. Running 4 tests
+Applying 278th mutation with id 349. Running 4 tests
+Applying 279th mutation with id 350. Running 4 tests
+Applying 280th mutation with id 351. Running 13 tests
+Applying 281th mutation with id 352. Running 13 tests
+Applying 282th mutation with id 353. Running 13 tests
+Applying 283th mutation with id 354. Running 13 tests
+Applying 284th mutation with id 355. Running 13 tests
+Applying 285th mutation with id 356. Running 13 tests
+Applying 286th mutation with id 357. Running 13 tests
+Applying 287th mutation with id 358. Running 4 tests
+Applying 288th mutation with id 359. Running 4 tests
+Applying 289th mutation with id 360. Running 4 tests
+Applying 290th mutation with id 361. Running 4 tests
+Applying 291th mutation with id 362. Running 4 tests
+Applying 292th mutation with id 379. Running 4 tests
+Applying 293th mutation with id 380. Running 4 tests
+Applying 294th mutation with id 381. Running 4 tests
+Applying 295th mutation with id 382. Running 4 tests
+Applying 296th mutation with id 383. Running 4 tests
+Applying 297th mutation with id 384. Running 4 tests
+Applying 298th mutation with id 385. Running 3 tests
+Applying 299th mutation with id 386. Running 3 tests
+Applying 300th mutation with id 387. Running 3 tests
+Applying 301th mutation with id 388. Running 1 tests
+Applying 302th mutation with id 389. Running 1 tests
+Applying 303th mutation with id 390. Running 1 tests
+Applying 304th mutation with id 391. Running 2 tests
+Applying 305th mutation with id 392. Running 2 tests
+Applying 306th mutation with id 393. Running 6 tests
+Applying 307th mutation with id 394. Running 6 tests
+Applying 308th mutation with id 395. Running 6 tests
+Applying 309th mutation with id 396. Running 6 tests
+Applying 310th mutation with id 397. Running 6 tests
+Applying 311th mutation with id 398. Running 6 tests
+Applying 312th mutation with id 399. Running 6 tests
+Applying 313th mutation with id 400. Running 25 tests
+Applying 314th mutation with id 401. Running 1 tests
+Applying 315th mutation with id 402. Running 1 tests
+Applying 316th mutation with id 403. Running 24 tests
+Applying 317th mutation with id 404. Running 25 tests
+Applying 318th mutation with id 405. Running 24 tests
+Applying 319th mutation with id 406. Running 24 tests
+Applying 320th mutation with id 407. Running 23 tests
+Applying 321th mutation with id 408. Running 23 tests
+Applying 322th mutation with id 409. Running 2 tests
+Applying 323th mutation with id 410. Running 2 tests
+Applying 324th mutation with id 411. Running 2 tests
+Applying 325th mutation with id 412. Running 9 tests
+Applying 326th mutation with id 415. Running 9 tests
+ALL_RESULTS
+All mutations have results - this means they have already been applied and executed
+326 mutations were applied. 326 Mutation results were recorded. 326 Mutations where actually touched.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

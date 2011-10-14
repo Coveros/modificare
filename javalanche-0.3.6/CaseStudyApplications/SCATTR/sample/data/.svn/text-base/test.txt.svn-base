@@ -1,0 +1,17 @@
+name			notc	noo		ccn		ncss		anojpf
+edtftpj_test	36		26		1.78	1175.00		1.15
+jcollector_test	35		44		1.29	542.00		0.00
+jdepend_test	54		238		1.10	908.00		0.17
+XMLSecur_test   96      175     2.01    3543.00		0.80
+JGap_test       1336    2239    1.34    13753.00	0.83
+JGraphT_test    91      327     1.38    2023.00		0.83
+JUNG_test       264     1127    1.72    6456.00		0.23
+dbunit_test     674     977    	1.47    8781.00		0.15
+jabref_test     184     1169    1.40    3051.00		0.28
+JGB_test        346     773     1.15    3904.00		0.06
+cactus_test     81      95      1.61    1341.00		1.36
+ApacheAnt_test  1772    1953    1.40    15963.00	0.28
+JMeter_test     928     2238    1.63    16477.00	0.29
+junitperf_test  58      171     1.20    546.00		0.14
+jfreechart_test 1623    6701    1.36    30379.00	1.15
+

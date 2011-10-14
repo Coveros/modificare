@@ -1,0 +1,311 @@
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb
+END
+._TestSelfLeftJoin.txt
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfLeftJoin.txt
+END
+._TestSelfUnions.txt
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfUnions.txt
+END
+._TestSelfSubselects.txt
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfSubselects.txt
+END
+._TestSelfQueries.txt
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfQueries.txt
+END
+._TestSelfPrimaryKeys.txt
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfPrimaryKeys.txt
+END
+._TestSelf.txt
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelf.txt
+END
+._TestSelfImmediateShutdownRecover.txt
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfImmediateShutdownRecover.txt
+END
+._TestSelfJoins.txt
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfJoins.txt
+END
+._TestSelfUserFunction.txt
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfUserFunction.txt
+END
+._TestSelfInsertDeleteQueries.txt
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfInsertDeleteQueries.txt
+END
+._runTest.sh
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._runTest.sh
+END
+._TestSelfModify.txt
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfModify.txt
+END
+._TestSelfGroupBy.txt
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfGroupBy.txt
+END
+._TestSelfFKModes.txt
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfFKModes.txt
+END
+._TestSelfImmediateShutdown.txt
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfImmediateShutdown.txt
+END
+._TestSelfViewSchemaResolve.txt
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfViewSchemaResolve.txt
+END
+._TestSelfSchemaPersistB1.txt
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfSchemaPersistB1.txt
+END
+._TestSelfSchemaPersistB2.txt
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfSchemaPersistB2.txt
+END
+._TestSelfViewsReconnect.txt
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfViewsReconnect.txt
+END
+._TestSelfInPredicateReferencing.txt
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfInPredicateReferencing.txt
+END
+._TestSelfSchemaPersistD1.txt
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfSchemaPersistD1.txt
+END
+._TestSelfSchemaPersistD2.txt
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfSchemaPersistD2.txt
+END
+._TestSelfCreate.txt
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfCreate.txt
+END
+._TestSelfNameResolution.txt
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfNameResolution.txt
+END
+._TestSelfConstraints.txt
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfConstraints.txt
+END
+._TestSelfGrantees.txt
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfGrantees.txt
+END
+._TestSelfSchemaPerCachTbl1.txt
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfSchemaPerCachTbl1.txt
+END
+._TestSelfSchemaPerCachTbl2.txt
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfSchemaPerCachTbl2.txt
+END
+._TestSelfIssues.txt
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfIssues.txt
+END
+._TestSelfAlterTable.txt
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfAlterTable.txt
+END
+._runTest.bat
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._runTest.bat
+END
+._TestSelfAlterColumn.txt
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfAlterColumn.txt
+END
+._TestSelfTransaction.txt
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfTransaction.txt
+END
+._TestSelfRoleNesting.txt
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfRoleNesting.txt
+END
+._TestSelfRightCaching.txt
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfRightCaching.txt
+END
+._TestSelfSchemaPersistA1.txt
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfSchemaPersistA1.txt
+END
+._TestSelfCasewhen.txt
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfCasewhen.txt
+END
+._TestSelfSchemaPersistA2.txt
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfSchemaPersistA2.txt
+END
+._TestSelfViews.txt
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfViews.txt
+END
+._TestSelfSchemaPersistC1.txt
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfSchemaPersistC1.txt
+END
+._TestSelfTempTable1.txt
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfTempTable1.txt
+END
+._TestSelfSchemaPersistC2.txt
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfSchemaPersistC2.txt
+END
+._TestSelfTempTable2.txt
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfTempTable2.txt
+END
+._TestSelfNot.txt
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfNot.txt
+END
+._TestSelfVerify.txt
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfVerify.txt
+END
+._TestSelfCheckConstraints.txt
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfCheckConstraints.txt
+END
+._TestSelfFieldLimits.txt
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfFieldLimits.txt
+END
+._TestSelfNameResolutionSchemas.txt
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfNameResolutionSchemas.txt
+END
+._TestSelfConversions.txt
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfConversions.txt
+END
+._TestSelfMultiGrants.txt
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfMultiGrants.txt
+END
+._TestSelfSysTables.txt
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/testrun/hsqldb/._TestSelfSysTables.txt
+END

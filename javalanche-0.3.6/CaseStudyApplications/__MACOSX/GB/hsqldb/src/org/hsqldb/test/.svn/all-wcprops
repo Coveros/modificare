@@ -1,0 +1,281 @@
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test
+END
+._TestCascade.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestCascade.java
+END
+._TestGroupByHaving.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestGroupByHaving.java
+END
+._TestSchemaParse.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestSchemaParse.java
+END
+._TestDateTime.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestDateTime.java
+END
+._TestTextTable.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestTextTable.java
+END
+._TestAllTypes.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestAllTypes.java
+END
+._TestObjectSize.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestObjectSize.java
+END
+._JDBCBench.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._JDBCBench.java
+END
+._TestDatabaseMetaData.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestDatabaseMetaData.java
+END
+._TestBatchExecution.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestBatchExecution.java
+END
+._TestBug808460.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestBug808460.java
+END
+._TestAll.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestAll.java
+END
+._TestBugBase.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestBugBase.java
+END
+._TestStressInsert.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestStressInsert.java
+END
+._ClearTests.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._ClearTests.java
+END
+._TestBug778213.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestBug778213.java
+END
+._TestStoredProcedure.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestStoredProcedure.java
+END
+._TestPreparedSubQueries.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestPreparedSubQueries.java
+END
+._TestUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestUtil.java
+END
+._TestJDBCSavepoints.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestJDBCSavepoints.java
+END
+._TestBatchBug.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestBatchBug.java
+END
+._TestTextTables.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestTextTables.java
+END
+._TestSqlPersistent.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestSqlPersistent.java
+END
+._SqlToolHarness.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._SqlToolHarness.java
+END
+._TestInstantiation.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestInstantiation.java
+END
+._TestCollation.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestCollation.java
+END
+._TestLibSpeed.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestLibSpeed.java
+END
+._TestHashStructures.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestHashStructures.java
+END
+._TestSelf.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestSelf.java
+END
+._TestSubselect.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestSubselect.java
+END
+._AllTests.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._AllTests.java
+END
+._TestSqlTool.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestSqlTool.java
+END
+._TestMultipleConnections.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestMultipleConnections.java
+END
+._TestCacheSize.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestCacheSize.java
+END
+._TestLikePredicateOptimizations.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestLikePredicateOptimizations.java
+END
+._TestSql.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestSql.java
+END
+._TestTimestamp.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestTimestamp.java
+END
+._TestViewAsterisks.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestViewAsterisks.java
+END
+._TestScript.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestScript.java
+END
+._ExecHarness.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._ExecHarness.java
+END
+._TestSubQueriesInPreparedStatements.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestSubQueriesInPreparedStatements.java
+END
+._TestBase.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestBase.java
+END
+._TestINPredicateParameterizationAndCorrelation.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestINPredicateParameterizationAndCorrelation.java
+END
+._TestDataStructures.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestDataStructures.java
+END
+._TestQuotes.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestQuotes.java
+END
+._TestBug785429.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/test/._TestBug785429.java
+END

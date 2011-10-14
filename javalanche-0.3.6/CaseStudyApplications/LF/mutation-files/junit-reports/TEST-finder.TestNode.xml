@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="2" failures="0" hostname="MARS" name="finder.TestNode" tests="2" time="0.053" timestamp="2011-03-24T00:40:24">
+  <properties>
+    <property name="java.vendor" value="Sun Microsystems Inc." />
+    <property name="lib.dir" value="../..//lib/" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="sun.management.compiler" value="HotSpot Tiered Compilers" />
+    <property name="ant.file.mutation-include" value="/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/src/main/resources/coverage-include.xml" />
+    <property name="os.name" value="Linux" />
+    <property name="sun.boot.class.path" value="/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/resources.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/rt.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/jsse.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/jce.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/charsets.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/modules/jdk.boot.jar:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/classes" />
+    <property name="javalanche.maxmemory" value="2048m" />
+    <property name="sun.desktop" value="gnome" />
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="ant.home" value="/usr/share/ant" />
+    <property name="java.runtime.version" value="1.6.0_24-b07" />
+    <property name="mutation.test.suite" value="finder.TestNode" />
+    <property name="user.name" value="nelliott" />
+    <property name="project.prefix" value="finder" />
+    <property name="user.language" value="en" />
+    <property name="field.file" value="invariant-files//field-results.ser" />
+    <property name="javalanche.properties.add" value=" " />
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/i386" />
+    <property name="proj.shortname" value="jvl-mu" />
+    <property name="javalanche" value="../../" />
+    <property name="ant.project.name" value="Javalanche - Mutation Testing" />
+    <property name="java.version" value="1.6.0_24" />
+    <property name="user.timezone" value="" />
+    <property name="sun.arch.data.model" value="32" />
+    <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/endorsed" />
+    <property name="sun.cpu.isalist" value="" />
+    <property name="ant.file.javalanche-import" value="/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/import.xml" />
+    <property name="sun.jnu.encoding" value="UTF-8" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="classes.add" value="" />
+    <property name="cp" value="bin/:./lib/junit.jar" />
+    <property name="file.separator" value="/" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="java.class.version" value="50.0" />
+    <property name="user.country" value="US" />
+    <property name="java.home" value="/usr/lib/jvm/java-6-sun-1.6.0.24/jre" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="adabu2.resultfilename" value="invariant-files//finder-trace.out" />
+    <property name="ant.file" value="/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/CaseStudyApplications/LF/javalanche.xml" />
+    <property name="os.version" value="2.6.32-29-generic-pae" />
+    <property name="ant.file.javalanche-include" value="/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/src/main/resources/mutation-build.xml" />
+    <property name="path.separator" value=":" />
+    <property name="java.vm.version" value="19.1-b02" />
+    <property name="javalanche.mutation.javaagent" value="../..//javaagent.jar" />
+    <property name="invariant.dir" value="invariant-files/" />
+    <property name="mutation.package.prefix" value="finder" />
+    <property name="ant.library.dir" value="/usr/share/ant/lib" />
+    <property name="javalanche.dist.dir" value="../../" />
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="test.task.1.memory" value="-Xmx2048m" />
+    <property name="project.test.suite" value="finder.TestNode" />
+    <property name="test.task.1.javalanche.package.prefix" value="-Dmutation.package.prefix=finder" />
+    <property name="javalanche.arg.line" value="-Xmx2048m -Dmutation.run.mode=off -Dmutation.package.prefix=finder -Dmutation.test.suite=finder.TestNode" />
+    <property name="user.home" value="/home/nelliott" />
+    <property name="java.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="java.library.path" value="/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/i386/server:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/i386:/usr/lib/jvm/java-6-sun-1.6.0.24/jre/../lib/i386:/usr/java/packages/lib/i386:/lib:/usr/lib" />
+    <property name="java.vendor.url" value="http://java.sun.com/" />
+    <property name="javalanche.mutation.output.dir" value="/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/CaseStudyApplications/LF/mutation-files" />
+    <property name="java.vm.vendor" value="Sun Microsystems Inc." />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="java.class.path" value="/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/src/main/resources:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/adabu2-core-0.4-SNAPSHOT.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/adabu2-hoare-0.4-SNAPSHOT.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/adabu2-tracer-0.4-modified.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/antlr-2.7.6.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/asm-3.0.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/asm-all-3.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/asm-commons-3.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/asm-tree-3.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/asm-util-3.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/bytecodeTransformer-0.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/c3p0-0.9.1.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/cglib-2.1_3.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/commons-collections-3.2.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/commons-io-1.4.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/commons-lang-2.3.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/commons-logging-1.0.4.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/dom4j-1.6.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/ds-util-0.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/easymock-2.3.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/ehcache-1.2.3.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/freemarker-2.3.4.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/google-collect-snapshot-20080530.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/hamcrest-all-1.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/hibernate-3.2.2.ga.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/hibernate-annotations-3.3.0.ga.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/hibernate-commons-annotations-3.3.0.ga.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/hibernate-tools-3.2.0.beta9a.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/hsqldb-1.8.0.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/invariants-0.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/j2h-1.3.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/javalanche-mutation-0.3.6.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/jgrapht-jdk1.5-0.7.3.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/jta-1.0.1B.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/jtidy-r8-20060801.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/junit-4.7.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/log4j-1.2.14.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/mysql-connector-java-nightly.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/persistence-api-1.0.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/prefuse-beta-20060220.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/sibrelib-local.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/util-0.1.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/xpp3_min-1.1.3.4.O.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/lib/xstream-1.2.2.jar:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/CaseStudyApplications/LF/bin:/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/CaseStudyApplications/LF/lib/junit.jar:/usr/share/java/ant-launcher-1.7.1.jar:/usr/share/ant/lib/ant.jar:/usr/share/ant/lib/ant-junit.jar" />
+    <property name="ant.version" value="Apache Ant version 1.7.1 compiled on September 8 2010" />
+    <property name="mutation.run.mode" value="off" />
+    <property name="ant.file.additionalTasks" value="/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/src/main/resources/mutation-add-tasks.xml" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="javalanche.jars.dir" value="../..//lib" />
+    <property name="java.vm.specification.version" value="1.0" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="sun.os.patch.level" value="unknown" />
+    <property name="javalanche.invariant.javaagent" value="../..//lib/invariants-0.1.jar" />
+    <property name="test.task.1.javalanche.project.test.suite" value="-Dmutation.test.suite=finder.TestNode" />
+    <property name="java.io.tmpdir" value="/tmp" />
+    <property name="adabu.javaagent" value="../..//lib/adabu2-tracer-0.4-modified.jar" />
+    <property name="prefix" value="finder" />
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi" />
+    <property name="javalanche.dir" value="/home/nelliott/elliotn-senior-comp/javalanche-0.3.6" />
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment" />
+    <property name="os.arch" value="i386" />
+    <property name="invariant.checker.file" value="invariant-files//finder-invariant-checkers.ser" />
+    <property name="testsuite" value="finder.TestNode" />
+    <property name="java.ext.dirs" value="/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/ext:/usr/java/packages/lib/ext" />
+    <property name="user.dir" value="/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/CaseStudyApplications/LF" />
+    <property name="line.separator" value="
+" />
+    <property name="adabu.boot.jars" value="../..//lib/adabu2-core-0.4-SNAPSHOT.jar:../..//lib/adabu2-hoare-0.4-SNAPSHOT.jar:../..//lib/adabu2-tracer-0.4-modified.jar:../..//lib/invariants-0.1.jar:../..//lib/asm-all-3.1.jar:../..//lib/commons-collections-3.2.1.jar:../..//lib/commons-io-1.4.jar:../..//lib/log4j-1.2.14.jar:../..//lib/util-0.1.jar" />
+    <property name="java.vm.name" value="Java HotSpot(TM) Server VM" />
+    <property name="basedir" value="/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/CaseStudyApplications/LF" />
+    <property name="methods.add" value="" />
+    <property name="ant.java.version" value="1.6" />
+    <property name="ant.core.lib" value="/usr/share/ant/lib/ant.jar" />
+    <property name="ant.file.Javalanche - Mutation Testing" value="/home/nelliott/elliotn-senior-comp/javalanche-0.3.6/CaseStudyApplications/LF/javalanche.xml" />
+    <property name="file.encoding" value="UTF-8" />
+    <property name="javalanche.location" value="../../" />
+    <property name="test.task.1.mutation.run.mode" value="-Dmutation.run.mode=off" />
+    <property name="mutation.jars.dir" value="../..//lib/" />
+    <property name="mutation.base.dir" value="../../" />
+    <property name="java.specification.version" value="1.6" />
+  </properties>
+  <testcase classname="finder.TestNode" name="initializationError" time="0.0020">
+    <error message="Test class should have exactly one public zero-argument constructor" type="java.lang.Exception">java.lang.Exception: Test class should have exactly one public zero-argument constructor
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+</error>
+    <error message="No runnable methods" type="java.lang.Exception">java.lang.Exception: No runnable methods
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+</error>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

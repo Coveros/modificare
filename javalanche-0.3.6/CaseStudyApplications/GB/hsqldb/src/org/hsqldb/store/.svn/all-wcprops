@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/store
+END
+ValuePool.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/store/ValuePool.java
+END
+ValuePoolHashMap.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/store/ValuePoolHashMap.java
+END
+HashIndex.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/store/HashIndex.java
+END
+BaseHashMap.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/store/BaseHashMap.java
+END
+BitMap.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/store/BitMap.java
+END
+ObjectCacheHashMap.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/store/ObjectCacheHashMap.java
+END

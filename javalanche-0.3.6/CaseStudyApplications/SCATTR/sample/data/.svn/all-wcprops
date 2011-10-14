@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/SCATTR/sample/data
+END
+full.txt
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/SCATTR/sample/data/full.txt
+END
+src.txt
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/SCATTR/sample/data/src.txt
+END
+test.txt
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/SCATTR/sample/data/test.txt
+END

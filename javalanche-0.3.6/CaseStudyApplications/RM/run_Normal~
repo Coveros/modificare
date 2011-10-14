@@ -1,0 +1,29 @@
+#! /bin/tcsh
+
+# CASE STUDY APPLICATION: Reminder
+
+# example of how to run the script:
+
+#  ./run_Normal
+
+setenv CLASSPATH /home/gkapfham/working/research/diatoms/tools/xstream-1.1.3/lib/xpp3-1.1.3.4d_b4_min.jar:/home/gkapfham/working/research/diatoms/tools/TrueZip/truezip.jar:/home/gkapfham/working/research/diatoms/tools/xstream-1.1.3/xstream-1.1.3.jar:/home/gkapfham/working/research/diatoms/tools/bouncy/bcprov-jdk14-131.jar:/home/gkapfham/working/research/diatoms/tools/aspectj1.5/lib/aspectjrt.jar:/home/gkapfham/working/research/diatoms/resources/examples/findfile/tools/hsqldb/lib/hsqldb.jar:/home/gkapfham/working/research/diatoms/src/:/home/gkapfham/working/research/diatoms/tools/dbunit-2.0/dbunit-2.0.jar:/home/gkapfham/working/research/diatoms/tools/junit3.8.1/junit.jar:/home/gkapfham/working/research/diatoms/resources/examples/Reminder/build/:/home/gkapfham/working/research/diatoms/build/:.
+
+setenv PATH /usr/java/jdk1.5.0_04/bin:/usr/java/jdk1.5.0_04/bin:/usr/local/WordNet-2.0/bin:/usr/local/Adobe/Acrobat7.0/bin:/usr/local/Acrobat5/bin:/home/gkapfham/working/research/diatoms/tools/apache-ant-1.5.3-1/bin/:/usr/local/bin:/usr/local/mozilla/:/home/gkapfham:/usr/X11R6/bin:/bin:/usr/bin:/usr/ucb:/usr2/local:/usr/bin/X11:/home/gkapfham/bin:/local/cool/bin:/local/bin/soffice52/:/usr/local/jakarta-ant-1.3/bin/:/usr/local/vnc_x86_linux_2.0/:/local/home/dev/cool/bin:/home/gkapfham/working/research/diatoms/tools/aspectj1.0/bin:/usr/local/OpenOffice.org641/program
+
+# run with no special diatoms.monitor.configure
+
+# run with a special diatoms.monitor.configure
+
+echo "Test Suite Execution Time Overhead (Compile Time): "
+echo ""
+
+# probably can replace the line after = with a $1 and then pass
+# in a command line argument; this will make it easier to run the
+# script; then we will need to echo this command
+
+# echo the name of the configuration file
+#echo "Configuration File: " $1
+
+/usr/bin/time java -Ddiatoms.shutdown=true reminder.AllTests
+
+echo ""

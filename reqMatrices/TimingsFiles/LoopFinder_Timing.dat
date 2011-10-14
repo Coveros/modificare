@@ -1,0 +1,13 @@
+finder.LoopFinderTest.testSimpleLoop_Trivial_NoLoop	14607374	1	class	true	LoopFinder
+finder.LoopFinderTest.testSimpleLoop_NoLoop	14369634	1	class	true	LoopFinder
+finder.LoopFinderTest.testSimpleLoop_TightLoop	14379830	1	class	true	LoopFinder
+finder.LoopFinderTest.testSimpleLoop_TightLoop_WithTail_OnProcessedFacility	14534597	1	class	true	LoopFinder
+finder.LoopFinderTest.testSimpleLoop_TightLoop_WithTail_OnOtherFacility	14169330	1	class	true	LoopFinder
+finder.LoopFinderTest.testSimpleLoop_2TightLoops	15777496	1	class	true	LoopFinder
+finder.LoopFinderTest.testSimpleLoop_LargerLoop	15442256	1	class	true	LoopFinder
+finder.LoopFinderTest.test_NoLoop_ConnectedToALoopDownstream	16552382	1	class	true	LoopFinder
+finder.LoopFinderTest.test_NoLoop_ConnectedToALoopUpstream	14318298	1	class	true	LoopFinder
+finder.LoopFinderTest.test_Loop_MainLoopContainsNestedLoop	19135043	1	class	true	LoopFinder
+finder.LoopFinderTest.test_Loop_MainLoopContainsNestedLoop_WithExcludedNodes	16183343	1	class	true	LoopFinder
+finder.LoopFinderTest.testTwoParallelStreams_WithOneComplicatedNonLoop_AndOneLoop	15644309	1	class	true	LoopFinder
+finder.LoopFinderTest.testSimpleLoop_Pyramid_NoLoops	14366352	1	class	true	LoopFinder

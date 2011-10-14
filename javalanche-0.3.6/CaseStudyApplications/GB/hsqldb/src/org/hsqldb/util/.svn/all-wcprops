@@ -1,0 +1,413 @@
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util
+END
+DatabaseManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/DatabaseManager.java
+END
+ZaurusTextField.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/ZaurusTextField.java
+END
+ScriptTool.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/ScriptTool.java
+END
+SqlToolSprayer.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/SqlToolSprayer.java
+END
+Bold.gif
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/Bold.gif
+END
+GreenCircle.gif
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/GreenCircle.gif
+END
+HelperFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/HelperFactory.java
+END
+Close.png
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/Close.png
+END
+TransferSQLText.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/TransferSQLText.java
+END
+AppendableException.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/AppendableException.java
+END
+ZaurusComponent.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/ZaurusComponent.java
+END
+ConnectionDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/ConnectionDialog.java
+END
+sqltool_de.properties
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/sqltool_de.properties
+END
+SqltoolRB.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/SqltoolRB.java
+END
+HsqldbTransferHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/HsqldbTransferHelper.java
+END
+TransferHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/TransferHelper.java
+END
+Grid.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/Grid.java
+END
+JDBCTypes.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/JDBCTypes.java
+END
+CSVWriter.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/CSVWriter.java
+END
+ZaurusConnectionDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/ZaurusConnectionDialog.java
+END
+SqlTool.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/SqlTool.java
+END
+FontDialogSwing.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/FontDialogSwing.java
+END
+TransferResultSet.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/TransferResultSet.java
+END
+SqlFile.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/SqlFile.java
+END
+InformixTransferHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/InformixTransferHelper.java
+END
+DatabaseManagerSwing.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/DatabaseManagerSwing.java
+END
+problems.gif
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/problems.gif
+END
+OracleTransferHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/OracleTransferHelper.java
+END
+RedCircle.gif
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/RedCircle.gif
+END
+Traceable.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/Traceable.java
+END
+ValidatingResourceBundle.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/ValidatingResourceBundle.java
+END
+DataAccessPointException.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/DataAccessPointException.java
+END
+ConnectionDialogSwing.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/ConnectionDialogSwing.java
+END
+Clear.png
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/Clear.png
+END
+TransferTable.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/TransferTable.java
+END
+Tree.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/Tree.java
+END
+ZaurusEditor.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/ZaurusEditor.java
+END
+CommonSwing.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/CommonSwing.java
+END
+sqltool_nl.properties
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/sqltool_nl.properties
+END
+QueryTool.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/QueryTool.java
+END
+Colors.png
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/Colors.png
+END
+SqlToolError.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/SqlToolError.java
+END
+SQLStatements.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/SQLStatements.java
+END
+McKoiTransferHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/McKoiTransferHelper.java
+END
+ZaurusDatabaseManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/ZaurusDatabaseManager.java
+END
+Transfer.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/Transfer.java
+END
+hsqldb.gif
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/hsqldb.gif
+END
+ShutdownServer.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/ShutdownServer.java
+END
+ZaurusChoice.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/ZaurusChoice.java
+END
+DataAccessPoint.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/DataAccessPoint.java
+END
+DatabaseManagerCommon.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/DatabaseManagerCommon.java
+END
+sqltool.properties
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/sqltool.properties
+END
+PostgresTransferHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/PostgresTransferHelper.java
+END
+MainInvoker.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/MainInvoker.java
+END
+CodeSwitcher.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/CodeSwitcher.java
+END
+ZaurusTableForm.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/ZaurusTableForm.java
+END
+TableSorter.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/TableSorter.java
+END
+run_exc.gif
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/run_exc.gif
+END
+ConnectionDialogCommon.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/ConnectionDialogCommon.java
+END
+Italic.gif
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/Italic.gif
+END
+TransferDb.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/TransferDb.java
+END
+SqlServerTransferHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/SqlServerTransferHelper.java
+END
+RefCapablePropertyResourceBundle.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/RefCapablePropertyResourceBundle.java
+END
+Hourglass.gif
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/Hourglass.gif
+END
+TransferCommon.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/TransferCommon.java
+END
+ConnectionSetting.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/ConnectionSetting.java
+END
+GridSwing.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/GridSwing.java
+END
+RCData.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/util/RCData.java
+END

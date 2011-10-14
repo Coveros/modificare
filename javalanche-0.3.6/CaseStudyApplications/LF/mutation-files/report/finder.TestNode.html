@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>
+finder.TestNode
+</title>
+<link href="prettify.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="prettify.js"></script>
+</head>
+<body onload="prettyPrint()">
+<h2>Javalanche report for class:<br/> finder.TestNode </h2><pre class="prettyprint" style="border: 1px solid #888;padding: 2px"><span class="nocode"><a name="1">  1: </a></span>package finder;
+<span class="nocode"><a name="2">  2: </a></span>
+<span class="nocode"><a name="3">  3: </a></span>import java.util.*;
+<span class="nocode"><a name="4">  4: </a></span> 
+<span class="nocode"><a name="5">  5: </a></span>class TestNode implements Node {
+<span class="nocode"><a name="6">  6: </a></span>    private String name;
+<span class="nocode"><a name="7">  7: </a></span>
+<span class="nocode"><a name="8">  8: </a></span>    private List outgoing = new ArrayList();
+<span class="nocode"><a name="9">  9: </a></span>
+<span class="nocode"><a name="10"> 10: </a></span>    public TestNode(String name) {
+<span class="nocode"><a name="11"> 11: </a></span>        this.name = name;
+<span class="nocode"><a name="12"> 12: </a></span>    }
+<span class="nocode"><a name="13"> 13: </a></span>
+<span class="nocode"><a name="14"> 14: </a></span>    public void sendTo(TestNode n) {
+<span class="nocode"><a name="15"> 15: </a></span>        outgoing.add(n);
+<span class="nocode"><a name="16"> 16: </a></span>    }
+<span class="nocode"><a name="17"> 17: </a></span>
+<span class="nocode"><a name="18"> 18: </a></span>    @Override
+<span class="nocode"><a name="19"> 19: </a></span>    public String toString() {
+<span class="nocode"><a name="20"> 20: </a></span>        return name;
+<span class="nocode"><a name="21"> 21: </a></span>    }
+<span class="nocode"><a name="22"> 22: </a></span>
+<span class="nocode"><a name="23"> 23: </a></span>    public int compareTo(Object o) {
+<span class="nocode"><a name="24"> 24: </a></span>        TestNode n = (TestNode) o;
+<span class="nocode"><a name="25"> 25: </a></span>        return name.compareTo(n.name);
+<span class="nocode"><a name="26"> 26: </a></span>    }
+<span class="nocode"><a name="27"> 27: </a></span>
+<span class="nocode"><a name="28"> 28: </a></span>    public List getOutgoing() {
+<span class="nocode"><a name="29"> 29: </a></span>        return outgoing;
+<span class="nocode"><a name="30"> 30: </a></span>    }
+<span class="nocode"><a name="31"> 31: </a></span>}
+</pre><table class="mutation_table" summary="Mutations">
+<tr><th>ID</th><th>Line</th><th>Type</th><th>Detected</th></tr><tr><td>2</td><td><a href="#15">15</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>3</td><td><a href="#25">25</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+</table>
+</body>
+</html>

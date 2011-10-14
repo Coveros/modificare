@@ -1,0 +1,247 @@
+## This file is part of SCATTR
+##
+## SCATTR is free software:  you can redistrubite it and/or modify it under the 
+## terms of the GNU General Public License as published by the Free Software 
+## Foundation, either version 3 of the License, or any later version.
+##
+## SCATTR is distributed in the hope that it will be useful, but WITHOUT ANY 
+## WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS 
+## FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more 
+## details.
+##
+## You should have received a copy of the GNU General Public License along with 
+## Foobar.  If not, see <http://www.gnu.org/licenses/>.
+
+srcDataFile = "data/src.txt"
+testDataFile= "data/test.txt"
+fullDataFile = "data/full.txt"
+
+ccnHistoDataFile = "data/ccn_histo.txt"
+ncssHistoDataFile = "data/ncss_histo.txt"
+javadocHistoDataFile  = "data/javadoc_histo.txt"
+
+x11()
+
+######################################################################### HISTO
+
+Create_Histo = function()
+{
+
+ccnHisto = read.table(file=ccnHistoDataFile, header=T);
+ncssHisto = read.table(file=ncssHistoDataFile, header=T);
+javadocHisto = read.table(file=javadocHistoDataFile, header=T);
+
+
+# Create NCSS multihist graph
+barplot2(as.matrix(ncssHisto), 
+       	  	beside = TRUE,
+       	  	col = c("grey25", "grey75"), 
+		las=2, 
+		font.main = 4,
+		main="NCSS_src v. NCSS_test",  
+)
+box()
+# create legend
+histolegend = c("src", "test")
+par(xpd = TRUE);
+par(usr=c(0,1,0,1))
+legend(x=.375, y=1.075, histolegend,
+        bty="n", horiz=TRUE, fill = c("grey25", "grey75"))
+
+SaveGraphicWeb("graphs/NCSS_multihist.eps")
+
+
+
+# Create ANJOPF multihist graph
+barplot2(as.matrix(javadocHisto), 
+       	  	beside = TRUE,
+       	  	col = c("grey25", "grey75"), 
+		las=2, 
+		font.main = 4,
+		main="ANOJPF_src v. ANOJPF_test",  
+)
+box()
+# create legend
+histolegend = c("src", "test")
+par(xpd = TRUE);
+par(usr=c(0,1,0,1))
+legend(x=.375, y=1.075, histolegend,
+        bty="n", horiz=TRUE, fill = c("grey25", "grey75"))
+
+SaveGraphicWeb("graphs/ANOJPF_multihist.eps")
+
+}
+
+####################################################################### SCATTER
+
+Create_Scatter_Plots = function(linearRegression)
+{
+src = read.table(file=srcDataFile, header=T);
+test = read.table(file=testDataFile, header=T);
+full = read.table(file=fullDataFile, header = T);
+
+plot(test$noo,test$notc, xlab="Number of Oracles (test)",  
+			 ylab="Number of Test Cases (test)", 
+			 main="NOO_test vs. NOTC_test")
+
+if( linearRegression == TRUE)
+{
+myline.fit <- lm(test$notc~test$noo)
+abline(myline.fit)
+
+capture.output(summary(myline.fit), 
+file = "graphs/NOO_test_vs_NOTC_test_Statistics.txt")
+} 
+
+SaveGraphicWeb("graphs/NOO_test_vs_NOTC_test.eps")
+
+
+
+plot(test$notc,src$ncss, xlab="Number of Test Cases (test)", 
+			 ylab="Number of Non-Commented Source Statements (src)",
+			 main="NOTC_test vs. NCSS_src")
+
+if( linearRegression == TRUE)
+{
+myline.fit <- lm(src$ncss~test$notc)
+abline(myline.fit)
+
+capture.output(summary(myline.fit), 
+file = "graphs/NOTC_test_vs_NCSS_src_Statistics.txt")
+}
+
+SaveGraphicWeb("graphs/NOTC_test_vs_NCSS_src.eps")
+
+
+
+plot(src$ccn, test$notc,
+	      xlab="Cyclomatic Complexity Number (src)",
+	      ylab="Number of Test Cases (test)",
+	      main="CCN_src vs. NOTC_test")
+
+if( linearRegression == TRUE)
+{
+myline.fit <- lm(test$notc~src$ccn)
+abline(myline.fit)
+
+capture.output(summary(myline.fit), 
+file = "graphs/CCN_src_vs_NOTC_test_Statistics.txt")
+}
+
+SaveGraphicWeb("graphs/CCN_src_vs_NOTC_test.eps")
+
+      	       
+
+}
+
+########################################################################## BARS
+
+Create_Bars = function() {
+src = read.table(file=srcDataFile, header=T);
+test = read.table(file=testDataFile, header=T);
+full = read.table(file=fullDataFile, header = T);
+
+
+
+barplot(full$ncss, 
+	names.arg=sub("[_].*","",full$name), 
+	main="NCSS_full", 
+	xlab=NULL,
+	ylab="Non-Commented Source Statements", 
+	las=2, 
+	plot=TRUE)
+box()
+SaveGraphicWeb("graphs/barNCSS_full.eps")
+
+barplot(src$ncss, 
+	names.arg=sub("[_].*","",src$name), 
+	main="NCSS_src", 
+	xlab=NULL,
+	ylab="Non-Commented Source Statements", 
+	las=2, 
+	plot=TRUE)
+box()
+SaveGraphicWeb("graphs/barNCSS_src.eps")
+
+barplot(test$ncss, 
+	names.arg=sub("[_].*","",test$name), 
+	main="NCSS_test", 
+	xlab=NULL,
+	ylab="Non-Commented Source Statements", 
+	las=2, 
+	plot=TRUE)
+box()
+SaveGraphicWeb("graphs/barNCSS_test.eps")
+
+barplot(src$ccn, 
+	names.arg=sub("[_].*","",src$name), 
+	main="CCN_src", 
+	xlab=NULL,
+	ylab="Cyclomatic Complexity Number", 
+	las=2, 
+	plot=TRUE)
+box()
+SaveGraphicWeb("graphs/barCCN_src.eps")
+
+barplot(test$notc, 
+	names.arg=sub("[_].*","",test$name), 
+	main="NOTC_test", 
+	xlab=NULL,
+	ylab="Number of Test Cases", 
+	las=2, 
+	plot=TRUE)
+box()
+SaveGraphicWeb("graphs/barNOTC_test.eps")
+
+barplot(test$noo, 
+	names.arg=sub("[_].*","",test$name), 
+	main="NOO_test", 
+	xlab=NULL,
+	ylab="Number of Oracles", 
+	las=2, 
+	plot=TRUE)
+box()
+SaveGraphicWeb("graphs/barNOO_test.eps")
+
+barplot(full$anojpf, 
+	names.arg=sub("[_].*","",full$name), 
+	main="ANOJPF_full", 
+	xlab=NULL,
+	ylab="Average JavaDocs per Function", 
+	las=2, 
+	plot=TRUE)
+box()
+SaveGraphicWeb("graphs/barANOJPF_full.eps")
+
+
+barplot(src$anojpf, 
+	names.arg=sub("[_].*","",src$name), 
+	main="ANOJPF_src", 
+	xlab=NULL,
+	ylab="Average JavaDocs per Function", 
+	las=2, 
+	plot=TRUE)
+box()
+SaveGraphicWeb("graphs/barANOJPF_src.eps")
+
+barplot(test$anojpf, 
+	names.arg=sub("[_].*","",test$name), 
+	main="ANOJPF_test", 
+	xlab=NULL,
+	ylab="Average JavaDocs per Function", 
+	las=2, 
+	plot=TRUE)
+box()
+SaveGraphicWeb("graphs/barANOJPF_test.eps")
+}
+
+################################################################### SAVEGRAPHIC
+
+SaveGraphicWeb = function(fileName)
+{
+
+   dev.copy(postscript, file=fileName, height=6,  
+width=6,horizontal=F,onefile=F)
+   dev.off()
+
+}

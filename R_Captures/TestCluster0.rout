@@ -1,0 +1,28 @@
+> library(snow)
+> library(multicore)
+> library(foreach)
+foreach: simple, scalable parallel programming from REvolution Computing
+Use REvolution R for scalability, fault tolerance and more.
+http://www.revolution-computing.com
+> library(plyr)
+> library(doSNOW)
+> testcl <- makeSOCKcluster(c("aldenv103", "aldenv103"))
+> source("FDP_Start.R")
+> zLoadFit()
+> zLoadRand()
+> clusterExport(testcl, "APFD")
+> clusterExport(testcl, "makeLogFM")
+> clusterExport(testcl, "Rand")
+> clusterExport(testcl, "Rand_Rep")
+> clusterExport(testcl, "Rand_Multi_Rep")
+> registerDoSNOW(testcl)
+> SKClusterTest <- Rand_Multi_Rep(fFM = "~/elliton-senior-comp/FaultCoverageReports/Sudoku_Fault.dat", 
++ Seed = 100, cPopSize = 1000, Trials = 100)
+[1] "Configurarions: "
+                                                          fFM Trials cPopSize
+1 ~/elliton-senior-comp/FaultCoverageReports/Sudoku_Fault.dat    100     1000
+  Seed
+1  789
+  |                                                                              |                                                                      |   0%  |                                                                              |                                                                      |   0%
+  |                                                                              |======================================================================| 100%
+> write.table(SKClusterTest, "~/elliton-senior-comp/datasets/SKRandSockClusterTest.dat")

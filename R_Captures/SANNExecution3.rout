@@ -1,0 +1,23 @@
+> ls()
+character(0)
+> source("src/exp/DistExp.R")
+> source("src/exp/DistExp.R")
+foreach: simple, scalable parallel programming from REvolution Computing
+Use REvolution R for scalability, fault tolerance and more.
+http://www.revolution-computing.com
+> SANNRUN(outPath = "datasets/DS_SANN.dat", fFM = "FaultCoverageReports/DataStructures_Fault.dat")
+                                            fFM     NF         AF         CF
+1 FaultCoverageReports/DataStructures_Fault.dat  NF_FS AF_kirklin CF_kirklin
+2 FaultCoverageReports/DataStructures_Fault.dat  NF_LS AF_kirklin CF_kirklin
+3 FaultCoverageReports/DataStructures_Fault.dat NF_FLS AF_kirklin CF_kirklin
+4 FaultCoverageReports/DataStructures_Fault.dat NF_BLS AF_kirklin CF_kirklin
+  Trials Seed
+1     10    0
+2     10    0
+3     10    0
+4     10    0
+  |                                                                              |                                                                      |   0%  |                                                                              |                                                                      |   0%
+  |                                                                              |==================                                                    |  25%  |                                                                              |                                                                      |   0%
+  |                                                                              |===================================                                   |  50%  |                                                                              |                                                                      |   0%
+  |                                                                              |====================================================                  |  75%  |                                                                              |                                                                      |   0%
+  |                                                                              |======================================================================| 100%

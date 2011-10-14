@@ -1,0 +1,263 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib
+END
+HashSet.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/HashSet.java
+END
+ThreadFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/ThreadFactory.java
+END
+FileAccess.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/FileAccess.java
+END
+HsqlArrayList.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/HsqlArrayList.java
+END
+StringInputStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/StringInputStream.java
+END
+HsqlList.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/HsqlList.java
+END
+IntKeyHashMap.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/IntKeyHashMap.java
+END
+BaseList.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/BaseList.java
+END
+StopWatch.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/StopWatch.java
+END
+IntKeyIntValueHashMap.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/IntKeyIntValueHashMap.java
+END
+ArrayCounter.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/ArrayCounter.java
+END
+LongKeyIntValueHashMap.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/LongKeyIntValueHashMap.java
+END
+IntKeyLongValueHashMap.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/IntKeyLongValueHashMap.java
+END
+IntLookup.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/IntLookup.java
+END
+MD5.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/MD5.java
+END
+HsqlByteArrayInputStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/HsqlByteArrayInputStream.java
+END
+Sort.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/Sort.java
+END
+ZipUnzipFile.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/ZipUnzipFile.java
+END
+Iterator.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/Iterator.java
+END
+HsqlLinkedList.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/HsqlLinkedList.java
+END
+Set.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/Set.java
+END
+InOutUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/InOutUtil.java
+END
+StringConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/StringConverter.java
+END
+HsqlTaskQueue.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/HsqlTaskQueue.java
+END
+HsqlArrayHeap.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/HsqlArrayHeap.java
+END
+Storage.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/Storage.java
+END
+StringUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/StringUtil.java
+END
+HsqlHeap.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/HsqlHeap.java
+END
+HashMappedList.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/HashMappedList.java
+END
+HsqlTimer.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/HsqlTimer.java
+END
+AsciiStringInputStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/AsciiStringInputStream.java
+END
+ArrayUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/ArrayUtil.java
+END
+DoubleIntIndex.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/DoubleIntIndex.java
+END
+FileUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/FileUtil.java
+END
+HashMap.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/HashMap.java
+END
+HsqlThreadFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/HsqlThreadFactory.java
+END
+HsqlByteArrayOutputStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/HsqlByteArrayOutputStream.java
+END
+IntValueHashMap.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/IntValueHashMap.java
+END
+WrapperIterator.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/WrapperIterator.java
+END
+HsqlDeque.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/HsqlDeque.java
+END
+Collection.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/Collection.java
+END
+SimpleLog.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/SimpleLog.java
+END
+ObjectComparator.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/lib/ObjectComparator.java
+END

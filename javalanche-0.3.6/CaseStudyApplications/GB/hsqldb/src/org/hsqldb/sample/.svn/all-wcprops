@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/sample
+END
+sample.sql
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/sample/sample.sql
+END
+sample-server.properties
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/sample/sample-server.properties
+END
+StartupParameters.plist
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/sample/StartupParameters.plist
+END
+DatabaseManagerSample.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/sample/DatabaseManagerSample.java
+END
+TriggerSample.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/sample/TriggerSample.java
+END
+plsql.sql
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/sample/plsql.sql
+END
+sample-hsqldb.cfg
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/sample/sample-hsqldb.cfg
+END
+FindFile.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/sample/FindFile.java
+END
+sqltool.rc
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/sample/sqltool.rc
+END
+weapondef.csv
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/sample/weapondef.csv
+END
+Testdb.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/sample/Testdb.java
+END
+ConnectionTypesSample.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/sample/ConnectionTypesSample.java
+END
+load_binding_lu.sql
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/sample/load_binding_lu.sql
+END
+sampledata.sql
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/sample/sampledata.sql
+END
+pl.sql
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/sample/pl.sql
+END
+dsv-sample.sql
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/sample/dsv-sample.sql
+END
+sample.dsv
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/sample/sample.dsv
+END

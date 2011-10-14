@@ -1,0 +1,175 @@
+<project default="">
+<!-- name="JavalancheInvariantInclude-File to include from ant build files" -->
+
+<property name="mutation.jars.dir" value="${javalanche.dist.dir}/lib/" />
+	<path id="mutation.invariant.classpath">
+		<pathelement path="${javalanche.dist.dir}/src/main/resources"/>
+		<fileset dir="${mutation.jars.dir}" includes="*.jar"/>
+	</path>
+
+	
+	<condition property="javalanche.maxmemory" value="2048m">
+	  	<not>
+			<isset property="javalanche.maxmemory"/>
+	  	</not>
+	</condition>
+	
+	<property name="javalanche.jars.dir" value="${javalanche.location}/lib"/>
+	<property name="mutation.base.dir" value="${javalanche.location}" />
+	<property name="javalanche.mutation.javaagent" value="${javalanche.location}/javaagent.jar" />
+	<property name="mutation.jars.dir" value="${javalanche.location}/lib/" />
+
+	
+
+	<property name="adabu.boot.jars" value="${javalanche.jars.dir}/adabu2-core-0.4-SNAPSHOT.jar:${javalanche.jars.dir}/adabu2-hoare-0.4-SNAPSHOT.jar:${javalanche.jars.dir}/adabu2-tracer-0.4-modified.jar:${javalanche.jars.dir}/invariants-0.1.jar:${javalanche.jars.dir}/asm-all-3.1.jar:${javalanche.jars.dir}/commons-collections-3.2.1.jar:${javalanche.jars.dir}/commons-io-1.4.jar:${javalanche.jars.dir}/log4j-1.2.14.jar:${javalanche.jars.dir}/util-0.1.jar"/>
+	<property name="adabu.javaagent" value="${javalanche.jars.dir}/adabu2-tracer-0.4-modified.jar" />
+	<property name="javalanche.invariant.javaagent" value="${javalanche.jars.dir}/invariants-0.1.jar" />
+
+	<property name="invariant.dir" value="invariant-files/" />
+	<property name="field.file" value="${invariant.dir}/field-results.ser" />
+	<property name="invariant.checker.file" value="${invariant.dir}/${project.prefix}-invariant-checkers.ser" />
+	<property name="adabu2.resultfilename" value="${invariant.dir}/${project.prefix}-trace.out" />
+
+
+	<target name="trace" description="* Trace tests with addabu2.">
+		<property name="trace.mem" value="-Xmx1024m"/>
+		<property name="trace.bootclasspath" value="-Xbootclasspath/a:${adabu.boot.jars}"/>
+		<property name="trace.javaagent" value="-javaagent:${adabu.javaagent}"/>
+		<property name="trace.result.file" value="-Dadabu2.resultfilename=${adabu2.resultfilename}"/>
+		<property name="trace.skiparrayreads" value="-Dadabu2.skiparrayreads=true"/>
+		<property name="trace.multifile" value="-Dinvariant.multifile=true"/>
+		<property name="trace.property" value="-Djavalanche.trace=true" />
+		<path id="trace.javalanche.classpath.add">
+			<path refid="mutation.classpath"/>
+		</path>
+
+		<mkdir dir="${invariant.dir}" />
+		<antcall target="test-javalanche">
+			<param name="javalanche.arg.line" value=" ${trace.mem} ${trace.bootclasspath} ${trace.javaagent} ${trace.result.file} ${trace.skiparrayreads} ${trace.multifile} ${trace.property}" />
+			<reference refid="trace.javalanche.classpath.add" torefid="javalanche.classpath.add"/>
+		</antcall>
+	</target>
+
+
+	<target name="createDaikonFiles" description="* Create daikon dtrace files from adabu trace files.">
+		<echo> Processing files with pattern  ${adabu2.resultfilename} </echo>
+		<echo> Generating trace information for classes with prefix: ${project.prefix} </echo>
+		<java dir="${basedir}" fork="true" maxmemory="2048m" classname="de.unisb.cs.st.javalanche.invariants.cli.DaikonTraceFileGenerator">
+			<assertions enableSystemAssertions="true">
+				<enable/>
+			</assertions>
+			<classpath refid="mutation.invariant.classpath"/>
+			<arg value="${project.prefix}"/>
+			<arg value="${adabu2.resultfilename}"/>
+		</java>
+	</target>
+
+	<target name="createDaikonMakefile" description="* Create a Makefile that calls the Daikon script for all dtrace files.">
+		<java dir="${basedir}" fork="true" classname="de.unisb.cs.st.javalanche.invariants.util.DaikonMakeFileGenerator">
+			<sysproperty key="trace.dir" value="${invariant.dir}" />
+			<sysproperty key="daikon.command" value="${basedir}/runDaikon.sh" />
+			<classpath refid="mutation.invariant.classpath"/>
+		</java>
+	</target>
+
+
+	<target name="createDaikonScript" description="* Create a script that runs Daikon.">
+		<java dir="${basedir}" fork="true" classname="de.unisb.cs.st.javalanche.invariants.util.DaikonShellScriptGenerator">
+			<sysproperty key="daikon.jar" value="${javalanche.jars.dir}/daikon-local.jar" />
+			<sysproperty key="script.name" value="${basedir}/runDaikon.sh" />
+			<classpath refid="mutation.invariant.classpath"/>
+		</java>
+	</target>
+
+
+
+	<target name="createInvariantCheckers" description="* Create invariant checkers for all invariant files produced by daikon.">
+		<echo>Pattern for invariants: ${invariant.checker.file} </echo>
+		<java classname="de.unisb.cs.st.javalanche.invariants.cli.DaikonInvariantReader" maxmemory="3000m" fork="true">
+			<jvmarg value="-Dinvariant.dir=${invariant.dir}"/>
+			<jvmarg value="-Dinvariant.checker.file=${invariant.checker.file}"/>
+			<jvmarg value="-Djavalanche.invariant.field.file=${field.file}"/>
+			<jvmarg value="-Djavalanche.invariant.field.file=${field.file}"/>
+			<jvmarg value="-Djavalanche.file.for.all=${javalanche.file.for.all}"/>
+			<classpath refid="mutation.invariant.classpath" />
+		</java>
+	</target>
+
+	<target name="scanFields" description="* Scan the visibility and type of all fields in this project.">
+		<property name="scan.javaagent" value="-javaagent:${javalanche.invariant.javaagent}"/>
+		<property name="scan.invariant.mode" value="-Dinvariant.mode=FIELD_VIS"/>
+		<property name="scan.field.file.arg" value="-Djavalanche.invariant.field.file=${field.file}"/>
+		
+		<path id="javalanche.classpath.add">
+			<path refid="mutation.classpath"/>
+		</path>
+
+		<antcall target="test-javalanche">
+			<param name="javalanche.arg.line" value=" ${scan.javaagent} ${scan.invariant.mode} ${scan.field.file.arg}" />
+			<reference refid="javalanche.classpath.add"/>
+		</antcall>
+	</target>
+
+<!-- (invariants should hold for the whole test suite). -->
+	<target name="checkInvariants" description="* Run the test suite and check for validity of invariants, and disables violated invariants.">
+		<property name="check.invariant.javaagent" value="-javaagent:${javalanche.invariant.javaagent}"/>
+		<property name="check.invariant.invariant.mode" value="-Dinvariant.mode=CHECK_INVARIANT"/>
+		<property name="check.invariant.field.file.arg" value="-Djavalanche.invariant.field.file=${field.file}"/>
+		<property name="check.invariant.checker.file" value="-Dinvariant.checker.file=${invariant.checker.file}"/>
+		<property name="check.invariant.verbose.summary" value="-Dverbose.invariant.summary=false"/>
+
+		<path id="check.invariant.javalanche.classpath.add">
+			<path refid="mutation.classpath"/>
+			<path refid="mutation.invariant.classpath"/>
+		</path>
+
+		<antcall target="test-javalanche">
+			<param name="javalanche.arg.line" value=" ${check.invariant.javaagent} ${check.invariant.invariant.mode}  ${check.invariant.field.file.arg} ${check.invariant.checker.file}  ${check.invariant.verbose.summary}" />
+			<reference refid="check.invariant.javalanche.classpath.add" torefid="javalanche.classpath.add"/>
+		</antcall>
+	</target>
+
+		
+	<target name="runMutationsInvariant" description="* run a given mutation task wiht enabled invariant checkers (Javalanche invariants build file also has to be included)">
+		<condition property="run.mutations.single.task.mode" value="-Djavalanche.single.task.mode=true" else="-Djavalanche.single.task.mode=false">
+			<isset property="single.task.mode"/>
+		</condition>
+		<property name="run.mutations.mutation.javaagent" value="-javaagent:${javalanche.mutation.javaagent}"/>
+		<property name="run.mutations.memory" value="-Xmx${javalanche.maxmemory}"/>
+		<property name="run.mutations.mutation.run.mode" value="-Dmutation.run.mode=mutation-invariant"/>
+		<property name="run.mutations.javalanche.package.prefix" value="-Dmutation.package.prefix=${project.prefix}"/>
+		<property name="run.mutations.javalanche.project.test.suite" value="-Dmutation.test.suite=${project.test.suite}"/>
+		<property name="run.mutations.mutation.file" value="-Dmutation.file=${mutation.file}"/>
+		<property name="run.mutations.mutation.result.file" value="-Dmutation.result.file=result-${mutation.file}"/>
+		<property name="run.mutations.verbose" value="-verbose"/>
+		<property name="run.mutations.listener" value="-Djavalanche.mutation.test.listener=de.unisb.cs.st.javalanche.mutation.runtime.jmx.JmxMutationTestListener"/>
+		
+		<property name="run.mutations.field.file.arg" value="-Djavalanche.invariant.field.file=${field.file}"/>
+		<property name="run.mutations.checker.file" value="-Dinvariant.checker.file=${invariant.checker.file}"/>
+		<property name="run.mutations.verbose.summary" value="-Dverbose.invariant.summary=false"/>
+		<property name="run.mutations.javalanche.invariant.mode" value="-Dinvariant.mode=INVARIANT"/>
+		
+		<path id="run.mutations.classpath.add">
+			<path refid="mutation.classpath"/>
+			<path refid="mutation.invariant.classpath"/>
+		</path>
+		
+			<!--${run.mutations.verbose}-->
+		<antcall target="test-javalanche">
+			<param name="javalanche.arg.line" value=" ${run.mutations.mutation.javaagent} ${run.mutations.memory} ${run.mutations.mutation.run.mode} ${run.mutations.javalanche.package.prefix} ${run.mutations.javalanche.project.test.suite} ${run.mutations.mutation.file} ${run.mutations.mutation.result.file} ${run.mutations.field.file.arg} ${run.mutations.checker.file} ${run.mutations.verbose.summary} ${run.mutations.javalanche.invariant.mode} ${run.mutations.listener} ${run.mutations.single.task.mode} " />
+			<reference refid="run.mutations.classpath.add" torefid="javalanche.classpath.add"/>
+		</antcall>
+	</target>
+
+
+	<target name="cleanJavalancheInvariant" description="* Delete the files produced by the Javalanche invariant checker.">
+		<delete dir="${invariant.dir}"/>
+	</target>
+
+	<target name="runMake">
+		<exec executable="make" spawn="false">
+			<arg value="-j5"/>
+		</exec>
+	</target>
+
+</project>

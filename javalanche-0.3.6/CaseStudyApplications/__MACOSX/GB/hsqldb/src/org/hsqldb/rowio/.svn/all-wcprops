@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/rowio
+END
+._RowInputBase.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/rowio/._RowInputBase.java
+END
+._RowOutputBase.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/rowio/._RowOutputBase.java
+END
+._RowInputInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/rowio/._RowInputInterface.java
+END
+._RowOutputInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/rowio/._RowOutputInterface.java
+END
+._RowInputBinary.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/rowio/._RowInputBinary.java
+END
+._RowInputText.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/rowio/._RowInputText.java
+END
+._RowOutputBinary.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/rowio/._RowOutputBinary.java
+END
+._RowOutputText.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/rowio/._RowOutputText.java
+END
+._RowInputTextLog.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/rowio/._RowInputTextLog.java
+END
+._RowInputTextQuoted.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/rowio/._RowInputTextQuoted.java
+END
+._RowOutputTextLog.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/rowio/._RowOutputTextLog.java
+END
+._RowOutputTextQuoted.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/rowio/._RowOutputTextQuoted.java
+END

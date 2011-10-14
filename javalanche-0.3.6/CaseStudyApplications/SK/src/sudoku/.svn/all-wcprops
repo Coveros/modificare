@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/SK/src/sudoku
+END
+SudokuUtils.class
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/SK/src/sudoku/SudokuUtils.class
+END
+Box.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/SK/src/sudoku/Box.java
+END
+DuplicateBoxesWithSameSolutionException.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/SK/src/sudoku/DuplicateBoxesWithSameSolutionException.java
+END
+Puzzle.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/SK/src/sudoku/Puzzle.java
+END
+SudokuUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/SK/src/sudoku/SudokuUtils.java
+END
+Box.class
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/SK/src/sudoku/Box.class
+END
+DuplicateBoxesWithSameSolutionException.class
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/SK/src/sudoku/DuplicateBoxesWithSameSolutionException.class
+END
+Puzzle.class
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/SK/src/sudoku/Puzzle.class
+END

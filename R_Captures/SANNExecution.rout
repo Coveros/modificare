@@ -1,0 +1,166 @@
+> source("FDP_Start.R")
+> zLoadFit()
+> zLoadSANN()
+> zLoadDist
+> Allcl <- AllNewDellClusterInit()
+foreach: simple, scalable parallel programming from REvolution Computing
+Use REvolution R for scalability, fault tolerance and more.
+http://www.revolution-computing.com
+> clusterExport(Allcl, "APFD")                
+> clusterExport(Allcl, "AF_kirklin")
+> clusterExport(Allcl, "CF_kirklin")
+> clusterExport(Allcl, "makeLogFM")
+> clusterExport(Allcl, "NF_FS")
+> clusterExport(Allcl, "NF_FLS")
+> clusterExport(Allcl, "NF_LS")
+> clusterExport(Allcl, "NF_BLS")
+> clusterExport(Allcl, "SANN")
+> clusterExport(Allcl, "SANN_Rep")
+> clusterExport(Allcl, "SANN_Multi_Rep")
+> clusterExport(Allcl, "InOrdSwap")
+> registerDoSNOW(Allcl)
+> LF_SANN <- SANN_Multi_Rep(fFM = "LF_coverageMatrix", AF = "AF_kirklin", 
++ CF = "CF_kirklin", Trials = 1000, Seed = 100, NF = c("NF_FS", 
++ 
++ "NF_LS", "NF_FLS", "NF_BLS"))
+                fFM     NF         AF         CF Trials Seed
+1 LF_coverageMatrix  NF_FS AF_kirklin CF_kirklin   1000    0
+2 LF_coverageMatrix  NF_LS AF_kirklin CF_kirklin   1000    0
+3 LF_coverageMatrix NF_FLS AF_kirklin CF_kirklin   1000    0
+4 LF_coverageMatrix NF_BLS AF_kirklin CF_kirklin   1000    0
+
+  |                                                                            
+  |                                                                      |   0%
+  |                                                                            
+  |                                                                      |   0%
+
+  |                                                                            
+  |==================                                                    |  25%
+  |                                                                            
+  |                                                                      |   0%
+
+  |                                                                            
+  |===================================                                   |  50%
+  |                                                                            
+  |                                                                      |   0%
+
+  |                                                                            
+  |====================================================                  |  75%
+  |                                                                            
+  |                                                                      |   0%
+
+  |                                                                            
+  |======================================================================| 100%
+> write.table(LF_SANN, "datasets/LF_SANN.dat")
+> SK_SANN <- SANN_Multi_Rep(fFM = "FaultCoverageReports/Sudoku_Fault.dat", 
++ AF = "AF_kirklin", CF = "CF_kirklin", Trials = 1000, Seed = 100, 
++ NF = c("NF_FS", "NF_LS", "NF_FLS", "NF_BLS"))
+                                    fFM     NF         AF         CF Trials
+1 FaultCoverageReports/Sudoku_Fault.dat  NF_FS AF_kirklin CF_kirklin   1000
+2 FaultCoverageReports/Sudoku_Fault.dat  NF_LS AF_kirklin CF_kirklin   1000
+3 FaultCoverageReports/Sudoku_Fault.dat NF_FLS AF_kirklin CF_kirklin   1000
+4 FaultCoverageReports/Sudoku_Fault.dat NF_BLS AF_kirklin CF_kirklin   1000
+  Seed
+1    0
+2    0
+3    0
+4    0
+
+  |                                                                            
+  |                                                                      |   0%
+  |                                                                            
+  |                                                                      |   0%
+
+  |                                                                            
+  |==================                                                    |  25%
+  |                                                                            
+  |                                                                      |   0%
+
+  |                                                                            
+  |===================================                                   |  50%
+  |                                                                            
+  |                                                                      |   0%
+
+  |                                                                            
+  |====================================================                  |  75%
+  |                                                                            
+  |                                                                      |   0%
+
+  |                                                                            
+  |======================================================================| 100%
+> write.table(SK_SANN, "datasets/SK_SANN.dat")
+> RP_SANN <- SANN_Multi_Rep(fFM = "FaultCoverageReports/Redupr_Fault.dat", 
++ AF = "AF_kirklin", CF = "CF_kirklin", Trials = 1000, Seed = 100, 
++ NF = c("NF_FS", "NF_LS", "NF_FLS", "NF_BLS"))
+                                    fFM     NF         AF         CF Trials
+1 FaultCoverageReports/Redupr_Fault.dat  NF_FS AF_kirklin CF_kirklin   1000
+2 FaultCoverageReports/Redupr_Fault.dat  NF_LS AF_kirklin CF_kirklin   1000
+3 FaultCoverageReports/Redupr_Fault.dat NF_FLS AF_kirklin CF_kirklin   1000
+4 FaultCoverageReports/Redupr_Fault.dat NF_BLS AF_kirklin CF_kirklin   1000
+  Seed
+1    0
+2    0
+3    0
+4    0
+
+  |                                                                            
+  |                                                                      |   0%
+  |                                                                            
+  |                                                                      |   0%
+
+  |                                                                            
+  |==================                                                    |  25%
+  |                                                                            
+  |                                                                      |   0%
+
+  |                                                                            
+  |===================================                                   |  50%
+  |                                                                            
+  |                                                                      |   0%
+
+  |                                                                            
+  |====================================================                  |  75%
+  |                                                                            
+  |                                                                      |   0%
+
+  |                                                                            
+  |======================================================================| 100%
+> write.table(RP_SANN, "datasets/RP_SANN.dat")
+> JD_SANN <- SANN_Multi_Rep(fFM = "FaultCoverageReports/JDepend_Fault.dat", 
++ AF = "AF_kirklin", CF = "CF_kirklin", Trials = 1000, Seed = 100, 
++ NF = c("NF_FS", "NF_LS", "NF_FLS", "NF_BLS"))
+                                     fFM     NF         AF         CF Trials
+1 FaultCoverageReports/JDepend_Fault.dat  NF_FS AF_kirklin CF_kirklin   1000
+2 FaultCoverageReports/JDepend_Fault.dat  NF_LS AF_kirklin CF_kirklin   1000
+3 FaultCoverageReports/JDepend_Fault.dat NF_FLS AF_kirklin CF_kirklin   1000
+4 FaultCoverageReports/JDepend_Fault.dat NF_BLS AF_kirklin CF_kirklin   1000
+  Seed
+1    0
+2    0
+3    0
+4    0
+
+  |                                                                            
+  |                                                                      |   0%
+  |                                                                            
+  |                                                                      |   0%
+
+  |                                                                            
+  |==================                                                    |  25%
+  |                                                                            
+  |                                                                      |   0%
+
+  |                                                                            
+  |===================================                                   |  50%
+  |                                                                            
+  |                                                                      |   0%
+
+  |                                                                            
+  |====================================================                  |  75%
+  |                                                                            
+  |                                                                      |   0%
+
+  |                                                                            
+  |======================================================================| 100%
+> write.table(JD_SANN, "datasets/JD_SANN.dat")
+> stopCluster(Allcl)

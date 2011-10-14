@@ -1,0 +1,25 @@
+# jdepend.framework.AbstractParser
+jdepend.framework.AllTests
+# jdepend.framework.ClassFileParser
+# jdepend.framework.ClassFileParser$AttributeInfo
+# jdepend.framework.ClassFileParser$Constant
+# jdepend.framework.ClassFileParser$FieldOrMethodInfo
+jdepend.framework.ClassFileParserTest
+jdepend.framework.CollectAllCyclesTest
+jdepend.framework.ComponentTest
+jdepend.framework.ConstraintTest
+jdepend.framework.CycleTest
+# jdepend.framework.DependencyConstraint
+jdepend.framework.ExampleTest
+# jdepend.framework.FileManager
+jdepend.framework.FileManagerTest
+jdepend.framework.FilterTest
+# jdepend.framework.JDepend
+jdepend.framework.JDependTestCase
+jdepend.framework.JavaClass
+jdepend.framework.JavaClassBuilder
+jdepend.framework.JavaClassBuilder$1
+jdepend.framework.JavaPackage
+jdepend.framework.MetricTest
+# jdepend.framework.PackageFilter
+# jdepend.framework.PropertyConfigurator

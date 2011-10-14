@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/resources
+END
+webserver.properties
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/resources/webserver.properties
+END
+org_hsqldb_DatabaseClassLoader.properties
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/resources/org_hsqldb_DatabaseClassLoader.properties
+END
+sql-error-messages_it.properties
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/resources/sql-error-messages_it.properties
+END
+org_hsqldb_Library.properties
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/resources/org_hsqldb_Library.properties
+END
+data-type-names.properties
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/resources/data-type-names.properties
+END
+table-remarks.properties
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/resources/table-remarks.properties
+END
+data-type-create-parameters.properties
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/resources/data-type-create-parameters.properties
+END
+data-type-remarks.properties
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/resources/data-type-remarks.properties
+END
+java_lang_Math.properties
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/resources/java_lang_Math.properties
+END
+sql-error-messages.properties
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/resources/sql-error-messages.properties
+END
+BundleHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/resources/BundleHandler.java
+END
+content-types.properties
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/resources/content-types.properties
+END
+column-remarks.properties
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/resources/column-remarks.properties
+END
+org_hsqldb_Server_messages.properties
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/src/org/hsqldb/resources/org_hsqldb_Server_messages.properties
+END

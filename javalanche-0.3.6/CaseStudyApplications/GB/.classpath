@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<!--<classpathentry kind="lib" path="/Users/mr_smith22586/Documents/workspace/GB/hsqldb/lib/hsqldb.jar"/>
+	<classpathentry kind="lib" path="/Users/mr_smith22586/Documents/workspace/raise/lib/junit.jar"/>
+	<classpathentry kind="lib" path="/Users/mr_smith22586/Documents/workspace/GB/dbunit-2.1.jar"/>-->
+	<classpathentry kind="lib" path="./GB/hsqldb/lib/hsqldb.jar"/>
+	<!--originally 2.1.jar-->
+	<classpathentry kind="lib" path="./GB/dbunit-2.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

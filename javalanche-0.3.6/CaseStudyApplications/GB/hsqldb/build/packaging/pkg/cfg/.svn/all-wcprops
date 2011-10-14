@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/build/packaging/pkg/cfg
+END
+HSQLhsqldb.info
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/build/packaging/pkg/cfg/HSQLhsqldb.info
+END
+HSQLhsqldb.postinstall
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/build/packaging/pkg/cfg/HSQLhsqldb.postinstall
+END
+sqltool.rc
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/build/packaging/pkg/cfg/sqltool.rc
+END
+HSQLhsqldb.preinstall
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/build/packaging/pkg/cfg/HSQLhsqldb.preinstall
+END
+server.properties
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/build/packaging/pkg/cfg/server.properties
+END
+HSQLhsqldb.postremove
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/build/packaging/pkg/cfg/HSQLhsqldb.postremove
+END
+HSQLhsqldb.proto
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/build/packaging/pkg/cfg/HSQLhsqldb.proto
+END
+HSQLhsqldb.checkinstall
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/build/packaging/pkg/cfg/HSQLhsqldb.checkinstall
+END
+HSQLhsqldb.preremove
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/build/packaging/pkg/cfg/HSQLhsqldb.preremove
+END

@@ -1,0 +1,14 @@
+redupr.AllTests
+# redupr.FastByteArrayInputStream
+# redupr.FastByteArrayOutputStream
+# redupr.ReduceUsingDelayedGreedy
+# redupr.ReduceUsingHarroldGuptaSoffa
+# redupr.RequirementSubset
+# redupr.SetCover
+# redupr.SingleTest
+# redupr.SingleTestSubset
+redupr.TestReduceUsingDelayedGreedy
+redupr.TestReduceUsingGreedy
+redupr.TestReduceUsingHarroldGuptaSoffa
+redupr.TestReduceUsingKWay
+redupr.TestSetCover

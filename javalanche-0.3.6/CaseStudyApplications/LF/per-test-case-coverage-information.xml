@@ -1,0 +1,2258 @@
+<testcase=finder.LoopFinderTest.testSimpleLoop_Trivial_NoLoop>
+  <mutation>
+    <id>3</id>
+    <line>16</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>4</id>
+    <line>16</line>
+    <type>Constant -1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>2</id>
+    <line>16</line>
+    <type>Replace Constant by 0</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>5</id>
+    <line>16</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>6</id>
+    <line>17</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>8</id>
+    <line>25</line>
+    <type>Negate jump condition</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>7</id>
+    <line>25</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>10</id>
+    <line>29</line>
+    <type>Negate jump condition</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>9</id>
+    <line>29</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>11</id>
+    <line>32</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>12</id>
+    <line>34</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>13</id>
+    <line>35</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>24</id>
+    <line>36</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>14</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>23</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>25</id>
+    <line>49</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>26</id>
+    <line>53</line>
+    <type>Negate jump condition</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>32</id>
+    <line>53</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>33</id>
+    <line>53</line>
+    <type>Constant -1</type>
+    <detected>false</detected>
+  </mutation>
+</testcase>
+<testcase=finder.LoopFinderTest.testSimpleLoop_NoLoop>
+  <mutation>
+    <id>3</id>
+    <line>16</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>4</id>
+    <line>16</line>
+    <type>Constant -1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>2</id>
+    <line>16</line>
+    <type>Replace Constant by 0</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>5</id>
+    <line>16</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>6</id>
+    <line>17</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>8</id>
+    <line>25</line>
+    <type>Negate jump condition</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>7</id>
+    <line>25</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>10</id>
+    <line>29</line>
+    <type>Negate jump condition</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>9</id>
+    <line>29</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>11</id>
+    <line>32</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>12</id>
+    <line>34</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>13</id>
+    <line>35</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>24</id>
+    <line>36</line>
+    <type>Negate jump condition</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>14</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>23</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>15</id>
+    <line>37</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>16</id>
+    <line>38</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>17</id>
+    <line>38</line>
+    <type>Constant -1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>18</id>
+    <line>38</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>19</id>
+    <line>39</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>25</id>
+    <line>49</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>26</id>
+    <line>53</line>
+    <type>Negate jump condition</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>27</id>
+    <line>53</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>32</id>
+    <line>53</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>33</id>
+    <line>53</line>
+    <type>Constant -1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>28</id>
+    <line>53</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+</testcase>
+<testcase=finder.LoopFinderTest.testSimpleLoop_TightLoop>
+  <mutation>
+    <id>3</id>
+    <line>16</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>4</id>
+    <line>16</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>2</id>
+    <line>16</line>
+    <type>Replace Constant by 0</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>5</id>
+    <line>16</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>6</id>
+    <line>17</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>8</id>
+    <line>25</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>7</id>
+    <line>25</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>10</id>
+    <line>29</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>9</id>
+    <line>29</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>11</id>
+    <line>32</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>12</id>
+    <line>34</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>13</id>
+    <line>35</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>24</id>
+    <line>36</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>14</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>23</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>15</id>
+    <line>37</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>16</id>
+    <line>38</line>
+    <type>Constant +1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>17</id>
+    <line>38</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>18</id>
+    <line>38</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>19</id>
+    <line>39</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>20</id>
+    <line>40</line>
+    <type>Constant +1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>21</id>
+    <line>40</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>22</id>
+    <line>40</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>25</id>
+    <line>49</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>30</id>
+    <line>53</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>31</id>
+    <line>53</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>29</id>
+    <line>53</line>
+    <type>Replace Constant by 0</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>26</id>
+    <line>53</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>27</id>
+    <line>53</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>32</id>
+    <line>53</line>
+    <type>Constant +1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>33</id>
+    <line>53</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>28</id>
+    <line>53</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+</testcase>
+<testcase=finder.LoopFinderTest.testSimpleLoop_TightLoop_WithTail_OnProcessedFacility>
+  <mutation>
+    <id>3</id>
+    <line>16</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>4</id>
+    <line>16</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>2</id>
+    <line>16</line>
+    <type>Replace Constant by 0</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>5</id>
+    <line>16</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>6</id>
+    <line>17</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>8</id>
+    <line>25</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>7</id>
+    <line>25</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>10</id>
+    <line>29</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>9</id>
+    <line>29</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>11</id>
+    <line>32</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>12</id>
+    <line>34</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>13</id>
+    <line>35</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>24</id>
+    <line>36</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>14</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>23</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>15</id>
+    <line>37</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>16</id>
+    <line>38</line>
+    <type>Constant +1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>17</id>
+    <line>38</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>18</id>
+    <line>38</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>19</id>
+    <line>39</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>20</id>
+    <line>40</line>
+    <type>Constant +1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>21</id>
+    <line>40</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>22</id>
+    <line>40</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>25</id>
+    <line>49</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>30</id>
+    <line>53</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>31</id>
+    <line>53</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>29</id>
+    <line>53</line>
+    <type>Replace Constant by 0</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>26</id>
+    <line>53</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>27</id>
+    <line>53</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>32</id>
+    <line>53</line>
+    <type>Constant +1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>33</id>
+    <line>53</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>28</id>
+    <line>53</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+</testcase>
+<testcase=finder.LoopFinderTest.testSimpleLoop_TightLoop_WithTail_OnOtherFacility>
+  <mutation>
+    <id>3</id>
+    <line>16</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>4</id>
+    <line>16</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>2</id>
+    <line>16</line>
+    <type>Replace Constant by 0</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>5</id>
+    <line>16</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>6</id>
+    <line>17</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>8</id>
+    <line>25</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>7</id>
+    <line>25</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>10</id>
+    <line>29</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>9</id>
+    <line>29</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>11</id>
+    <line>32</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>12</id>
+    <line>34</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>13</id>
+    <line>35</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>24</id>
+    <line>36</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>14</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>23</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>15</id>
+    <line>37</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>16</id>
+    <line>38</line>
+    <type>Constant +1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>17</id>
+    <line>38</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>18</id>
+    <line>38</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>19</id>
+    <line>39</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>20</id>
+    <line>40</line>
+    <type>Constant +1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>21</id>
+    <line>40</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>22</id>
+    <line>40</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>25</id>
+    <line>49</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>30</id>
+    <line>53</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>31</id>
+    <line>53</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>29</id>
+    <line>53</line>
+    <type>Replace Constant by 0</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>26</id>
+    <line>53</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>27</id>
+    <line>53</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>32</id>
+    <line>53</line>
+    <type>Constant +1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>33</id>
+    <line>53</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>28</id>
+    <line>53</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+</testcase>
+<testcase=finder.LoopFinderTest.testSimpleLoop_2TightLoops>
+  <mutation>
+    <id>3</id>
+    <line>16</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>4</id>
+    <line>16</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>2</id>
+    <line>16</line>
+    <type>Replace Constant by 0</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>5</id>
+    <line>16</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>6</id>
+    <line>17</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>8</id>
+    <line>25</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>7</id>
+    <line>25</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>10</id>
+    <line>29</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>9</id>
+    <line>29</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>11</id>
+    <line>32</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>12</id>
+    <line>34</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>13</id>
+    <line>35</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>24</id>
+    <line>36</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>14</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>23</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>15</id>
+    <line>37</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>16</id>
+    <line>38</line>
+    <type>Constant +1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>17</id>
+    <line>38</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>18</id>
+    <line>38</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>19</id>
+    <line>39</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>20</id>
+    <line>40</line>
+    <type>Constant +1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>21</id>
+    <line>40</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>22</id>
+    <line>40</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>25</id>
+    <line>49</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>30</id>
+    <line>53</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>31</id>
+    <line>53</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>29</id>
+    <line>53</line>
+    <type>Replace Constant by 0</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>26</id>
+    <line>53</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>27</id>
+    <line>53</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>32</id>
+    <line>53</line>
+    <type>Constant +1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>33</id>
+    <line>53</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>28</id>
+    <line>53</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+</testcase>
+<testcase=finder.LoopFinderTest.testSimpleLoop_LargerLoop>
+  <mutation>
+    <id>3</id>
+    <line>16</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>4</id>
+    <line>16</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>2</id>
+    <line>16</line>
+    <type>Replace Constant by 0</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>5</id>
+    <line>16</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>6</id>
+    <line>17</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>8</id>
+    <line>25</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>7</id>
+    <line>25</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>10</id>
+    <line>29</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>9</id>
+    <line>29</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>11</id>
+    <line>32</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>12</id>
+    <line>34</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>13</id>
+    <line>35</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>24</id>
+    <line>36</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>14</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>23</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>15</id>
+    <line>37</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>16</id>
+    <line>38</line>
+    <type>Constant +1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>17</id>
+    <line>38</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>18</id>
+    <line>38</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>19</id>
+    <line>39</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>20</id>
+    <line>40</line>
+    <type>Constant +1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>21</id>
+    <line>40</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>22</id>
+    <line>40</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>25</id>
+    <line>49</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>30</id>
+    <line>53</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>31</id>
+    <line>53</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>29</id>
+    <line>53</line>
+    <type>Replace Constant by 0</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>26</id>
+    <line>53</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>27</id>
+    <line>53</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>32</id>
+    <line>53</line>
+    <type>Constant +1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>33</id>
+    <line>53</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>28</id>
+    <line>53</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+</testcase>
+<testcase=finder.LoopFinderTest.test_NoLoop_ConnectedToALoopDownstream>
+  <mutation>
+    <id>3</id>
+    <line>16</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>4</id>
+    <line>16</line>
+    <type>Constant -1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>2</id>
+    <line>16</line>
+    <type>Replace Constant by 0</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>5</id>
+    <line>16</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>6</id>
+    <line>17</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>8</id>
+    <line>25</line>
+    <type>Negate jump condition</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>7</id>
+    <line>25</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>10</id>
+    <line>29</line>
+    <type>Negate jump condition</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>9</id>
+    <line>29</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>11</id>
+    <line>32</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>12</id>
+    <line>34</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>13</id>
+    <line>35</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>24</id>
+    <line>36</line>
+    <type>Negate jump condition</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>14</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>23</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>15</id>
+    <line>37</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>16</id>
+    <line>38</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>17</id>
+    <line>38</line>
+    <type>Constant -1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>18</id>
+    <line>38</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>19</id>
+    <line>39</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>25</id>
+    <line>49</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>26</id>
+    <line>53</line>
+    <type>Negate jump condition</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>27</id>
+    <line>53</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>32</id>
+    <line>53</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>33</id>
+    <line>53</line>
+    <type>Constant -1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>28</id>
+    <line>53</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+</testcase>
+<testcase=finder.LoopFinderTest.test_NoLoop_ConnectedToALoopUpstream>
+  <mutation>
+    <id>3</id>
+    <line>16</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>4</id>
+    <line>16</line>
+    <type>Constant -1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>2</id>
+    <line>16</line>
+    <type>Replace Constant by 0</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>5</id>
+    <line>16</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>6</id>
+    <line>17</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>8</id>
+    <line>25</line>
+    <type>Negate jump condition</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>7</id>
+    <line>25</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>10</id>
+    <line>29</line>
+    <type>Negate jump condition</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>9</id>
+    <line>29</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>11</id>
+    <line>32</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>12</id>
+    <line>34</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>13</id>
+    <line>35</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>24</id>
+    <line>36</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>14</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>23</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>25</id>
+    <line>49</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>26</id>
+    <line>53</line>
+    <type>Negate jump condition</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>32</id>
+    <line>53</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>33</id>
+    <line>53</line>
+    <type>Constant -1</type>
+    <detected>false</detected>
+  </mutation>
+</testcase>
+<testcase=finder.LoopFinderTest.test_Loop_MainLoopContainsNestedLoop>
+  <mutation>
+    <id>3</id>
+    <line>16</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>4</id>
+    <line>16</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>2</id>
+    <line>16</line>
+    <type>Replace Constant by 0</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>5</id>
+    <line>16</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>6</id>
+    <line>17</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>8</id>
+    <line>25</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>7</id>
+    <line>25</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>10</id>
+    <line>29</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>9</id>
+    <line>29</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>11</id>
+    <line>32</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>12</id>
+    <line>34</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>13</id>
+    <line>35</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>24</id>
+    <line>36</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>14</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>23</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>15</id>
+    <line>37</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>16</id>
+    <line>38</line>
+    <type>Constant +1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>17</id>
+    <line>38</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>18</id>
+    <line>38</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>19</id>
+    <line>39</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>20</id>
+    <line>40</line>
+    <type>Constant +1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>21</id>
+    <line>40</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>22</id>
+    <line>40</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>25</id>
+    <line>49</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>30</id>
+    <line>53</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>31</id>
+    <line>53</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>29</id>
+    <line>53</line>
+    <type>Replace Constant by 0</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>26</id>
+    <line>53</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>27</id>
+    <line>53</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>32</id>
+    <line>53</line>
+    <type>Constant +1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>33</id>
+    <line>53</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>28</id>
+    <line>53</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+</testcase>
+<testcase=finder.LoopFinderTest.test_Loop_MainLoopContainsNestedLoop_WithExcludedNodes>
+  <mutation>
+    <id>3</id>
+    <line>16</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>4</id>
+    <line>16</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>2</id>
+    <line>16</line>
+    <type>Replace Constant by 0</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>5</id>
+    <line>16</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>6</id>
+    <line>17</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>8</id>
+    <line>25</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>7</id>
+    <line>25</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>10</id>
+    <line>29</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>9</id>
+    <line>29</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>11</id>
+    <line>32</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>12</id>
+    <line>34</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>13</id>
+    <line>35</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>24</id>
+    <line>36</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>14</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>23</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>15</id>
+    <line>37</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>16</id>
+    <line>38</line>
+    <type>Constant +1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>17</id>
+    <line>38</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>18</id>
+    <line>38</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>19</id>
+    <line>39</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>20</id>
+    <line>40</line>
+    <type>Constant +1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>21</id>
+    <line>40</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>22</id>
+    <line>40</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>25</id>
+    <line>49</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>30</id>
+    <line>53</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>31</id>
+    <line>53</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>29</id>
+    <line>53</line>
+    <type>Replace Constant by 0</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>26</id>
+    <line>53</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>27</id>
+    <line>53</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>32</id>
+    <line>53</line>
+    <type>Constant +1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>33</id>
+    <line>53</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>28</id>
+    <line>53</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+</testcase>
+<testcase=finder.LoopFinderTest.testTwoParallelStreams_WithOneComplicatedNonLoop_AndOneLoop>
+  <mutation>
+    <id>3</id>
+    <line>16</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>4</id>
+    <line>16</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>2</id>
+    <line>16</line>
+    <type>Replace Constant by 0</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>5</id>
+    <line>16</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>6</id>
+    <line>17</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>8</id>
+    <line>25</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>7</id>
+    <line>25</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>10</id>
+    <line>29</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>9</id>
+    <line>29</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>11</id>
+    <line>32</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>12</id>
+    <line>34</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>13</id>
+    <line>35</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>24</id>
+    <line>36</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>14</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>23</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>15</id>
+    <line>37</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>16</id>
+    <line>38</line>
+    <type>Constant +1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>17</id>
+    <line>38</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>18</id>
+    <line>38</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>19</id>
+    <line>39</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>20</id>
+    <line>40</line>
+    <type>Constant +1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>21</id>
+    <line>40</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>22</id>
+    <line>40</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>25</id>
+    <line>49</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>30</id>
+    <line>53</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>31</id>
+    <line>53</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>29</id>
+    <line>53</line>
+    <type>Replace Constant by 0</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>26</id>
+    <line>53</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>27</id>
+    <line>53</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>32</id>
+    <line>53</line>
+    <type>Constant +1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>33</id>
+    <line>53</line>
+    <type>Constant -1</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>28</id>
+    <line>53</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+</testcase>
+<testcase=finder.LoopFinderTest.testSimpleLoop_Pyramid_NoLoops>
+  <mutation>
+    <id>3</id>
+    <line>16</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>4</id>
+    <line>16</line>
+    <type>Constant -1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>2</id>
+    <line>16</line>
+    <type>Replace Constant by 0</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>5</id>
+    <line>16</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>6</id>
+    <line>17</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>8</id>
+    <line>25</line>
+    <type>Negate jump condition</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>7</id>
+    <line>25</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>10</id>
+    <line>29</line>
+    <type>Negate jump condition</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>9</id>
+    <line>29</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>11</id>
+    <line>32</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>12</id>
+    <line>34</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>13</id>
+    <line>35</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>24</id>
+    <line>36</line>
+    <type>Negate jump condition</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>14</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>23</id>
+    <line>36</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>15</id>
+    <line>37</line>
+    <type>Remove method call</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>16</id>
+    <line>38</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>17</id>
+    <line>38</line>
+    <type>Constant -1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>18</id>
+    <line>38</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>19</id>
+    <line>39</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+  <mutation>
+    <id>25</id>
+    <line>49</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>26</id>
+    <line>53</line>
+    <type>Negate jump condition</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>27</id>
+    <line>53</line>
+    <type>Remove method call</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>32</id>
+    <line>53</line>
+    <type>Constant +1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>33</id>
+    <line>53</line>
+    <type>Constant -1</type>
+    <detected>false</detected>
+  </mutation>
+  <mutation>
+    <id>28</id>
+    <line>53</line>
+    <type>Negate jump condition</type>
+    <detected>true</detected>
+  </mutation>
+</testcase>

@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/bin/gradebook
+END
+AllTests.class
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/bin/gradebook/AllTests.class
+END
+output
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/bin/gradebook/output
+END
+GradeBook.class
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/bin/gradebook/GradeBook.class
+END
+GradeBookCreator.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/bin/gradebook/GradeBookCreator.class
+END
+TestGradeBook.class
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/bin/gradebook/TestGradeBook.class
+END
+TestGradeBookCreator.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/bin/gradebook/TestGradeBookCreator.class
+END
+TestBeforeAllTests.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/bin/gradebook/TestBeforeAllTests.class
+END
+TestGradeBookCreatorWithFullDataSet.class
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/bin/gradebook/TestGradeBookCreatorWithFullDataSet.class
+END
+GradeBookDataException.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/bin/gradebook/GradeBookDataException.class
+END
+DatabaseDescription.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/bin/gradebook/DatabaseDescription.class
+END
+GradeBookConstants.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/bin/gradebook/GradeBookConstants.class
+END

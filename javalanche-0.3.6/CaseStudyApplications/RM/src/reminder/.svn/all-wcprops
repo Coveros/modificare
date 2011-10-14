@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/RM/src/reminder
+END
+ReminderConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/RM/src/reminder/ReminderConstants.java
+END
+Reminder.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/RM/src/reminder/Reminder.java
+END
+ReminderCreator.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/RM/src/reminder/ReminderCreator.java
+END
+TestReminder.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/RM/src/reminder/TestReminder.java
+END
+TestReminderCreator.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/RM/src/reminder/TestReminderCreator.java
+END
+DatabaseDescription.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/RM/src/reminder/DatabaseDescription.java
+END
+AllTests.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/RM/src/reminder/AllTests.java
+END
+ReminderDataException.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/RM/src/reminder/ReminderDataException.java
+END
+TestBeforeAllTests.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/RM/src/reminder/TestBeforeAllTests.java
+END

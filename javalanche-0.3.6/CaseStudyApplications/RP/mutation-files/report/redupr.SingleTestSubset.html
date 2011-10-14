@@ -1,0 +1,360 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>
+redupr.SingleTestSubset
+</title>
+<link href="prettify.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="prettify.js"></script>
+</head>
+<body onload="prettyPrint()">
+<h2>Javalanche report for class:<br/> redupr.SingleTestSubset </h2><pre class="prettyprint" style="border: 1px solid #888;padding: 2px"><span class="nocode"><a name="1">  1: </a></span>/*---------------------------------------------------------------------
+<span class="nocode"><a name="2">  2: </a></span> *  File: $Id: SingleTestSubset.java,v 1.12 2007/03/08 02:25:06 gkapfham Exp $   
+<span class="nocode"><a name="3">  3: </a></span> *  Version:  $Revision: 1.12 $
+<span class="nocode"><a name="4">  4: </a></span> *
+<span class="nocode"><a name="5">  5: </a></span> *  Project: DIATOMS, Database drIven Application Testing tOol ModuleS
+<span class="nocode"><a name="6">  6: </a></span> *
+<span class="nocode"><a name="7">  7: </a></span> *--------------------------------------------------------------------*/
+<span class="nocode"><a name="8">  8: </a></span>
+<span class="nocode"><a name="9">  9: </a></span>package redupr;
+<span class="nocode"><a name="10"> 10: </a></span>
+<span class="nocode"><a name="11"> 11: </a></span>import java.util.Set;
+<span class="nocode"><a name="12"> 12: </a></span>import java.util.LinkedHashSet;
+<span class="nocode"><a name="13"> 13: </a></span>import java.util.Iterator;
+<span class="nocode"><a name="14"> 14: </a></span>import java.io.Serializable;
+<span class="nocode"><a name="15"> 15: </a></span>/**
+<span class="nocode"><a name="16"> 16: </a></span> *  The SingleTestSubset is a SingleTest and then the RequirementSubsets
+<span class="nocode"><a name="17"> 17: </a></span> *  to which it belongs.  Intuitively, this corresponds to the test case
+<span class="nocode"><a name="18"> 18: </a></span> *  and the test requirements that it is able to cover.
+<span class="nocode"><a name="19"> 19: </a></span> *
+<span class="nocode"><a name="20"> 20: </a></span> *  @author Gregory M. Kapfhammer 9/17/2005
+<span class="nocode"><a name="21"> 21: </a></span> */
+<span class="nocode"><a name="22"> 22: </a></span>
+<span class="nocode"><a name="23"> 23: </a></span>public class SingleTestSubset implements Cloneable, Serializable
+<span class="nocode"><a name="24"> 24: </a></span>{
+<span class="nocode"><a name="25"> 25: </a></span>
+<span class="nocode"><a name="26"> 26: </a></span>    /** The test that is part of the SingleTestSubset */
+<span class="nocode"><a name="27"> 27: </a></span>    private SingleTest test;
+<span class="nocode"><a name="28"> 28: </a></span>
+<span class="nocode"><a name="29"> 29: </a></span>    /** The set of RequirementSubsets (in this case we are only really
+<span class="nocode"><a name="30"> 30: </a></span>	interested in the names of the sets and not their contents, but
+<span class="nocode"><a name="31"> 31: </a></span>	we are going to keep the entire contents around) */
+<span class="nocode"><a name="32"> 32: </a></span>    private LinkedHashSet requirementSubsetsSet;
+<span class="nocode"><a name="33"> 33: </a></span>
+<span class="nocode"><a name="34"> 34: </a></span>    /** Maximum redundancy for a test requirement */
+<span class="nocode"><a name="35"> 35: </a></span>
+<span class="nocode"><a name="36"> 36: </a></span>    /**
+<span class="nocode"><a name="37"> 37: </a></span>     *  Default constructor.
+<span class="nocode"><a name="38"> 38: </a></span>     *  
+<span class="nocode"><a name="39"> 39: </a></span>     *  @author Gregory M. Kapfhammer 9/17/2005
+<span class="nocode"><a name="40"> 40: </a></span>     */
+<span class="nocode"><a name="41"> 41: </a></span>    public SingleTestSubset(SingleTest test)
+<span class="nocode"><a name="42"> 42: </a></span>    {
+<span class="nocode"><a name="43"> 43: </a></span>
+<span class="nocode"><a name="44"> 44: </a></span>	this.test = test;
+<span class="nocode"><a name="45"> 45: </a></span>	requirementSubsetsSet = new LinkedHashSet();
+<span class="nocode"><a name="46"> 46: </a></span>
+<span class="nocode"><a name="47"> 47: </a></span>    }
+<span class="nocode"><a name="48"> 48: </a></span>
+<span class="nocode"><a name="49"> 49: </a></span>    /**
+<span class="nocode"><a name="50"> 50: </a></span>     *  Adds a RequirementSubset to the current set.
+<span class="nocode"><a name="51"> 51: </a></span>     *  
+<span class="nocode"><a name="52"> 52: </a></span>     *  @author Gregory M. Kapfhammer 9/17/2005
+<span class="nocode"><a name="53"> 53: </a></span>     */
+<span class="nocode"><a name="54"> 54: </a></span>    public void addRequirementSubset(RequirementSubset rs)
+<span class="nocode"><a name="55"> 55: </a></span>    {
+<span class="nocode"><a name="56"> 56: </a></span>
+<span class="nocode"><a name="57"> 57: </a></span>	requirementSubsetsSet.add(rs);
+<span class="nocode"><a name="58"> 58: </a></span>
+<span class="nocode"><a name="59"> 59: </a></span>    }
+<span class="nocode"><a name="60"> 60: </a></span>
+<span class="nocode"><a name="61"> 61: </a></span>
+<span class="nocode"><a name="62"> 62: </a></span>	/**
+<span class="nocode"><a name="63"> 63: </a></span>    * Removes a RequirementSubset object
+<span class="nocode"><a name="64"> 64: </a></span>    *
+<span class="nocode"><a name="65"> 65: </a></span>	 */
+<span class="nocode"><a name="66"> 66: </a></span>	 
+<span class="nocode"><a name="67"> 67: </a></span>	 public void removeRequirementSubset(RequirementSubset reqToRemove){
+<span class="nocode"><a name="68"> 68: </a></span>	 
+<span class="nocode"><a name="69"> 69: </a></span>	 	requirementSubsetsSet.remove(reqToRemove);
+<span class="nocode"><a name="70"> 70: </a></span>	 
+<span class="nocode"><a name="71"> 71: </a></span>	 }
+<span class="nocode"><a name="72"> 72: </a></span>	 
+<span class="nocode"><a name="73"> 73: </a></span>    /**
+<span class="nocode"><a name="74"> 74: </a></span>     *  The first sentence is a description of the method.  The remaining
+<span class="nocode"><a name="75"> 75: </a></span>     *  sentences are more detailed information relating to the description.
+<span class="nocode"><a name="76"> 76: </a></span>     *  
+<span class="nocode"><a name="77"> 77: </a></span>     *  @author Gregory M. Kapfhammer 9/20/2005
+<span class="nocode"><a name="78"> 78: </a></span>     */
+<span class="nocode"><a name="79"> 79: </a></span>    public void clearRequirementSubset()
+<span class="nocode"><a name="80"> 80: </a></span>    {
+<span class="nocode"><a name="81"> 81: </a></span>
+<span class="nocode"><a name="82"> 82: </a></span>	requirementSubsetsSet.
+<span class="nocode"><a name="83"> 83: </a></span>	    removeAll(requirementSubsetsSet);  //= new LinkedHashSet();
+<span class="nocode"><a name="84"> 84: </a></span>
+<span class="nocode"><a name="85"> 85: </a></span>    }
+<span class="nocode"><a name="86"> 86: </a></span>
+<span class="nocode"><a name="87"> 87: </a></span>    /**
+<span class="nocode"><a name="88"> 88: </a></span>     *  @author Gregory M. Kapfhammer 9/20/2005
+<span class="nocode"><a name="89"> 89: </a></span>     */
+<span class="nocode"><a name="90"> 90: </a></span>    public void setRequirementSubsetSet(LinkedHashSet set)
+<span class="nocode"><a name="91"> 91: </a></span>    {
+<span class="nocode"><a name="92"> 92: </a></span>
+<span class="nocode"><a name="93"> 93: </a></span>	requirementSubsetsSet = set;
+<span class="nocode"><a name="94"> 94: </a></span>
+<span class="nocode"><a name="95"> 95: </a></span>    }
+<span class="nocode"><a name="96"> 96: </a></span>
+<span class="nocode"><a name="97"> 97: </a></span>    /**
+<span class="nocode"><a name="98"> 98: </a></span>     *  @author Gregory M. Kapfhammer 9/20/2005
+<span class="nocode"><a name="99"> 99: </a></span>     */
+<span class="nocode"><a name="100">100: </a></span>    public SingleTest getTest()
+<span class="nocode"><a name="101">101: </a></span>    {
+<span class="nocode"><a name="102">102: </a></span>
+<span class="nocode"><a name="103">103: </a></span>	return test;
+<span class="nocode"><a name="104">104: </a></span>
+<span class="nocode"><a name="105">105: </a></span>    }
+<span class="nocode"><a name="106">106: </a></span>
+<span class="nocode"><a name="107">107: </a></span>    /**
+<span class="nocode"><a name="108">108: </a></span>     *  @author Gregory M. Kapfhammer 9/20/2005
+<span class="nocode"><a name="109">109: </a></span>     */
+<span class="nocode"><a name="110">110: </a></span>    public void setTest(SingleTest test)
+<span class="nocode"><a name="111">111: </a></span>    {
+<span class="nocode"><a name="112">112: </a></span>
+<span class="nocode"><a name="113">113: </a></span>	this.test = test;
+<span class="nocode"><a name="114">114: </a></span>
+<span class="nocode"><a name="115">115: </a></span>    }
+<span class="nocode"><a name="116">116: </a></span>
+<span class="nocode"><a name="117">117: </a></span>    /**
+<span class="nocode"><a name="118">118: </a></span>     *  Return the Set of RequirementSubsets.
+<span class="nocode"><a name="119">119: </a></span>     *  
+<span class="nocode"><a name="120">120: </a></span>     *  @author Gregory M. Kapfhammer 9/17/2005
+<span class="nocode"><a name="121">121: </a></span>     */
+<span class="nocode"><a name="122">122: </a></span>    public LinkedHashSet getRequirementSubsetSet()
+<span class="nocode"><a name="123">123: </a></span>    {
+<span class="nocode"><a name="124">124: </a></span>
+<span class="nocode"><a name="125">125: </a></span>	return requirementSubsetsSet;
+<span class="nocode"><a name="126">126: </a></span>
+<span class="nocode"><a name="127">127: </a></span>    }
+<span class="nocode"><a name="128">128: </a></span>
+<span class="nocode"><a name="129">129: </a></span>    /**
+<span class="nocode"><a name="130">130: </a></span>     *  Determines whether the difference of this current
+<span class="nocode"><a name="131">131: </a></span>     *  SingleTestSubset and the provided cover is equal to the empty
+<span class="nocode"><a name="132">132: </a></span>     *  set.  If this method does return true then this indicates that
+<span class="nocode"><a name="133">133: </a></span>     *  this is a set that does not need to be considered further and
+<span class="nocode"><a name="134">134: </a></span>     *  can be removed from the computation.
+<span class="nocode"><a name="135">135: </a></span>     *  
+<span class="nocode"><a name="136">136: </a></span>     *  @author Gregory M. Kapfhammer 9/17/2005
+<span class="nocode"><a name="137">137: </a></span>     */
+<span class="nocode"><a name="138">138: </a></span>    public boolean containsElements(Set cover)
+<span class="nocode"><a name="139">139: </a></span>    {
+<span class="nocode"><a name="140">140: </a></span>
+<span class="nocode"><a name="141">141: </a></span>	// clone the set and then perform a set different operation
+<span class="nocode"><a name="142">142: </a></span>	// so that we can determine how many items are left inside
+<span class="nocode"><a name="143">143: </a></span>	// of this specific SingleTestSubset
+<span class="nocode"><a name="144">144: </a></span>	Set requirementSubsetsSetClone = 
+<span class="nocode"><a name="145">145: </a></span>	    (Set)requirementSubsetsSet.clone();
+<span class="nocode"><a name="146">146: </a></span>	boolean found = requirementSubsetsSetClone.removeAll(cover);
+<span class="nocode"><a name="147">147: </a></span>
+<span class="nocode"><a name="148">148: </a></span>// 	System.out.println(&quot;found in cost? = &quot; + found);
+<span class="nocode"><a name="149">149: </a></span>
+<span class="nocode"><a name="150">150: </a></span>	// we have found a SingleTestSubset for which all of the
+<span class="nocode"><a name="151">151: </a></span>	// test requirements have already been covered and thus 
+<span class="nocode"><a name="152">152: </a></span>	// we can return false; this is a sign to the calling method
+<span class="nocode"><a name="153">153: </a></span>	// that it can stop considering this SingleTestSubset during 
+<span class="nocode"><a name="154">154: </a></span>	// the current and all future iterations of the algorithm
+<span class="nocode"><a name="155">155: </a></span>	if( requirementSubsetsSetClone.size() == 0 )
+<span class="nocode"><a name="156">156: </a></span>	    {
+<span class="nocode"><a name="157">157: </a></span>
+<span class="nocode"><a name="158">158: </a></span>		return false;
+<span class="nocode"><a name="159">159: </a></span>
+<span class="nocode"><a name="160">160: </a></span>	    }
+<span class="nocode"><a name="161">161: </a></span>
+<span class="nocode"><a name="162">162: </a></span>	// there are still some elements left inside of this set and 
+<span class="nocode"><a name="163">163: </a></span>	// thus we should keep using it (the client program might, for
+<span class="nocode"><a name="164">164: </a></span>	// exaample, then consider calculating the cost of this current
+<span class="nocode"><a name="165">165: </a></span>	// instance of SingleTestSubset)
+<span class="nocode"><a name="166">166: </a></span>	return true;
+<span class="nocode"><a name="167">167: </a></span>
+<span class="nocode"><a name="168">168: </a></span>    }
+<span class="nocode"><a name="169">169: </a></span>
+<span class="nocode"><a name="170">170: </a></span>    /**
+<span class="nocode"><a name="171">171: </a></span>     *  Calculate the cost for the given SingleTestSubset.
+<span class="nocode"><a name="172">172: </a></span>     *  Part of the cost calculation requires that we know the
+<span class="nocode"><a name="173">173: </a></span>     *  cost associated with executing the SingleTest that 
+<span class="nocode"><a name="174">174: </a></span>     *  will cover all of the test requirements inside of this
+<span class="nocode"><a name="175">175: </a></span>     *  SingleTestSubset.
+<span class="nocode"><a name="176">176: </a></span>     *  
+<span class="nocode"><a name="177">177: </a></span>     *  @author Gregory M. Kapfhammer 9/17/2005
+<span class="nocode"><a name="178">178: </a></span>     */
+<span class="nocode"><a name="179">179: </a></span>    public double costEffectiveness(Set cover)
+<span class="nocode"><a name="180">180: </a></span>    {
+<span class="nocode"><a name="181">181: </a></span>
+<span class="nocode"><a name="182">182: </a></span>	// create a clone for this requirementSubset because we 
+<span class="nocode"><a name="183">183: </a></span>	// are going to perform a set difference and we do not 
+<span class="nocode"><a name="184">184: </a></span>	// want to actually modify the underlying test case
+<span class="nocode"><a name="185">185: </a></span>	Set requirementSubsetsSetClone = 
+<span class="nocode"><a name="186">186: </a></span>	    (Set)requirementSubsetsSet.clone();
+<span class="nocode"><a name="187">187: </a></span>
+<span class="nocode"><a name="188">188: </a></span>	// perform the set difference on the clone
+<span class="nocode"><a name="189">189: </a></span>	boolean found = requirementSubsetsSetClone.removeAll(cover);
+<span class="nocode"><a name="190">190: </a></span>
+<span class="nocode"><a name="191">191: </a></span>	// debugging output for now
+<span class="nocode"><a name="192">192: </a></span>// 	System.out.println(&quot;found in cost? = &quot; + found);
+<span class="nocode"><a name="193">193: </a></span>// 	System.out.println(&quot;test cost = &quot; + test.getCost());
+<span class="nocode"><a name="194">194: </a></span>// 	System.out.println(&quot;rs size = &quot; + requirementSubsetsSetClone.size());
+<span class="nocode"><a name="195">195: </a></span>// 	System.out.println( (double) test.getCost() / 
+<span class="nocode"><a name="196">196: </a></span>// 	    (double) requirementSubsetsSetClone.size() );
+<span class="nocode"><a name="197">197: </a></span>
+<span class="nocode"><a name="198">198: </a></span>	// calculate the cost; note that we are assuming that each
+<span class="nocode"><a name="199">199: </a></span>	// test case has a defined cost (if no cost is set then it is
+<span class="nocode"><a name="200">200: </a></span>	// required that we use the default cost, which is just one)
+<span class="nocode"><a name="201">201: </a></span>	// note that we also use in the denominator the size of the 
+<span class="nocode"><a name="202">202: </a></span>	// differenced set which does not factor in the requirements
+<span class="nocode"><a name="203">203: </a></span>	// that have already been covered
+<span class="nocode"><a name="204">204: </a></span> 	double finalCost = (double) test.getCost() / 
+<span class="nocode"><a name="205">205: </a></span>	    (double) requirementSubsetsSetClone.size();
+<span class="nocode"><a name="206">206: </a></span>
+<span class="nocode"><a name="207">207: </a></span> 	return finalCost;
+<span class="nocode"><a name="208">208: </a></span>
+<span class="nocode"><a name="209">209: </a></span>	// no longer just looking at the size(), which is really a
+<span class="nocode"><a name="210">210: </a></span>	// benefit and not a cost ; code is currently written to be a
+<span class="nocode"><a name="211">211: </a></span>	// cost
+<span class="nocode"><a name="212">212: </a></span>
+<span class="nocode"><a name="213">213: </a></span>//	return requirementSubsetsSetClone.size();
+<span class="nocode"><a name="214">214: </a></span>
+<span class="nocode"><a name="215">215: </a></span>    }
+<span class="nocode"><a name="216">216: </a></span>
+<span class="nocode"><a name="217">217: </a></span>	public double coverageValue(Set cover)
+<span class="nocode"><a name="218">218: </a></span>    {
+<span class="nocode"><a name="219">219: </a></span>
+<span class="nocode"><a name="220">220: </a></span>	// create a clone for this requirementSubset because we 
+<span class="nocode"><a name="221">221: </a></span>	// are going to perform a set difference and we do not 
+<span class="nocode"><a name="222">222: </a></span>	// want to actually modify the underlying test case
+<span class="nocode"><a name="223">223: </a></span>	Set requirementSubsetsSetClone = 
+<span class="nocode"><a name="224">224: </a></span>	    (Set)requirementSubsetsSet.clone();
+<span class="nocode"><a name="225">225: </a></span>
+<span class="nocode"><a name="226">226: </a></span>	// perform the set difference on the clone
+<span class="nocode"><a name="227">227: </a></span>	boolean found = requirementSubsetsSetClone.removeAll(cover);
+<span class="nocode"><a name="228">228: </a></span>
+<span class="nocode"><a name="229">229: </a></span>	// debugging output for now
+<span class="nocode"><a name="230">230: </a></span>// 	System.out.println(&quot;found in cost? = &quot; + found);
+<span class="nocode"><a name="231">231: </a></span>// 	System.out.println(&quot;test cost = &quot; + test.getCost());
+<span class="nocode"><a name="232">232: </a></span>// 	System.out.println(&quot;rs size = &quot; + requirementSubsetsSetClone.size());
+<span class="nocode"><a name="233">233: </a></span>// 	System.out.println( (double) test.getCost() / 
+<span class="nocode"><a name="234">234: </a></span>// 	    (double) requirementSubsetsSetClone.size() );
+<span class="nocode"><a name="235">235: </a></span>
+<span class="nocode"><a name="236">236: </a></span>	// calculate the cost; note that we are assuming that each
+<span class="nocode"><a name="237">237: </a></span>	// test case has a defined cost (if no cost is set then it is
+<span class="nocode"><a name="238">238: </a></span>	// required that we use the default cost, which is just one)
+<span class="nocode"><a name="239">239: </a></span>	// note that we also use in the denominator the size of the 
+<span class="nocode"><a name="240">240: </a></span>	// differenced set which does not factor in the requirements
+<span class="nocode"><a name="241">241: </a></span>	// that have already been covered
+<span class="nocode"><a name="242">242: </a></span> 	double finalCost = (double) requirementSubsetsSetClone.size();
+<span class="nocode"><a name="243">243: </a></span>
+<span class="nocode"><a name="244">244: </a></span> 	return finalCost;
+<span class="nocode"><a name="245">245: </a></span>
+<span class="nocode"><a name="246">246: </a></span>	// no longer just looking at the size(), which is really a
+<span class="nocode"><a name="247">247: </a></span>	// benefit and not a cost ; code is currently written to be a
+<span class="nocode"><a name="248">248: </a></span>	// cost
+<span class="nocode"><a name="249">249: </a></span>
+<span class="nocode"><a name="250">250: </a></span>//	return requirementSubsetsSetClone.size();
+<span class="nocode"><a name="251">251: </a></span>
+<span class="nocode"><a name="252">252: </a></span>    }
+<span class="nocode"><a name="253">253: </a></span>
+<span class="nocode"><a name="254">254: </a></span>
+<span class="nocode"><a name="255">255: </a></span>    /**
+<span class="nocode"><a name="256">256: </a></span>     *  @author Gregory M. Kapfhammer 9/20/2005
+<span class="nocode"><a name="257">257: </a></span>     */
+<span class="nocode"><a name="258">258: </a></span>    public Object clone()
+<span class="nocode"><a name="259">259: </a></span>    {
+<span class="nocode"><a name="260">260: </a></span>
+<span class="nocode"><a name="261">261: </a></span>	SingleTestSubset clone = 
+<span class="nocode"><a name="262">262: </a></span>	    new SingleTestSubset( (SingleTest)this.getTest().clone() );
+<span class="nocode"><a name="263">263: </a></span>
+<span class="nocode"><a name="264">264: </a></span>	// note that this code might need to be changed in the future
+<span class="nocode"><a name="265">265: </a></span>	// this just does a shallow copy, not enough?
+<span class="nocode"><a name="266">266: </a></span>
+<span class="nocode"><a name="267">267: </a></span>// 	clone.
+<span class="nocode"><a name="268">268: </a></span>// 	    setRequirementSubsetSet( (LinkedHashSet) 
+<span class="nocode"><a name="269">269: </a></span>// 				     this.getRequirementSubsetSet().
+<span class="nocode"><a name="270">270: </a></span>// 				     clone() );
+<span class="nocode"><a name="271">271: </a></span>
+<span class="nocode"><a name="272">272: </a></span>	LinkedHashSet newRSS = new LinkedHashSet();
+<span class="nocode"><a name="273">273: </a></span>
+<span class="nocode"><a name="274">274: </a></span>	Iterator reqIterator = this.getRequirementSubsetSet().iterator();
+<span class="nocode"><a name="275">275: </a></span>	while( reqIterator.hasNext() )
+<span class="nocode"><a name="276">276: </a></span>	    {
+<span class="nocode"><a name="277">277: </a></span>
+<span class="nocode"><a name="278">278: </a></span>		RequirementSubset requireSubset = 
+<span class="nocode"><a name="279">279: </a></span>		    (RequirementSubset) reqIterator.next();
+<span class="nocode"><a name="280">280: </a></span>
+<span class="nocode"><a name="281">281: </a></span>		newRSS.add(requireSubset.clone());
+<span class="nocode"><a name="282">282: </a></span>
+<span class="nocode"><a name="283">283: </a></span>	    }
+<span class="nocode"><a name="284">284: </a></span>
+<span class="nocode"><a name="285">285: </a></span>	clone.setRequirementSubsetSet( newRSS );
+<span class="nocode"><a name="286">286: </a></span>
+<span class="nocode"><a name="287">287: </a></span>	return clone;
+<span class="nocode"><a name="288">288: </a></span>
+<span class="nocode"><a name="289">289: </a></span>    }
+<span class="nocode"><a name="290">290: </a></span>
+<span class="nocode"><a name="291">291: </a></span>    /**
+<span class="nocode"><a name="292">292: </a></span>     *  @author Gregory M. Kapfhammer 9/20/2005
+<span class="nocode"><a name="293">293: </a></span>     */
+<span class="nocode"><a name="294">294: </a></span>    public String toString()
+<span class="nocode"><a name="295">295: </a></span>    {
+<span class="nocode"><a name="296">296: </a></span>
+<span class="nocode"><a name="297">297: </a></span>//    	return &quot;SingleTestSubset(&quot; + test + &quot;, &quot; + 
+<span class="nocode"><a name="298">298: </a></span>//    	    requirementSubsetsSet + &quot;);&quot;
+<span class="nocode"><a name="299">299: </a></span>
+<span class="nocode"><a name="300">300: </a></span>    	return &quot;SingleTestSubset(&quot; + test + &quot;, &quot; + 
+<span class="nocode"><a name="301">301: </a></span>    	    requirementSubsetsSet.size() + &quot;)&quot;;
+<span class="nocode"><a name="302">302: </a></span>
+<span class="nocode"><a name="303">303: </a></span>//	return &quot;SingleTestSubset(&quot; + test; //+ //&quot;, &quot; + 
+<span class="nocode"><a name="304">304: </a></span>	//requirementSubsetsSet + &quot;)&quot;;
+<span class="nocode"><a name="305">305: </a></span>
+<span class="nocode"><a name="306">306: </a></span>    }
+<span class="nocode"><a name="307">307: </a></span>
+<span class="nocode"><a name="308">308: </a></span>}
+</pre><table class="mutation_table" summary="Mutations">
+<tr><th>ID</th><th>Line</th><th>Type</th><th>Detected</th></tr><tr><td>946</td><td><a href="#57">57</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>947</td><td><a href="#69">69</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>948</td><td><a href="#82">82</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>949</td><td><a href="#144">144</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>950</td><td><a href="#146">146</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>952</td><td><a href="#155">155</a></td><td>Negate jump condition</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>951</td><td><a href="#155">155</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>953</td><td><a href="#158">158</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>954</td><td><a href="#158">158</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>956</td><td><a href="#166">166</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>957</td><td><a href="#166">166</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>955</td><td><a href="#166">166</a></td><td>Replace Constant by 0</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>958</td><td><a href="#185">185</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>959</td><td><a href="#189">189</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>962</td><td><a href="#204">204</a></td><td>Replace arithmetic operator</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>960</td><td><a href="#204">204</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>961</td><td><a href="#204">204(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>963</td><td><a href="#223">223</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>964</td><td><a href="#227">227</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>965</td><td><a href="#242">242</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>966</td><td><a href="#261">261</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>967</td><td><a href="#261">261(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>968</td><td><a href="#274">274</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>969</td><td><a href="#274">274(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>971</td><td><a href="#275">275</a></td><td>Negate jump condition</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>970</td><td><a href="#275">275</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>972</td><td><a href="#278">278</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>973</td><td><a href="#281">281</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>974</td><td><a href="#281">281(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>975</td><td><a href="#285">285</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>976</td><td><a href="#300">300</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>977</td><td><a href="#300">300(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>978</td><td><a href="#300">300(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>979</td><td><a href="#300">300(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>980</td><td><a href="#300">300(4)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>981</td><td><a href="#300">300(5)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>982</td><td><a href="#300">300(6)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>
+redupr.FastByteArrayOutputStream
+</title>
+<link href="prettify.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="prettify.js"></script>
+</head>
+<body onload="prettyPrint()">
+<h2>Javalanche report for class:<br/> redupr.FastByteArrayOutputStream </h2><pre class="prettyprint" style="border: 1px solid #888;padding: 2px"><span class="nocode"><a name="1">  1: </a></span>package redupr;
+<span class="nocode"><a name="2">  2: </a></span>import java.io.OutputStream;
+<span class="nocode"><a name="3">  3: </a></span>import java.io.IOException;
+<span class="nocode"><a name="4">  4: </a></span>import java.io.InputStream;
+<span class="nocode"><a name="5">  5: </a></span>import java.io.ByteArrayInputStream;
+<span class="nocode"><a name="6">  6: </a></span>
+<span class="nocode"><a name="7">  7: </a></span>/**
+<span class="nocode"><a name="8">  8: </a></span> * ByteArrayOutputStream implementation that doesn't synchronize methods
+<span class="nocode"><a name="9">  9: </a></span> * and doesn't copy the data on toByteArray().
+<span class="nocode"><a name="10"> 10: </a></span> */
+<span class="nocode"><a name="11"> 11: </a></span>public class FastByteArrayOutputStream extends OutputStream {
+<span class="nocode"><a name="12"> 12: </a></span>    /**
+<span class="nocode"><a name="13"> 13: </a></span>     * Buffer and size
+<span class="nocode"><a name="14"> 14: </a></span>     */
+<span class="nocode"><a name="15"> 15: </a></span>    protected byte[] buf = null;
+<span class="nocode"><a name="16"> 16: </a></span>    protected int size = 0;
+<span class="nocode"><a name="17"> 17: </a></span>
+<span class="nocode"><a name="18"> 18: </a></span>    /**
+<span class="nocode"><a name="19"> 19: </a></span>     * Constructs a stream with buffer capacity size 5K
+<span class="nocode"><a name="20"> 20: </a></span>     */
+<span class="nocode"><a name="21"> 21: </a></span>    public FastByteArrayOutputStream() {
+<span class="nocode"><a name="22"> 22: </a></span>        this(5 * 1024);
+<span class="nocode"><a name="23"> 23: </a></span>    }
+<span class="nocode"><a name="24"> 24: </a></span>
+<span class="nocode"><a name="25"> 25: </a></span>    /**
+<span class="nocode"><a name="26"> 26: </a></span>     * Constructs a stream with the given initial size
+<span class="nocode"><a name="27"> 27: </a></span>     */
+<span class="nocode"><a name="28"> 28: </a></span>    public FastByteArrayOutputStream(int initSize) {
+<span class="nocode"><a name="29"> 29: </a></span>        this.size = 0;
+<span class="nocode"><a name="30"> 30: </a></span>        this.buf = new byte[initSize];
+<span class="nocode"><a name="31"> 31: </a></span>    }
+<span class="nocode"><a name="32"> 32: </a></span>
+<span class="nocode"><a name="33"> 33: </a></span>    /**
+<span class="nocode"><a name="34"> 34: </a></span>     * Ensures that we have a large enough buffer for the given size.
+<span class="nocode"><a name="35"> 35: </a></span>     */
+<span class="nocode"><a name="36"> 36: </a></span>    private void verifyBufferSize(int sz) {
+<span class="nocode"><a name="37"> 37: </a></span>        if (sz &gt; buf.length) {
+<span class="nocode"><a name="38"> 38: </a></span>            byte[] old = buf;
+<span class="nocode"><a name="39"> 39: </a></span>            buf = new byte[Math.max(sz, 2 * buf.length )];
+<span class="nocode"><a name="40"> 40: </a></span>            System.arraycopy(old, 0, buf, 0, old.length);
+<span class="nocode"><a name="41"> 41: </a></span>            old = null;
+<span class="nocode"><a name="42"> 42: </a></span>        }
+<span class="nocode"><a name="43"> 43: </a></span>    }
+<span class="nocode"><a name="44"> 44: </a></span>
+<span class="nocode"><a name="45"> 45: </a></span>    public int getSize() {
+<span class="nocode"><a name="46"> 46: </a></span>        return size;
+<span class="nocode"><a name="47"> 47: </a></span>    }
+<span class="nocode"><a name="48"> 48: </a></span>
+<span class="nocode"><a name="49"> 49: </a></span>    /**
+<span class="nocode"><a name="50"> 50: </a></span>     * Returns the byte array containing the written data. Note that this
+<span class="nocode"><a name="51"> 51: </a></span>     * array will almost always be larger than the amount of data actually
+<span class="nocode"><a name="52"> 52: </a></span>     * written.
+<span class="nocode"><a name="53"> 53: </a></span>     */
+<span class="nocode"><a name="54"> 54: </a></span>    public byte[] getByteArray() {
+<span class="nocode"><a name="55"> 55: </a></span>        return buf;
+<span class="nocode"><a name="56"> 56: </a></span>    }
+<span class="nocode"><a name="57"> 57: </a></span>
+<span class="nocode"><a name="58"> 58: </a></span>    public final void write(byte b[]) {
+<span class="nocode"><a name="59"> 59: </a></span>        verifyBufferSize(size + b.length);
+<span class="nocode"><a name="60"> 60: </a></span>        System.arraycopy(b, 0, buf, size, b.length);
+<span class="nocode"><a name="61"> 61: </a></span>        size += b.length;
+<span class="nocode"><a name="62"> 62: </a></span>    }
+<span class="nocode"><a name="63"> 63: </a></span>
+<span class="nocode"><a name="64"> 64: </a></span>    public final void write(byte b[], int off, int len) {
+<span class="nocode"><a name="65"> 65: </a></span>        verifyBufferSize(size + len);
+<span class="nocode"><a name="66"> 66: </a></span>        System.arraycopy(b, off, buf, size, len);
+<span class="nocode"><a name="67"> 67: </a></span>        size += len;
+<span class="nocode"><a name="68"> 68: </a></span>    }
+<span class="nocode"><a name="69"> 69: </a></span>
+<span class="nocode"><a name="70"> 70: </a></span>    public final void write(int b) {
+<span class="nocode"><a name="71"> 71: </a></span>        verifyBufferSize(size + 1);
+<span class="nocode"><a name="72"> 72: </a></span>        buf[size++] = (byte) b;
+<span class="nocode"><a name="73"> 73: </a></span>    }
+<span class="nocode"><a name="74"> 74: </a></span>
+<span class="nocode"><a name="75"> 75: </a></span>    public void reset() {
+<span class="nocode"><a name="76"> 76: </a></span>        size = 0;
+<span class="nocode"><a name="77"> 77: </a></span>    }
+<span class="nocode"><a name="78"> 78: </a></span>
+<span class="nocode"><a name="79"> 79: </a></span>    /**
+<span class="nocode"><a name="80"> 80: </a></span>     * Returns a ByteArrayInputStream for reading back the written data
+<span class="nocode"><a name="81"> 81: </a></span>     */
+<span class="nocode"><a name="82"> 82: </a></span>    public InputStream getInputStream() {
+<span class="nocode"><a name="83"> 83: </a></span>        return new FastByteArrayInputStream(buf, size);
+<span class="nocode"><a name="84"> 84: </a></span>    }
+<span class="nocode"><a name="85"> 85: </a></span>
+<span class="nocode"><a name="86"> 86: </a></span>}
+</pre><table class="mutation_table" summary="Mutations">
+<tr><th>ID</th><th>Line</th><th>Type</th><th>Detected</th></tr><tr><td>588</td><td><a href="#16">16</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>589</td><td><a href="#16">16</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>586</td><td><a href="#22">22</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>587</td><td><a href="#22">22</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>585</td><td><a href="#22">22</a></td><td>Replace Constant by 0</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>590</td><td><a href="#29">29</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>591</td><td><a href="#29">29</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>592</td><td><a href="#37">37</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>594</td><td><a href="#39">39</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>595</td><td><a href="#39">39</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>593</td><td><a href="#39">39</a></td><td>Replace Constant by 0</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>596</td><td><a href="#39">39</a></td><td>Replace arithmetic operator</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>597</td><td><a href="#39">39</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>598</td><td><a href="#40">40</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>600</td><td><a href="#40">40(1)</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>599</td><td><a href="#40">40</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>601</td><td><a href="#40">40(1)</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>602</td><td><a href="#40">40</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>603</td><td><a href="#59">59</a></td><td>Replace arithmetic operator</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>604</td><td><a href="#59">59</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>605</td><td><a href="#60">60</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>606</td><td><a href="#60">60</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>607</td><td><a href="#60">60</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>608</td><td><a href="#61">61</a></td><td>Replace arithmetic operator</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>609</td><td><a href="#65">65</a></td><td>Replace arithmetic operator</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>610</td><td><a href="#65">65</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>611</td><td><a href="#66">66</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>612</td><td><a href="#67">67</a></td><td>Replace arithmetic operator</td><td><img src="detected.png"/></td></tr>
+<tr><td>614</td><td><a href="#71">71</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>615</td><td><a href="#71">71</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>613</td><td><a href="#71">71</a></td><td>Replace Constant by 0</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>616</td><td><a href="#71">71</a></td><td>Replace arithmetic operator</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>617</td><td><a href="#71">71</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>619</td><td><a href="#72">72</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>620</td><td><a href="#72">72</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>618</td><td><a href="#72">72</a></td><td>Replace Constant by 0</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>621</td><td><a href="#72">72</a></td><td>Replace arithmetic operator</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>622</td><td><a href="#76">76</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>623</td><td><a href="#76">76</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+</table>
+</body>
+</html>

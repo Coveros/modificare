@@ -1,0 +1,1232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>
+jdepend.framework.ClassFileParser
+</title>
+<link href="prettify.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="prettify.js"></script>
+</head>
+<body onload="prettyPrint()">
+<h2>Javalanche report for class:<br/> jdepend.framework.ClassFileParser </h2><pre class="prettyprint" style="border: 1px solid #888;padding: 2px"><span class="nocode"><a name="1">  1: </a></span>package jdepend.framework;
+<span class="nocode"><a name="2">  2: </a></span>
+<span class="nocode"><a name="3">  3: </a></span>
+<span class="nocode"><a name="4">  4: </a></span>import java.io.*;
+<span class="nocode"><a name="5">  5: </a></span>import java.util.*;
+<span class="nocode"><a name="6">  6: </a></span>
+<span class="nocode"><a name="7">  7: </a></span>
+<span class="nocode"><a name="8">  8: </a></span>/**
+<span class="nocode"><a name="9">  9: </a></span> * The &lt;code&gt;ClassFileParser&lt;/code&gt; class is responsible for 
+<span class="nocode"><a name="10"> 10: </a></span> * parsing a Java class file to create a &lt;code&gt;JavaClass&lt;/code&gt; 
+<span class="nocode"><a name="11"> 11: </a></span> * instance.
+<span class="nocode"><a name="12"> 12: </a></span> * 
+<span class="nocode"><a name="13"> 13: </a></span> * @author &lt;b&gt;Mike Clark&lt;/b&gt;
+<span class="nocode"><a name="14"> 14: </a></span> * @author Clarkware Consulting, Inc.
+<span class="nocode"><a name="15"> 15: </a></span> */
+<span class="nocode"><a name="16"> 16: </a></span>
+<span class="nocode"><a name="17"> 17: </a></span>public class ClassFileParser extends AbstractParser {
+<span class="nocode"><a name="18"> 18: </a></span>
+<span class="nocode"><a name="19"> 19: </a></span>    public static final int JAVA_MAGIC = 0xCAFEBABE;
+<span class="nocode"><a name="20"> 20: </a></span>    public static final int CONSTANT_UTF8 = 1;
+<span class="nocode"><a name="21"> 21: </a></span>    public static final int CONSTANT_UNICODE = 2;
+<span class="nocode"><a name="22"> 22: </a></span>    public static final int CONSTANT_INTEGER = 3;
+<span class="nocode"><a name="23"> 23: </a></span>    public static final int CONSTANT_FLOAT = 4;
+<span class="nocode"><a name="24"> 24: </a></span>    public static final int CONSTANT_LONG = 5;
+<span class="nocode"><a name="25"> 25: </a></span>    public static final int CONSTANT_DOUBLE = 6;
+<span class="nocode"><a name="26"> 26: </a></span>    public static final int CONSTANT_CLASS = 7;
+<span class="nocode"><a name="27"> 27: </a></span>    public static final int CONSTANT_STRING = 8;
+<span class="nocode"><a name="28"> 28: </a></span>    public static final int CONSTANT_FIELD = 9;
+<span class="nocode"><a name="29"> 29: </a></span>    public static final int CONSTANT_METHOD = 10;
+<span class="nocode"><a name="30"> 30: </a></span>    public static final int CONSTANT_INTERFACEMETHOD = 11;
+<span class="nocode"><a name="31"> 31: </a></span>    public static final int CONSTANT_NAMEANDTYPE = 12;
+<span class="nocode"><a name="32"> 32: </a></span>    public static final char CLASS_DESCRIPTOR = 'L';
+<span class="nocode"><a name="33"> 33: </a></span>    public static final int ACC_INTERFACE = 0x200;
+<span class="nocode"><a name="34"> 34: </a></span>    public static final int ACC_ABSTRACT = 0x400;
+<span class="nocode"><a name="35"> 35: </a></span>    
+<span class="nocode"><a name="36"> 36: </a></span>    private String fileName;
+<span class="nocode"><a name="37"> 37: </a></span>    private String className;
+<span class="nocode"><a name="38"> 38: </a></span>    private String superClassName;
+<span class="nocode"><a name="39"> 39: </a></span>    private String interfaceNames[];
+<span class="nocode"><a name="40"> 40: </a></span>    private boolean isAbstract;
+<span class="nocode"><a name="41"> 41: </a></span>    private JavaClass jClass;
+<span class="nocode"><a name="42"> 42: </a></span>    private Constant[] constantPool;
+<span class="nocode"><a name="43"> 43: </a></span>    private FieldOrMethodInfo[] fields;
+<span class="nocode"><a name="44"> 44: </a></span>    private FieldOrMethodInfo[] methods;
+<span class="nocode"><a name="45"> 45: </a></span>    private AttributeInfo[] attributes;
+<span class="nocode"><a name="46"> 46: </a></span>    private DataInputStream in;
+<span class="nocode"><a name="47"> 47: </a></span>
+<span class="nocode"><a name="48"> 48: </a></span>    
+<span class="nocode"><a name="49"> 49: </a></span>    public ClassFileParser() {
+<span class="nocode"><a name="50"> 50: </a></span>        this(new PackageFilter());
+<span class="nocode"><a name="51"> 51: </a></span>    }
+<span class="nocode"><a name="52"> 52: </a></span>
+<span class="nocode"><a name="53"> 53: </a></span>    public ClassFileParser(PackageFilter filter) {
+<span class="nocode"><a name="54"> 54: </a></span>        super(filter);
+<span class="nocode"><a name="55"> 55: </a></span>        reset();
+<span class="nocode"><a name="56"> 56: </a></span>    }
+<span class="nocode"><a name="57"> 57: </a></span>
+<span class="nocode"><a name="58"> 58: </a></span>    private void reset() {
+<span class="nocode"><a name="59"> 59: </a></span>        className = null;
+<span class="nocode"><a name="60"> 60: </a></span>        superClassName = null;
+<span class="nocode"><a name="61"> 61: </a></span>        interfaceNames = new String[0];
+<span class="nocode"><a name="62"> 62: </a></span>        isAbstract = false;
+<span class="nocode"><a name="63"> 63: </a></span>
+<span class="nocode"><a name="64"> 64: </a></span>        jClass = null;
+<span class="nocode"><a name="65"> 65: </a></span>        constantPool = new Constant[1];
+<span class="nocode"><a name="66"> 66: </a></span>        fields = new FieldOrMethodInfo[0];
+<span class="nocode"><a name="67"> 67: </a></span>        methods = new FieldOrMethodInfo[0];
+<span class="nocode"><a name="68"> 68: </a></span>        attributes = new AttributeInfo[0];
+<span class="nocode"><a name="69"> 69: </a></span>    }
+<span class="nocode"><a name="70"> 70: </a></span>
+<span class="nocode"><a name="71"> 71: </a></span>    /**
+<span class="nocode"><a name="72"> 72: </a></span>     * Registered parser listeners are informed that the resulting
+<span class="nocode"><a name="73"> 73: </a></span>     * &lt;code&gt;JavaClass&lt;/code&gt; was parsed.
+<span class="nocode"><a name="74"> 74: </a></span>     */
+<span class="nocode"><a name="75"> 75: </a></span>    public JavaClass parse(File classFile) throws IOException {
+<span class="nocode"><a name="76"> 76: </a></span>
+<span class="nocode"><a name="77"> 77: </a></span>        this.fileName = classFile.getCanonicalPath();
+<span class="nocode"><a name="78"> 78: </a></span>
+<span class="nocode"><a name="79"> 79: </a></span>        debug(&quot;\nParsing &quot; + fileName + &quot;...&quot;);
+<span class="nocode"><a name="80"> 80: </a></span>
+<span class="nocode"><a name="81"> 81: </a></span>        FileInputStream in = null;
+<span class="nocode"><a name="82"> 82: </a></span>
+<span class="nocode"><a name="83"> 83: </a></span>        try {
+<span class="nocode"><a name="84"> 84: </a></span>
+<span class="nocode"><a name="85"> 85: </a></span>            in = new FileInputStream(classFile);
+<span class="nocode"><a name="86"> 86: </a></span>
+<span class="nocode"><a name="87"> 87: </a></span>            return parse(in);
+<span class="nocode"><a name="88"> 88: </a></span>
+<span class="nocode"><a name="89"> 89: </a></span>        } finally {
+<span class="nocode"><a name="90"> 90: </a></span>            if (in != null) {
+<span class="nocode"><a name="91"> 91: </a></span>                try {
+<span class="nocode"><a name="92"> 92: </a></span>                    in.close();
+<span class="nocode"><a name="93"> 93: </a></span>                } catch (IOException ioe) {
+<span class="nocode"><a name="94"> 94: </a></span>                    ioe.printStackTrace();
+<span class="nocode"><a name="95"> 95: </a></span>                }
+<span class="nocode"><a name="96"> 96: </a></span>            }
+<span class="nocode"><a name="97"> 97: </a></span>        }
+<span class="nocode"><a name="98"> 98: </a></span>    }
+<span class="nocode"><a name="99"> 99: </a></span>
+<span class="nocode"><a name="100">100: </a></span>    public JavaClass parse(InputStream is) throws IOException {
+<span class="nocode"><a name="101">101: </a></span>
+<span class="nocode"><a name="102">102: </a></span>        reset();
+<span class="nocode"><a name="103">103: </a></span>
+<span class="nocode"><a name="104">104: </a></span>        jClass = new JavaClass(&quot;Unknown&quot;);
+<span class="nocode"><a name="105">105: </a></span>
+<span class="nocode"><a name="106">106: </a></span>        in = new DataInputStream(is);
+<span class="nocode"><a name="107">107: </a></span>
+<span class="nocode"><a name="108">108: </a></span>        int magic = parseMagic();
+<span class="nocode"><a name="109">109: </a></span>
+<span class="nocode"><a name="110">110: </a></span>        int minorVersion = parseMinorVersion();
+<span class="nocode"><a name="111">111: </a></span>        int majorVersion = parseMajorVersion();
+<span class="nocode"><a name="112">112: </a></span>
+<span class="nocode"><a name="113">113: </a></span>        constantPool = parseConstantPool();
+<span class="nocode"><a name="114">114: </a></span>
+<span class="nocode"><a name="115">115: </a></span>        parseAccessFlags();
+<span class="nocode"><a name="116">116: </a></span>
+<span class="nocode"><a name="117">117: </a></span>        className = parseClassName();
+<span class="nocode"><a name="118">118: </a></span>
+<span class="nocode"><a name="119">119: </a></span>        superClassName = parseSuperClassName();
+<span class="nocode"><a name="120">120: </a></span>
+<span class="nocode"><a name="121">121: </a></span>        interfaceNames = parseInterfaces();
+<span class="nocode"><a name="122">122: </a></span>
+<span class="nocode"><a name="123">123: </a></span>        fields = parseFields();
+<span class="nocode"><a name="124">124: </a></span>
+<span class="nocode"><a name="125">125: </a></span>        methods = parseMethods();
+<span class="nocode"><a name="126">126: </a></span>
+<span class="nocode"><a name="127">127: </a></span>        parseAttributes();
+<span class="nocode"><a name="128">128: </a></span>
+<span class="nocode"><a name="129">129: </a></span>        addClassConstantReferences();
+<span class="nocode"><a name="130">130: </a></span>
+<span class="nocode"><a name="131">131: </a></span>        onParsedJavaClass(jClass);
+<span class="nocode"><a name="132">132: </a></span>
+<span class="nocode"><a name="133">133: </a></span>        return jClass;
+<span class="nocode"><a name="134">134: </a></span>    }
+<span class="nocode"><a name="135">135: </a></span>
+<span class="nocode"><a name="136">136: </a></span>    private int parseMagic() throws IOException {
+<span class="nocode"><a name="137">137: </a></span>        int magic = in.readInt();
+<span class="nocode"><a name="138">138: </a></span>        if (magic != JAVA_MAGIC) {
+<span class="nocode"><a name="139">139: </a></span>            throw new IOException(&quot;Invalid class file: &quot; + fileName);
+<span class="nocode"><a name="140">140: </a></span>        }
+<span class="nocode"><a name="141">141: </a></span>
+<span class="nocode"><a name="142">142: </a></span>        return magic;
+<span class="nocode"><a name="143">143: </a></span>    }
+<span class="nocode"><a name="144">144: </a></span>
+<span class="nocode"><a name="145">145: </a></span>    private int parseMinorVersion() throws IOException {
+<span class="nocode"><a name="146">146: </a></span>        return in.readUnsignedShort();
+<span class="nocode"><a name="147">147: </a></span>    }
+<span class="nocode"><a name="148">148: </a></span>
+<span class="nocode"><a name="149">149: </a></span>    private int parseMajorVersion() throws IOException {
+<span class="nocode"><a name="150">150: </a></span>        return in.readUnsignedShort();
+<span class="nocode"><a name="151">151: </a></span>    }
+<span class="nocode"><a name="152">152: </a></span>
+<span class="nocode"><a name="153">153: </a></span>    private Constant[] parseConstantPool() throws IOException {
+<span class="nocode"><a name="154">154: </a></span>        int constantPoolSize = in.readUnsignedShort();
+<span class="nocode"><a name="155">155: </a></span>
+<span class="nocode"><a name="156">156: </a></span>        Constant[] pool = new Constant[constantPoolSize];
+<span class="nocode"><a name="157">157: </a></span>
+<span class="nocode"><a name="158">158: </a></span>        for (int i = 1; i &lt; constantPoolSize; i++) {
+<span class="nocode"><a name="159">159: </a></span>
+<span class="nocode"><a name="160">160: </a></span>            Constant constant = parseNextConstant();
+<span class="nocode"><a name="161">161: </a></span>
+<span class="nocode"><a name="162">162: </a></span>            pool[i] = constant;
+<span class="nocode"><a name="163">163: </a></span>
+<span class="nocode"><a name="164">164: </a></span>            //
+<span class="nocode"><a name="165">165: </a></span>            // 8-byte constants use two constant pool entries
+<span class="nocode"><a name="166">166: </a></span>            //
+<span class="nocode"><a name="167">167: </a></span>            if (constant.getTag() == CONSTANT_DOUBLE
+<span class="nocode"><a name="168">168: </a></span>                    || constant.getTag() == CONSTANT_LONG) {
+<span class="nocode"><a name="169">169: </a></span>                i++;
+<span class="nocode"><a name="170">170: </a></span>            }
+<span class="nocode"><a name="171">171: </a></span>        }
+<span class="nocode"><a name="172">172: </a></span>
+<span class="nocode"><a name="173">173: </a></span>        return pool;
+<span class="nocode"><a name="174">174: </a></span>    }
+<span class="nocode"><a name="175">175: </a></span>
+<span class="nocode"><a name="176">176: </a></span>    private void parseAccessFlags() throws IOException {
+<span class="nocode"><a name="177">177: </a></span>        int accessFlags = in.readUnsignedShort();
+<span class="nocode"><a name="178">178: </a></span>
+<span class="nocode"><a name="179">179: </a></span>        boolean isAbstract = ((accessFlags &amp; ACC_ABSTRACT) != 0);
+<span class="nocode"><a name="180">180: </a></span>        boolean isInterface = ((accessFlags &amp; ACC_INTERFACE) != 0);
+<span class="nocode"><a name="181">181: </a></span>
+<span class="nocode"><a name="182">182: </a></span>        this.isAbstract = isAbstract || isInterface;
+<span class="nocode"><a name="183">183: </a></span>        jClass.isAbstract(this.isAbstract);
+<span class="nocode"><a name="184">184: </a></span>
+<span class="nocode"><a name="185">185: </a></span>        debug(&quot;Parser: abstract = &quot; + this.isAbstract);
+<span class="nocode"><a name="186">186: </a></span>    }
+<span class="nocode"><a name="187">187: </a></span>
+<span class="nocode"><a name="188">188: </a></span>    private String parseClassName() throws IOException {
+<span class="nocode"><a name="189">189: </a></span>        int entryIndex = in.readUnsignedShort();
+<span class="nocode"><a name="190">190: </a></span>        String className = getClassConstantName(entryIndex);
+<span class="nocode"><a name="191">191: </a></span>        jClass.setName(className);
+<span class="nocode"><a name="192">192: </a></span>        jClass.setPackageName(getPackageName(className));
+<span class="nocode"><a name="193">193: </a></span>
+<span class="nocode"><a name="194">194: </a></span>        debug(&quot;Parser: class name = &quot; + className);
+<span class="nocode"><a name="195">195: </a></span>        debug(&quot;Parser: package name = &quot; + getPackageName(className));
+<span class="nocode"><a name="196">196: </a></span>        
+<span class="nocode"><a name="197">197: </a></span>        return className;
+<span class="nocode"><a name="198">198: </a></span>    }
+<span class="nocode"><a name="199">199: </a></span>
+<span class="nocode"><a name="200">200: </a></span>    private String parseSuperClassName() throws IOException {
+<span class="nocode"><a name="201">201: </a></span>        int entryIndex = in.readUnsignedShort();
+<span class="nocode"><a name="202">202: </a></span>        String superClassName = getClassConstantName(entryIndex);
+<span class="nocode"><a name="203">203: </a></span>        addImport(getPackageName(superClassName));
+<span class="nocode"><a name="204">204: </a></span>
+<span class="nocode"><a name="205">205: </a></span>        debug(&quot;Parser: super class name = &quot; + superClassName);
+<span class="nocode"><a name="206">206: </a></span>        
+<span class="nocode"><a name="207">207: </a></span>        return superClassName;
+<span class="nocode"><a name="208">208: </a></span>    }
+<span class="nocode"><a name="209">209: </a></span>
+<span class="nocode"><a name="210">210: </a></span>    private String[] parseInterfaces() throws IOException {
+<span class="nocode"><a name="211">211: </a></span>        int interfacesCount = in.readUnsignedShort();
+<span class="nocode"><a name="212">212: </a></span>        String[] interfaceNames = new String[interfacesCount];
+<span class="nocode"><a name="213">213: </a></span>        for (int i = 0; i &lt; interfacesCount; i++) {
+<span class="nocode"><a name="214">214: </a></span>            int entryIndex = in.readUnsignedShort();
+<span class="nocode"><a name="215">215: </a></span>            interfaceNames[i] = getClassConstantName(entryIndex);
+<span class="nocode"><a name="216">216: </a></span>            addImport(getPackageName(interfaceNames[i]));
+<span class="nocode"><a name="217">217: </a></span>
+<span class="nocode"><a name="218">218: </a></span>            debug(&quot;Parser: interface = &quot; + interfaceNames[i]);
+<span class="nocode"><a name="219">219: </a></span>        }
+<span class="nocode"><a name="220">220: </a></span>
+<span class="nocode"><a name="221">221: </a></span>        return interfaceNames;
+<span class="nocode"><a name="222">222: </a></span>    }
+<span class="nocode"><a name="223">223: </a></span>
+<span class="nocode"><a name="224">224: </a></span>    private FieldOrMethodInfo[] parseFields() throws IOException {
+<span class="nocode"><a name="225">225: </a></span>        int fieldsCount = in.readUnsignedShort();
+<span class="nocode"><a name="226">226: </a></span>        FieldOrMethodInfo[] fields = new FieldOrMethodInfo[fieldsCount];
+<span class="nocode"><a name="227">227: </a></span>        for (int i = 0; i &lt; fieldsCount; i++) {
+<span class="nocode"><a name="228">228: </a></span>            fields[i] = parseFieldOrMethodInfo();
+<span class="nocode"><a name="229">229: </a></span>            String descriptor = toUTF8(fields[i].getDescriptorIndex());
+<span class="nocode"><a name="230">230: </a></span>            debug(&quot;Parser: field descriptor = &quot; + descriptor);
+<span class="nocode"><a name="231">231: </a></span>            String[] types = descriptorToTypes(descriptor);
+<span class="nocode"><a name="232">232: </a></span>            for (int t = 0; t &lt; types.length; t++) {
+<span class="nocode"><a name="233">233: </a></span>                addImport(getPackageName(types[t]));
+<span class="nocode"><a name="234">234: </a></span>                debug(&quot;Parser: field type = &quot; + types[t]);
+<span class="nocode"><a name="235">235: </a></span>            }
+<span class="nocode"><a name="236">236: </a></span>        }
+<span class="nocode"><a name="237">237: </a></span>
+<span class="nocode"><a name="238">238: </a></span>        return fields;
+<span class="nocode"><a name="239">239: </a></span>    }
+<span class="nocode"><a name="240">240: </a></span>
+<span class="nocode"><a name="241">241: </a></span>    private FieldOrMethodInfo[] parseMethods() throws IOException {
+<span class="nocode"><a name="242">242: </a></span>        int methodsCount = in.readUnsignedShort();
+<span class="nocode"><a name="243">243: </a></span>        FieldOrMethodInfo[] methods = new FieldOrMethodInfo[methodsCount];
+<span class="nocode"><a name="244">244: </a></span>        for (int i = 0; i &lt; methodsCount; i++) {
+<span class="nocode"><a name="245">245: </a></span>            methods[i] = parseFieldOrMethodInfo();
+<span class="nocode"><a name="246">246: </a></span>            String descriptor = toUTF8(methods[i].getDescriptorIndex());
+<span class="nocode"><a name="247">247: </a></span>            debug(&quot;Parser: method descriptor = &quot; + descriptor);
+<span class="nocode"><a name="248">248: </a></span>            String[] types = descriptorToTypes(descriptor);
+<span class="nocode"><a name="249">249: </a></span>            for (int t = 0; t &lt; types.length; t++) {
+<span class="nocode"><a name="250">250: </a></span>                if (types[t].length() &gt; 0) {
+<span class="nocode"><a name="251">251: </a></span>                    addImport(getPackageName(types[t]));
+<span class="nocode"><a name="252">252: </a></span>                    debug(&quot;Parser: method type = &quot; + types[t]);
+<span class="nocode"><a name="253">253: </a></span>                }
+<span class="nocode"><a name="254">254: </a></span>            }
+<span class="nocode"><a name="255">255: </a></span>        }
+<span class="nocode"><a name="256">256: </a></span>
+<span class="nocode"><a name="257">257: </a></span>        return methods;
+<span class="nocode"><a name="258">258: </a></span>    }
+<span class="nocode"><a name="259">259: </a></span>
+<span class="nocode"><a name="260">260: </a></span>    private Constant parseNextConstant() throws IOException {
+<span class="nocode"><a name="261">261: </a></span>
+<span class="nocode"><a name="262">262: </a></span>        Constant result;
+<span class="nocode"><a name="263">263: </a></span>
+<span class="nocode"><a name="264">264: </a></span>        byte tag = in.readByte();
+<span class="nocode"><a name="265">265: </a></span>
+<span class="nocode"><a name="266">266: </a></span>        switch (tag) {
+<span class="nocode"><a name="267">267: </a></span>
+<span class="nocode"><a name="268">268: </a></span>        case (ClassFileParser.CONSTANT_CLASS):
+<span class="nocode"><a name="269">269: </a></span>        case (ClassFileParser.CONSTANT_STRING):
+<span class="nocode"><a name="270">270: </a></span>            result = new Constant(tag, in.readUnsignedShort());
+<span class="nocode"><a name="271">271: </a></span>            break;
+<span class="nocode"><a name="272">272: </a></span>        case (ClassFileParser.CONSTANT_FIELD):
+<span class="nocode"><a name="273">273: </a></span>        case (ClassFileParser.CONSTANT_METHOD):
+<span class="nocode"><a name="274">274: </a></span>        case (ClassFileParser.CONSTANT_INTERFACEMETHOD):
+<span class="nocode"><a name="275">275: </a></span>        case (ClassFileParser.CONSTANT_NAMEANDTYPE):
+<span class="nocode"><a name="276">276: </a></span>            result = new Constant(tag, in.readUnsignedShort(), in
+<span class="nocode"><a name="277">277: </a></span>                    .readUnsignedShort());
+<span class="nocode"><a name="278">278: </a></span>            break;
+<span class="nocode"><a name="279">279: </a></span>        case (ClassFileParser.CONSTANT_INTEGER):
+<span class="nocode"><a name="280">280: </a></span>            result = new Constant(tag, new Integer(in.readInt()));
+<span class="nocode"><a name="281">281: </a></span>            break;
+<span class="nocode"><a name="282">282: </a></span>        case (ClassFileParser.CONSTANT_FLOAT):
+<span class="nocode"><a name="283">283: </a></span>            result = new Constant(tag, new Float(in.readFloat()));
+<span class="nocode"><a name="284">284: </a></span>            break;
+<span class="nocode"><a name="285">285: </a></span>        case (ClassFileParser.CONSTANT_LONG):
+<span class="nocode"><a name="286">286: </a></span>            result = new Constant(tag, new Long(in.readLong()));
+<span class="nocode"><a name="287">287: </a></span>            break;
+<span class="nocode"><a name="288">288: </a></span>        case (ClassFileParser.CONSTANT_DOUBLE):
+<span class="nocode"><a name="289">289: </a></span>            result = new Constant(tag, new Double(in.readDouble()));
+<span class="nocode"><a name="290">290: </a></span>            break;
+<span class="nocode"><a name="291">291: </a></span>        case (ClassFileParser.CONSTANT_UTF8):
+<span class="nocode"><a name="292">292: </a></span>            result = new Constant(tag, in.readUTF());
+<span class="nocode"><a name="293">293: </a></span>            break;
+<span class="nocode"><a name="294">294: </a></span>        default:
+<span class="nocode"><a name="295">295: </a></span>            throw new IOException(&quot;Unknown constant: &quot; + tag);
+<span class="nocode"><a name="296">296: </a></span>        }
+<span class="nocode"><a name="297">297: </a></span>
+<span class="nocode"><a name="298">298: </a></span>        return result;
+<span class="nocode"><a name="299">299: </a></span>    }
+<span class="nocode"><a name="300">300: </a></span>
+<span class="nocode"><a name="301">301: </a></span>    private FieldOrMethodInfo parseFieldOrMethodInfo() throws IOException {
+<span class="nocode"><a name="302">302: </a></span>
+<span class="nocode"><a name="303">303: </a></span>        FieldOrMethodInfo result = new FieldOrMethodInfo(
+<span class="nocode"><a name="304">304: </a></span>                in.readUnsignedShort(), in.readUnsignedShort(), in
+<span class="nocode"><a name="305">305: </a></span>                        .readUnsignedShort());
+<span class="nocode"><a name="306">306: </a></span>
+<span class="nocode"><a name="307">307: </a></span>        int attributesCount = in.readUnsignedShort();
+<span class="nocode"><a name="308">308: </a></span>        for (int a = 0; a &lt; attributesCount; a++) {
+<span class="nocode"><a name="309">309: </a></span>            parseAttribute();
+<span class="nocode"><a name="310">310: </a></span>        }
+<span class="nocode"><a name="311">311: </a></span>
+<span class="nocode"><a name="312">312: </a></span>        return result;
+<span class="nocode"><a name="313">313: </a></span>    }
+<span class="nocode"><a name="314">314: </a></span>
+<span class="nocode"><a name="315">315: </a></span>    private void parseAttributes() throws IOException {
+<span class="nocode"><a name="316">316: </a></span>        int attributesCount = in.readUnsignedShort();
+<span class="nocode"><a name="317">317: </a></span>        attributes = new AttributeInfo[attributesCount];
+<span class="nocode"><a name="318">318: </a></span>
+<span class="nocode"><a name="319">319: </a></span>        for (int i = 0; i &lt; attributesCount; i++) {
+<span class="nocode"><a name="320">320: </a></span>            attributes[i] = parseAttribute();
+<span class="nocode"><a name="321">321: </a></span>
+<span class="nocode"><a name="322">322: </a></span>            // Section 4.7.7 of VM Spec - Class File Format
+<span class="nocode"><a name="323">323: </a></span>            if (attributes[i].getName() != null) {
+<span class="nocode"><a name="324">324: </a></span>                if (attributes[i].getName().equals(&quot;SourceFile&quot;)) {
+<span class="nocode"><a name="325">325: </a></span>                    byte[] b = attributes[i].getValue();
+<span class="nocode"><a name="326">326: </a></span>                    int b0 = b[0] &lt; 0 ? b[0] + 256 : b[0];
+<span class="nocode"><a name="327">327: </a></span>                    int b1 = b[1] &lt; 0 ? b[1] + 256 : b[1];
+<span class="nocode"><a name="328">328: </a></span>                    int pe = b0 * 256 + b1;
+<span class="nocode"><a name="329">329: </a></span>
+<span class="nocode"><a name="330">330: </a></span>                    String descriptor = toUTF8(pe);
+<span class="nocode"><a name="331">331: </a></span>                    jClass.setSourceFile(descriptor);
+<span class="nocode"><a name="332">332: </a></span>                }
+<span class="nocode"><a name="333">333: </a></span>            }
+<span class="nocode"><a name="334">334: </a></span>        }
+<span class="nocode"><a name="335">335: </a></span>    }
+<span class="nocode"><a name="336">336: </a></span>
+<span class="nocode"><a name="337">337: </a></span>    private AttributeInfo parseAttribute() throws IOException {
+<span class="nocode"><a name="338">338: </a></span>        AttributeInfo result = new AttributeInfo();
+<span class="nocode"><a name="339">339: </a></span>
+<span class="nocode"><a name="340">340: </a></span>        int nameIndex = in.readUnsignedShort();
+<span class="nocode"><a name="341">341: </a></span>        if (nameIndex != -1) {
+<span class="nocode"><a name="342">342: </a></span>            result.setName(toUTF8(nameIndex));
+<span class="nocode"><a name="343">343: </a></span>        }
+<span class="nocode"><a name="344">344: </a></span>
+<span class="nocode"><a name="345">345: </a></span>        int attributeLength = in.readInt();
+<span class="nocode"><a name="346">346: </a></span>        byte[] value = new byte[attributeLength];
+<span class="nocode"><a name="347">347: </a></span>        for (int b = 0; b &lt; attributeLength; b++) {
+<span class="nocode"><a name="348">348: </a></span>            value[b] = in.readByte();
+<span class="nocode"><a name="349">349: </a></span>        }
+<span class="nocode"><a name="350">350: </a></span>
+<span class="nocode"><a name="351">351: </a></span>        result.setValue(value);
+<span class="nocode"><a name="352">352: </a></span>        return result;
+<span class="nocode"><a name="353">353: </a></span>    }
+<span class="nocode"><a name="354">354: </a></span>
+<span class="nocode"><a name="355">355: </a></span>    private Constant getConstantPoolEntry(int entryIndex) throws IOException {
+<span class="nocode"><a name="356">356: </a></span>
+<span class="nocode"><a name="357">357: </a></span>        if (entryIndex &lt; 0 || entryIndex &gt;= constantPool.length) {
+<span class="nocode"><a name="358">358: </a></span>            throw new IOException(&quot;Illegal constant pool index : &quot; + entryIndex);
+<span class="nocode"><a name="359">359: </a></span>        }
+<span class="nocode"><a name="360">360: </a></span>
+<span class="nocode"><a name="361">361: </a></span>        return constantPool[entryIndex];
+<span class="nocode"><a name="362">362: </a></span>    }
+<span class="nocode"><a name="363">363: </a></span>
+<span class="nocode"><a name="364">364: </a></span>    private void addClassConstantReferences() throws IOException {
+<span class="nocode"><a name="365">365: </a></span>        for (int j = 1; j &lt; constantPool.length; j++) {
+<span class="nocode"><a name="366">366: </a></span>            if (constantPool[j].getTag() == CONSTANT_CLASS) {
+<span class="nocode"><a name="367">367: </a></span>                String name = toUTF8(constantPool[j].getNameIndex());
+<span class="nocode"><a name="368">368: </a></span>                addImport(getPackageName(name));
+<span class="nocode"><a name="369">369: </a></span>
+<span class="nocode"><a name="370">370: </a></span>                debug(&quot;Parser: class type = &quot; + slashesToDots(name));
+<span class="nocode"><a name="371">371: </a></span>            }
+<span class="nocode"><a name="372">372: </a></span>
+<span class="nocode"><a name="373">373: </a></span>            if (constantPool[j].getTag() == CONSTANT_DOUBLE
+<span class="nocode"><a name="374">374: </a></span>                    || constantPool[j].getTag() == CONSTANT_LONG) {
+<span class="nocode"><a name="375">375: </a></span>                j++;
+<span class="nocode"><a name="376">376: </a></span>            }
+<span class="nocode"><a name="377">377: </a></span>        }
+<span class="nocode"><a name="378">378: </a></span>    }
+<span class="nocode"><a name="379">379: </a></span>
+<span class="nocode"><a name="380">380: </a></span>    private String getClassConstantName(int entryIndex) throws IOException {
+<span class="nocode"><a name="381">381: </a></span>
+<span class="nocode"><a name="382">382: </a></span>        Constant entry = getConstantPoolEntry(entryIndex);
+<span class="nocode"><a name="383">383: </a></span>        if (entry == null) {
+<span class="nocode"><a name="384">384: </a></span>            return &quot;&quot;;
+<span class="nocode"><a name="385">385: </a></span>        }
+<span class="nocode"><a name="386">386: </a></span>        return slashesToDots(toUTF8(entry.getNameIndex()));
+<span class="nocode"><a name="387">387: </a></span>    }
+<span class="nocode"><a name="388">388: </a></span>
+<span class="nocode"><a name="389">389: </a></span>    private String toUTF8(int entryIndex) throws IOException {
+<span class="nocode"><a name="390">390: </a></span>        Constant entry = getConstantPoolEntry(entryIndex);
+<span class="nocode"><a name="391">391: </a></span>        if (entry.getTag() == CONSTANT_UTF8) {
+<span class="nocode"><a name="392">392: </a></span>            return (String) entry.getValue();
+<span class="nocode"><a name="393">393: </a></span>        }
+<span class="nocode"><a name="394">394: </a></span>
+<span class="nocode"><a name="395">395: </a></span>        throw new IOException(&quot;Constant pool entry is not a UTF8 type: &quot;
+<span class="nocode"><a name="396">396: </a></span>                + entryIndex);
+<span class="nocode"><a name="397">397: </a></span>    }
+<span class="nocode"><a name="398">398: </a></span>
+<span class="nocode"><a name="399">399: </a></span>    private void addImport(String importPackage) {
+<span class="nocode"><a name="400">400: </a></span>        if ((importPackage != null) &amp;&amp; (getFilter().accept(importPackage))) {
+<span class="nocode"><a name="401">401: </a></span>            jClass.addImportedPackage(new JavaPackage(importPackage));
+<span class="nocode"><a name="402">402: </a></span>        }
+<span class="nocode"><a name="403">403: </a></span>    }
+<span class="nocode"><a name="404">404: </a></span>
+<span class="nocode"><a name="405">405: </a></span>    private String slashesToDots(String s) {
+<span class="nocode"><a name="406">406: </a></span>        return s.replace('/', '.');
+<span class="nocode"><a name="407">407: </a></span>    }
+<span class="nocode"><a name="408">408: </a></span>
+<span class="nocode"><a name="409">409: </a></span>    private String getPackageName(String s) {
+<span class="nocode"><a name="410">410: </a></span>        if ((s.length() &gt; 0) &amp;&amp; (s.charAt(0) == '[')) {
+<span class="nocode"><a name="411">411: </a></span>            String types[] = descriptorToTypes(s);
+<span class="nocode"><a name="412">412: </a></span>            if (types.length == 0) {
+<span class="nocode"><a name="413">413: </a></span>                return null; // primitives
+<span class="nocode"><a name="414">414: </a></span>            }
+<span class="nocode"><a name="415">415: </a></span>
+<span class="nocode"><a name="416">416: </a></span>            s = types[0];
+<span class="nocode"><a name="417">417: </a></span>        }
+<span class="nocode"><a name="418">418: </a></span>
+<span class="nocode"><a name="419">419: </a></span>        s = slashesToDots(s);
+<span class="nocode"><a name="420">420: </a></span>        int index = s.lastIndexOf(&quot;.&quot;);
+<span class="nocode"><a name="421">421: </a></span>        if (index &gt; 0) {
+<span class="nocode"><a name="422">422: </a></span>            return s.substring(0, index);
+<span class="nocode"><a name="423">423: </a></span>        }
+<span class="nocode"><a name="424">424: </a></span>
+<span class="nocode"><a name="425">425: </a></span>        return &quot;Default&quot;;
+<span class="nocode"><a name="426">426: </a></span>    }
+<span class="nocode"><a name="427">427: </a></span>
+<span class="nocode"><a name="428">428: </a></span>    private String[] descriptorToTypes(String descriptor) {
+<span class="nocode"><a name="429">429: </a></span>
+<span class="nocode"><a name="430">430: </a></span>        int typesCount = 0;
+<span class="nocode"><a name="431">431: </a></span>        for (int index = 0; index &lt; descriptor.length(); index++) {
+<span class="nocode"><a name="432">432: </a></span>            if (descriptor.charAt(index) == ';') {
+<span class="nocode"><a name="433">433: </a></span>                typesCount++;
+<span class="nocode"><a name="434">434: </a></span>            }
+<span class="nocode"><a name="435">435: </a></span>        }
+<span class="nocode"><a name="436">436: </a></span>
+<span class="nocode"><a name="437">437: </a></span>        String types[] = new String[typesCount];
+<span class="nocode"><a name="438">438: </a></span>
+<span class="nocode"><a name="439">439: </a></span>        int typeIndex = 0;
+<span class="nocode"><a name="440">440: </a></span>        for (int index = 0; index &lt; descriptor.length(); index++) {
+<span class="nocode"><a name="441">441: </a></span>
+<span class="nocode"><a name="442">442: </a></span>            int startIndex = descriptor.indexOf(CLASS_DESCRIPTOR, index);
+<span class="nocode"><a name="443">443: </a></span>            if (startIndex &lt; 0) {
+<span class="nocode"><a name="444">444: </a></span>                break;
+<span class="nocode"><a name="445">445: </a></span>            }
+<span class="nocode"><a name="446">446: </a></span>
+<span class="nocode"><a name="447">447: </a></span>            index = descriptor.indexOf(';', startIndex + 1);
+<span class="nocode"><a name="448">448: </a></span>            types[typeIndex++] = descriptor.substring(startIndex + 1, index);
+<span class="nocode"><a name="449">449: </a></span>        }
+<span class="nocode"><a name="450">450: </a></span>
+<span class="nocode"><a name="451">451: </a></span>        return types;
+<span class="nocode"><a name="452">452: </a></span>    }
+<span class="nocode"><a name="453">453: </a></span>
+<span class="nocode"><a name="454">454: </a></span>    class Constant {
+<span class="nocode"><a name="455">455: </a></span>
+<span class="nocode"><a name="456">456: </a></span>        private byte _tag;
+<span class="nocode"><a name="457">457: </a></span>
+<span class="nocode"><a name="458">458: </a></span>        private int _nameIndex;
+<span class="nocode"><a name="459">459: </a></span>
+<span class="nocode"><a name="460">460: </a></span>        private int _typeIndex;
+<span class="nocode"><a name="461">461: </a></span>
+<span class="nocode"><a name="462">462: </a></span>        private Object _value;
+<span class="nocode"><a name="463">463: </a></span>
+<span class="nocode"><a name="464">464: </a></span>        Constant(byte tag, int nameIndex) {
+<span class="nocode"><a name="465">465: </a></span>            this(tag, nameIndex, -1);
+<span class="nocode"><a name="466">466: </a></span>        }
+<span class="nocode"><a name="467">467: </a></span>
+<span class="nocode"><a name="468">468: </a></span>        Constant(byte tag, Object value) {
+<span class="nocode"><a name="469">469: </a></span>            this(tag, -1, -1);
+<span class="nocode"><a name="470">470: </a></span>            _value = value;
+<span class="nocode"><a name="471">471: </a></span>        }
+<span class="nocode"><a name="472">472: </a></span>
+<span class="nocode"><a name="473">473: </a></span>        Constant(byte tag, int nameIndex, int typeIndex) {
+<span class="nocode"><a name="474">474: </a></span>            _tag = tag;
+<span class="nocode"><a name="475">475: </a></span>            _nameIndex = nameIndex;
+<span class="nocode"><a name="476">476: </a></span>            _typeIndex = typeIndex;
+<span class="nocode"><a name="477">477: </a></span>            _value = null;
+<span class="nocode"><a name="478">478: </a></span>        }
+<span class="nocode"><a name="479">479: </a></span>
+<span class="nocode"><a name="480">480: </a></span>        byte getTag() {
+<span class="nocode"><a name="481">481: </a></span>            return _tag;
+<span class="nocode"><a name="482">482: </a></span>        }
+<span class="nocode"><a name="483">483: </a></span>
+<span class="nocode"><a name="484">484: </a></span>        int getNameIndex() {
+<span class="nocode"><a name="485">485: </a></span>            return _nameIndex;
+<span class="nocode"><a name="486">486: </a></span>        }
+<span class="nocode"><a name="487">487: </a></span>
+<span class="nocode"><a name="488">488: </a></span>        int getTypeIndex() {
+<span class="nocode"><a name="489">489: </a></span>            return _typeIndex;
+<span class="nocode"><a name="490">490: </a></span>        }
+<span class="nocode"><a name="491">491: </a></span>
+<span class="nocode"><a name="492">492: </a></span>        Object getValue() {
+<span class="nocode"><a name="493">493: </a></span>            return _value;
+<span class="nocode"><a name="494">494: </a></span>        }
+<span class="nocode"><a name="495">495: </a></span>
+<span class="nocode"><a name="496">496: </a></span>        public String toString() {
+<span class="nocode"><a name="497">497: </a></span>
+<span class="nocode"><a name="498">498: </a></span>            StringBuffer s = new StringBuffer(&quot;&quot;);
+<span class="nocode"><a name="499">499: </a></span>
+<span class="nocode"><a name="500">500: </a></span>            s.append(&quot;tag: &quot; + getTag());
+<span class="nocode"><a name="501">501: </a></span>
+<span class="nocode"><a name="502">502: </a></span>            if (getNameIndex() &gt; -1) {
+<span class="nocode"><a name="503">503: </a></span>                s.append(&quot; nameIndex: &quot; + getNameIndex());
+<span class="nocode"><a name="504">504: </a></span>            }
+<span class="nocode"><a name="505">505: </a></span>
+<span class="nocode"><a name="506">506: </a></span>            if (getTypeIndex() &gt; -1) {
+<span class="nocode"><a name="507">507: </a></span>                s.append(&quot; typeIndex: &quot; + getTypeIndex());
+<span class="nocode"><a name="508">508: </a></span>            }
+<span class="nocode"><a name="509">509: </a></span>
+<span class="nocode"><a name="510">510: </a></span>            if (getValue() != null) {
+<span class="nocode"><a name="511">511: </a></span>                s.append(&quot; value: &quot; + getValue());
+<span class="nocode"><a name="512">512: </a></span>            }
+<span class="nocode"><a name="513">513: </a></span>
+<span class="nocode"><a name="514">514: </a></span>            return s.toString();
+<span class="nocode"><a name="515">515: </a></span>        }
+<span class="nocode"><a name="516">516: </a></span>    }
+<span class="nocode"><a name="517">517: </a></span>
+<span class="nocode"><a name="518">518: </a></span>    class FieldOrMethodInfo {
+<span class="nocode"><a name="519">519: </a></span>
+<span class="nocode"><a name="520">520: </a></span>        private int _accessFlags;
+<span class="nocode"><a name="521">521: </a></span>
+<span class="nocode"><a name="522">522: </a></span>        private int _nameIndex;
+<span class="nocode"><a name="523">523: </a></span>
+<span class="nocode"><a name="524">524: </a></span>        private int _descriptorIndex;
+<span class="nocode"><a name="525">525: </a></span>
+<span class="nocode"><a name="526">526: </a></span>        FieldOrMethodInfo(int accessFlags, int nameIndex, int descriptorIndex) {
+<span class="nocode"><a name="527">527: </a></span>
+<span class="nocode"><a name="528">528: </a></span>            _accessFlags = accessFlags;
+<span class="nocode"><a name="529">529: </a></span>            _nameIndex = nameIndex;
+<span class="nocode"><a name="530">530: </a></span>            _descriptorIndex = descriptorIndex;
+<span class="nocode"><a name="531">531: </a></span>        }
+<span class="nocode"><a name="532">532: </a></span>
+<span class="nocode"><a name="533">533: </a></span>        int accessFlags() {
+<span class="nocode"><a name="534">534: </a></span>            return _accessFlags;
+<span class="nocode"><a name="535">535: </a></span>        }
+<span class="nocode"><a name="536">536: </a></span>
+<span class="nocode"><a name="537">537: </a></span>        int getNameIndex() {
+<span class="nocode"><a name="538">538: </a></span>            return _nameIndex;
+<span class="nocode"><a name="539">539: </a></span>        }
+<span class="nocode"><a name="540">540: </a></span>
+<span class="nocode"><a name="541">541: </a></span>        int getDescriptorIndex() {
+<span class="nocode"><a name="542">542: </a></span>            return _descriptorIndex;
+<span class="nocode"><a name="543">543: </a></span>        }
+<span class="nocode"><a name="544">544: </a></span>
+<span class="nocode"><a name="545">545: </a></span>        public String toString() {
+<span class="nocode"><a name="546">546: </a></span>            StringBuffer s = new StringBuffer(&quot;&quot;);
+<span class="nocode"><a name="547">547: </a></span>
+<span class="nocode"><a name="548">548: </a></span>            try {
+<span class="nocode"><a name="549">549: </a></span>
+<span class="nocode"><a name="550">550: </a></span>                s.append(&quot;\n    name (#&quot; + getNameIndex() + &quot;) = &quot;
+<span class="nocode"><a name="551">551: </a></span>                        + toUTF8(getNameIndex()));
+<span class="nocode"><a name="552">552: </a></span>
+<span class="nocode"><a name="553">553: </a></span>                s.append(&quot;\n    signature (#&quot; + getDescriptorIndex() + &quot;) = &quot;
+<span class="nocode"><a name="554">554: </a></span>                        + toUTF8(getDescriptorIndex()));
+<span class="nocode"><a name="555">555: </a></span>
+<span class="nocode"><a name="556">556: </a></span>                String[] types = descriptorToTypes(toUTF8(getDescriptorIndex()));
+<span class="nocode"><a name="557">557: </a></span>                for (int t = 0; t &lt; types.length; t++) {
+<span class="nocode"><a name="558">558: </a></span>                    s.append(&quot;\n        type = &quot; + types[t]);
+<span class="nocode"><a name="559">559: </a></span>                }
+<span class="nocode"><a name="560">560: </a></span>
+<span class="nocode"><a name="561">561: </a></span>            } catch (Exception e) {
+<span class="nocode"><a name="562">562: </a></span>                e.printStackTrace();
+<span class="nocode"><a name="563">563: </a></span>            }
+<span class="nocode"><a name="564">564: </a></span>
+<span class="nocode"><a name="565">565: </a></span>            return s.toString();
+<span class="nocode"><a name="566">566: </a></span>        }
+<span class="nocode"><a name="567">567: </a></span>    }
+<span class="nocode"><a name="568">568: </a></span>
+<span class="nocode"><a name="569">569: </a></span>    class AttributeInfo {
+<span class="nocode"><a name="570">570: </a></span>
+<span class="nocode"><a name="571">571: </a></span>        private String name;
+<span class="nocode"><a name="572">572: </a></span>
+<span class="nocode"><a name="573">573: </a></span>        private byte[] value;
+<span class="nocode"><a name="574">574: </a></span>
+<span class="nocode"><a name="575">575: </a></span>        public void setName(String name) {
+<span class="nocode"><a name="576">576: </a></span>            this.name = name;
+<span class="nocode"><a name="577">577: </a></span>        }
+<span class="nocode"><a name="578">578: </a></span>
+<span class="nocode"><a name="579">579: </a></span>        public String getName() {
+<span class="nocode"><a name="580">580: </a></span>            return this.name;
+<span class="nocode"><a name="581">581: </a></span>        }
+<span class="nocode"><a name="582">582: </a></span>
+<span class="nocode"><a name="583">583: </a></span>        public void setValue(byte[] value) {
+<span class="nocode"><a name="584">584: </a></span>            this.value = value;
+<span class="nocode"><a name="585">585: </a></span>        }
+<span class="nocode"><a name="586">586: </a></span>
+<span class="nocode"><a name="587">587: </a></span>        public byte[] getValue() {
+<span class="nocode"><a name="588">588: </a></span>            return this.value;
+<span class="nocode"><a name="589">589: </a></span>        }
+<span class="nocode"><a name="590">590: </a></span>    }
+<span class="nocode"><a name="591">591: </a></span>
+<span class="nocode"><a name="592">592: </a></span>    /**
+<span class="nocode"><a name="593">593: </a></span>     * Returns a string representation of this object.
+<span class="nocode"><a name="594">594: </a></span>     * 
+<span class="nocode"><a name="595">595: </a></span>     * @return String representation.
+<span class="nocode"><a name="596">596: </a></span>     */
+<span class="nocode"><a name="597">597: </a></span>    public String toString() {
+<span class="nocode"><a name="598">598: </a></span>
+<span class="nocode"><a name="599">599: </a></span>        StringBuffer s = new StringBuffer();
+<span class="nocode"><a name="600">600: </a></span>
+<span class="nocode"><a name="601">601: </a></span>        try {
+<span class="nocode"><a name="602">602: </a></span>
+<span class="nocode"><a name="603">603: </a></span>            s.append(&quot;\n&quot; + className + &quot;:\n&quot;);
+<span class="nocode"><a name="604">604: </a></span>
+<span class="nocode"><a name="605">605: </a></span>            s.append(&quot;\nConstants:\n&quot;);
+<span class="nocode"><a name="606">606: </a></span>            for (int i = 1; i &lt; constantPool.length; i++) {
+<span class="nocode"><a name="607">607: </a></span>                Constant entry = getConstantPoolEntry(i);
+<span class="nocode"><a name="608">608: </a></span>                s.append(&quot;    &quot; + i + &quot;. &quot; + entry.toString() + &quot;\n&quot;);
+<span class="nocode"><a name="609">609: </a></span>                if (entry.getTag() == CONSTANT_DOUBLE
+<span class="nocode"><a name="610">610: </a></span>                        || entry.getTag() == CONSTANT_LONG) {
+<span class="nocode"><a name="611">611: </a></span>                    i++;
+<span class="nocode"><a name="612">612: </a></span>                }
+<span class="nocode"><a name="613">613: </a></span>            }
+<span class="nocode"><a name="614">614: </a></span>
+<span class="nocode"><a name="615">615: </a></span>            s.append(&quot;\nClass Name: &quot; + className + &quot;\n&quot;);
+<span class="nocode"><a name="616">616: </a></span>            s.append(&quot;Super Name: &quot; + superClassName + &quot;\n\n&quot;);
+<span class="nocode"><a name="617">617: </a></span>
+<span class="nocode"><a name="618">618: </a></span>            s.append(interfaceNames.length + &quot; interfaces\n&quot;);
+<span class="nocode"><a name="619">619: </a></span>            for (int i = 0; i &lt; interfaceNames.length; i++) {
+<span class="nocode"><a name="620">620: </a></span>                s.append(&quot;    &quot; + interfaceNames[i] + &quot;\n&quot;);
+<span class="nocode"><a name="621">621: </a></span>            }
+<span class="nocode"><a name="622">622: </a></span>
+<span class="nocode"><a name="623">623: </a></span>            s.append(&quot;\n&quot; + fields.length + &quot; fields\n&quot;);
+<span class="nocode"><a name="624">624: </a></span>            for (int i = 0; i &lt; fields.length; i++) {
+<span class="nocode"><a name="625">625: </a></span>                s.append(fields[i].toString() + &quot;\n&quot;);
+<span class="nocode"><a name="626">626: </a></span>            }
+<span class="nocode"><a name="627">627: </a></span>
+<span class="nocode"><a name="628">628: </a></span>            s.append(&quot;\n&quot; + methods.length + &quot; methods\n&quot;);
+<span class="nocode"><a name="629">629: </a></span>            for (int i = 0; i &lt; methods.length; i++) {
+<span class="nocode"><a name="630">630: </a></span>                s.append(methods[i].toString() + &quot;\n&quot;);
+<span class="nocode"><a name="631">631: </a></span>            }
+<span class="nocode"><a name="632">632: </a></span>
+<span class="nocode"><a name="633">633: </a></span>            s.append(&quot;\nDependencies:\n&quot;);
+<span class="nocode"><a name="634">634: </a></span>            Iterator imports = jClass.getImportedPackages().iterator();
+<span class="nocode"><a name="635">635: </a></span>            while (imports.hasNext()) {
+<span class="nocode"><a name="636">636: </a></span>                JavaPackage jPackage = (JavaPackage) imports.next();
+<span class="nocode"><a name="637">637: </a></span>                s.append(&quot;    &quot; + jPackage.getName() + &quot;\n&quot;);
+<span class="nocode"><a name="638">638: </a></span>            }
+<span class="nocode"><a name="639">639: </a></span>
+<span class="nocode"><a name="640">640: </a></span>        } catch (Exception e) {
+<span class="nocode"><a name="641">641: </a></span>            e.printStackTrace();
+<span class="nocode"><a name="642">642: </a></span>        }
+<span class="nocode"><a name="643">643: </a></span>
+<span class="nocode"><a name="644">644: </a></span>        return s.toString();
+<span class="nocode"><a name="645">645: </a></span>    }
+<span class="nocode"><a name="646">646: </a></span>
+<span class="nocode"><a name="647">647: </a></span>    /**
+<span class="nocode"><a name="648">648: </a></span>     * Test main.
+<span class="nocode"><a name="649">649: </a></span>     */
+<span class="nocode"><a name="650">650: </a></span>    public static void main(String args[]) {
+<span class="nocode"><a name="651">651: </a></span>        try {
+<span class="nocode"><a name="652">652: </a></span>
+<span class="nocode"><a name="653">653: </a></span>            ClassFileParser.DEBUG = true;
+<span class="nocode"><a name="654">654: </a></span>
+<span class="nocode"><a name="655">655: </a></span>            if (args.length &lt;= 0) {
+<span class="nocode"><a name="656">656: </a></span>                System.err.println(&quot;usage: ClassFileParser &lt;class-file&gt;&quot;);
+<span class="nocode"><a name="657">657: </a></span>                System.exit(0);
+<span class="nocode"><a name="658">658: </a></span>            }
+<span class="nocode"><a name="659">659: </a></span>
+<span class="nocode"><a name="660">660: </a></span>            ClassFileParser parser = new ClassFileParser();
+<span class="nocode"><a name="661">661: </a></span>
+<span class="nocode"><a name="662">662: </a></span>            parser.parse(new File(args[0]));
+<span class="nocode"><a name="663">663: </a></span>
+<span class="nocode"><a name="664">664: </a></span>            System.err.println(parser.toString());
+<span class="nocode"><a name="665">665: </a></span>
+<span class="nocode"><a name="666">666: </a></span>        } catch (Exception e) {
+<span class="nocode"><a name="667">667: </a></span>            System.err.println(e.getMessage());
+<span class="nocode"><a name="668">668: </a></span>        }
+<span class="nocode"><a name="669">669: </a></span>    }
+<span class="nocode"><a name="670">670: </a></span>}
+</pre><table class="mutation_table" summary="Mutations">
+<tr><th>ID</th><th>Line</th><th>Type</th><th>Detected</th></tr><tr><td>2104</td><td><a href="#17">17</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2105</td><td><a href="#17">17(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1631</td><td><a href="#55">55</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1632</td><td><a href="#61">61</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1633</td><td><a href="#61">61</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1634</td><td><a href="#62">62</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1635</td><td><a href="#62">62</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1637</td><td><a href="#65">65</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1638</td><td><a href="#65">65</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1636</td><td><a href="#65">65</a></td><td>Replace Constant by 0</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1639</td><td><a href="#66">66</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1640</td><td><a href="#66">66</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1641</td><td><a href="#67">67</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1642</td><td><a href="#67">67</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1643</td><td><a href="#68">68</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1644</td><td><a href="#68">68</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1645</td><td><a href="#77">77</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1646</td><td><a href="#79">79</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1647</td><td><a href="#79">79(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1648</td><td><a href="#79">79(2)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1649</td><td><a href="#79">79(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1650</td><td><a href="#79">79(4)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1651</td><td><a href="#87">87</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1652</td><td><a href="#90">90</a></td><td>Negate jump condition</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1655</td><td><a href="#90">90(1)</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1653</td><td><a href="#92">92</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1656</td><td><a href="#92">92(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1654</td><td><a href="#94">94</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1657</td><td><a href="#94">94(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1658</td><td><a href="#102">102</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1659</td><td><a href="#108">108</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1660</td><td><a href="#110">110</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1661</td><td><a href="#111">111</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1662</td><td><a href="#113">113</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1663</td><td><a href="#115">115</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1664</td><td><a href="#117">117</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1665</td><td><a href="#119">119</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1666</td><td><a href="#121">121</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1667</td><td><a href="#123">123</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1668</td><td><a href="#125">125</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1669</td><td><a href="#127">127</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1670</td><td><a href="#129">129</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1671</td><td><a href="#131">131</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1672</td><td><a href="#137">137</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1674</td><td><a href="#138">138</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1675</td><td><a href="#138">138</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1673</td><td><a href="#138">138</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>1676</td><td><a href="#138">138</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1677</td><td><a href="#139">139</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1678</td><td><a href="#139">139(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1679</td><td><a href="#139">139(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1680</td><td><a href="#146">146</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1681</td><td><a href="#150">150</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1682</td><td><a href="#154">154</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1684</td><td><a href="#158">158</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1685</td><td><a href="#158">158</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1683</td><td><a href="#158">158</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>1686</td><td><a href="#158">158</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1687</td><td><a href="#160">160</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1690</td><td><a href="#167">167</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1695</td><td><a href="#167">167(1)</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1691</td><td><a href="#167">167</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1696</td><td><a href="#167">167(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1689</td><td><a href="#167">167</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>1694</td><td><a href="#167">167(1)</a></td><td>Replace Constant by 0</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1692</td><td><a href="#167">167</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1697</td><td><a href="#167">167(1)</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1688</td><td><a href="#167">167</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1693</td><td><a href="#167">167(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1698</td><td><a href="#177">177</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1700</td><td><a href="#179">179</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1705</td><td><a href="#179">179(1)</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1707</td><td><a href="#179">179(2)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1701</td><td><a href="#179">179</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1706</td><td><a href="#179">179(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1708</td><td><a href="#179">179(2)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1699</td><td><a href="#179">179</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>1704</td><td><a href="#179">179(1)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>1703</td><td><a href="#179">179</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1702</td><td><a href="#179">179</a></td><td>Replace arithmetic operator</td><td><img src="detected.png"/></td></tr>
+<tr><td>1710</td><td><a href="#180">180</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1715</td><td><a href="#180">180(1)</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1717</td><td><a href="#180">180(2)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1711</td><td><a href="#180">180</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1716</td><td><a href="#180">180(1)</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1718</td><td><a href="#180">180(2)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1709</td><td><a href="#180">180</a></td><td>Replace Constant by 0</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1714</td><td><a href="#180">180(1)</a></td><td>Replace Constant by 0</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1713</td><td><a href="#180">180</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1712</td><td><a href="#180">180</a></td><td>Replace arithmetic operator</td><td><img src="detected.png"/></td></tr>
+<tr><td>1722</td><td><a href="#182">182</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1724</td><td><a href="#182">182(1)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1723</td><td><a href="#182">182</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1725</td><td><a href="#182">182(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1721</td><td><a href="#182">182</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>1719</td><td><a href="#182">182</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1720</td><td><a href="#182">182(1)</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1726</td><td><a href="#183">183</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1727</td><td><a href="#185">185</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1728</td><td><a href="#185">185(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1729</td><td><a href="#185">185(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1730</td><td><a href="#185">185(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1731</td><td><a href="#189">189</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1732</td><td><a href="#190">190</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1733</td><td><a href="#191">191</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1734</td><td><a href="#192">192</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1735</td><td><a href="#192">192(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1736</td><td><a href="#194">194</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1737</td><td><a href="#194">194(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1738</td><td><a href="#194">194(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1739</td><td><a href="#194">194(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1740</td><td><a href="#195">195</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1741</td><td><a href="#195">195(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1742</td><td><a href="#195">195(2)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1743</td><td><a href="#195">195(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1744</td><td><a href="#195">195(4)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1745</td><td><a href="#201">201</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1746</td><td><a href="#202">202</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1747</td><td><a href="#203">203</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1748</td><td><a href="#203">203(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1749</td><td><a href="#205">205</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1750</td><td><a href="#205">205(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1751</td><td><a href="#205">205(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1752</td><td><a href="#205">205(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1753</td><td><a href="#211">211</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1754</td><td><a href="#213">213</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1755</td><td><a href="#213">213</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1756</td><td><a href="#213">213</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1757</td><td><a href="#214">214</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1758</td><td><a href="#215">215</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1759</td><td><a href="#216">216</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1760</td><td><a href="#216">216(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1761</td><td><a href="#218">218</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1762</td><td><a href="#218">218(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1763</td><td><a href="#218">218(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1764</td><td><a href="#218">218(3)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1765</td><td><a href="#225">225</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1766</td><td><a href="#227">227</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1767</td><td><a href="#227">227</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1768</td><td><a href="#227">227</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1769</td><td><a href="#228">228</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1770</td><td><a href="#229">229</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1771</td><td><a href="#229">229(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1772</td><td><a href="#230">230</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1773</td><td><a href="#230">230(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1774</td><td><a href="#230">230(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1775</td><td><a href="#230">230(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1776</td><td><a href="#231">231</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1777</td><td><a href="#232">232</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1778</td><td><a href="#232">232</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1779</td><td><a href="#232">232</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1780</td><td><a href="#233">233</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1781</td><td><a href="#233">233(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1782</td><td><a href="#234">234</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1783</td><td><a href="#234">234(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1784</td><td><a href="#234">234(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1785</td><td><a href="#234">234(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1786</td><td><a href="#242">242</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1787</td><td><a href="#244">244</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1788</td><td><a href="#244">244</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1789</td><td><a href="#244">244</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1790</td><td><a href="#245">245</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1791</td><td><a href="#246">246</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1792</td><td><a href="#246">246(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1793</td><td><a href="#247">247</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1794</td><td><a href="#247">247(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1795</td><td><a href="#247">247(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1796</td><td><a href="#247">247(3)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1797</td><td><a href="#248">248</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1798</td><td><a href="#249">249</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1799</td><td><a href="#249">249</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1800</td><td><a href="#249">249</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1802</td><td><a href="#250">250</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1801</td><td><a href="#250">250</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1803</td><td><a href="#251">251</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1804</td><td><a href="#251">251(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1805</td><td><a href="#252">252</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1806</td><td><a href="#252">252(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1807</td><td><a href="#252">252(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1808</td><td><a href="#252">252(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1809</td><td><a href="#264">264</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1810</td><td><a href="#270">270</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1811</td><td><a href="#276">276</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1812</td><td><a href="#276">276(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1813</td><td><a href="#280">280</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1814</td><td><a href="#283">283</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1815</td><td><a href="#286">286</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1816</td><td><a href="#289">289</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1817</td><td><a href="#292">292</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1818</td><td><a href="#295">295</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1819</td><td><a href="#295">295(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1820</td><td><a href="#295">295(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1821</td><td><a href="#303">303</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1822</td><td><a href="#303">303(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1823</td><td><a href="#303">303(2)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1824</td><td><a href="#307">307</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1825</td><td><a href="#308">308</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1826</td><td><a href="#308">308</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1827</td><td><a href="#308">308</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1828</td><td><a href="#309">309</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1829</td><td><a href="#316">316</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1830</td><td><a href="#319">319</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1831</td><td><a href="#319">319</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1832</td><td><a href="#319">319</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1833</td><td><a href="#320">320</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1835</td><td><a href="#323">323</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1834</td><td><a href="#323">323</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1838</td><td><a href="#324">324</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1836</td><td><a href="#324">324</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1837</td><td><a href="#324">324(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1839</td><td><a href="#325">325</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1840</td><td><a href="#326">326</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1843</td><td><a href="#326">326(1)</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1846</td><td><a href="#326">326(2)</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1849</td><td><a href="#326">326(3)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1841</td><td><a href="#326">326</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1844</td><td><a href="#326">326(1)</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1847</td><td><a href="#326">326(2)</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1850</td><td><a href="#326">326(3)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1845</td><td><a href="#326">326(2)</a></td><td>Replace Constant by 0</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1842</td><td><a href="#326">326</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1848</td><td><a href="#326">326</a></td><td>Replace arithmetic operator</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1852</td><td><a href="#327">327</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1856</td><td><a href="#327">327(1)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1859</td><td><a href="#327">327(2)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1863</td><td><a href="#327">327(3)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1853</td><td><a href="#327">327</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1857</td><td><a href="#327">327(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1860</td><td><a href="#327">327(2)</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1864</td><td><a href="#327">327(3)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1851</td><td><a href="#327">327</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>1855</td><td><a href="#327">327(1)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>1858</td><td><a href="#327">327(2)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>1862</td><td><a href="#327">327(3)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>1854</td><td><a href="#327">327</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1861</td><td><a href="#327">327</a></td><td>Replace arithmetic operator</td><td><img src="detected.png"/></td></tr>
+<tr><td>1866</td><td><a href="#328">328</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1867</td><td><a href="#328">328</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1865</td><td><a href="#328">328</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>1868</td><td><a href="#328">328</a></td><td>Replace arithmetic operator</td><td><img src="detected.png"/></td></tr>
+<tr><td>1869</td><td><a href="#328">328(1)</a></td><td>Replace arithmetic operator</td><td><img src="detected.png"/></td></tr>
+<tr><td>1870</td><td><a href="#330">330</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1871</td><td><a href="#331">331</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1872</td><td><a href="#340">340</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1874</td><td><a href="#341">341</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1875</td><td><a href="#341">341</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1873</td><td><a href="#341">341</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>1876</td><td><a href="#341">341</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1877</td><td><a href="#342">342</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1878</td><td><a href="#342">342(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1879</td><td><a href="#345">345</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1880</td><td><a href="#347">347</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1881</td><td><a href="#347">347</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1882</td><td><a href="#347">347</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1883</td><td><a href="#348">348</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1884</td><td><a href="#351">351</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1885</td><td><a href="#357">357</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1886</td><td><a href="#357">357(1)</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1887</td><td><a href="#358">358</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1888</td><td><a href="#358">358(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1889</td><td><a href="#358">358(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1891</td><td><a href="#365">365</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1892</td><td><a href="#365">365</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1890</td><td><a href="#365">365</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>1893</td><td><a href="#365">365</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1896</td><td><a href="#366">366</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1897</td><td><a href="#366">366</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1895</td><td><a href="#366">366</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>1898</td><td><a href="#366">366</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1894</td><td><a href="#366">366</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1899</td><td><a href="#367">367</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1900</td><td><a href="#367">367(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1901</td><td><a href="#368">368</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1902</td><td><a href="#368">368(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1903</td><td><a href="#370">370</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1904</td><td><a href="#370">370(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1905</td><td><a href="#370">370(2)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1906</td><td><a href="#370">370(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1907</td><td><a href="#370">370(4)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1910</td><td><a href="#373">373</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1915</td><td><a href="#373">373(1)</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1911</td><td><a href="#373">373</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1916</td><td><a href="#373">373(1)</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1909</td><td><a href="#373">373</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>1914</td><td><a href="#373">373(1)</a></td><td>Replace Constant by 0</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1912</td><td><a href="#373">373</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1917</td><td><a href="#373">373(1)</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1908</td><td><a href="#373">373</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1913</td><td><a href="#373">373(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1918</td><td><a href="#382">382</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1919</td><td><a href="#383">383</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1920</td><td><a href="#386">386</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1921</td><td><a href="#386">386(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1922</td><td><a href="#386">386(2)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1923</td><td><a href="#390">390</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1926</td><td><a href="#391">391</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1927</td><td><a href="#391">391</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1925</td><td><a href="#391">391</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>1928</td><td><a href="#391">391</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1924</td><td><a href="#391">391</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1929</td><td><a href="#392">392</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1930</td><td><a href="#395">395</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1931</td><td><a href="#395">395(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1932</td><td><a href="#395">395(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1933</td><td><a href="#400">400</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1936</td><td><a href="#400">400(1)</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1934</td><td><a href="#400">400</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1935</td><td><a href="#400">400(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1937</td><td><a href="#401">401</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1939</td><td><a href="#406">406</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1942</td><td><a href="#406">406(1)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1940</td><td><a href="#406">406</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1943</td><td><a href="#406">406(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1938</td><td><a href="#406">406</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>1941</td><td><a href="#406">406(1)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>1944</td><td><a href="#406">406</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1947</td><td><a href="#410">410</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1951</td><td><a href="#410">410(1)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1948</td><td><a href="#410">410</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1952</td><td><a href="#410">410(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1950</td><td><a href="#410">410(1)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>1946</td><td><a href="#410">410</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1953</td><td><a href="#410">410(1)</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1945</td><td><a href="#410">410</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1949</td><td><a href="#410">410(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1954</td><td><a href="#411">411</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1955</td><td><a href="#412">412</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1956</td><td><a href="#416">416</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1957</td><td><a href="#416">416</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1958</td><td><a href="#419">419</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1959</td><td><a href="#420">420</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1960</td><td><a href="#421">421</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1961</td><td><a href="#422">422</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1962</td><td><a href="#422">422</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1963</td><td><a href="#422">422</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1964</td><td><a href="#430">430</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1965</td><td><a href="#430">430</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1966</td><td><a href="#431">431</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1967</td><td><a href="#431">431</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1969</td><td><a href="#431">431</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1968</td><td><a href="#431">431</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1972</td><td><a href="#432">432</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1973</td><td><a href="#432">432</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1971</td><td><a href="#432">432</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>1974</td><td><a href="#432">432</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1970</td><td><a href="#432">432</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1975</td><td><a href="#439">439</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1976</td><td><a href="#439">439</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1977</td><td><a href="#440">440</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1978</td><td><a href="#440">440</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1980</td><td><a href="#440">440</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1979</td><td><a href="#440">440</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1982</td><td><a href="#442">442</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1983</td><td><a href="#442">442</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1981</td><td><a href="#442">442</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>1984</td><td><a href="#442">442</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1985</td><td><a href="#443">443</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>1987</td><td><a href="#447">447</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1990</td><td><a href="#447">447(1)</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1988</td><td><a href="#447">447</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1991</td><td><a href="#447">447(1)</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1986</td><td><a href="#447">447</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>1989</td><td><a href="#447">447(1)</a></td><td>Replace Constant by 0</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1992</td><td><a href="#447">447</a></td><td>Replace arithmetic operator</td><td><img src="detected.png"/></td></tr>
+<tr><td>1993</td><td><a href="#447">447</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>1995</td><td><a href="#448">448</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1996</td><td><a href="#448">448</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>1994</td><td><a href="#448">448</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>1997</td><td><a href="#448">448</a></td><td>Replace arithmetic operator</td><td><img src="detected.png"/></td></tr>
+<tr><td>1998</td><td><a href="#448">448</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>2120</td><td><a href="#465">465</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>2121</td><td><a href="#465">465</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2119</td><td><a href="#465">465</a></td><td>Replace Constant by 0</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2123</td><td><a href="#469">469</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2126</td><td><a href="#469">469(1)</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2124</td><td><a href="#469">469</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2127</td><td><a href="#469">469(1)</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2122</td><td><a href="#469">469</a></td><td>Replace Constant by 0</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2125</td><td><a href="#469">469(1)</a></td><td>Replace Constant by 0</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2128</td><td><a href="#500">500</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2129</td><td><a href="#500">500(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2130</td><td><a href="#500">500(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2131</td><td><a href="#500">500(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2132</td><td><a href="#500">500(4)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2135</td><td><a href="#502">502</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2136</td><td><a href="#502">502</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2134</td><td><a href="#502">502</a></td><td>Replace Constant by 0</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2137</td><td><a href="#502">502</a></td><td>Negate jump condition</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2133</td><td><a href="#502">502</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2138</td><td><a href="#503">503</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2139</td><td><a href="#503">503(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2140</td><td><a href="#503">503(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2141</td><td><a href="#503">503(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2142</td><td><a href="#503">503(4)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2145</td><td><a href="#506">506</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2146</td><td><a href="#506">506</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2144</td><td><a href="#506">506</a></td><td>Replace Constant by 0</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2147</td><td><a href="#506">506</a></td><td>Negate jump condition</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2143</td><td><a href="#506">506</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2148</td><td><a href="#507">507</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2149</td><td><a href="#507">507(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2150</td><td><a href="#507">507(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2151</td><td><a href="#507">507(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2152</td><td><a href="#507">507(4)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2154</td><td><a href="#510">510</a></td><td>Negate jump condition</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2153</td><td><a href="#510">510</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2155</td><td><a href="#511">511</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2156</td><td><a href="#511">511(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2157</td><td><a href="#511">511(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2158</td><td><a href="#511">511(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2159</td><td><a href="#511">511(4)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2160</td><td><a href="#514">514</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2161</td><td><a href="#550">550</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2162</td><td><a href="#550">550(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2163</td><td><a href="#550">550(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2164</td><td><a href="#550">550(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2165</td><td><a href="#550">550(4)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2166</td><td><a href="#550">550(5)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2167</td><td><a href="#550">550(6)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2168</td><td><a href="#550">550(7)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2169</td><td><a href="#550">550(8)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2170</td><td><a href="#553">553</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2171</td><td><a href="#553">553(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2172</td><td><a href="#553">553(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2173</td><td><a href="#553">553(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2174</td><td><a href="#553">553(4)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2175</td><td><a href="#553">553(5)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2176</td><td><a href="#553">553(6)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2177</td><td><a href="#553">553(7)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2178</td><td><a href="#553">553(8)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2179</td><td><a href="#556">556</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2180</td><td><a href="#556">556(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2181</td><td><a href="#556">556(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2182</td><td><a href="#557">557</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2183</td><td><a href="#557">557</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2184</td><td><a href="#557">557</a></td><td>Negate jump condition</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2185</td><td><a href="#558">558</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2186</td><td><a href="#558">558(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2187</td><td><a href="#558">558(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2188</td><td><a href="#558">558(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2189</td><td><a href="#562">562</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2190</td><td><a href="#565">565</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>1999</td><td><a href="#603">603</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2000</td><td><a href="#603">603(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2001</td><td><a href="#603">603(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2002</td><td><a href="#603">603(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2003</td><td><a href="#603">603(4)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2004</td><td><a href="#605">605</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2006</td><td><a href="#606">606</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2007</td><td><a href="#606">606</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2005</td><td><a href="#606">606</a></td><td>Replace Constant by 0</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2008</td><td><a href="#606">606</a></td><td>Negate jump condition</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2009</td><td><a href="#607">607</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2010</td><td><a href="#608">608</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2011</td><td><a href="#608">608(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2012</td><td><a href="#608">608(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2013</td><td><a href="#608">608(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2014</td><td><a href="#608">608(4)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2015</td><td><a href="#608">608(5)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2016</td><td><a href="#608">608(6)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2017</td><td><a href="#608">608(7)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2020</td><td><a href="#609">609</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2025</td><td><a href="#609">609(1)</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2021</td><td><a href="#609">609</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2026</td><td><a href="#609">609(1)</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2019</td><td><a href="#609">609</a></td><td>Replace Constant by 0</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2024</td><td><a href="#609">609(1)</a></td><td>Replace Constant by 0</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2022</td><td><a href="#609">609</a></td><td>Negate jump condition</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2027</td><td><a href="#609">609(1)</a></td><td>Negate jump condition</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2018</td><td><a href="#609">609</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2023</td><td><a href="#609">609(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2028</td><td><a href="#615">615</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2029</td><td><a href="#615">615(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2030</td><td><a href="#615">615(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2031</td><td><a href="#615">615(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2032</td><td><a href="#615">615(4)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2033</td><td><a href="#616">616</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2034</td><td><a href="#616">616(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2035</td><td><a href="#616">616(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2036</td><td><a href="#616">616(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2037</td><td><a href="#616">616(4)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2038</td><td><a href="#618">618</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2039</td><td><a href="#618">618(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2040</td><td><a href="#618">618(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2041</td><td><a href="#618">618(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2042</td><td><a href="#619">619</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2043</td><td><a href="#619">619</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2044</td><td><a href="#619">619</a></td><td>Negate jump condition</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2045</td><td><a href="#620">620</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2046</td><td><a href="#620">620(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2047</td><td><a href="#620">620(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2048</td><td><a href="#620">620(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2049</td><td><a href="#620">620(4)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2050</td><td><a href="#623">623</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2051</td><td><a href="#623">623(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2052</td><td><a href="#623">623(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2053</td><td><a href="#623">623(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2054</td><td><a href="#623">623(4)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2055</td><td><a href="#624">624</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2056</td><td><a href="#624">624</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2057</td><td><a href="#624">624</a></td><td>Negate jump condition</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2058</td><td><a href="#625">625</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2059</td><td><a href="#625">625(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2060</td><td><a href="#625">625(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2061</td><td><a href="#625">625(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2062</td><td><a href="#625">625(4)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2063</td><td><a href="#628">628</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2064</td><td><a href="#628">628(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2065</td><td><a href="#628">628(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2066</td><td><a href="#628">628(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2067</td><td><a href="#628">628(4)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2068</td><td><a href="#629">629</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2069</td><td><a href="#629">629</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2070</td><td><a href="#629">629</a></td><td>Negate jump condition</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2071</td><td><a href="#630">630</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2072</td><td><a href="#630">630(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2073</td><td><a href="#630">630(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2074</td><td><a href="#630">630(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2075</td><td><a href="#630">630(4)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2076</td><td><a href="#633">633</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2077</td><td><a href="#634">634</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2078</td><td><a href="#634">634(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2080</td><td><a href="#635">635</a></td><td>Negate jump condition</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2079</td><td><a href="#635">635</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2081</td><td><a href="#636">636</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2082</td><td><a href="#637">637</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2083</td><td><a href="#637">637(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2084</td><td><a href="#637">637(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2085</td><td><a href="#637">637(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2086</td><td><a href="#637">637(4)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2087</td><td><a href="#637">637(5)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2088</td><td><a href="#641">641</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2089</td><td><a href="#644">644</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2091</td><td><a href="#653">653</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2092</td><td><a href="#653">653</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2090</td><td><a href="#653">653</a></td><td>Replace Constant by 0</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2093</td><td><a href="#655">655</a></td><td>Negate jump condition</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2094</td><td><a href="#656">656</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2095</td><td><a href="#657">657</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2096</td><td><a href="#657">657</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2097</td><td><a href="#662">662</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2098</td><td><a href="#662">662</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2099</td><td><a href="#662">662</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2100</td><td><a href="#664">664</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2101</td><td><a href="#664">664(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2102</td><td><a href="#667">667</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>2103</td><td><a href="#667">667(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+</table>
+</body>
+</html>

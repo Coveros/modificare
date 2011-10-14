@@ -1,0 +1,40 @@
+Testsuite: finder.LoopFinderTest
+Tests run: 0, Failures: 0, Errors: 0, Time elapsed: 3.181 sec
+------------- Standard Output ---------------
+Applying 1th mutation with id 1423. Running 13 tests
+Applying 2th mutation with id 1424. Running 13 tests
+Applying 3th mutation with id 1425. Running 13 tests
+Applying 4th mutation with id 1426. Running 13 tests
+Applying 5th mutation with id 1427. Running 13 tests
+Applying 6th mutation with id 1428. Running 13 tests
+Applying 7th mutation with id 1429. Running 13 tests
+Applying 8th mutation with id 1430. Running 13 tests
+Applying 9th mutation with id 1431. Running 13 tests
+Applying 10th mutation with id 1432. Running 13 tests
+Applying 11th mutation with id 1433. Running 13 tests
+Applying 12th mutation with id 1434. Running 13 tests
+Applying 13th mutation with id 1435. Running 13 tests
+Applying 14th mutation with id 1436. Running 11 tests
+Applying 15th mutation with id 1437. Running 11 tests
+Applying 16th mutation with id 1438. Running 11 tests
+Applying 17th mutation with id 1439. Running 11 tests
+Applying 18th mutation with id 1440. Running 11 tests
+Applying 19th mutation with id 1441. Running 8 tests
+Applying 20th mutation with id 1442. Running 8 tests
+Applying 21th mutation with id 1443. Running 8 tests
+Applying 22th mutation with id 1444. Running 13 tests
+Applying 23th mutation with id 1445. Running 13 tests
+Applying 24th mutation with id 1446. Running 13 tests
+Applying 25th mutation with id 1447. Running 13 tests
+Applying 26th mutation with id 1448. Running 11 tests
+Applying 27th mutation with id 1449. Running 11 tests
+Applying 28th mutation with id 1450. Running 8 tests
+Applying 29th mutation with id 1451. Running 8 tests
+Applying 30th mutation with id 1452. Running 8 tests
+Applying 31th mutation with id 1453. Running 13 tests
+Applying 32th mutation with id 1454. Running 13 tests
+ALL_RESULTS
+All mutations have results - this means they have already been applied and executed
+32 mutations were applied. 32 Mutation results were recorded. 32 Mutations where actually touched.
+------------- ---------------- ---------------
+

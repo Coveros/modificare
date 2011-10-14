@@ -1,0 +1,587 @@
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb
+END
+._BaseTable.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._BaseTable.java
+END
+._lib
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._lib
+END
+._DatabaseCommandInterpreter.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._DatabaseCommandInterpreter.java
+END
+._TextTable.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._TextTable.java
+END
+._ConstraintCore.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._ConstraintCore.java
+END
+._util
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._util
+END
+._CachedRow.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._CachedRow.java
+END
+._ServerConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._ServerConstants.java
+END
+._SequenceManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._SequenceManager.java
+END
+._DINameSpace.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._DINameSpace.java
+END
+._BaseMemoryNode.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._BaseMemoryNode.java
+END
+._persist
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._persist
+END
+._View.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._View.java
+END
+._store
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._store
+END
+._MemoryNode.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._MemoryNode.java
+END
+._Select.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Select.java
+END
+._HsqlSocketFactorySecure.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._HsqlSocketFactorySecure.java
+END
+._DatabaseInformationMain.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._DatabaseInformationMain.java
+END
+._DatabaseObjectNames.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._DatabaseObjectNames.java
+END
+._rowio
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._rowio
+END
+._DITableInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._DITableInfo.java
+END
+._GranteeManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._GranteeManager.java
+END
+._NumberSequence.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._NumberSequence.java
+END
+._Servlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Servlet.java
+END
+._Collation.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Collation.java
+END
+._types
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._types
+END
+._Transaction.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Transaction.java
+END
+._HsqlException.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._HsqlException.java
+END
+._Column.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Column.java
+END
+._DatabaseInformationFull.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._DatabaseInformationFull.java
+END
+._TableFilter.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._TableFilter.java
+END
+._test
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._test
+END
+._HsqlNameManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._HsqlNameManager.java
+END
+._Library.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Library.java
+END
+._GroupedResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._GroupedResult.java
+END
+._GrantConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._GrantConstants.java
+END
+._DITypeInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._DITypeInfo.java
+END
+._DatabaseInformation.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._DatabaseInformation.java
+END
+._Tokenizer.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Tokenizer.java
+END
+._Result.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Result.java
+END
+._User.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._User.java
+END
+._SubQuery.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._SubQuery.java
+END
+._Token.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Token.java
+END
+._Like.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Like.java
+END
+._HsqlDateTime.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._HsqlDateTime.java
+END
+._Constraint.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Constraint.java
+END
+._Node.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Node.java
+END
+._Grantee.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Grantee.java
+END
+._ServerConnection.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._ServerConnection.java
+END
+._HsqlServerFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._HsqlServerFactory.java
+END
+._HSQLClientConnection.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._HSQLClientConnection.java
+END
+._CachedDataRow.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._CachedDataRow.java
+END
+._DatabaseScript.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._DatabaseScript.java
+END
+._ServerConfiguration.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._ServerConfiguration.java
+END
+._Trace.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Trace.java
+END
+._DatabaseManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._DatabaseManager.java
+END
+._DiskNode.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._DiskNode.java
+END
+._SetFunction.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._SetFunction.java
+END
+._sample
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._sample
+END
+._Database.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Database.java
+END
+._Types.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Types.java
+END
+._Server.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Server.java
+END
+._HsqlSocketFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._HsqlSocketFactory.java
+END
+._CompiledStatementManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._CompiledStatementManager.java
+END
+._TableWorks.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._TableWorks.java
+END
+._Record.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Record.java
+END
+._jdbcDriver.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._jdbcDriver.java
+END
+._TriggerDef.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._TriggerDef.java
+END
+._jdbc
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._jdbc
+END
+._Session.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Session.java
+END
+._HsqlInternalException.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._HsqlInternalException.java
+END
+._WebServerConnection.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._WebServerConnection.java
+END
+._Function.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Function.java
+END
+._PointerNode.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._PointerNode.java
+END
+._HsqlSocketRequestHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._HsqlSocketRequestHandler.java
+END
+._DatabaseURL.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._DatabaseURL.java
+END
+._Table.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Table.java
+END
+._index
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._index
+END
+._resources
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._resources
+END
+._SchemaManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._SchemaManager.java
+END
+._Parser.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Parser.java
+END
+._HTTPClientConnection.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._HTTPClientConnection.java
+END
+._Expression.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Expression.java
+END
+._CompiledStatementExecutor.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._CompiledStatementExecutor.java
+END
+._Trigger.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Trigger.java
+END
+._SessionInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._SessionInterface.java
+END
+._WebServer.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._WebServer.java
+END
+._Row.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Row.java
+END
+._Index.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._Index.java
+END
+._ResultBase.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._ResultBase.java
+END
+._UserManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._UserManager.java
+END
+._ResultConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._ResultConstants.java
+END
+._scriptio
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._scriptio
+END
+._SessionManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._SessionManager.java
+END
+._TransactionManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._TransactionManager.java
+END
+._DIProcedureInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._DIProcedureInfo.java
+END
+._CompiledStatement.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/__MACOSX/GB/hsqldb/src/org/hsqldb/._CompiledStatement.java
+END

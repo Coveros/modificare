@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/src/gradebook
+END
+TestGradeBookCreatorWithFullDataSet.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/src/gradebook/TestGradeBookCreatorWithFullDataSet.java
+END
+GradeBookDataException.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/src/gradebook/GradeBookDataException.java
+END
+DatabaseDescription.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/src/gradebook/DatabaseDescription.java
+END
+GradeBookConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/src/gradebook/GradeBookConstants.java
+END
+AllTests.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/src/gradebook/AllTests.java
+END
+GradeBook.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/src/gradebook/GradeBook.java
+END
+GradeBookCreator.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/src/gradebook/GradeBookCreator.java
+END
+TestGradeBook.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/src/gradebook/TestGradeBook.java
+END
+TestGradeBookCreator.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/src/gradebook/TestGradeBookCreator.java
+END
+TestBeforeAllTests.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/src/gradebook/TestBeforeAllTests.java
+END

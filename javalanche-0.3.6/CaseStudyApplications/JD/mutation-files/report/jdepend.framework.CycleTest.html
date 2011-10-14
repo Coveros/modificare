@@ -1,0 +1,665 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>
+jdepend.framework.CycleTest
+</title>
+<link href="prettify.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="prettify.js"></script>
+</head>
+<body onload="prettyPrint()">
+<h2>Javalanche report for class:<br/> jdepend.framework.CycleTest </h2><pre class="prettyprint" style="border: 1px solid #888;padding: 2px"><span class="nocode"><a name="1">  1: </a></span>package jdepend.framework;
+<span class="nocode"><a name="2">  2: </a></span>
+<span class="nocode"><a name="3">  3: </a></span>import java.util.ArrayList;
+<span class="nocode"><a name="4">  4: </a></span>import java.util.Iterator;
+<span class="nocode"><a name="5">  5: </a></span>import java.util.List;
+<span class="nocode"><a name="6">  6: </a></span>
+<span class="nocode"><a name="7">  7: </a></span>/**
+<span class="nocode"><a name="8">  8: </a></span> * @author &lt;b&gt;Mike Clark&lt;/b&gt;
+<span class="nocode"><a name="9">  9: </a></span> * @author Clarkware Consulting, Inc.
+<span class="nocode"><a name="10"> 10: </a></span> */
+<span class="nocode"><a name="11"> 11: </a></span>
+<span class="nocode"><a name="12"> 12: </a></span>public class CycleTest extends JDependTestCase {
+<span class="nocode"><a name="13"> 13: </a></span>
+<span class="nocode"><a name="14"> 14: </a></span>    public CycleTest(String name) {
+<span class="nocode"><a name="15"> 15: </a></span>        super(name);
+<span class="nocode"><a name="16"> 16: </a></span>    }
+<span class="nocode"><a name="17"> 17: </a></span>
+<span class="nocode"><a name="18"> 18: </a></span>    public void testNoCycles() {
+<span class="nocode"><a name="19"> 19: </a></span>
+<span class="nocode"><a name="20"> 20: </a></span>        JavaPackage a = new JavaPackage(&quot;A&quot;);
+<span class="nocode"><a name="21"> 21: </a></span>        JavaPackage b = new JavaPackage(&quot;B&quot;);
+<span class="nocode"><a name="22"> 22: </a></span>
+<span class="nocode"><a name="23"> 23: </a></span>        a.dependsUpon(b);
+<span class="nocode"><a name="24"> 24: </a></span>
+<span class="nocode"><a name="25"> 25: </a></span>        List aCycles = new ArrayList();
+<span class="nocode"><a name="26"> 26: </a></span>        assertEquals(false, a.containsCycle());
+<span class="nocode"><a name="27"> 27: </a></span>        assertEquals(false, a.collectCycle(aCycles));
+<span class="nocode"><a name="28"> 28: </a></span>        assertListEquals(aCycles, new String[] {});
+<span class="nocode"><a name="29"> 29: </a></span>
+<span class="nocode"><a name="30"> 30: </a></span>        List bCycles = new ArrayList();
+<span class="nocode"><a name="31"> 31: </a></span>        assertEquals(false, b.containsCycle());
+<span class="nocode"><a name="32"> 32: </a></span>        assertEquals(false, b.collectCycle(bCycles));
+<span class="nocode"><a name="33"> 33: </a></span>        assertListEquals(bCycles, new String[] {});
+<span class="nocode"><a name="34"> 34: </a></span>    }
+<span class="nocode"><a name="35"> 35: </a></span>
+<span class="nocode"><a name="36"> 36: </a></span>    public void test2Node1BranchCycle() {
+<span class="nocode"><a name="37"> 37: </a></span>
+<span class="nocode"><a name="38"> 38: </a></span>        JavaPackage a = new JavaPackage(&quot;A&quot;);
+<span class="nocode"><a name="39"> 39: </a></span>        JavaPackage b = new JavaPackage(&quot;B&quot;);
+<span class="nocode"><a name="40"> 40: </a></span>
+<span class="nocode"><a name="41"> 41: </a></span>        a.dependsUpon(b);
+<span class="nocode"><a name="42"> 42: </a></span>        b.dependsUpon(a);
+<span class="nocode"><a name="43"> 43: </a></span>
+<span class="nocode"><a name="44"> 44: </a></span>        List aCycles = new ArrayList();
+<span class="nocode"><a name="45"> 45: </a></span>        assertEquals(true, a.containsCycle());
+<span class="nocode"><a name="46"> 46: </a></span>        assertEquals(true, a.collectCycle(aCycles));
+<span class="nocode"><a name="47"> 47: </a></span>        assertListEquals(aCycles, new String[] { &quot;A&quot;, &quot;B&quot;, &quot;A&quot;});
+<span class="nocode"><a name="48"> 48: </a></span>
+<span class="nocode"><a name="49"> 49: </a></span>        List bCycles = new ArrayList();
+<span class="nocode"><a name="50"> 50: </a></span>        assertEquals(true, b.containsCycle());
+<span class="nocode"><a name="51"> 51: </a></span>        assertEquals(true, b.collectCycle(bCycles));
+<span class="nocode"><a name="52"> 52: </a></span>        assertListEquals(bCycles, new String[] { &quot;B&quot;, &quot;A&quot;, &quot;B&quot;});
+<span class="nocode"><a name="53"> 53: </a></span>    }
+<span class="nocode"><a name="54"> 54: </a></span>
+<span class="nocode"><a name="55"> 55: </a></span>    public void test3Node1BranchCycle() {
+<span class="nocode"><a name="56"> 56: </a></span>
+<span class="nocode"><a name="57"> 57: </a></span>        JavaPackage a = new JavaPackage(&quot;A&quot;);
+<span class="nocode"><a name="58"> 58: </a></span>        JavaPackage b = new JavaPackage(&quot;B&quot;);
+<span class="nocode"><a name="59"> 59: </a></span>        JavaPackage c = new JavaPackage(&quot;C&quot;);
+<span class="nocode"><a name="60"> 60: </a></span>
+<span class="nocode"><a name="61"> 61: </a></span>        a.dependsUpon(b);
+<span class="nocode"><a name="62"> 62: </a></span>        b.dependsUpon(c);
+<span class="nocode"><a name="63"> 63: </a></span>        c.dependsUpon(a);
+<span class="nocode"><a name="64"> 64: </a></span>
+<span class="nocode"><a name="65"> 65: </a></span>        List aCycles = new ArrayList();
+<span class="nocode"><a name="66"> 66: </a></span>        assertEquals(true, a.containsCycle());
+<span class="nocode"><a name="67"> 67: </a></span>        assertEquals(true, a.collectCycle(aCycles));
+<span class="nocode"><a name="68"> 68: </a></span>        assertListEquals(aCycles, new String[] { &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;A&quot;});
+<span class="nocode"><a name="69"> 69: </a></span>
+<span class="nocode"><a name="70"> 70: </a></span>        List bCycles = new ArrayList();
+<span class="nocode"><a name="71"> 71: </a></span>        assertEquals(true, b.containsCycle());
+<span class="nocode"><a name="72"> 72: </a></span>        assertEquals(true, b.collectCycle(bCycles));
+<span class="nocode"><a name="73"> 73: </a></span>        assertListEquals(bCycles, new String[] { &quot;B&quot;, &quot;C&quot;, &quot;A&quot;, &quot;B&quot;});
+<span class="nocode"><a name="74"> 74: </a></span>
+<span class="nocode"><a name="75"> 75: </a></span>        List cCycles = new ArrayList();
+<span class="nocode"><a name="76"> 76: </a></span>        assertEquals(true, c.containsCycle());
+<span class="nocode"><a name="77"> 77: </a></span>        assertEquals(true, c.collectCycle(cCycles));
+<span class="nocode"><a name="78"> 78: </a></span>        assertListEquals(cCycles, new String[] { &quot;C&quot;, &quot;A&quot;, &quot;B&quot;, &quot;C&quot;});
+<span class="nocode"><a name="79"> 79: </a></span>    }
+<span class="nocode"><a name="80"> 80: </a></span>
+<span class="nocode"><a name="81"> 81: </a></span>    public void test3Node1BranchSubCycle() {
+<span class="nocode"><a name="82"> 82: </a></span>
+<span class="nocode"><a name="83"> 83: </a></span>        JavaPackage a = new JavaPackage(&quot;A&quot;);
+<span class="nocode"><a name="84"> 84: </a></span>        JavaPackage b = new JavaPackage(&quot;B&quot;);
+<span class="nocode"><a name="85"> 85: </a></span>        JavaPackage c = new JavaPackage(&quot;C&quot;);
+<span class="nocode"><a name="86"> 86: </a></span>
+<span class="nocode"><a name="87"> 87: </a></span>        a.dependsUpon(b);
+<span class="nocode"><a name="88"> 88: </a></span>        b.dependsUpon(c);
+<span class="nocode"><a name="89"> 89: </a></span>        c.dependsUpon(b);
+<span class="nocode"><a name="90"> 90: </a></span>
+<span class="nocode"><a name="91"> 91: </a></span>        List aCycles = new ArrayList();
+<span class="nocode"><a name="92"> 92: </a></span>        assertEquals(true, a.containsCycle());
+<span class="nocode"><a name="93"> 93: </a></span>        assertEquals(true, a.collectCycle(aCycles));
+<span class="nocode"><a name="94"> 94: </a></span>        assertListEquals(aCycles, new String[] { &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;B&quot;});
+<span class="nocode"><a name="95"> 95: </a></span>
+<span class="nocode"><a name="96"> 96: </a></span>        List bCycles = new ArrayList();
+<span class="nocode"><a name="97"> 97: </a></span>        assertEquals(true, b.containsCycle());
+<span class="nocode"><a name="98"> 98: </a></span>        assertEquals(true, b.collectCycle(bCycles));
+<span class="nocode"><a name="99"> 99: </a></span>        assertListEquals(bCycles, new String[] { &quot;B&quot;, &quot;C&quot;, &quot;B&quot;});
+<span class="nocode"><a name="100">100: </a></span>
+<span class="nocode"><a name="101">101: </a></span>        List cCycles = new ArrayList();
+<span class="nocode"><a name="102">102: </a></span>        assertEquals(true, c.containsCycle());
+<span class="nocode"><a name="103">103: </a></span>        assertEquals(true, c.collectCycle(cCycles));
+<span class="nocode"><a name="104">104: </a></span>        assertListEquals(cCycles, new String[] { &quot;C&quot;, &quot;B&quot;, &quot;C&quot;});
+<span class="nocode"><a name="105">105: </a></span>    }
+<span class="nocode"><a name="106">106: </a></span>
+<span class="nocode"><a name="107">107: </a></span>    public void test3Node2BranchCycle() {
+<span class="nocode"><a name="108">108: </a></span>
+<span class="nocode"><a name="109">109: </a></span>        JavaPackage a = new JavaPackage(&quot;A&quot;);
+<span class="nocode"><a name="110">110: </a></span>        JavaPackage b = new JavaPackage(&quot;B&quot;);
+<span class="nocode"><a name="111">111: </a></span>        JavaPackage c = new JavaPackage(&quot;C&quot;);
+<span class="nocode"><a name="112">112: </a></span>
+<span class="nocode"><a name="113">113: </a></span>        a.dependsUpon(b);
+<span class="nocode"><a name="114">114: </a></span>        b.dependsUpon(a);
+<span class="nocode"><a name="115">115: </a></span>
+<span class="nocode"><a name="116">116: </a></span>        a.dependsUpon(c);
+<span class="nocode"><a name="117">117: </a></span>        c.dependsUpon(a);
+<span class="nocode"><a name="118">118: </a></span>
+<span class="nocode"><a name="119">119: </a></span>        List aCycles = new ArrayList();
+<span class="nocode"><a name="120">120: </a></span>        assertEquals(true, a.containsCycle());
+<span class="nocode"><a name="121">121: </a></span>        assertEquals(true, a.collectCycle(aCycles));
+<span class="nocode"><a name="122">122: </a></span>        assertListEquals(aCycles, new String[] { &quot;A&quot;, &quot;B&quot;, &quot;A&quot;});
+<span class="nocode"><a name="123">123: </a></span>
+<span class="nocode"><a name="124">124: </a></span>        List bCycles = new ArrayList();
+<span class="nocode"><a name="125">125: </a></span>        assertEquals(true, b.containsCycle());
+<span class="nocode"><a name="126">126: </a></span>        assertEquals(true, b.collectCycle(bCycles));
+<span class="nocode"><a name="127">127: </a></span>        assertListEquals(bCycles, new String[] { &quot;B&quot;, &quot;A&quot;, &quot;B&quot;});
+<span class="nocode"><a name="128">128: </a></span>
+<span class="nocode"><a name="129">129: </a></span>        List cCycles = new ArrayList();
+<span class="nocode"><a name="130">130: </a></span>        assertEquals(true, c.containsCycle());
+<span class="nocode"><a name="131">131: </a></span>        assertEquals(true, c.collectCycle(cCycles));
+<span class="nocode"><a name="132">132: </a></span>        assertListEquals(cCycles, new String[] { &quot;C&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;});
+<span class="nocode"><a name="133">133: </a></span>    }
+<span class="nocode"><a name="134">134: </a></span>
+<span class="nocode"><a name="135">135: </a></span>    public void test5Node2BranchCycle() {
+<span class="nocode"><a name="136">136: </a></span>
+<span class="nocode"><a name="137">137: </a></span>        JavaPackage a = new JavaPackage(&quot;A&quot;);
+<span class="nocode"><a name="138">138: </a></span>        JavaPackage b = new JavaPackage(&quot;B&quot;);
+<span class="nocode"><a name="139">139: </a></span>        JavaPackage c = new JavaPackage(&quot;C&quot;);
+<span class="nocode"><a name="140">140: </a></span>        JavaPackage d = new JavaPackage(&quot;D&quot;);
+<span class="nocode"><a name="141">141: </a></span>        JavaPackage e = new JavaPackage(&quot;E&quot;);
+<span class="nocode"><a name="142">142: </a></span>
+<span class="nocode"><a name="143">143: </a></span>        a.dependsUpon(b);
+<span class="nocode"><a name="144">144: </a></span>        b.dependsUpon(c);
+<span class="nocode"><a name="145">145: </a></span>        c.dependsUpon(a);
+<span class="nocode"><a name="146">146: </a></span>
+<span class="nocode"><a name="147">147: </a></span>        a.dependsUpon(d);
+<span class="nocode"><a name="148">148: </a></span>        d.dependsUpon(e);
+<span class="nocode"><a name="149">149: </a></span>        e.dependsUpon(a);
+<span class="nocode"><a name="150">150: </a></span>
+<span class="nocode"><a name="151">151: </a></span>        List aCycles = new ArrayList();
+<span class="nocode"><a name="152">152: </a></span>        assertEquals(true, a.containsCycle());
+<span class="nocode"><a name="153">153: </a></span>        assertEquals(true, a.collectCycle(aCycles));
+<span class="nocode"><a name="154">154: </a></span>        assertListEquals(aCycles, new String[] { &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;A&quot;});
+<span class="nocode"><a name="155">155: </a></span>
+<span class="nocode"><a name="156">156: </a></span>        List bCycles = new ArrayList();
+<span class="nocode"><a name="157">157: </a></span>        assertEquals(true, b.containsCycle());
+<span class="nocode"><a name="158">158: </a></span>        assertEquals(true, b.collectCycle(bCycles));
+<span class="nocode"><a name="159">159: </a></span>        assertListEquals(bCycles, new String[] { &quot;B&quot;, &quot;C&quot;, &quot;A&quot;, &quot;B&quot;});
+<span class="nocode"><a name="160">160: </a></span>
+<span class="nocode"><a name="161">161: </a></span>        List cCycles = new ArrayList();
+<span class="nocode"><a name="162">162: </a></span>        assertEquals(true, c.containsCycle());
+<span class="nocode"><a name="163">163: </a></span>        assertEquals(true, c.collectCycle(cCycles));
+<span class="nocode"><a name="164">164: </a></span>        assertListEquals(cCycles, new String[] { &quot;C&quot;, &quot;A&quot;, &quot;B&quot;, &quot;C&quot;});
+<span class="nocode"><a name="165">165: </a></span>
+<span class="nocode"><a name="166">166: </a></span>        List dCycles = new ArrayList();
+<span class="nocode"><a name="167">167: </a></span>        assertEquals(true, d.containsCycle());
+<span class="nocode"><a name="168">168: </a></span>        assertEquals(true, d.collectCycle(dCycles));
+<span class="nocode"><a name="169">169: </a></span>        assertListEquals(dCycles, new String[] { &quot;D&quot;, &quot;E&quot;, &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;A&quot;});
+<span class="nocode"><a name="170">170: </a></span>
+<span class="nocode"><a name="171">171: </a></span>        List eCycles = new ArrayList();
+<span class="nocode"><a name="172">172: </a></span>        assertEquals(true, e.containsCycle());
+<span class="nocode"><a name="173">173: </a></span>        assertEquals(true, e.collectCycle(eCycles));
+<span class="nocode"><a name="174">174: </a></span>        assertListEquals(eCycles, new String[] { &quot;E&quot;, &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;A&quot;});
+<span class="nocode"><a name="175">175: </a></span>    }
+<span class="nocode"><a name="176">176: </a></span>
+<span class="nocode"><a name="177">177: </a></span>    protected void assertListEquals(List list, String names[]) {
+<span class="nocode"><a name="178">178: </a></span>
+<span class="nocode"><a name="179">179: </a></span>        assertEquals(names.length, list.size());
+<span class="nocode"><a name="180">180: </a></span>
+<span class="nocode"><a name="181">181: </a></span>        for (int i = 0; i &lt; names.length; i++) {
+<span class="nocode"><a name="182">182: </a></span>            assertEquals(names[i], ((JavaPackage) list.get(i)).getName());
+<span class="nocode"><a name="183">183: </a></span>        }
+<span class="nocode"><a name="184">184: </a></span>    }
+<span class="nocode"><a name="185">185: </a></span>
+<span class="nocode"><a name="186">186: </a></span>    protected void printCycles(List list) {
+<span class="nocode"><a name="187">187: </a></span>        Iterator i = list.iterator();
+<span class="nocode"><a name="188">188: </a></span>        while (i.hasNext()) {
+<span class="nocode"><a name="189">189: </a></span>            JavaPackage p = (JavaPackage) i.next();
+<span class="nocode"><a name="190">190: </a></span>            if (i.hasNext()) {
+<span class="nocode"><a name="191">191: </a></span>                System.out.print(p.getName() + &quot;-&gt;&quot;);
+<span class="nocode"><a name="192">192: </a></span>            } else {
+<span class="nocode"><a name="193">193: </a></span>                System.out.println(p.getName());
+<span class="nocode"><a name="194">194: </a></span>            }
+<span class="nocode"><a name="195">195: </a></span>        }
+<span class="nocode"><a name="196">196: </a></span>    }
+<span class="nocode"><a name="197">197: </a></span>}
+</pre><table class="mutation_table" summary="Mutations">
+<tr><th>ID</th><th>Line</th><th>Type</th><th>Detected</th></tr><tr><td>318</td><td><a href="#23">23</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>319</td><td><a href="#26">26</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>320</td><td><a href="#26">26</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>321</td><td><a href="#26">26</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>322</td><td><a href="#26">26(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>323</td><td><a href="#27">27</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>324</td><td><a href="#27">27</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>325</td><td><a href="#27">27</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>326</td><td><a href="#27">27(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>327</td><td><a href="#28">28</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>328</td><td><a href="#28">28</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>329</td><td><a href="#28">28</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>330</td><td><a href="#31">31</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>331</td><td><a href="#31">31</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>332</td><td><a href="#31">31</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>333</td><td><a href="#31">31(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>334</td><td><a href="#32">32</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>335</td><td><a href="#32">32</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>336</td><td><a href="#32">32</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>337</td><td><a href="#32">32(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>338</td><td><a href="#33">33</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>339</td><td><a href="#33">33</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>340</td><td><a href="#33">33</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>341</td><td><a href="#41">41</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>342</td><td><a href="#42">42</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>344</td><td><a href="#45">45</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>345</td><td><a href="#45">45</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>343</td><td><a href="#45">45</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>346</td><td><a href="#45">45</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>347</td><td><a href="#45">45(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>349</td><td><a href="#46">46</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>350</td><td><a href="#46">46</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>348</td><td><a href="#46">46</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>351</td><td><a href="#46">46</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>352</td><td><a href="#46">46(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>354</td><td><a href="#47">47</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>356</td><td><a href="#47">47(1)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>359</td><td><a href="#47">47(2)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>362</td><td><a href="#47">47(3)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>355</td><td><a href="#47">47</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>357</td><td><a href="#47">47(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>360</td><td><a href="#47">47(2)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>363</td><td><a href="#47">47(3)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>353</td><td><a href="#47">47</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>358</td><td><a href="#47">47(2)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>361</td><td><a href="#47">47(3)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>364</td><td><a href="#47">47</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>366</td><td><a href="#50">50</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>367</td><td><a href="#50">50</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>365</td><td><a href="#50">50</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>368</td><td><a href="#50">50</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>369</td><td><a href="#50">50(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>371</td><td><a href="#51">51</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>372</td><td><a href="#51">51</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>370</td><td><a href="#51">51</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>373</td><td><a href="#51">51</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>374</td><td><a href="#51">51(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>376</td><td><a href="#52">52</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>378</td><td><a href="#52">52(1)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>381</td><td><a href="#52">52(2)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>384</td><td><a href="#52">52(3)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>377</td><td><a href="#52">52</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>379</td><td><a href="#52">52(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>382</td><td><a href="#52">52(2)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>385</td><td><a href="#52">52(3)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>375</td><td><a href="#52">52</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>380</td><td><a href="#52">52(2)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>383</td><td><a href="#52">52(3)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>386</td><td><a href="#52">52</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>387</td><td><a href="#61">61</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>388</td><td><a href="#62">62</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>389</td><td><a href="#63">63</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>391</td><td><a href="#66">66</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>392</td><td><a href="#66">66</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>390</td><td><a href="#66">66</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>393</td><td><a href="#66">66</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>394</td><td><a href="#66">66(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>396</td><td><a href="#67">67</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>397</td><td><a href="#67">67</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>395</td><td><a href="#67">67</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>398</td><td><a href="#67">67</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>399</td><td><a href="#67">67(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>401</td><td><a href="#68">68</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>403</td><td><a href="#68">68(1)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>406</td><td><a href="#68">68(2)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>409</td><td><a href="#68">68(3)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>412</td><td><a href="#68">68(4)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>402</td><td><a href="#68">68</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>404</td><td><a href="#68">68(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>407</td><td><a href="#68">68(2)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>410</td><td><a href="#68">68(3)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>413</td><td><a href="#68">68(4)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>400</td><td><a href="#68">68</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>405</td><td><a href="#68">68(2)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>408</td><td><a href="#68">68(3)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>411</td><td><a href="#68">68(4)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>414</td><td><a href="#68">68</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>416</td><td><a href="#71">71</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>417</td><td><a href="#71">71</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>415</td><td><a href="#71">71</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>418</td><td><a href="#71">71</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>419</td><td><a href="#71">71(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>421</td><td><a href="#72">72</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>422</td><td><a href="#72">72</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>420</td><td><a href="#72">72</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>423</td><td><a href="#72">72</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>424</td><td><a href="#72">72(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>426</td><td><a href="#73">73</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>428</td><td><a href="#73">73(1)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>431</td><td><a href="#73">73(2)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>434</td><td><a href="#73">73(3)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>437</td><td><a href="#73">73(4)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>427</td><td><a href="#73">73</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>429</td><td><a href="#73">73(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>432</td><td><a href="#73">73(2)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>435</td><td><a href="#73">73(3)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>438</td><td><a href="#73">73(4)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>425</td><td><a href="#73">73</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>430</td><td><a href="#73">73(2)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>433</td><td><a href="#73">73(3)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>436</td><td><a href="#73">73(4)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>439</td><td><a href="#73">73</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>441</td><td><a href="#76">76</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>442</td><td><a href="#76">76</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>440</td><td><a href="#76">76</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>443</td><td><a href="#76">76</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>444</td><td><a href="#76">76(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>446</td><td><a href="#77">77</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>447</td><td><a href="#77">77</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>445</td><td><a href="#77">77</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>448</td><td><a href="#77">77</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>449</td><td><a href="#77">77(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>451</td><td><a href="#78">78</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>453</td><td><a href="#78">78(1)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>456</td><td><a href="#78">78(2)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>459</td><td><a href="#78">78(3)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>462</td><td><a href="#78">78(4)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>452</td><td><a href="#78">78</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>454</td><td><a href="#78">78(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>457</td><td><a href="#78">78(2)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>460</td><td><a href="#78">78(3)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>463</td><td><a href="#78">78(4)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>450</td><td><a href="#78">78</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>455</td><td><a href="#78">78(2)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>458</td><td><a href="#78">78(3)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>461</td><td><a href="#78">78(4)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>464</td><td><a href="#78">78</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>465</td><td><a href="#87">87</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>466</td><td><a href="#88">88</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>467</td><td><a href="#89">89</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>469</td><td><a href="#92">92</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>470</td><td><a href="#92">92</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>468</td><td><a href="#92">92</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>471</td><td><a href="#92">92</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>472</td><td><a href="#92">92(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>474</td><td><a href="#93">93</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>475</td><td><a href="#93">93</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>473</td><td><a href="#93">93</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>476</td><td><a href="#93">93</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>477</td><td><a href="#93">93(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>479</td><td><a href="#94">94</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>481</td><td><a href="#94">94(1)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>484</td><td><a href="#94">94(2)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>487</td><td><a href="#94">94(3)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>490</td><td><a href="#94">94(4)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>480</td><td><a href="#94">94</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>482</td><td><a href="#94">94(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>485</td><td><a href="#94">94(2)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>488</td><td><a href="#94">94(3)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>491</td><td><a href="#94">94(4)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>478</td><td><a href="#94">94</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>483</td><td><a href="#94">94(2)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>486</td><td><a href="#94">94(3)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>489</td><td><a href="#94">94(4)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>492</td><td><a href="#94">94</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>494</td><td><a href="#97">97</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>495</td><td><a href="#97">97</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>493</td><td><a href="#97">97</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>496</td><td><a href="#97">97</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>497</td><td><a href="#97">97(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>499</td><td><a href="#98">98</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>500</td><td><a href="#98">98</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>498</td><td><a href="#98">98</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>501</td><td><a href="#98">98</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>502</td><td><a href="#98">98(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>504</td><td><a href="#99">99</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>506</td><td><a href="#99">99(1)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>509</td><td><a href="#99">99(2)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>512</td><td><a href="#99">99(3)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>505</td><td><a href="#99">99</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>507</td><td><a href="#99">99(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>510</td><td><a href="#99">99(2)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>513</td><td><a href="#99">99(3)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>503</td><td><a href="#99">99</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>508</td><td><a href="#99">99(2)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>511</td><td><a href="#99">99(3)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>514</td><td><a href="#99">99</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>516</td><td><a href="#102">102</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>517</td><td><a href="#102">102</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>515</td><td><a href="#102">102</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>518</td><td><a href="#102">102</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>519</td><td><a href="#102">102(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>521</td><td><a href="#103">103</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>522</td><td><a href="#103">103</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>520</td><td><a href="#103">103</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>523</td><td><a href="#103">103</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>524</td><td><a href="#103">103(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>526</td><td><a href="#104">104</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>528</td><td><a href="#104">104(1)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>531</td><td><a href="#104">104(2)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>534</td><td><a href="#104">104(3)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>527</td><td><a href="#104">104</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>529</td><td><a href="#104">104(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>532</td><td><a href="#104">104(2)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>535</td><td><a href="#104">104(3)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>525</td><td><a href="#104">104</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>530</td><td><a href="#104">104(2)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>533</td><td><a href="#104">104(3)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>536</td><td><a href="#104">104</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>537</td><td><a href="#113">113</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>538</td><td><a href="#114">114</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>539</td><td><a href="#116">116</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>540</td><td><a href="#117">117</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>542</td><td><a href="#120">120</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>543</td><td><a href="#120">120</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>541</td><td><a href="#120">120</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>544</td><td><a href="#120">120</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>545</td><td><a href="#120">120(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>547</td><td><a href="#121">121</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>548</td><td><a href="#121">121</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>546</td><td><a href="#121">121</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>549</td><td><a href="#121">121</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>550</td><td><a href="#121">121(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>552</td><td><a href="#122">122</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>554</td><td><a href="#122">122(1)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>557</td><td><a href="#122">122(2)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>560</td><td><a href="#122">122(3)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>553</td><td><a href="#122">122</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>555</td><td><a href="#122">122(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>558</td><td><a href="#122">122(2)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>561</td><td><a href="#122">122(3)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>551</td><td><a href="#122">122</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>556</td><td><a href="#122">122(2)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>559</td><td><a href="#122">122(3)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>562</td><td><a href="#122">122</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>564</td><td><a href="#125">125</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>565</td><td><a href="#125">125</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>563</td><td><a href="#125">125</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>566</td><td><a href="#125">125</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>567</td><td><a href="#125">125(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>569</td><td><a href="#126">126</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>570</td><td><a href="#126">126</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>568</td><td><a href="#126">126</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>571</td><td><a href="#126">126</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>572</td><td><a href="#126">126(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>574</td><td><a href="#127">127</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>576</td><td><a href="#127">127(1)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>579</td><td><a href="#127">127(2)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>582</td><td><a href="#127">127(3)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>575</td><td><a href="#127">127</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>577</td><td><a href="#127">127(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>580</td><td><a href="#127">127(2)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>583</td><td><a href="#127">127(3)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>573</td><td><a href="#127">127</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>578</td><td><a href="#127">127(2)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>581</td><td><a href="#127">127(3)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>584</td><td><a href="#127">127</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>586</td><td><a href="#130">130</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>587</td><td><a href="#130">130</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>585</td><td><a href="#130">130</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>588</td><td><a href="#130">130</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>589</td><td><a href="#130">130(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>591</td><td><a href="#131">131</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>592</td><td><a href="#131">131</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>590</td><td><a href="#131">131</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>593</td><td><a href="#131">131</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>594</td><td><a href="#131">131(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>596</td><td><a href="#132">132</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>598</td><td><a href="#132">132(1)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>601</td><td><a href="#132">132(2)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>604</td><td><a href="#132">132(3)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>607</td><td><a href="#132">132(4)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>597</td><td><a href="#132">132</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>599</td><td><a href="#132">132(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>602</td><td><a href="#132">132(2)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>605</td><td><a href="#132">132(3)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>608</td><td><a href="#132">132(4)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>595</td><td><a href="#132">132</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>600</td><td><a href="#132">132(2)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>603</td><td><a href="#132">132(3)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>606</td><td><a href="#132">132(4)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>609</td><td><a href="#132">132</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>610</td><td><a href="#143">143</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>611</td><td><a href="#144">144</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>612</td><td><a href="#145">145</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>613</td><td><a href="#147">147</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>614</td><td><a href="#148">148</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>615</td><td><a href="#149">149</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>617</td><td><a href="#152">152</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>618</td><td><a href="#152">152</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>616</td><td><a href="#152">152</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>619</td><td><a href="#152">152</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>620</td><td><a href="#152">152(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>622</td><td><a href="#153">153</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>623</td><td><a href="#153">153</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>621</td><td><a href="#153">153</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>624</td><td><a href="#153">153</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>625</td><td><a href="#153">153(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>627</td><td><a href="#154">154</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>629</td><td><a href="#154">154(1)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>632</td><td><a href="#154">154(2)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>635</td><td><a href="#154">154(3)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>638</td><td><a href="#154">154(4)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>628</td><td><a href="#154">154</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>630</td><td><a href="#154">154(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>633</td><td><a href="#154">154(2)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>636</td><td><a href="#154">154(3)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>639</td><td><a href="#154">154(4)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>626</td><td><a href="#154">154</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>631</td><td><a href="#154">154(2)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>634</td><td><a href="#154">154(3)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>637</td><td><a href="#154">154(4)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>640</td><td><a href="#154">154</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>642</td><td><a href="#157">157</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>643</td><td><a href="#157">157</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>641</td><td><a href="#157">157</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>644</td><td><a href="#157">157</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>645</td><td><a href="#157">157(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>647</td><td><a href="#158">158</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>648</td><td><a href="#158">158</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>646</td><td><a href="#158">158</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>649</td><td><a href="#158">158</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>650</td><td><a href="#158">158(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>652</td><td><a href="#159">159</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>654</td><td><a href="#159">159(1)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>657</td><td><a href="#159">159(2)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>660</td><td><a href="#159">159(3)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>663</td><td><a href="#159">159(4)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>653</td><td><a href="#159">159</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>655</td><td><a href="#159">159(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>658</td><td><a href="#159">159(2)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>661</td><td><a href="#159">159(3)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>664</td><td><a href="#159">159(4)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>651</td><td><a href="#159">159</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>656</td><td><a href="#159">159(2)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>659</td><td><a href="#159">159(3)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>662</td><td><a href="#159">159(4)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>665</td><td><a href="#159">159</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>667</td><td><a href="#162">162</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>668</td><td><a href="#162">162</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>666</td><td><a href="#162">162</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>669</td><td><a href="#162">162</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>670</td><td><a href="#162">162(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>672</td><td><a href="#163">163</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>673</td><td><a href="#163">163</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>671</td><td><a href="#163">163</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>674</td><td><a href="#163">163</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>675</td><td><a href="#163">163(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>677</td><td><a href="#164">164</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>679</td><td><a href="#164">164(1)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>682</td><td><a href="#164">164(2)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>685</td><td><a href="#164">164(3)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>688</td><td><a href="#164">164(4)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>678</td><td><a href="#164">164</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>680</td><td><a href="#164">164(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>683</td><td><a href="#164">164(2)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>686</td><td><a href="#164">164(3)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>689</td><td><a href="#164">164(4)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>676</td><td><a href="#164">164</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>681</td><td><a href="#164">164(2)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>684</td><td><a href="#164">164(3)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>687</td><td><a href="#164">164(4)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>690</td><td><a href="#164">164</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>692</td><td><a href="#167">167</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>693</td><td><a href="#167">167</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>691</td><td><a href="#167">167</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>694</td><td><a href="#167">167</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>695</td><td><a href="#167">167(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>697</td><td><a href="#168">168</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>698</td><td><a href="#168">168</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>696</td><td><a href="#168">168</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>699</td><td><a href="#168">168</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>700</td><td><a href="#168">168(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>702</td><td><a href="#169">169</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>704</td><td><a href="#169">169(1)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>707</td><td><a href="#169">169(2)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>710</td><td><a href="#169">169(3)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>713</td><td><a href="#169">169(4)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>716</td><td><a href="#169">169(5)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>719</td><td><a href="#169">169(6)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>703</td><td><a href="#169">169</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>705</td><td><a href="#169">169(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>708</td><td><a href="#169">169(2)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>711</td><td><a href="#169">169(3)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>714</td><td><a href="#169">169(4)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>717</td><td><a href="#169">169(5)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>720</td><td><a href="#169">169(6)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>701</td><td><a href="#169">169</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>706</td><td><a href="#169">169(2)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>709</td><td><a href="#169">169(3)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>712</td><td><a href="#169">169(4)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>715</td><td><a href="#169">169(5)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>718</td><td><a href="#169">169(6)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>721</td><td><a href="#169">169</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>723</td><td><a href="#172">172</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>724</td><td><a href="#172">172</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>722</td><td><a href="#172">172</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>725</td><td><a href="#172">172</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>726</td><td><a href="#172">172(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>728</td><td><a href="#173">173</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>729</td><td><a href="#173">173</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>727</td><td><a href="#173">173</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>730</td><td><a href="#173">173</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>731</td><td><a href="#173">173(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>733</td><td><a href="#174">174</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>735</td><td><a href="#174">174(1)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>738</td><td><a href="#174">174(2)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>741</td><td><a href="#174">174(3)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>744</td><td><a href="#174">174(4)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>747</td><td><a href="#174">174(5)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>734</td><td><a href="#174">174</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>736</td><td><a href="#174">174(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>739</td><td><a href="#174">174(2)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>742</td><td><a href="#174">174(3)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>745</td><td><a href="#174">174(4)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>748</td><td><a href="#174">174(5)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>732</td><td><a href="#174">174</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>737</td><td><a href="#174">174(2)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>740</td><td><a href="#174">174(3)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>743</td><td><a href="#174">174(4)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>746</td><td><a href="#174">174(5)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>749</td><td><a href="#174">174</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>750</td><td><a href="#179">179</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>751</td><td><a href="#179">179(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>752</td><td><a href="#181">181</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>753</td><td><a href="#181">181</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>754</td><td><a href="#181">181</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>755</td><td><a href="#182">182</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>756</td><td><a href="#182">182(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>757</td><td><a href="#182">182(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>758</td><td><a href="#187">187</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>760</td><td><a href="#188">188</a></td><td>Negate jump condition</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>759</td><td><a href="#188">188</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>761</td><td><a href="#189">189</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>763</td><td><a href="#190">190</a></td><td>Negate jump condition</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>762</td><td><a href="#190">190</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>764</td><td><a href="#191">191</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>765</td><td><a href="#191">191(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>766</td><td><a href="#191">191(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>767</td><td><a href="#191">191(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>768</td><td><a href="#191">191(4)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>769</td><td><a href="#193">193</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>770</td><td><a href="#193">193(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>
+src.sudoku.Box
+</title>
+<link href="prettify.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="prettify.js"></script>
+</head>
+<body onload="prettyPrint()">
+<h2>Javalanche report for class:<br/> src.sudoku.Box </h2><pre class="prettyprint" style="border: 1px solid #888;padding: 2px"><span class="nocode"><a name="1">  1: </a></span>package src.sudoku;
+<span class="nocode"><a name="2">  2: </a></span>
+<span class="nocode"><a name="3">  3: </a></span>import java.util.ArrayList;
+<span class="nocode"><a name="4">  4: </a></span>import java.util.Iterator;
+<span class="nocode"><a name="5">  5: </a></span>import java.util.List;
+<span class="nocode"><a name="6">  6: </a></span>
+<span class="nocode"><a name="7">  7: </a></span>public class Box {
+<span class="nocode"><a name="8">  8: </a></span>    private List&lt;Integer&gt; possibleValues = new ArrayList&lt;Integer&gt;();
+<span class="nocode"><a name="9">  9: </a></span>
+<span class="nocode"><a name="10"> 10: </a></span>    private int row;
+<span class="nocode"><a name="11"> 11: </a></span>
+<span class="nocode"><a name="12"> 12: </a></span>    private int column;
+<span class="nocode"><a name="13"> 13: </a></span>
+<span class="nocode"><a name="14"> 14: </a></span>    public Box(int puzzleDimension, int row, int column) {
+<span class="nocode"><a name="15"> 15: </a></span>        setRowAndColumn(row, column);
+<span class="nocode"><a name="16"> 16: </a></span>        for (int i = 0; i &lt; puzzleDimension; i++)
+<span class="nocode"><a name="17"> 17: </a></span>            possibleValues.add(i + 1);
+<span class="nocode"><a name="18"> 18: </a></span>
+<span class="nocode"><a name="19"> 19: </a></span>    }
+<span class="nocode"><a name="20"> 20: </a></span>
+<span class="nocode"><a name="21"> 21: </a></span>    public Box(int dimension, int row, int column, int possibleValue) {
+<span class="nocode"><a name="22"> 22: </a></span>        setRowAndColumn(row, column);
+<span class="nocode"><a name="23"> 23: </a></span>        possibleValues.add(possibleValue);
+<span class="nocode"><a name="24"> 24: </a></span>    }
+<span class="nocode"><a name="25"> 25: </a></span>
+<span class="nocode"><a name="26"> 26: </a></span>    public int numberOfPossibleValues() {
+<span class="nocode"><a name="27"> 27: </a></span>        return possibleValues.size();
+<span class="nocode"><a name="28"> 28: </a></span>    }
+<span class="nocode"><a name="29"> 29: </a></span>
+<span class="nocode"><a name="30"> 30: </a></span>    public int row() {
+<span class="nocode"><a name="31"> 31: </a></span>        return row;
+<span class="nocode"><a name="32"> 32: </a></span>    }
+<span class="nocode"><a name="33"> 33: </a></span>
+<span class="nocode"><a name="34"> 34: </a></span>    public int column() {
+<span class="nocode"><a name="35"> 35: </a></span>        return column;
+<span class="nocode"><a name="36"> 36: </a></span>    }
+<span class="nocode"><a name="37"> 37: </a></span>
+<span class="nocode"><a name="38"> 38: </a></span>    public void setValue(int currentValue) {
+<span class="nocode"><a name="39"> 39: </a></span>        possibleValues = new ArrayList&lt;Integer&gt;();
+<span class="nocode"><a name="40"> 40: </a></span>        possibleValues.add(currentValue);
+<span class="nocode"><a name="41"> 41: </a></span>    }
+<span class="nocode"><a name="42"> 42: </a></span>
+<span class="nocode"><a name="43"> 43: </a></span>    public void removePossibleValue(int valueToBeRemoved) {
+<span class="nocode"><a name="44"> 44: </a></span>        for (int i = 0; i &lt; possibleValues.size(); i++)
+<span class="nocode"><a name="45"> 45: </a></span>            if (possibleValues.get(i).intValue() == valueToBeRemoved)
+<span class="nocode"><a name="46"> 46: </a></span>                possibleValues.remove(i);
+<span class="nocode"><a name="47"> 47: </a></span>    }
+<span class="nocode"><a name="48"> 48: </a></span>
+<span class="nocode"><a name="49"> 49: </a></span>    public int getSolvedValue() {
+<span class="nocode"><a name="50"> 50: </a></span>        return possibleValues.get(0);
+<span class="nocode"><a name="51"> 51: </a></span>    }
+<span class="nocode"><a name="52"> 52: </a></span>
+<span class="nocode"><a name="53"> 53: </a></span>    public boolean isSolved() {
+<span class="nocode"><a name="54"> 54: </a></span>        return SudokuUtils.length(possibleValues) == 1;
+<span class="nocode"><a name="55"> 55: </a></span>    }
+<span class="nocode"><a name="56"> 56: </a></span>
+<span class="nocode"><a name="57"> 57: </a></span>    public List&lt;Integer&gt; getPossibleValues() {
+<span class="nocode"><a name="58"> 58: </a></span>        return possibleValues;
+<span class="nocode"><a name="59"> 59: </a></span>    }
+<span class="nocode"><a name="60"> 60: </a></span>
+<span class="nocode"><a name="61"> 61: </a></span>    public void copyPossibleValues(List&lt;Integer&gt; possibleValues) {
+<span class="nocode"><a name="62"> 62: </a></span>        this.possibleValues = new ArrayList&lt;Integer&gt;();
+<span class="nocode"><a name="63"> 63: </a></span>        for (Integer possibleValue : possibleValues)
+<span class="nocode"><a name="64"> 64: </a></span>            this.possibleValues.add(possibleValue);
+<span class="nocode"><a name="65"> 65: </a></span>    }
+<span class="nocode"><a name="66"> 66: </a></span>
+<span class="nocode"><a name="67"> 67: </a></span>    public List&lt;Box&gt; getPeers(Puzzle puzzle) {
+<span class="nocode"><a name="68"> 68: </a></span>        ArrayList&lt;Box&gt; peers = new ArrayList&lt;Box&gt;();
+<span class="nocode"><a name="69"> 69: </a></span>        addUnique(peers, getPeersInSameRow(puzzle));
+<span class="nocode"><a name="70"> 70: </a></span>        addUnique(peers, getPeersInSameColumn(puzzle));
+<span class="nocode"><a name="71"> 71: </a></span>        addUnique(peers, getPeersInSameSubSquare(puzzle));
+<span class="nocode"><a name="72"> 72: </a></span>        return peers;
+<span class="nocode"><a name="73"> 73: </a></span>    }
+<span class="nocode"><a name="74"> 74: </a></span>
+<span class="nocode"><a name="75"> 75: </a></span>    public List&lt;List&lt;Box&gt;&gt; getPeersPerUnit(Puzzle puzzle) {
+<span class="nocode"><a name="76"> 76: </a></span>        List&lt;List&lt;Box&gt;&gt; peersPerUnit = new ArrayList&lt;List&lt;Box&gt;&gt;();
+<span class="nocode"><a name="77"> 77: </a></span>        peersPerUnit.add(getPeersInSameRow(puzzle));
+<span class="nocode"><a name="78"> 78: </a></span>        peersPerUnit.add(getPeersInSameColumn(puzzle));
+<span class="nocode"><a name="79"> 79: </a></span>        peersPerUnit.add(getPeersInSameSubSquare(puzzle));
+<span class="nocode"><a name="80"> 80: </a></span>        return peersPerUnit;
+<span class="nocode"><a name="81"> 81: </a></span>    }
+<span class="nocode"><a name="82"> 82: </a></span>
+<span class="nocode"><a name="83"> 83: </a></span>    public List&lt;Box&gt; getPeersInSameRow(Puzzle puzzle) {
+<span class="nocode"><a name="84"> 84: </a></span>        ArrayList&lt;Box&gt; boxes = new ArrayList&lt;Box&gt;();
+<span class="nocode"><a name="85"> 85: </a></span>        for (int currentcolumn = 0; currentcolumn &lt; puzzle.dimension(); currentcolumn++)
+<span class="nocode"><a name="86"> 86: </a></span>            boxes.add(puzzle.getBox(row(), currentcolumn));
+<span class="nocode"><a name="87"> 87: </a></span>        boxes.remove(this);
+<span class="nocode"><a name="88"> 88: </a></span>        return boxes;
+<span class="nocode"><a name="89"> 89: </a></span>    }
+<span class="nocode"><a name="90"> 90: </a></span>
+<span class="nocode"><a name="91"> 91: </a></span>    public List&lt;Box&gt; getPeersInSameColumn(Puzzle puzzle) {
+<span class="nocode"><a name="92"> 92: </a></span>        ArrayList&lt;Box&gt; boxes = new ArrayList&lt;Box&gt;();
+<span class="nocode"><a name="93"> 93: </a></span>        for (int currentrow = 0; currentrow &lt; puzzle.dimension(); currentrow++)
+<span class="nocode"><a name="94"> 94: </a></span>            boxes.add(puzzle.getBox(currentrow, column()));
+<span class="nocode"><a name="95"> 95: </a></span>        boxes.remove(this);
+<span class="nocode"><a name="96"> 96: </a></span>        return boxes;
+<span class="nocode"><a name="97"> 97: </a></span>    }
+<span class="nocode"><a name="98"> 98: </a></span>
+<span class="nocode"><a name="99"> 99: </a></span>    public List&lt;Box&gt; getPeersInSameSubSquare(Puzzle puzzle) {
+<span class="nocode"><a name="100">100: </a></span>        List&lt;Box&gt; boxes = new ArrayList&lt;Box&gt;();
+<span class="nocode"><a name="101">101: </a></span>        int subSquares = (int) Math.sqrt(puzzle.dimension());
+<span class="nocode"><a name="102">102: </a></span>
+<span class="nocode"><a name="103">103: </a></span>        int startingsSubSquareRow = (row() / subSquares) * subSquares;
+<span class="nocode"><a name="104">104: </a></span>        int startingSubSquareColumn = (column() / subSquares) * subSquares;
+<span class="nocode"><a name="105">105: </a></span>
+<span class="nocode"><a name="106">106: </a></span>        int endingSubSquarerow = startingsSubSquareRow + subSquares;
+<span class="nocode"><a name="107">107: </a></span>        int endingSubSquarecolumn = startingSubSquareColumn + subSquares;
+<span class="nocode"><a name="108">108: </a></span>
+<span class="nocode"><a name="109">109: </a></span>        for (int row = startingsSubSquareRow; row &lt; endingSubSquarerow; row++)
+<span class="nocode"><a name="110">110: </a></span>            for (int column = startingSubSquareColumn; column &lt; endingSubSquarecolumn; column++)
+<span class="nocode"><a name="111">111: </a></span>                boxes.add(puzzle.getBox(row, column));
+<span class="nocode"><a name="112">112: </a></span>        boxes.remove(this);
+<span class="nocode"><a name="113">113: </a></span>        return boxes;
+<span class="nocode"><a name="114">114: </a></span>    }
+<span class="nocode"><a name="115">115: </a></span>
+<span class="nocode"><a name="116">116: </a></span>    public List&lt;Box&gt; removeSolvedValuesFromPeers(Puzzle puzzle) throws DuplicateBoxesWithSameSolutionException {
+<span class="nocode"><a name="117">117: </a></span>        List&lt;Box&gt; newSolvedBoxes = new ArrayList&lt;Box&gt;();
+<span class="nocode"><a name="118">118: </a></span>        List&lt;Box&gt; peers = getUnsolvedPeers(puzzle);
+<span class="nocode"><a name="119">119: </a></span>        for (Box peer : peers) {
+<span class="nocode"><a name="120">120: </a></span>            peer.removePossibleValue(getSolvedValue());
+<span class="nocode"><a name="121">121: </a></span>
+<span class="nocode"><a name="122">122: </a></span>            if (peer.isSolved())
+<span class="nocode"><a name="123">123: </a></span>                newSolvedBoxes.add(peer);
+<span class="nocode"><a name="124">124: </a></span>        }
+<span class="nocode"><a name="125">125: </a></span>
+<span class="nocode"><a name="126">126: </a></span>        puzzle.checkForDuplicates();
+<span class="nocode"><a name="127">127: </a></span>
+<span class="nocode"><a name="128">128: </a></span>        return newSolvedBoxes;
+<span class="nocode"><a name="129">129: </a></span>    }
+<span class="nocode"><a name="130">130: </a></span>
+<span class="nocode"><a name="131">131: </a></span>    public List&lt;Box&gt; getUnsolvedPeers(Puzzle puzzle) {
+<span class="nocode"><a name="132">132: </a></span>        List&lt;Box&gt; peers = getPeers(puzzle);
+<span class="nocode"><a name="133">133: </a></span>        for (Iterator&lt;Box&gt; iter = peers.iterator(); iter.hasNext();) {
+<span class="nocode"><a name="134">134: </a></span>            Box peer = iter.next();
+<span class="nocode"><a name="135">135: </a></span>            if (peer.isSolved())
+<span class="nocode"><a name="136">136: </a></span>                iter.remove();
+<span class="nocode"><a name="137">137: </a></span>        }
+<span class="nocode"><a name="138">138: </a></span>        return peers;
+<span class="nocode"><a name="139">139: </a></span>    }
+<span class="nocode"><a name="140">140: </a></span>
+<span class="nocode"><a name="141">141: </a></span>    public boolean anyPeerHasDuplicateSolvedValue(Puzzle puzzle) {
+<span class="nocode"><a name="142">142: </a></span>        List&lt;Box&gt; peers = getPeers(puzzle);
+<span class="nocode"><a name="143">143: </a></span>        for (Box peer : peers) {
+<span class="nocode"><a name="144">144: </a></span>            if (peer.hasSameSolvedValue(this)) {
+<span class="nocode"><a name="145">145: </a></span>                return true;
+<span class="nocode"><a name="146">146: </a></span>            }
+<span class="nocode"><a name="147">147: </a></span>        }
+<span class="nocode"><a name="148">148: </a></span>        return false;
+<span class="nocode"><a name="149">149: </a></span>    }
+<span class="nocode"><a name="150">150: </a></span>
+<span class="nocode"><a name="151">151: </a></span>    public boolean equals(Object o) {
+<span class="nocode"><a name="152">152: </a></span>        Box anotherBox = (Box) o;
+<span class="nocode"><a name="153">153: </a></span>        return row == anotherBox.row &amp;&amp; column == anotherBox.column;
+<span class="nocode"><a name="154">154: </a></span>    }
+<span class="nocode"><a name="155">155: </a></span>
+<span class="nocode"><a name="156">156: </a></span>    public int hashCode() {
+<span class="nocode"><a name="157">157: </a></span>        return (&quot;&quot; + row + &quot;/&quot; + column).hashCode();
+<span class="nocode"><a name="158">158: </a></span>    }
+<span class="nocode"><a name="159">159: </a></span>
+<span class="nocode"><a name="160">160: </a></span>    public String toString() {
+<span class="nocode"><a name="161">161: </a></span>        String asString = &quot;&quot; + row + &quot;:&quot; + column + &quot;[&quot;;
+<span class="nocode"><a name="162">162: </a></span>        for (int possibleValue : possibleValues) {
+<span class="nocode"><a name="163">163: </a></span>            asString += possibleValue;
+<span class="nocode"><a name="164">164: </a></span>        }
+<span class="nocode"><a name="165">165: </a></span>
+<span class="nocode"><a name="166">166: </a></span>        asString += &quot;]&quot;;
+<span class="nocode"><a name="167">167: </a></span>
+<span class="nocode"><a name="168">168: </a></span>        return asString;
+<span class="nocode"><a name="169">169: </a></span>    }
+<span class="nocode"><a name="170">170: </a></span>
+<span class="nocode"><a name="171">171: </a></span>    private boolean hasSameSolvedValue(Box box) {
+<span class="nocode"><a name="172">172: </a></span>        if (!isSolved() || !box.isSolved())
+<span class="nocode"><a name="173">173: </a></span>            return false;
+<span class="nocode"><a name="174">174: </a></span>
+<span class="nocode"><a name="175">175: </a></span>        return getSolvedValue() == box.getSolvedValue();
+<span class="nocode"><a name="176">176: </a></span>    }
+<span class="nocode"><a name="177">177: </a></span>
+<span class="nocode"><a name="178">178: </a></span>    private void setRowAndColumn(int row, int column) {
+<span class="nocode"><a name="179">179: </a></span>        this.row = row;
+<span class="nocode"><a name="180">180: </a></span>        this.column = column;
+<span class="nocode"><a name="181">181: </a></span>    }
+<span class="nocode"><a name="182">182: </a></span>
+<span class="nocode"><a name="183">183: </a></span>    private void addUnique(ArrayList&lt;Box&gt; peers, List&lt;Box&gt; peersInSameRow) {
+<span class="nocode"><a name="184">184: </a></span>        for (Box peer : peersInSameRow)
+<span class="nocode"><a name="185">185: </a></span>            if (!peers.contains(peer))
+<span class="nocode"><a name="186">186: </a></span>                peers.add(peer);
+<span class="nocode"><a name="187">187: </a></span>    }
+<span class="nocode"><a name="188">188: </a></span>}
+</pre><table class="mutation_table" summary="Mutations">
+<tr><th>ID</th><th>Line</th><th>Type</th><th>Detected</th></tr><tr><td>234</td><td><a href="#15">15</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>235</td><td><a href="#16">16</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>236</td><td><a href="#16">16</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>243</td><td><a href="#16">16</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>238</td><td><a href="#17">17</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>239</td><td><a href="#17">17</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>237</td><td><a href="#17">17</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>240</td><td><a href="#17">17</a></td><td>Replace arithmetic operator</td><td><img src="detected.png"/></td></tr>
+<tr><td>241</td><td><a href="#17">17</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>242</td><td><a href="#17">17(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>244</td><td><a href="#22">22</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>245</td><td><a href="#23">23</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>246</td><td><a href="#23">23(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>247</td><td><a href="#27">27</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>248</td><td><a href="#40">40</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>249</td><td><a href="#40">40(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>250</td><td><a href="#44">44</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>251</td><td><a href="#44">44</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>257</td><td><a href="#44">44</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>256</td><td><a href="#44">44</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>254</td><td><a href="#45">45</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>252</td><td><a href="#45">45</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>253</td><td><a href="#45">45(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>255</td><td><a href="#46">46</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>258</td><td><a href="#50">50</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>259</td><td><a href="#50">50</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>260</td><td><a href="#50">50</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>261</td><td><a href="#50">50(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>264</td><td><a href="#54">54</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>268</td><td><a href="#54">54(1)</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>270</td><td><a href="#54">54(2)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>265</td><td><a href="#54">54</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>269</td><td><a href="#54">54(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>271</td><td><a href="#54">54(2)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>263</td><td><a href="#54">54</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>267</td><td><a href="#54">54(1)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>266</td><td><a href="#54">54</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>262</td><td><a href="#54">54</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>276</td><td><a href="#63">63</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>272</td><td><a href="#63">63</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>273</td><td><a href="#63">63(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>275</td><td><a href="#63">63(2)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>274</td><td><a href="#64">64</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>277</td><td><a href="#69">69</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>278</td><td><a href="#69">69(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>279</td><td><a href="#70">70</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>280</td><td><a href="#70">70(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>281</td><td><a href="#71">71</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>282</td><td><a href="#71">71(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>283</td><td><a href="#77">77</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>284</td><td><a href="#77">77(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>285</td><td><a href="#78">78</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>286</td><td><a href="#78">78(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>287</td><td><a href="#79">79</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>288</td><td><a href="#79">79(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>289</td><td><a href="#85">85</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>290</td><td><a href="#85">85</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>295</td><td><a href="#85">85</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>294</td><td><a href="#85">85</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>291</td><td><a href="#86">86</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>292</td><td><a href="#86">86(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>293</td><td><a href="#86">86(2)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>296</td><td><a href="#87">87</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>297</td><td><a href="#93">93</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>298</td><td><a href="#93">93</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>303</td><td><a href="#93">93</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>302</td><td><a href="#93">93</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>299</td><td><a href="#94">94</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>300</td><td><a href="#94">94(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>301</td><td><a href="#94">94(2)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>304</td><td><a href="#95">95</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>305</td><td><a href="#101">101</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>306</td><td><a href="#101">101(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>308</td><td><a href="#103">103</a></td><td>Replace arithmetic operator</td><td><img src="detected.png"/></td></tr>
+<tr><td>309</td><td><a href="#103">103(1)</a></td><td>Replace arithmetic operator</td><td><img src="detected.png"/></td></tr>
+<tr><td>307</td><td><a href="#103">103</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>311</td><td><a href="#104">104</a></td><td>Replace arithmetic operator</td><td><img src="detected.png"/></td></tr>
+<tr><td>312</td><td><a href="#104">104(1)</a></td><td>Replace arithmetic operator</td><td><img src="detected.png"/></td></tr>
+<tr><td>310</td><td><a href="#104">104</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>313</td><td><a href="#106">106</a></td><td>Replace arithmetic operator</td><td><img src="detected.png"/></td></tr>
+<tr><td>314</td><td><a href="#107">107</a></td><td>Replace arithmetic operator</td><td><img src="detected.png"/></td></tr>
+<tr><td>318</td><td><a href="#109">109</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>317</td><td><a href="#110">110</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>315</td><td><a href="#111">111</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>316</td><td><a href="#111">111(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>319</td><td><a href="#112">112</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>320</td><td><a href="#118">118</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>329</td><td><a href="#119">119</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>321</td><td><a href="#119">119</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>322</td><td><a href="#119">119(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>328</td><td><a href="#119">119(2)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>323</td><td><a href="#120">120</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>324</td><td><a href="#120">120(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>326</td><td><a href="#122">122</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>325</td><td><a href="#122">122</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>327</td><td><a href="#123">123</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>330</td><td><a href="#126">126</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>331</td><td><a href="#132">132</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>338</td><td><a href="#133">133</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>332</td><td><a href="#133">133</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>337</td><td><a href="#133">133(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>333</td><td><a href="#134">134</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>335</td><td><a href="#135">135</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>334</td><td><a href="#135">135</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>336</td><td><a href="#136">136</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>339</td><td><a href="#142">142</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>348</td><td><a href="#143">143</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>340</td><td><a href="#143">143</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>341</td><td><a href="#143">143(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>347</td><td><a href="#143">143(2)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>343</td><td><a href="#144">144</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>342</td><td><a href="#144">144</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>345</td><td><a href="#145">145</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>346</td><td><a href="#145">145</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>344</td><td><a href="#145">145</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>349</td><td><a href="#148">148</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>350</td><td><a href="#148">148</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>354</td><td><a href="#153">153</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>356</td><td><a href="#153">153(1)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>355</td><td><a href="#153">153</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>357</td><td><a href="#153">153(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>353</td><td><a href="#153">153</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>351</td><td><a href="#153">153</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>352</td><td><a href="#153">153(1)</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>358</td><td><a href="#157">157</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>359</td><td><a href="#157">157(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>360</td><td><a href="#157">157(2)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>361</td><td><a href="#157">157(3)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>362</td><td><a href="#157">157(4)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>363</td><td><a href="#161">161</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>364</td><td><a href="#161">161(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>365</td><td><a href="#161">161(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>366</td><td><a href="#161">161(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>367</td><td><a href="#161">161(4)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>375</td><td><a href="#162">162</a></td><td>Negate jump condition</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>368</td><td><a href="#162">162</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>369</td><td><a href="#162">162(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>370</td><td><a href="#162">162(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>374</td><td><a href="#162">162(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>371</td><td><a href="#163">163</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>372</td><td><a href="#163">163(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>373</td><td><a href="#163">163(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>376</td><td><a href="#166">166</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>377</td><td><a href="#166">166(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>378</td><td><a href="#166">166(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>380</td><td><a href="#172">172</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>382</td><td><a href="#172">172(1)</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>379</td><td><a href="#172">172</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>381</td><td><a href="#172">172(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>383</td><td><a href="#173">173</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>384</td><td><a href="#173">173</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>389</td><td><a href="#175">175</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>391</td><td><a href="#175">175(1)</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>390</td><td><a href="#175">175</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>392</td><td><a href="#175">175(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>388</td><td><a href="#175">175</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>387</td><td><a href="#175">175</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>385</td><td><a href="#175">175</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>386</td><td><a href="#175">175(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>399</td><td><a href="#184">184</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>393</td><td><a href="#184">184</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>394</td><td><a href="#184">184(1)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>398</td><td><a href="#184">184(2)</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>396</td><td><a href="#185">185</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>395</td><td><a href="#185">185</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>397</td><td><a href="#186">186</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+</table>
+</body>
+</html>

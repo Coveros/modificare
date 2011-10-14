@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>
+src.sudoku.SudokuUtils
+</title>
+<link href="prettify.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="prettify.js"></script>
+</head>
+<body onload="prettyPrint()">
+<h2>Javalanche report for class:<br/> src.sudoku.SudokuUtils </h2><pre class="prettyprint" style="border: 1px solid #888;padding: 2px"><span class="nocode"><a name="1">  1: </a></span>package src.sudoku;
+<span class="nocode"><a name="2">  2: </a></span>
+<span class="nocode"><a name="3">  3: </a></span>import java.util.List;
+<span class="nocode"><a name="4">  4: </a></span>
+<span class="nocode"><a name="5">  5: </a></span>public class SudokuUtils {
+<span class="nocode"><a name="6">  6: </a></span>
+<span class="nocode"><a name="7">  7: </a></span>    public static int length(String str) {
+<span class="nocode"><a name="8">  8: </a></span>        return str == null ? 0 : str.length();
+<span class="nocode"><a name="9">  9: </a></span>    }
+<span class="nocode"><a name="10"> 10: </a></span>
+<span class="nocode"><a name="11"> 11: </a></span>    public static boolean isEmpty(String val) {
+<span class="nocode"><a name="12"> 12: </a></span>        return val == null || val.equals(&quot;&quot;);
+<span class="nocode"><a name="13"> 13: </a></span>    }
+<span class="nocode"><a name="14"> 14: </a></span>
+<span class="nocode"><a name="15"> 15: </a></span>    public static int length(List list) {
+<span class="nocode"><a name="16"> 16: </a></span>        return list == null ? 0 : list.size();
+<span class="nocode"><a name="17"> 17: </a></span>    }
+<span class="nocode"><a name="18"> 18: </a></span>
+<span class="nocode"><a name="19"> 19: </a></span>}
+</pre><table class="mutation_table" summary="Mutations">
+<tr><th>ID</th><th>Line</th><th>Type</th><th>Detected</th></tr><tr><td>401</td><td><a href="#8">8</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>402</td><td><a href="#8">8</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>400</td><td><a href="#8">8</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>403</td><td><a href="#8">8</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>407</td><td><a href="#12">12</a></td><td>Constant +1</td><td><img src="detected.png"/></td></tr>
+<tr><td>410</td><td><a href="#12">12(1)</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>408</td><td><a href="#12">12</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>411</td><td><a href="#12">12(1)</a></td><td>Constant -1</td><td><img src="detected.png"/></td></tr>
+<tr><td>409</td><td><a href="#12">12(1)</a></td><td>Replace Constant by 0</td><td><img src="detected.png"/></td></tr>
+<tr><td>404</td><td><a href="#12">12</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>406</td><td><a href="#12">12(1)</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>405</td><td><a href="#12">12</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+<tr><td>413</td><td><a href="#16">16</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>414</td><td><a href="#16">16</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>412</td><td><a href="#16">16</a></td><td>Negate jump condition</td><td><img src="detected.png"/></td></tr>
+<tr><td>415</td><td><a href="#16">16</a></td><td>Remove method call</td><td><img src="detected.png"/></td></tr>
+</table>
+</body>
+</html>

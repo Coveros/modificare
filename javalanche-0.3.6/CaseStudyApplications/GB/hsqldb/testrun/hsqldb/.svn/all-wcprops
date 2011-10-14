@@ -1,0 +1,311 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb
+END
+TestSelfModify.txt
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfModify.txt
+END
+TestSelfRoleNesting.txt
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfRoleNesting.txt
+END
+TestSelfSchemaPersistA1.txt
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfSchemaPersistA1.txt
+END
+TestSelfSchemaPersistA2.txt
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfSchemaPersistA2.txt
+END
+TestSelfViews.txt
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfViews.txt
+END
+TestSelfSchemaPersistC1.txt
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfSchemaPersistC1.txt
+END
+TestSelfViewsReconnect.txt
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfViewsReconnect.txt
+END
+TestSelfInPredicateReferencing.txt
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfInPredicateReferencing.txt
+END
+TestSelfSchemaPersistC2.txt
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfSchemaPersistC2.txt
+END
+TestSelfNot.txt
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfNot.txt
+END
+TestSelfCreate.txt
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfCreate.txt
+END
+TestSelfNameResolution.txt
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfNameResolution.txt
+END
+TestSelfFieldLimits.txt
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfFieldLimits.txt
+END
+TestSelfNameResolutionSchemas.txt
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfNameResolutionSchemas.txt
+END
+TestSelfConversions.txt
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfConversions.txt
+END
+TestSelfGrantees.txt
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfGrantees.txt
+END
+TestSelfMultiGrants.txt
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfMultiGrants.txt
+END
+TestSelfSysTables.txt
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfSysTables.txt
+END
+TestSelfIssues.txt
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfIssues.txt
+END
+TestSelfQueries.txt
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfQueries.txt
+END
+TestSelfPrimaryKeys.txt
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfPrimaryKeys.txt
+END
+TestSelfAlterTable.txt
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfAlterTable.txt
+END
+TestSelfJoins.txt
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfJoins.txt
+END
+TestSelfInsertDeleteQueries.txt
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfInsertDeleteQueries.txt
+END
+TestSelfGroupBy.txt
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfGroupBy.txt
+END
+TestSelfFKModes.txt
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfFKModes.txt
+END
+TestSelfRightCaching.txt
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfRightCaching.txt
+END
+TestSelfImmediateShutdown.txt
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfImmediateShutdown.txt
+END
+TestSelfViewSchemaResolve.txt
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfViewSchemaResolve.txt
+END
+TestSelfCasewhen.txt
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfCasewhen.txt
+END
+TestSelfSchemaPersistB1.txt
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfSchemaPersistB1.txt
+END
+TestSelfSchemaPersistB2.txt
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfSchemaPersistB2.txt
+END
+TestSelfTempTable1.txt
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfTempTable1.txt
+END
+TestSelfSchemaPersistD1.txt
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfSchemaPersistD1.txt
+END
+TestSelfTempTable2.txt
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfTempTable2.txt
+END
+TestSelfSchemaPersistD2.txt
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfSchemaPersistD2.txt
+END
+TestSelfVerify.txt
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfVerify.txt
+END
+TestSelfCheckConstraints.txt
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfCheckConstraints.txt
+END
+TestSelfConstraints.txt
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfConstraints.txt
+END
+TestSelfSchemaPerCachTbl1.txt
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfSchemaPerCachTbl1.txt
+END
+TestSelfSchemaPerCachTbl2.txt
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfSchemaPerCachTbl2.txt
+END
+TestSelfLeftJoin.txt
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfLeftJoin.txt
+END
+TestSelfUnions.txt
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfUnions.txt
+END
+TestSelfSubselects.txt
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfSubselects.txt
+END
+TestSelf.txt
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelf.txt
+END
+TestSelfImmediateShutdownRecover.txt
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfImmediateShutdownRecover.txt
+END
+runTest.bat
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/runTest.bat
+END
+TestSelfUserFunction.txt
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfUserFunction.txt
+END
+TestSelfAlterColumn.txt
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfAlterColumn.txt
+END
+TestSelfTransaction.txt
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/TestSelfTransaction.txt
+END
+runTest.sh
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/hsqldb/runTest.sh
+END

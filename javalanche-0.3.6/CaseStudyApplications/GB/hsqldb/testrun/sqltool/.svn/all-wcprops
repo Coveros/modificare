@@ -1,0 +1,359 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool
+END
+nq-arg1.nsql
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/nq-arg1.nsql
+END
+sql-blankfile.sql
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/sql-blankfile.sql
+END
+special-q-arg.sql
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/special-q-arg.sql
+END
+dsv-rejects.dsv
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/dsv-rejects.dsv
+END
+testPL.list
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/testPL.list
+END
+dsv-prepare.sql
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/dsv-prepare.sql
+END
+dsv-rejects.sql
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/dsv-rejects.sql
+END
+append.inter
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/append.inter
+END
+args-sql.sql
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/args-sql.sql
+END
+annotated-file.sql
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/annotated-file.sql
+END
+dsv-trimming-alt.dsv
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/dsv-trimming-alt.dsv
+END
+dsv-constcols.dsv
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/dsv-constcols.dsv
+END
+pl-variable.sql
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/pl-variable.sql
+END
+rawmode.sql
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/rawmode.sql
+END
+hist-recall-runquery.sql
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/hist-recall-runquery.sql
+END
+sql-blankint.sql
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/sql-blankint.sql
+END
+dsv-constcols.sql
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/dsv-constcols.sql
+END
+testComments.list
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/testComments.list
+END
+nq-noarg1.sql
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/nq-noarg1.sql
+END
+plcontrolflow.sql
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/plcontrolflow.sql
+END
+runtests.bash
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/runtests.bash
+END
+lastval.sql
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/lastval.sql
+END
+q-arg1.nsql
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/q-arg1.nsql
+END
+testArgs.list
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/testArgs.list
+END
+edit-s-switches.sql
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/edit-s-switches.sql
+END
+nq-noarg1.isql
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/nq-noarg1.isql
+END
+write.inter
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/write.inter
+END
+nullrep.dsv
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/nullrep.dsv
+END
+nq-arg1.isql
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/nq-arg1.isql
+END
+args-sqlni.sql
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/args-sqlni.sql
+END
+comment-midline.sql
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/comment-midline.sql
+END
+nullrep.sql
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/nullrep.sql
+END
+dsv-omits.dsv
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/dsv-omits.dsv
+END
+subst.inter
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/subst.inter
+END
+history.inter
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/history.inter
+END
+dsv-omits.sql
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/dsv-omits.sql
+END
+q-noarg1.sql
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/q-noarg1.sql
+END
+args-noinput.sql
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/args-noinput.sql
+END
+badsqlonly.nsql
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/badsqlonly.nsql
+END
+annotated-interactive.sql
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/annotated-interactive.sql
+END
+nullrep-alt.dsv
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/nullrep-alt.dsv
+END
+logic.sql
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/logic.sql
+END
+hist-recall-19.sql
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/hist-recall-19.sql
+END
+testEditing.list
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/testEditing.list
+END
+special-d.sql
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/special-d.sql
+END
+edit-a.sql
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/edit-a.sql
+END
+annotated-raw.sql
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/annotated-raw.sql
+END
+edit-s-noswitches.sql
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/edit-s-noswitches.sql
+END
+goodsqlonly.sql
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/goodsqlonly.sql
+END
+noop.sql
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/noop.sql
+END
+testSQL.list
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/testSQL.list
+END
+dsv-trimming.dsv
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/dsv-trimming.dsv
+END
+readme.txt
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/readme.txt
+END
+testHistory.list
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/testHistory.list
+END
+special-q.sql
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/special-q.sql
+END
+testcases.txt
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/testcases.txt
+END
+testSpecials.list
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/testSpecials.list
+END
+dsv-trimming.sql
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/dsv-trimming.sql
+END
+dsv-roundtrip.sql
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/testrun/sqltool/dsv-roundtrip.sql
+END

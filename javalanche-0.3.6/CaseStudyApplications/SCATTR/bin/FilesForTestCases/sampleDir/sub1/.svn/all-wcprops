@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/SCATTR/bin/FilesForTestCases/sampleDir/sub1
+END
+a
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/SCATTR/bin/FilesForTestCases/sampleDir/sub1/a
+END
+b
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/SCATTR/bin/FilesForTestCases/sampleDir/sub1/b
+END
+c
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/SCATTR/bin/FilesForTestCases/sampleDir/sub1/c
+END

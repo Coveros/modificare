@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/build
+END
+buildJDK11.bat
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/build/buildJDK11.bat
+END
+buildJDK12.bat
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/build/buildJDK12.bat
+END
+buildJDK14.bat
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/build/buildJDK14.bat
+END
+switchToJDK11.bat
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/build/switchToJDK11.bat
+END
+switchToJDK12.bat
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/build/switchToJDK12.bat
+END
+switchToJDK14.bat
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/build/switchToJDK14.bat
+END
+build.properties
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/build/build.properties
+END
+buildDoc.bat
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/build/buildDoc.bat
+END
+readmebuild.txt
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/build/readmebuild.txt
+END
+readmedocbook.txt
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/build/readmedocbook.txt
+END
+build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/build/build.xml
+END

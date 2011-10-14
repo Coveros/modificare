@@ -1,0 +1,215 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework
+END
+JavaClassBuilder.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/JavaClassBuilder.class
+END
+AbstractParser.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/AbstractParser.class
+END
+CollectAllCyclesTest.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/CollectAllCyclesTest.class
+END
+ClassFileParser.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/ClassFileParser.class
+END
+ClassFileParserTest.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/ClassFileParserTest.class
+END
+MetricTest.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/MetricTest.class
+END
+DependencyConstraint.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/DependencyConstraint.class
+END
+ConstraintTest.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/ConstraintTest.class
+END
+ClassFileParser$AttributeInfo.class
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/ClassFileParser$AttributeInfo.class
+END
+ExampleTest.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/ExampleTest.class
+END
+AllTests.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/AllTests.class
+END
+ParserListener.class
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/ParserListener.class
+END
+JavaClassBuilder$1.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/JavaClassBuilder$1.class
+END
+ExampleConcreteClass.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/ExampleConcreteClass.class
+END
+ExampleConcreteClass$ExampleInnerClass.class
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/ExampleConcreteClass$ExampleInnerClass.class
+END
+PropertyConfiguratorTest.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/PropertyConfiguratorTest.class
+END
+PropertyConfigurator.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/PropertyConfigurator.class
+END
+ClassFileParser$FieldOrMethodInfo.class
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/ClassFileParser$FieldOrMethodInfo.class
+END
+ExampleInterface.class
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/ExampleInterface.class
+END
+PackageComparator.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/PackageComparator.class
+END
+FilterTest.class
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/FilterTest.class
+END
+JarFileParserTest.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/JarFileParserTest.class
+END
+JavaClass$ClassComparator.class
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/JavaClass$ClassComparator.class
+END
+ExamplePackageClass.class
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/ExamplePackageClass.class
+END
+JavaPackage.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/JavaPackage.class
+END
+CycleTest.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/CycleTest.class
+END
+ClassFileParser$Constant.class
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/ClassFileParser$Constant.class
+END
+PackageFilter.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/PackageFilter.class
+END
+ComponentTest.class
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/ComponentTest.class
+END
+ExampleAbstractClass.class
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/ExampleAbstractClass.class
+END
+JDependTestCase.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/JDependTestCase.class
+END
+JavaClass.class
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/JavaClass.class
+END
+JDepend.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/JDepend.class
+END
+FileManagerTest.class
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/FileManagerTest.class
+END
+FileManager.class
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/JD/bin/jdepend/framework/FileManager.class
+END

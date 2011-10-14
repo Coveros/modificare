@@ -1,0 +1,122 @@
+> source("FDP_Start.R")
+> zLoadFit()
+> zLoadRand()
+> source("src/clusterinit.R")
+> AllCluster <- AllNewDellClusterInit()
+foreach: simple, scalable parallel programming from REvolution Computing
+Use REvolution R for scalability, fault tolerance and more.
+http://www.revolution-computing.com
+> ls()
+ [1] "AllCluster"            "AllNewDellClusterInit" "APFD"                 
+ [4] "APFD2"                 "GenerateSyntheticlFM"  "makeLogFM"            
+ [7] "MCOR"                  "Rand"                  "Rand_Multi_Rep"       
+[10] "Rand_Rep"              "zLoadFaultExperiment"  "zLoadFaultLibraries"  
+[13] "zLoadFit"              "zLoadGA"               "zLoadHC"              
+[16] "zLoadRand"             "zLoadSANN"             "zTryReload"           
+> clusterExport(AllCluster, "APFD")
+> clusterExport(AllCluster, "Rand")
+> clusterExport(AllCluster, "Rand_Rep")
+> clusterExport(AllCluster, "Rand_Multi_Rep")
+> clusterExport(AllCluster, "makeLogFM")
+> registerDoSNOW(AllCluster)
+> LF_Rand <- Rand_Multi_Rep(fFM = "FaultCoverageReports/LoopFinder_Fault.dat", 
++ Seed = 100, Trials = 1000, cPopSize = c(10, 50, 100, 500, 
++ 
++ 1000, 5000))
+[1] "Configurarions: "
+                                        fFM Trials cPopSize Seed
+1 FaultCoverageReports/LoopFinder_Fault.dat   1000       10  307
+2 FaultCoverageReports/LoopFinder_Fault.dat   1000       50  240
+3 FaultCoverageReports/LoopFinder_Fault.dat   1000      100  623
+4 FaultCoverageReports/LoopFinder_Fault.dat   1000      500  248
+5 FaultCoverageReports/LoopFinder_Fault.dat   1000     1000  175
+6 FaultCoverageReports/LoopFinder_Fault.dat   1000     5000  211
+  |                                                                              |                                                                      |   0%  |                                                                              |                                                                      |   0%
+  |                                                                              |============                                                          |  17%  |                                                                              |                                                                      |   0%
+  |                                                                              |=======================                                               |  33%  |                                                                              |                                                                      |   0%
+  |                                                                              |===================================                                   |  50%  |                                                                              |                                                                      |   0%
+  |                                                                              |===============================================                       |  67%  |                                                                              |                                                                      |   0%
+  |                                                                              |==========================================================            |  83%  |                                                                              |                                                                      |   0%
+  |                                                                              |======================================================================| 100%
+> write.table(LF_Rand, "datasets/LF_Rand.dat")
+> SK_Rand <- Rand_Multi_Rep(fFM = "FaultCoverageReports/Sudoku_Fault.dat", 
++ Seed = 100, Trials = 1000, cPopSize = c(10, 50, 100, 500, 
++ 
++ 1000, 5000))
+[1] "Configurarions: "
+                                    fFM Trials cPopSize Seed
+1 FaultCoverageReports/Sudoku_Fault.dat   1000       10  246
+2 FaultCoverageReports/Sudoku_Fault.dat   1000       50  708
+3 FaultCoverageReports/Sudoku_Fault.dat   1000      100  133
+4 FaultCoverageReports/Sudoku_Fault.dat   1000      500  875
+5 FaultCoverageReports/Sudoku_Fault.dat   1000     1000   19
+6 FaultCoverageReports/Sudoku_Fault.dat   1000     5000  548
+  |                                                                              |                                                                      |   0%  |                                                                              |                                                                      |   0%
+  |                                                                              |============                                                          |  17%  |                                                                              |                                                                      |   0%
+  |                                                                              |=======================                                               |  33%  |                                                                              |                                                                      |   0%
+  |                                                                              |===================================                                   |  50%  |                                                                              |                                                                      |   0%
+  |                                                                              |===============================================                       |  67%  |                                                                              |                                                                      |   0%
+  |                                                                              |==========================================================            |  83%  |                                                                              |                                                                      |   0%
+  |                                                                              |======================================================================| 100%
+> write.table(SK_Rand, "datasets/SK_Rand.dat")
+> RP_Rand <- Rand_Multi_Rep(fFM = "FaultCoverageReports/Redupr_Fault.dat", 
++ Seed = 100, Trials = 1000, cPopSize = c(10, 50, 100, 500, 
++ 
++ 1000, 5000))
+[1] "Configurarions: "
+                                    fFM Trials cPopSize Seed
+1 FaultCoverageReports/Redupr_Fault.dat   1000       10  734
+2 FaultCoverageReports/Redupr_Fault.dat   1000       50  794
+3 FaultCoverageReports/Redupr_Fault.dat   1000      100  620
+4 FaultCoverageReports/Redupr_Fault.dat   1000      500  996
+5 FaultCoverageReports/Redupr_Fault.dat   1000     1000  526
+6 FaultCoverageReports/Redupr_Fault.dat   1000     5000  760
+  |                                                                              |                                                                      |   0%  |                                                                              |                                                                      |   0%
+  |                                                                              |============                                                          |  17%  |                                                                              |                                                                      |   0%
+  |                                                                              |=======================                                               |  33%  |                                                                              |                                                                      |   0%
+  |                                                                              |===================================                                   |  50%  |                                                                              |                                                                      |   0%
+  |                                                                              |===============================================                       |  67%  |                                                                              |                                                                      |   0%
+  |                                                                              |==========================================================            |  83%  |                                                                              |                                                                      |   0%
+  |                                                                              |======================================================================| 100%
+> write.table(RP_Rand, "datasets/RP_Rand.dat")
+> JD_Rand <- Rand_Multi_Rep(fFM = "FaultCoverageReports/JDepend_Fault.dat", 
++ Seed = 100, Trials = 1000, cPopSize = c(10, 50, 100, 500, 
++ 
++ 1000, 5000))
+[1] "Configurarions: "
+                                     fFM Trials cPopSize Seed
+1 FaultCoverageReports/JDepend_Fault.dat   1000       10  777
+2 FaultCoverageReports/JDepend_Fault.dat   1000       50  667
+3 FaultCoverageReports/JDepend_Fault.dat   1000      100  245
+4 FaultCoverageReports/JDepend_Fault.dat   1000      500  160
+5 FaultCoverageReports/JDepend_Fault.dat   1000     1000  554
+6 FaultCoverageReports/JDepend_Fault.dat   1000     5000  264
+  |                                                                              |                                                                      |   0%  |                                                                              |                                                                      |   0%
+  |                                                                              |============                                                          |  17%  |                                                                              |                                                                      |   0%
+  |                                                                              |=======================                                               |  33%  |                                                                              |                                                                      |   0%
+  |                                                                              |===================================                                   |  50%  |                                                                              |                                                                      |   0%
+  |                                                                              |===============================================                       |  67%  |                                                                              |                                                                      |   0%
+  |                                                                              |==========================================================            |  83%  |                                                                              |                                                                      |   0%
+  |                                                                              |======================================================================| 100%
+> write.table(JD_Rand, "datasets/JD_Rand.dat")
+> DS_Rand <- Rand_Multi_Rep(fFM = "FaultCoverageReports/DataStructures_Fault.dat", 
++ Seed = 100, Trials = 1000, cPopSize = c(10, 50, 100, 500, 
++ 
++ 1000, 5000))
+[1] "Configurarions: "
+                                            fFM Trials cPopSize Seed
+1 FaultCoverageReports/DataStructures_Fault.dat   1000       10  925
+2 FaultCoverageReports/DataStructures_Fault.dat   1000       50  882
+3 FaultCoverageReports/DataStructures_Fault.dat   1000      100  234
+4 FaultCoverageReports/DataStructures_Fault.dat   1000      500  306
+5 FaultCoverageReports/DataStructures_Fault.dat   1000     1000  666
+6 FaultCoverageReports/DataStructures_Fault.dat   1000     5000  896
+  |                                                                              |                                                                      |   0%  |                                                                              |                                                                      |   0%
+  |                                                                              |============                                                          |  17%  |                                                                              |                                                                      |   0%
+  |                                                                              |=======================                                               |  33%  |                                                                              |                                                                      |   0%
+  |                                                                              |===================================                                   |  50%  |                                                                              |                                                                      |   0%
+  |                                                                              |===============================================                       |  67%  |                                                                              |                                                                      |   0%
+  |                                                                              |==========================================================            |  83%  |                                                                              |                                                                      |   0%
+  |                                                                              |======================================================================| 100%
+> write.table(DS_Rand, "datasets/DS_Rand.dat")
+> stopCluster(AllCluster)

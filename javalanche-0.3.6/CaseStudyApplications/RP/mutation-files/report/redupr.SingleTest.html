@@ -1,0 +1,347 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>
+redupr.SingleTest
+</title>
+<link href="prettify.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="prettify.js"></script>
+</head>
+<body onload="prettyPrint()">
+<h2>Javalanche report for class:<br/> redupr.SingleTest </h2><pre class="prettyprint" style="border: 1px solid #888;padding: 2px"><span class="nocode"><a name="1">  1: </a></span>/*---------------------------------------------------------------------
+<span class="nocode"><a name="2">  2: </a></span> *  File: $Id: SingleTest.java,v 1.9 2007/03/06 20:25:23 gkapfham Exp $   
+<span class="nocode"><a name="3">  3: </a></span> *  Version:  $Revision: 1.9 $
+<span class="nocode"><a name="4">  4: </a></span> *
+<span class="nocode"><a name="5">  5: </a></span> *  Project: DIATOMS, Database drIven Application Testing tOol ModuleS
+<span class="nocode"><a name="6">  6: </a></span> *
+<span class="nocode"><a name="7">  7: </a></span> *--------------------------------------------------------------------*/
+<span class="nocode"><a name="8">  8: </a></span>
+<span class="nocode"><a name="9">  9: </a></span>package redupr;
+<span class="nocode"><a name="10"> 10: </a></span>
+<span class="nocode"><a name="11"> 11: </a></span>import java.io.Serializable;
+<span class="nocode"><a name="12"> 12: </a></span>import java.lang.Cloneable;
+<span class="nocode"><a name="13"> 13: </a></span>
+<span class="nocode"><a name="14"> 14: </a></span>/**
+<span class="nocode"><a name="15"> 15: </a></span> *  This class represents a single test inside of a test suite.  It
+<span class="nocode"><a name="16"> 16: </a></span> *  is used to provide a layer of abstraction from all of the different
+<span class="nocode"><a name="17"> 17: </a></span> *  test suite and automation frameworks.
+<span class="nocode"><a name="18"> 18: </a></span> *
+<span class="nocode"><a name="19"> 19: </a></span> *  @author Gregory M. Kapfhammer 9/17/2005
+<span class="nocode"><a name="20"> 20: </a></span> */
+<span class="nocode"><a name="21"> 21: </a></span>
+<span class="nocode"><a name="22"> 22: </a></span>public class SingleTest implements Cloneable, Serializable
+<span class="nocode"><a name="23"> 23: </a></span>{
+<span class="nocode"><a name="24"> 24: </a></span>
+<span class="nocode"><a name="25"> 25: </a></span>    /** This is the default cost for all SingleTests */
+<span class="nocode"><a name="26"> 26: </a></span>    private static final double DEFAULT_COST = 1.0;
+<span class="nocode"><a name="27"> 27: </a></span>
+<span class="nocode"><a name="28"> 28: </a></span>    /** This is the default purchase price for the SingleTests; note
+<span class="nocode"><a name="29"> 29: </a></span>     that this would mean that a test was not selected at all. */
+<span class="nocode"><a name="30"> 30: </a></span>    private static final double DEFAULT_PRICE = 0.0;
+<span class="nocode"><a name="31"> 31: </a></span>
+<span class="nocode"><a name="32"> 32: </a></span>    /** The default extra cost ; normally we would not have an extra
+<span class="nocode"><a name="33"> 33: </a></span>	cost.  We only have to include this when we derive a new test
+<span class="nocode"><a name="34"> 34: </a></span>	suite from an input test suite that is supposed to exhibit 
+<span class="nocode"><a name="35"> 35: </a></span>	worst-case performance */
+<span class="nocode"><a name="36"> 36: </a></span>    private static final double DEFAULT_EXTRA_COST = 0.0;
+<span class="nocode"><a name="37"> 37: </a></span>
+<span class="nocode"><a name="38"> 38: </a></span>    /** The name of the test */
+<span class="nocode"><a name="39"> 39: </a></span>    private String name;
+<span class="nocode"><a name="40"> 40: </a></span>
+<span class="nocode"><a name="41"> 41: </a></span>    /** The index of the test */
+<span class="nocode"><a name="42"> 42: </a></span>    private int index;
+<span class="nocode"><a name="43"> 43: </a></span>
+<span class="nocode"><a name="44"> 44: </a></span>    /** The purchase price for this SingleTest */
+<span class="nocode"><a name="45"> 45: </a></span>    private double purchasePrice;
+<span class="nocode"><a name="46"> 46: </a></span>
+<span class="nocode"><a name="47"> 47: </a></span>    /** The cost for running this SingleTest ; this could correspond,
+<span class="nocode"><a name="48"> 48: </a></span>	in practice, to the time or space overhead required to 
+<span class="nocode"><a name="49"> 49: </a></span>	execute an individual test case */
+<span class="nocode"><a name="50"> 50: </a></span>    private double cost;
+<span class="nocode"><a name="51"> 51: </a></span>
+<span class="nocode"><a name="52"> 52: </a></span>    /** The extra cost that is associated with running a SingleTest if
+<span class="nocode"><a name="53"> 53: </a></span>	it is the LAST test case in the worst-case test suite that was
+<span class="nocode"><a name="54"> 54: </a></span>	derived from any input test suite */
+<span class="nocode"><a name="55"> 55: </a></span>    private double extraCost;
+<span class="nocode"><a name="56"> 56: </a></span>
+<span class="nocode"><a name="57"> 57: </a></span>    /** The desired effectiveness; mostly just use to build up the 
+<span class="nocode"><a name="58"> 58: </a></span>	correct string when it is sent along to Mathematica */
+<span class="nocode"><a name="59"> 59: </a></span>    private double desiredEffectiveness;
+<span class="nocode"><a name="60"> 60: </a></span>
+<span class="nocode"><a name="61"> 61: </a></span>    /**
+<span class="nocode"><a name="62"> 62: </a></span>     *  Construct a default instance.
+<span class="nocode"><a name="63"> 63: </a></span>     *  
+<span class="nocode"><a name="64"> 64: </a></span>     *  @author Gregory M. Kapfhammer 9/17/2005
+<span class="nocode"><a name="65"> 65: </a></span>     */
+<span class="nocode"><a name="66"> 66: </a></span>    public SingleTest()
+<span class="nocode"><a name="67"> 67: </a></span>    {
+<span class="nocode"><a name="68"> 68: </a></span>
+<span class="nocode"><a name="69"> 69: </a></span>	name = &quot;Test&quot;;
+<span class="nocode"><a name="70"> 70: </a></span>	index = 0;
+<span class="nocode"><a name="71"> 71: </a></span>
+<span class="nocode"><a name="72"> 72: </a></span>	// note that we assume that the cost is going 
+<span class="nocode"><a name="73"> 73: </a></span>	// to be the default
+<span class="nocode"><a name="74"> 74: </a></span>	cost = DEFAULT_COST;
+<span class="nocode"><a name="75"> 75: </a></span>	extraCost = DEFAULT_EXTRA_COST;
+<span class="nocode"><a name="76"> 76: </a></span>	purchasePrice = DEFAULT_PRICE;
+<span class="nocode"><a name="77"> 77: </a></span>
+<span class="nocode"><a name="78"> 78: </a></span>    }
+<span class="nocode"><a name="79"> 79: </a></span>
+<span class="nocode"><a name="80"> 80: </a></span>    /**
+<span class="nocode"><a name="81"> 81: </a></span>     *  Construct an instance with provide parameters.
+<span class="nocode"><a name="82"> 82: </a></span>     *  
+<span class="nocode"><a name="83"> 83: </a></span>     *  @author Gregory M. Kapfhammer 9/17/2005
+<span class="nocode"><a name="84"> 84: </a></span>     */
+<span class="nocode"><a name="85"> 85: </a></span>    public SingleTest(String name, int index)
+<span class="nocode"><a name="86"> 86: </a></span>    {
+<span class="nocode"><a name="87"> 87: </a></span>
+<span class="nocode"><a name="88"> 88: </a></span>	this.name = name;
+<span class="nocode"><a name="89"> 89: </a></span>	this.index = index;
+<span class="nocode"><a name="90"> 90: </a></span>
+<span class="nocode"><a name="91"> 91: </a></span>	// note that we assume that the cost is going 
+<span class="nocode"><a name="92"> 92: </a></span>	// to be the default
+<span class="nocode"><a name="93"> 93: </a></span>	cost = DEFAULT_COST;
+<span class="nocode"><a name="94"> 94: </a></span>	extraCost = DEFAULT_EXTRA_COST;
+<span class="nocode"><a name="95"> 95: </a></span>	purchasePrice = DEFAULT_PRICE;
+<span class="nocode"><a name="96"> 96: </a></span>
+<span class="nocode"><a name="97"> 97: </a></span>    }
+<span class="nocode"><a name="98"> 98: </a></span>
+<span class="nocode"><a name="99"> 99: </a></span>    /**
+<span class="nocode"><a name="100">100: </a></span>     *  Construct an instance with provide parameters.
+<span class="nocode"><a name="101">101: </a></span>     *  
+<span class="nocode"><a name="102">102: </a></span>     *  @author Gregory M. Kapfhammer 9/17/2005
+<span class="nocode"><a name="103">103: </a></span>     */
+<span class="nocode"><a name="104">104: </a></span>    public SingleTest(String name, int index, double cost)
+<span class="nocode"><a name="105">105: </a></span>    {
+<span class="nocode"><a name="106">106: </a></span>
+<span class="nocode"><a name="107">107: </a></span>	this.name = name;
+<span class="nocode"><a name="108">108: </a></span>	this.index = index;
+<span class="nocode"><a name="109">109: </a></span>	this.cost = cost;
+<span class="nocode"><a name="110">110: </a></span>
+<span class="nocode"><a name="111">111: </a></span>    }    
+<span class="nocode"><a name="112">112: </a></span>
+<span class="nocode"><a name="113">113: </a></span>    /**
+<span class="nocode"><a name="114">114: </a></span>     *  Set the name.
+<span class="nocode"><a name="115">115: </a></span>     *  
+<span class="nocode"><a name="116">116: </a></span>     *  @author Gregory M. Kapfhammer 9/17/2005
+<span class="nocode"><a name="117">117: </a></span>     */
+<span class="nocode"><a name="118">118: </a></span>    public void setName(String newName)
+<span class="nocode"><a name="119">119: </a></span>    {
+<span class="nocode"><a name="120">120: </a></span>
+<span class="nocode"><a name="121">121: </a></span>	name = newName;
+<span class="nocode"><a name="122">122: </a></span>
+<span class="nocode"><a name="123">123: </a></span>    }
+<span class="nocode"><a name="124">124: </a></span>
+<span class="nocode"><a name="125">125: </a></span>    /**
+<span class="nocode"><a name="126">126: </a></span>     *  Return the name.
+<span class="nocode"><a name="127">127: </a></span>     *  
+<span class="nocode"><a name="128">128: </a></span>     *  @author Gregory M. Kapfhammer 9/17/2005
+<span class="nocode"><a name="129">129: </a></span>     */
+<span class="nocode"><a name="130">130: </a></span>    public String getName()
+<span class="nocode"><a name="131">131: </a></span>    {
+<span class="nocode"><a name="132">132: </a></span>
+<span class="nocode"><a name="133">133: </a></span>	return name;
+<span class="nocode"><a name="134">134: </a></span>
+<span class="nocode"><a name="135">135: </a></span>    }
+<span class="nocode"><a name="136">136: </a></span>
+<span class="nocode"><a name="137">137: </a></span>    /**
+<span class="nocode"><a name="138">138: </a></span>     *  Set the index.
+<span class="nocode"><a name="139">139: </a></span>     *  
+<span class="nocode"><a name="140">140: </a></span>     *  @author Gregory M. Kapfhammer 9/17/2005
+<span class="nocode"><a name="141">141: </a></span>     */
+<span class="nocode"><a name="142">142: </a></span>    public void setIndex(int newIndex)
+<span class="nocode"><a name="143">143: </a></span>    {
+<span class="nocode"><a name="144">144: </a></span>
+<span class="nocode"><a name="145">145: </a></span>	index = newIndex;
+<span class="nocode"><a name="146">146: </a></span>
+<span class="nocode"><a name="147">147: </a></span>    }
+<span class="nocode"><a name="148">148: </a></span>
+<span class="nocode"><a name="149">149: </a></span>    /**
+<span class="nocode"><a name="150">150: </a></span>     *  Return the index.
+<span class="nocode"><a name="151">151: </a></span>     *  
+<span class="nocode"><a name="152">152: </a></span>     *  @author Gregory M. Kapfhammer 9/17/2005
+<span class="nocode"><a name="153">153: </a></span>     */
+<span class="nocode"><a name="154">154: </a></span>    public int getIndex()
+<span class="nocode"><a name="155">155: </a></span>    {
+<span class="nocode"><a name="156">156: </a></span>
+<span class="nocode"><a name="157">157: </a></span>	return index;
+<span class="nocode"><a name="158">158: </a></span>
+<span class="nocode"><a name="159">159: </a></span>    }    
+<span class="nocode"><a name="160">160: </a></span>
+<span class="nocode"><a name="161">161: </a></span>    /**
+<span class="nocode"><a name="162">162: </a></span>     *  Returns the cost.
+<span class="nocode"><a name="163">163: </a></span>     *  
+<span class="nocode"><a name="164">164: </a></span>     *  @author Gregory M. Kapfhammer 9/17/2005
+<span class="nocode"><a name="165">165: </a></span>     */
+<span class="nocode"><a name="166">166: </a></span>    public double getCost()
+<span class="nocode"><a name="167">167: </a></span>    {
+<span class="nocode"><a name="168">168: </a></span>
+<span class="nocode"><a name="169">169: </a></span>	return cost + extraCost;
+<span class="nocode"><a name="170">170: </a></span>
+<span class="nocode"><a name="171">171: </a></span>    }
+<span class="nocode"><a name="172">172: </a></span>
+<span class="nocode"><a name="173">173: </a></span>    /**
+<span class="nocode"><a name="174">174: </a></span>     *  Sets the cost.
+<span class="nocode"><a name="175">175: </a></span>     *  
+<span class="nocode"><a name="176">176: </a></span>     *  @author Gregory M. Kapfhammer 9/20/2005
+<span class="nocode"><a name="177">177: </a></span>     */
+<span class="nocode"><a name="178">178: </a></span>    public void setCost(double cost)
+<span class="nocode"><a name="179">179: </a></span>    {
+<span class="nocode"><a name="180">180: </a></span>
+<span class="nocode"><a name="181">181: </a></span>	this.cost = cost;
+<span class="nocode"><a name="182">182: </a></span>
+<span class="nocode"><a name="183">183: </a></span>    }
+<span class="nocode"><a name="184">184: </a></span>
+<span class="nocode"><a name="185">185: </a></span>    /**
+<span class="nocode"><a name="186">186: </a></span>     *  Sets the extra cost.
+<span class="nocode"><a name="187">187: </a></span>     *  
+<span class="nocode"><a name="188">188: </a></span>     *  @author Gregory M. Kapfhammer 9/24/2005
+<span class="nocode"><a name="189">189: </a></span>     */
+<span class="nocode"><a name="190">190: </a></span>    public void setExtraCost(double extra)
+<span class="nocode"><a name="191">191: </a></span>    {
+<span class="nocode"><a name="192">192: </a></span>
+<span class="nocode"><a name="193">193: </a></span>	this.extraCost = extra;
+<span class="nocode"><a name="194">194: </a></span>
+<span class="nocode"><a name="195">195: </a></span>    }
+<span class="nocode"><a name="196">196: </a></span>
+<span class="nocode"><a name="197">197: </a></span>    /**
+<span class="nocode"><a name="198">198: </a></span>     *  Gets the extra cost.
+<span class="nocode"><a name="199">199: </a></span>     *  
+<span class="nocode"><a name="200">200: </a></span>     *  @author Gregory M. Kapfhammer 9/24/2005
+<span class="nocode"><a name="201">201: </a></span>     */
+<span class="nocode"><a name="202">202: </a></span>    public double getExtraCost()
+<span class="nocode"><a name="203">203: </a></span>    {
+<span class="nocode"><a name="204">204: </a></span>
+<span class="nocode"><a name="205">205: </a></span>	return extraCost;
+<span class="nocode"><a name="206">206: </a></span>
+<span class="nocode"><a name="207">207: </a></span>    }    
+<span class="nocode"><a name="208">208: </a></span>
+<span class="nocode"><a name="209">209: </a></span>    /**
+<span class="nocode"><a name="210">210: </a></span>     *  Sets the desired effectiveness.  This is useful when we are 
+<span class="nocode"><a name="211">211: </a></span>     *  building up the constraint system that we must solve.
+<span class="nocode"><a name="212">212: </a></span>     *  
+<span class="nocode"><a name="213">213: </a></span>     *  @author Gregory M. Kapfhammer 9/24/2005
+<span class="nocode"><a name="214">214: </a></span>     */
+<span class="nocode"><a name="215">215: </a></span>    public void setDesiredEffectiveness(double effective)
+<span class="nocode"><a name="216">216: </a></span>    {
+<span class="nocode"><a name="217">217: </a></span>
+<span class="nocode"><a name="218">218: </a></span>
+<span class="nocode"><a name="219">219: </a></span>	desiredEffectiveness = effective;
+<span class="nocode"><a name="220">220: </a></span>
+<span class="nocode"><a name="221">221: </a></span>    }
+<span class="nocode"><a name="222">222: </a></span>
+<span class="nocode"><a name="223">223: </a></span>    /**
+<span class="nocode"><a name="224">224: </a></span>     *  Returns the desired effectiveness.
+<span class="nocode"><a name="225">225: </a></span>     *  
+<span class="nocode"><a name="226">226: </a></span>     *  @author Gregory M. Kapfhammer 9/24/2005
+<span class="nocode"><a name="227">227: </a></span>     */
+<span class="nocode"><a name="228">228: </a></span>    public double getDesiredEffectiveness()
+<span class="nocode"><a name="229">229: </a></span>    {
+<span class="nocode"><a name="230">230: </a></span>
+<span class="nocode"><a name="231">231: </a></span>	return desiredEffectiveness;
+<span class="nocode"><a name="232">232: </a></span>
+<span class="nocode"><a name="233">233: </a></span>    }
+<span class="nocode"><a name="234">234: </a></span>
+<span class="nocode"><a name="235">235: </a></span>    /**
+<span class="nocode"><a name="236">236: </a></span>     *  Purchase the SingleTest for a given cost.
+<span class="nocode"><a name="237">237: </a></span>     *  
+<span class="nocode"><a name="238">238: </a></span>     *  @author Gregory M. Kapfhammer 9/17/2005
+<span class="nocode"><a name="239">239: </a></span>     */
+<span class="nocode"><a name="240">240: </a></span>    public void purchase(double price)
+<span class="nocode"><a name="241">241: </a></span>    {
+<span class="nocode"><a name="242">242: </a></span>
+<span class="nocode"><a name="243">243: </a></span>	purchasePrice = price;
+<span class="nocode"><a name="244">244: </a></span>
+<span class="nocode"><a name="245">245: </a></span>    }
+<span class="nocode"><a name="246">246: </a></span>
+<span class="nocode"><a name="247">247: </a></span>    /**
+<span class="nocode"><a name="248">248: </a></span>     *  Returns the purchase price of the SingleTest.
+<span class="nocode"><a name="249">249: </a></span>     *  
+<span class="nocode"><a name="250">250: </a></span>     *  @author Gregory M. Kapfhammer 9/17/2005
+<span class="nocode"><a name="251">251: </a></span>     */
+<span class="nocode"><a name="252">252: </a></span>    public double getPurchasePrice()
+<span class="nocode"><a name="253">253: </a></span>    {
+<span class="nocode"><a name="254">254: </a></span>
+<span class="nocode"><a name="255">255: </a></span>	return purchasePrice;
+<span class="nocode"><a name="256">256: </a></span>
+<span class="nocode"><a name="257">257: </a></span>    }
+<span class="nocode"><a name="258">258: </a></span>
+<span class="nocode"><a name="259">259: </a></span>    /**
+<span class="nocode"><a name="260">260: </a></span>     *  @author Gregory M. Kapfhammer 9/17/2005
+<span class="nocode"><a name="261">261: </a></span>     */
+<span class="nocode"><a name="262">262: </a></span>    public String toString()
+<span class="nocode"><a name="263">263: </a></span>    {
+<span class="nocode"><a name="264">264: </a></span>
+<span class="nocode"><a name="265">265: </a></span> 	return &quot;SingleTest(&quot; + name + &quot;, &quot; + index + &quot;, &quot; 
+<span class="nocode"><a name="266">266: </a></span> 	    + this.getCost() + &quot;, &quot; + purchasePrice + &quot;)&quot;;
+<span class="nocode"><a name="267">267: </a></span>
+<span class="nocode"><a name="268">268: </a></span>//	return &quot;SingleTest(&quot; + name + &quot;, &quot; + index + &quot;)&quot;;
+<span class="nocode"><a name="269">269: </a></span>
+<span class="nocode"><a name="270">270: </a></span>    }    
+<span class="nocode"><a name="271">271: </a></span>
+<span class="nocode"><a name="272">272: </a></span>    /**
+<span class="nocode"><a name="273">273: </a></span>     *  @author Gregory M. Kapfhammer 9/20/2005
+<span class="nocode"><a name="274">274: </a></span>     */
+<span class="nocode"><a name="275">275: </a></span>    public Object clone()
+<span class="nocode"><a name="276">276: </a></span>    {
+<span class="nocode"><a name="277">277: </a></span>
+<span class="nocode"><a name="278">278: </a></span>	SingleTest clone = new SingleTest();
+<span class="nocode"><a name="279">279: </a></span>
+<span class="nocode"><a name="280">280: </a></span>	// name of the SingleTest
+<span class="nocode"><a name="281">281: </a></span>	clone.setName(this.getName());
+<span class="nocode"><a name="282">282: </a></span>	
+<span class="nocode"><a name="283">283: </a></span>	// index of the SingleTest
+<span class="nocode"><a name="284">284: </a></span>	clone.setIndex(this.getIndex());
+<span class="nocode"><a name="285">285: </a></span>
+<span class="nocode"><a name="286">286: </a></span>	// purchase price of the SingleTest
+<span class="nocode"><a name="287">287: </a></span>	clone.purchase(this.getPurchasePrice());
+<span class="nocode"><a name="288">288: </a></span>
+<span class="nocode"><a name="289">289: </a></span>	// cost for the SingleTest
+<span class="nocode"><a name="290">290: </a></span>	clone.setCost(this.getCost());
+<span class="nocode"><a name="291">291: </a></span>
+<span class="nocode"><a name="292">292: </a></span>	return clone;
+<span class="nocode"><a name="293">293: </a></span>
+<span class="nocode"><a name="294">294: </a></span>    }
+<span class="nocode"><a name="295">295: </a></span>
+<span class="nocode"><a name="296">296: </a></span>}
+</pre><table class="mutation_table" summary="Mutations">
+<tr><th>ID</th><th>Line</th><th>Type</th><th>Detected</th></tr><tr><td>855</td><td><a href="#70">70</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>856</td><td><a href="#70">70</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>858</td><td><a href="#74">74</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>859</td><td><a href="#74">74</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>857</td><td><a href="#74">74</a></td><td>Replace Constant by 0</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>860</td><td><a href="#75">75</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>861</td><td><a href="#75">75</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>862</td><td><a href="#76">76</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>863</td><td><a href="#76">76</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>865</td><td><a href="#93">93</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>866</td><td><a href="#93">93</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>864</td><td><a href="#93">93</a></td><td>Replace Constant by 0</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>867</td><td><a href="#94">94</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>868</td><td><a href="#94">94</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>869</td><td><a href="#95">95</a></td><td>Constant +1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>870</td><td><a href="#95">95</a></td><td>Constant -1</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>871</td><td><a href="#169">169</a></td><td>Replace arithmetic operator</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>872</td><td><a href="#265">265</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>873</td><td><a href="#265">265(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>874</td><td><a href="#265">265(2)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>875</td><td><a href="#265">265(3)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>876</td><td><a href="#265">265(4)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>877</td><td><a href="#265">265(5)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>878</td><td><a href="#265">265(6)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>879</td><td><a href="#265">265(7)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>880</td><td><a href="#265">265(8)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>881</td><td><a href="#265">265(9)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>882</td><td><a href="#265">265(10)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>883</td><td><a href="#281">281</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>884</td><td><a href="#281">281(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>885</td><td><a href="#284">284</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>886</td><td><a href="#284">284(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>887</td><td><a href="#287">287</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>888</td><td><a href="#287">287(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>889</td><td><a href="#290">290</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+<tr><td>890</td><td><a href="#290">290(1)</a></td><td>Remove method call</td><td><img src="not_detected.png"/></td></tr>
+</table>
+</body>
+</html>

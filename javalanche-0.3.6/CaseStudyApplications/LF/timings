@@ -1,0 +1,13 @@
+finder.LoopFinderTest.testSimpleLoop_Trivial_NoLoop	21900855	1	line	true	finder
+finder.LoopFinderTest.testSimpleLoop_NoLoop	20461250	1	line	true	finder
+finder.LoopFinderTest.testSimpleLoop_TightLoop	18469857	1	line	true	finder
+finder.LoopFinderTest.testSimpleLoop_TightLoop_WithTail_OnProcessedFacility	18207384	1	line	true	finder
+finder.LoopFinderTest.testSimpleLoop_TightLoop_WithTail_OnOtherFacility	19812523	1	line	true	finder
+finder.LoopFinderTest.testSimpleLoop_2TightLoops	19585889	1	line	true	finder
+finder.LoopFinderTest.testSimpleLoop_LargerLoop	18599385	1	line	true	finder
+finder.LoopFinderTest.test_NoLoop_ConnectedToALoopDownstream	17156815	1	line	true	finder
+finder.LoopFinderTest.test_NoLoop_ConnectedToALoopUpstream	17524104	1	line	true	finder
+finder.LoopFinderTest.test_Loop_MainLoopContainsNestedLoop	17683597	1	line	true	finder
+finder.LoopFinderTest.test_Loop_MainLoopContainsNestedLoop_WithExcludedNodes	18968448	1	line	true	finder
+finder.LoopFinderTest.testTwoParallelStreams_WithOneComplicatedNonLoop_AndOneLoop	17976242	1	line	true	finder
+finder.LoopFinderTest.testSimpleLoop_Pyramid_NoLoops	18075584	1	line	true	finder

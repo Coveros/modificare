@@ -1,0 +1,454 @@
+<html><head><title>Javalanche Sumary</title></head><body>
+<h2> Results for project:<br/>finder</h2>
+<h3>Results from de.unisb.cs.st.javalanche.mutation.analyze.MutationResultAnalyzer
+</h3><p>Total mutations:                                                32 <br /> 
+Touched mutations:                                              32 (100.00%)<br /> 
+Not touched mutations:                                           0 ( 0.00%)<br /> 
+Killed mutations:                                               29 (90.63%)<br /> 
+Survived mutations:                                              3 ( 9.38%)<br /> 
+Mutation score:                                             90.63% <br /> 
+Mutation score for mutations that were covered:             90.63% <br /> 
+</p>
+<hr />
+<h3>Results from MutationPerTestCaseAnalyzer
+</h3><p><br /> 
+<br /> 
+Mutations covered by finder.LoopFinderTest.testSimpleLoop_Trivial_NoLoop:<br /> 
+Id    Line Mutation Type                    Detected?                     <br /> 
+--    ---- -------------                    ---------                     <br /> 
+1424    16 Constant +1                      false                         <br /> 
+1425    16 Constant -1                      false                         <br /> 
+1423    16 Replace Constant by 0            false                         <br /> 
+1426    16 Remove method call               false                         <br /> 
+1427    17 Negate jump condition            true                          <br /> 
+1429    25 Negate jump condition            false                         <br /> 
+1428    25 Remove method call               false                         <br /> 
+1431    29 Negate jump condition            false                         <br /> 
+1430    29 Remove method call               false                         <br /> 
+1432    32 Remove method call               false                         <br /> 
+1433    34 Remove method call               true                          <br /> 
+1434    35 Remove method call               false                         <br /> 
+1445    36 Negate jump condition            true                          <br /> 
+1435    36 Remove method call               true                          <br /> 
+1444    36 Remove method call               false                         <br /> 
+1446    49 Remove method call               false                         <br /> 
+1447    53 Negate jump condition            false                         <br /> 
+1453    53 Constant +1                      false                         <br /> 
+1454    53 Constant -1                      false                         <br /> 
+<br /> 
+<br /> 
+Mutations covered by finder.LoopFinderTest.testSimpleLoop_NoLoop:<br /> 
+Id    Line Mutation Type                    Detected?                     <br /> 
+--    ---- -------------                    ---------                     <br /> 
+1424    16 Constant +1                      false                         <br /> 
+1425    16 Constant -1                      false                         <br /> 
+1423    16 Replace Constant by 0            false                         <br /> 
+1426    16 Remove method call               false                         <br /> 
+1427    17 Negate jump condition            true                          <br /> 
+1429    25 Negate jump condition            false                         <br /> 
+1428    25 Remove method call               false                         <br /> 
+1431    29 Negate jump condition            false                         <br /> 
+1430    29 Remove method call               false                         <br /> 
+1432    32 Remove method call               false                         <br /> 
+1433    34 Remove method call               true                          <br /> 
+1434    35 Remove method call               false                         <br /> 
+1445    36 Negate jump condition            false                         <br /> 
+1435    36 Remove method call               true                          <br /> 
+1444    36 Remove method call               false                         <br /> 
+1436    37 Remove method call               true                          <br /> 
+1437    38 Constant +1                      false                         <br /> 
+1438    38 Constant -1                      false                         <br /> 
+1439    38 Remove method call               false                         <br /> 
+1440    39 Negate jump condition            true                          <br /> 
+1446    49 Remove method call               false                         <br /> 
+1447    53 Negate jump condition            false                         <br /> 
+1448    53 Remove method call               false                         <br /> 
+1453    53 Constant +1                      false                         <br /> 
+1454    53 Constant -1                      false                         <br /> 
+1449    53 Negate jump condition            true                          <br /> 
+<br /> 
+<br /> 
+Mutations covered by finder.LoopFinderTest.testSimpleLoop_TightLoop:<br /> 
+Id    Line Mutation Type                    Detected?                     <br /> 
+--    ---- -------------                    ---------                     <br /> 
+1424    16 Constant +1                      false                         <br /> 
+1425    16 Constant -1                      true                          <br /> 
+1423    16 Replace Constant by 0            true                          <br /> 
+1426    16 Remove method call               true                          <br /> 
+1427    17 Negate jump condition            true                          <br /> 
+1429    25 Negate jump condition            true                          <br /> 
+1428    25 Remove method call               true                          <br /> 
+1431    29 Negate jump condition            true                          <br /> 
+1430    29 Remove method call               false                         <br /> 
+1432    32 Remove method call               false                         <br /> 
+1433    34 Remove method call               true                          <br /> 
+1434    35 Remove method call               false                         <br /> 
+1445    36 Negate jump condition            true                          <br /> 
+1435    36 Remove method call               true                          <br /> 
+1444    36 Remove method call               true                          <br /> 
+1436    37 Remove method call               true                          <br /> 
+1437    38 Constant +1                      true                          <br /> 
+1438    38 Constant -1                      true                          <br /> 
+1439    38 Remove method call               true                          <br /> 
+1440    39 Negate jump condition            true                          <br /> 
+1441    40 Constant +1                      true                          <br /> 
+1442    40 Constant -1                      true                          <br /> 
+1443    40 Remove method call               true                          <br /> 
+1446    49 Remove method call               false                         <br /> 
+1451    53 Constant +1                      false                         <br /> 
+1452    53 Constant -1                      true                          <br /> 
+1450    53 Replace Constant by 0            true                          <br /> 
+1447    53 Negate jump condition            true                          <br /> 
+1448    53 Remove method call               true                          <br /> 
+1453    53 Constant +1                      true                          <br /> 
+1454    53 Constant -1                      true                          <br /> 
+1449    53 Negate jump condition            true                          <br /> 
+<br /> 
+<br /> 
+Mutations covered by finder.LoopFinderTest.testSimpleLoop_TightLoop_WithTail_OnProcessedFacility:<br /> 
+Id    Line Mutation Type                    Detected?                     <br /> 
+--    ---- -------------                    ---------                     <br /> 
+1424    16 Constant +1                      false                         <br /> 
+1425    16 Constant -1                      true                          <br /> 
+1423    16 Replace Constant by 0            true                          <br /> 
+1426    16 Remove method call               true                          <br /> 
+1427    17 Negate jump condition            true                          <br /> 
+1429    25 Negate jump condition            true                          <br /> 
+1428    25 Remove method call               true                          <br /> 
+1431    29 Negate jump condition            true                          <br /> 
+1430    29 Remove method call               false                         <br /> 
+1432    32 Remove method call               false                         <br /> 
+1433    34 Remove method call               true                          <br /> 
+1434    35 Remove method call               false                         <br /> 
+1445    36 Negate jump condition            true                          <br /> 
+1435    36 Remove method call               true                          <br /> 
+1444    36 Remove method call               true                          <br /> 
+1436    37 Remove method call               true                          <br /> 
+1437    38 Constant +1                      true                          <br /> 
+1438    38 Constant -1                      true                          <br /> 
+1439    38 Remove method call               true                          <br /> 
+1440    39 Negate jump condition            true                          <br /> 
+1441    40 Constant +1                      true                          <br /> 
+1442    40 Constant -1                      true                          <br /> 
+1443    40 Remove method call               true                          <br /> 
+1446    49 Remove method call               false                         <br /> 
+1451    53 Constant +1                      false                         <br /> 
+1452    53 Constant -1                      true                          <br /> 
+1450    53 Replace Constant by 0            true                          <br /> 
+1447    53 Negate jump condition            true                          <br /> 
+1448    53 Remove method call               true                          <br /> 
+1453    53 Constant +1                      true                          <br /> 
+1454    53 Constant -1                      true                          <br /> 
+1449    53 Negate jump condition            true                          <br /> 
+<br /> 
+<br /> 
+Mutations covered by finder.LoopFinderTest.testSimpleLoop_TightLoop_WithTail_OnOtherFacility:<br /> 
+Id    Line Mutation Type                    Detected?                     <br /> 
+--    ---- -------------                    ---------                     <br /> 
+1424    16 Constant +1                      false                         <br /> 
+1425    16 Constant -1                      true                          <br /> 
+1423    16 Replace Constant by 0            true                          <br /> 
+1426    16 Remove method call               true                          <br /> 
+1427    17 Negate jump condition            true                          <br /> 
+1429    25 Negate jump condition            true                          <br /> 
+1428    25 Remove method call               true                          <br /> 
+1431    29 Negate jump condition            true                          <br /> 
+1430    29 Remove method call               false                         <br /> 
+1432    32 Remove method call               false                         <br /> 
+1433    34 Remove method call               true                          <br /> 
+1434    35 Remove method call               false                         <br /> 
+1445    36 Negate jump condition            true                          <br /> 
+1435    36 Remove method call               true                          <br /> 
+1444    36 Remove method call               true                          <br /> 
+1436    37 Remove method call               true                          <br /> 
+1437    38 Constant +1                      true                          <br /> 
+1438    38 Constant -1                      true                          <br /> 
+1439    38 Remove method call               true                          <br /> 
+1440    39 Negate jump condition            true                          <br /> 
+1441    40 Constant +1                      true                          <br /> 
+1442    40 Constant -1                      true                          <br /> 
+1443    40 Remove method call               true                          <br /> 
+1446    49 Remove method call               false                         <br /> 
+1451    53 Constant +1                      false                         <br /> 
+1452    53 Constant -1                      true                          <br /> 
+1450    53 Replace Constant by 0            true                          <br /> 
+1447    53 Negate jump condition            true                          <br /> 
+1448    53 Remove method call               true                          <br /> 
+1453    53 Constant +1                      true                          <br /> 
+1454    53 Constant -1                      true                          <br /> 
+1449    53 Negate jump condition            true                          <br /> 
+<br /> 
+<br /> 
+Mutations covered by finder.LoopFinderTest.testSimpleLoop_2TightLoops:<br /> 
+Id    Line Mutation Type                    Detected?                     <br /> 
+--    ---- -------------                    ---------                     <br /> 
+1424    16 Constant +1                      false                         <br /> 
+1425    16 Constant -1                      true                          <br /> 
+1423    16 Replace Constant by 0            true                          <br /> 
+1426    16 Remove method call               true                          <br /> 
+1427    17 Negate jump condition            true                          <br /> 
+1429    25 Negate jump condition            true                          <br /> 
+1428    25 Remove method call               true                          <br /> 
+1431    29 Negate jump condition            true                          <br /> 
+1430    29 Remove method call               false                         <br /> 
+1432    32 Remove method call               false                         <br /> 
+1433    34 Remove method call               true                          <br /> 
+1434    35 Remove method call               false                         <br /> 
+1445    36 Negate jump condition            true                          <br /> 
+1435    36 Remove method call               true                          <br /> 
+1444    36 Remove method call               true                          <br /> 
+1436    37 Remove method call               true                          <br /> 
+1437    38 Constant +1                      true                          <br /> 
+1438    38 Constant -1                      true                          <br /> 
+1439    38 Remove method call               true                          <br /> 
+1440    39 Negate jump condition            true                          <br /> 
+1441    40 Constant +1                      true                          <br /> 
+1442    40 Constant -1                      true                          <br /> 
+1443    40 Remove method call               true                          <br /> 
+1446    49 Remove method call               false                         <br /> 
+1451    53 Constant +1                      false                         <br /> 
+1452    53 Constant -1                      true                          <br /> 
+1450    53 Replace Constant by 0            true                          <br /> 
+1447    53 Negate jump condition            true                          <br /> 
+1448    53 Remove method call               true                          <br /> 
+1453    53 Constant +1                      true                          <br /> 
+1454    53 Constant -1                      true                          <br /> 
+1449    53 Negate jump condition            true                          <br /> 
+<br /> 
+<br /> 
+Mutations covered by finder.LoopFinderTest.testSimpleLoop_LargerLoop:<br /> 
+Id    Line Mutation Type                    Detected?                     <br /> 
+--    ---- -------------                    ---------                     <br /> 
+1424    16 Constant +1                      false                         <br /> 
+1425    16 Constant -1                      true                          <br /> 
+1423    16 Replace Constant by 0            true                          <br /> 
+1426    16 Remove method call               true                          <br /> 
+1427    17 Negate jump condition            true                          <br /> 
+1429    25 Negate jump condition            true                          <br /> 
+1428    25 Remove method call               true                          <br /> 
+1431    29 Negate jump condition            true                          <br /> 
+1430    29 Remove method call               false                         <br /> 
+1432    32 Remove method call               false                         <br /> 
+1433    34 Remove method call               true                          <br /> 
+1434    35 Remove method call               false                         <br /> 
+1445    36 Negate jump condition            true                          <br /> 
+1435    36 Remove method call               true                          <br /> 
+1444    36 Remove method call               true                          <br /> 
+1436    37 Remove method call               true                          <br /> 
+1437    38 Constant +1                      true                          <br /> 
+1438    38 Constant -1                      true                          <br /> 
+1439    38 Remove method call               true                          <br /> 
+1440    39 Negate jump condition            true                          <br /> 
+1441    40 Constant +1                      true                          <br /> 
+1442    40 Constant -1                      true                          <br /> 
+1443    40 Remove method call               true                          <br /> 
+1446    49 Remove method call               false                         <br /> 
+1451    53 Constant +1                      false                         <br /> 
+1452    53 Constant -1                      true                          <br /> 
+1450    53 Replace Constant by 0            true                          <br /> 
+1447    53 Negate jump condition            true                          <br /> 
+1448    53 Remove method call               true                          <br /> 
+1453    53 Constant +1                      true                          <br /> 
+1454    53 Constant -1                      true                          <br /> 
+1449    53 Negate jump condition            true                          <br /> 
+<br /> 
+<br /> 
+Mutations covered by finder.LoopFinderTest.test_NoLoop_ConnectedToALoopDownstream:<br /> 
+Id    Line Mutation Type                    Detected?                     <br /> 
+--    ---- -------------                    ---------                     <br /> 
+1424    16 Constant +1                      false                         <br /> 
+1425    16 Constant -1                      false                         <br /> 
+1423    16 Replace Constant by 0            false                         <br /> 
+1426    16 Remove method call               false                         <br /> 
+1427    17 Negate jump condition            true                          <br /> 
+1429    25 Negate jump condition            false                         <br /> 
+1428    25 Remove method call               false                         <br /> 
+1431    29 Negate jump condition            false                         <br /> 
+1430    29 Remove method call               true                          <br /> 
+1432    32 Remove method call               true                          <br /> 
+1433    34 Remove method call               true                          <br /> 
+1434    35 Remove method call               false                         <br /> 
+1445    36 Negate jump condition            false                         <br /> 
+1435    36 Remove method call               true                          <br /> 
+1444    36 Remove method call               false                         <br /> 
+1436    37 Remove method call               true                          <br /> 
+1437    38 Constant +1                      false                         <br /> 
+1438    38 Constant -1                      false                         <br /> 
+1439    38 Remove method call               false                         <br /> 
+1440    39 Negate jump condition            true                          <br /> 
+1446    49 Remove method call               true                          <br /> 
+1447    53 Negate jump condition            false                         <br /> 
+1448    53 Remove method call               false                         <br /> 
+1453    53 Constant +1                      false                         <br /> 
+1454    53 Constant -1                      false                         <br /> 
+1449    53 Negate jump condition            true                          <br /> 
+<br /> 
+<br /> 
+Mutations covered by finder.LoopFinderTest.test_NoLoop_ConnectedToALoopUpstream:<br /> 
+Id    Line Mutation Type                    Detected?                     <br /> 
+--    ---- -------------                    ---------                     <br /> 
+1424    16 Constant +1                      false                         <br /> 
+1425    16 Constant -1                      false                         <br /> 
+1423    16 Replace Constant by 0            false                         <br /> 
+1426    16 Remove method call               false                         <br /> 
+1427    17 Negate jump condition            true                          <br /> 
+1429    25 Negate jump condition            false                         <br /> 
+1428    25 Remove method call               false                         <br /> 
+1431    29 Negate jump condition            false                         <br /> 
+1430    29 Remove method call               false                         <br /> 
+1432    32 Remove method call               false                         <br /> 
+1433    34 Remove method call               true                          <br /> 
+1434    35 Remove method call               false                         <br /> 
+1445    36 Negate jump condition            true                          <br /> 
+1435    36 Remove method call               true                          <br /> 
+1444    36 Remove method call               false                         <br /> 
+1446    49 Remove method call               false                         <br /> 
+1447    53 Negate jump condition            false                         <br /> 
+1453    53 Constant +1                      false                         <br /> 
+1454    53 Constant -1                      false                         <br /> 
+<br /> 
+<br /> 
+Mutations covered by finder.LoopFinderTest.test_Loop_MainLoopContainsNestedLoop:<br /> 
+Id    Line Mutation Type                    Detected?                     <br /> 
+--    ---- -------------                    ---------                     <br /> 
+1424    16 Constant +1                      false                         <br /> 
+1425    16 Constant -1                      true                          <br /> 
+1423    16 Replace Constant by 0            true                          <br /> 
+1426    16 Remove method call               true                          <br /> 
+1427    17 Negate jump condition            true                          <br /> 
+1429    25 Negate jump condition            true                          <br /> 
+1428    25 Remove method call               true                          <br /> 
+1431    29 Negate jump condition            true                          <br /> 
+1430    29 Remove method call               false                         <br /> 
+1432    32 Remove method call               false                         <br /> 
+1433    34 Remove method call               true                          <br /> 
+1434    35 Remove method call               false                         <br /> 
+1445    36 Negate jump condition            true                          <br /> 
+1435    36 Remove method call               true                          <br /> 
+1444    36 Remove method call               true                          <br /> 
+1436    37 Remove method call               true                          <br /> 
+1437    38 Constant +1                      true                          <br /> 
+1438    38 Constant -1                      true                          <br /> 
+1439    38 Remove method call               true                          <br /> 
+1440    39 Negate jump condition            true                          <br /> 
+1441    40 Constant +1                      true                          <br /> 
+1442    40 Constant -1                      true                          <br /> 
+1443    40 Remove method call               true                          <br /> 
+1446    49 Remove method call               false                         <br /> 
+1451    53 Constant +1                      false                         <br /> 
+1452    53 Constant -1                      true                          <br /> 
+1450    53 Replace Constant by 0            true                          <br /> 
+1447    53 Negate jump condition            true                          <br /> 
+1448    53 Remove method call               true                          <br /> 
+1453    53 Constant +1                      true                          <br /> 
+1454    53 Constant -1                      true                          <br /> 
+1449    53 Negate jump condition            true                          <br /> 
+<br /> 
+<br /> 
+Mutations covered by finder.LoopFinderTest.test_Loop_MainLoopContainsNestedLoop_WithExcludedNodes:<br /> 
+Id    Line Mutation Type                    Detected?                     <br /> 
+--    ---- -------------                    ---------                     <br /> 
+1424    16 Constant +1                      false                         <br /> 
+1425    16 Constant -1                      true                          <br /> 
+1423    16 Replace Constant by 0            true                          <br /> 
+1426    16 Remove method call               true                          <br /> 
+1427    17 Negate jump condition            true                          <br /> 
+1429    25 Negate jump condition            true                          <br /> 
+1428    25 Remove method call               true                          <br /> 
+1431    29 Negate jump condition            true                          <br /> 
+1430    29 Remove method call               false                         <br /> 
+1432    32 Remove method call               false                         <br /> 
+1433    34 Remove method call               true                          <br /> 
+1434    35 Remove method call               false                         <br /> 
+1445    36 Negate jump condition            true                          <br /> 
+1435    36 Remove method call               true                          <br /> 
+1444    36 Remove method call               true                          <br /> 
+1436    37 Remove method call               true                          <br /> 
+1437    38 Constant +1                      true                          <br /> 
+1438    38 Constant -1                      true                          <br /> 
+1439    38 Remove method call               true                          <br /> 
+1440    39 Negate jump condition            true                          <br /> 
+1441    40 Constant +1                      true                          <br /> 
+1442    40 Constant -1                      true                          <br /> 
+1443    40 Remove method call               true                          <br /> 
+1446    49 Remove method call               false                         <br /> 
+1451    53 Constant +1                      false                         <br /> 
+1452    53 Constant -1                      true                          <br /> 
+1450    53 Replace Constant by 0            true                          <br /> 
+1447    53 Negate jump condition            true                          <br /> 
+1448    53 Remove method call               true                          <br /> 
+1453    53 Constant +1                      true                          <br /> 
+1454    53 Constant -1                      true                          <br /> 
+1449    53 Negate jump condition            true                          <br /> 
+<br /> 
+<br /> 
+Mutations covered by finder.LoopFinderTest.testTwoParallelStreams_WithOneComplicatedNonLoop_AndOneLoop:<br /> 
+Id    Line Mutation Type                    Detected?                     <br /> 
+--    ---- -------------                    ---------                     <br /> 
+1424    16 Constant +1                      false                         <br /> 
+1425    16 Constant -1                      true                          <br /> 
+1423    16 Replace Constant by 0            true                          <br /> 
+1426    16 Remove method call               true                          <br /> 
+1427    17 Negate jump condition            true                          <br /> 
+1429    25 Negate jump condition            true                          <br /> 
+1428    25 Remove method call               true                          <br /> 
+1431    29 Negate jump condition            true                          <br /> 
+1430    29 Remove method call               true                          <br /> 
+1432    32 Remove method call               true                          <br /> 
+1433    34 Remove method call               true                          <br /> 
+1434    35 Remove method call               false                         <br /> 
+1445    36 Negate jump condition            true                          <br /> 
+1435    36 Remove method call               true                          <br /> 
+1444    36 Remove method call               true                          <br /> 
+1436    37 Remove method call               true                          <br /> 
+1437    38 Constant +1                      true                          <br /> 
+1438    38 Constant -1                      true                          <br /> 
+1439    38 Remove method call               true                          <br /> 
+1440    39 Negate jump condition            true                          <br /> 
+1441    40 Constant +1                      true                          <br /> 
+1442    40 Constant -1                      true                          <br /> 
+1443    40 Remove method call               true                          <br /> 
+1446    49 Remove method call               true                          <br /> 
+1451    53 Constant +1                      false                         <br /> 
+1452    53 Constant -1                      true                          <br /> 
+1450    53 Replace Constant by 0            true                          <br /> 
+1447    53 Negate jump condition            true                          <br /> 
+1448    53 Remove method call               true                          <br /> 
+1453    53 Constant +1                      true                          <br /> 
+1454    53 Constant -1                      true                          <br /> 
+1449    53 Negate jump condition            true                          <br /> 
+<br /> 
+<br /> 
+Mutations covered by finder.LoopFinderTest.testSimpleLoop_Pyramid_NoLoops:<br /> 
+Id    Line Mutation Type                    Detected?                     <br /> 
+--    ---- -------------                    ---------                     <br /> 
+1424    16 Constant +1                      false                         <br /> 
+1425    16 Constant -1                      false                         <br /> 
+1423    16 Replace Constant by 0            false                         <br /> 
+1426    16 Remove method call               false                         <br /> 
+1427    17 Negate jump condition            true                          <br /> 
+1429    25 Negate jump condition            false                         <br /> 
+1428    25 Remove method call               false                         <br /> 
+1431    29 Negate jump condition            false                         <br /> 
+1430    29 Remove method call               false                         <br /> 
+1432    32 Remove method call               false                         <br /> 
+1433    34 Remove method call               true                          <br /> 
+1434    35 Remove method call               false                         <br /> 
+1445    36 Negate jump condition            false                         <br /> 
+1435    36 Remove method call               true                          <br /> 
+1444    36 Remove method call               false                         <br /> 
+1436    37 Remove method call               true                          <br /> 
+1437    38 Constant +1                      false                         <br /> 
+1438    38 Constant -1                      false                         <br /> 
+1439    38 Remove method call               false                         <br /> 
+1440    39 Negate jump condition            true                          <br /> 
+1446    49 Remove method call               false                         <br /> 
+1447    53 Negate jump condition            false                         <br /> 
+1448    53 Remove method call               false                         <br /> 
+1453    53 Constant +1                      false                         <br /> 
+1454    53 Constant -1                      false                         <br /> 
+1449    53 Negate jump condition            true                          <br /> 
+</p>
+<hr />
+
+</body></html>

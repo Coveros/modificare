@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/DS/bin/identifier
+END
+AllTests.class
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/DS/bin/identifier/AllTests.class
+END
+Identifier.class
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/DS/bin/identifier/Identifier.class
+END
+TestIdentifier.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/DS/bin/identifier/TestIdentifier.class
+END
+WrongKindOfIdentifierException.class
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/DS/bin/identifier/WrongKindOfIdentifierException.class
+END
+IdentifierTable.class
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/DS/bin/identifier/IdentifierTable.class
+END
+TestIdentifierTable.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/21/Protect2/testStuff/CaseStudyApplications/DS/bin/identifier/TestIdentifierTable.class
+END

@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/doc/src/org/hsqldb/jdbc/class-use
+END
+jdbcResultSet.html
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/doc/src/org/hsqldb/jdbc/class-use/jdbcResultSet.html
+END
+jdbcDataSource.html
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/doc/src/org/hsqldb/jdbc/class-use/jdbcDataSource.html
+END
+Util.html
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/doc/src/org/hsqldb/jdbc/class-use/Util.html
+END
+jdbcResultSetMetaData.html
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/doc/src/org/hsqldb/jdbc/class-use/jdbcResultSetMetaData.html
+END
+jdbcColumnMetaData.html
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/doc/src/org/hsqldb/jdbc/class-use/jdbcColumnMetaData.html
+END
+jdbcConnection.html
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/doc/src/org/hsqldb/jdbc/class-use/jdbcConnection.html
+END
+jdbcStatement.html
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/doc/src/org/hsqldb/jdbc/class-use/jdbcStatement.html
+END
+jdbcDatabaseMetaData.html
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/doc/src/org/hsqldb/jdbc/class-use/jdbcDatabaseMetaData.html
+END
+jdbcSavepoint.html
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/doc/src/org/hsqldb/jdbc/class-use/jdbcSavepoint.html
+END
+jdbcBlob.html
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/doc/src/org/hsqldb/jdbc/class-use/jdbcBlob.html
+END
+jdbcClob.html
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/doc/src/org/hsqldb/jdbc/class-use/jdbcClob.html
+END
+jdbcParameterMetaData.html
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/doc/src/org/hsqldb/jdbc/class-use/jdbcParameterMetaData.html
+END
+jdbcDataSourceFactory.html
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/doc/src/org/hsqldb/jdbc/class-use/jdbcDataSourceFactory.html
+END
+jdbcCallableStatement.html
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/doc/src/org/hsqldb/jdbc/class-use/jdbcCallableStatement.html
+END
+jdbcPreparedStatement.html
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/GB/hsqldb/doc/src/org/hsqldb/jdbc/class-use/jdbcPreparedStatement.html
+END

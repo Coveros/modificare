@@ -1,0 +1,79 @@
+> source("src/clusterinit.R")
+> cl <- AllNewDellClusterInit()
+foreach: simple, scalable parallel programming from REvolution Computing
+Use REvolution R for scalability, fault tolerance and more.
+http://www.revolution-computing.com
+> source("FDP_Start.R")
+> zLoadFit()
+> clusterExport(cl, "APFD")
+> clusterExport(cl, "makeLogFM")
+> zLoadHC()
+> ls()
+ [1] "AllNewDellClusterInit"       "APFD"                       
+ [3] "APFD2"                       "BackHalfNewDellClusterInit" 
+ [5] "cl"                          "FrontHalfNewDellClusterInit"
+ [7] "GenerateSyntheticlFM"        "HC_FA"                      
+ [9] "HC_Multi_Rep"                "HC_RA"                      
+[11] "HC_Rep"                      "HC_SA"                      
+[13] "makeLogFM"                   "MCOR"                       
+[15] "NG_FS"                       "NG_LS"                      
+[17] "zLoadFaultExperiment"        "zLoadFaultLibraries"        
+[19] "zLoadFit"                    "zLoadGA"                    
+[21] "zLoadHC"                     "zLoadRand"                  
+[23] "zLoadSANN"                   "zTryReload"                 
+> clusterExport(cl, "HC_FA")
+> clusterExport(cl, "HC_SA")
+> clusterExport(cl, "NG_FS")
+> clusterExport(cl, "NG_LS")
+> registerDoSNOW(cl)
+> LF_HC <- HC_Multi_Rep(fFM = "FaultCoverageReports/LoopFinder_Fault.dat", 
++ HC = c("HC_FA", "HC_SA"), NG = c("NG_FS", "NG_LS"), Seed = 100, 
++ Trials = 1000)
+     HC                                       fFM    NG Trials Seed
+1 HC_FA FaultCoverageReports/LoopFinder_Fault.dat NG_FS   1000  308
+2 HC_SA FaultCoverageReports/LoopFinder_Fault.dat NG_FS   1000  258
+3 HC_FA FaultCoverageReports/LoopFinder_Fault.dat NG_LS   1000  552
+4 HC_SA FaultCoverageReports/LoopFinder_Fault.dat NG_LS   1000   57
+  |                                                                              |                                                                      |   0%  |                                                                              |==================                                                    |  25%  |                                                                              |===================================                                   |  50%  |                                                                              |====================================================                  |  75%  |                                                                              |======================================================================| 100%
+> write.table(LF_HC, "datasets/LF_HC")
+> SK_HC <- HC_Multi_Rep(fFM = "FaultCoverageReports/Sudoku_Fault.dat", 
++ HC = c("HC_FA", "HC_SA"), NG = c("NG_FS", "NG_LS"), Seed = 100, 
++ Trials = 1000)
+     HC                                   fFM    NG Trials Seed
+1 HC_FA FaultCoverageReports/Sudoku_Fault.dat NG_FS   1000  308
+2 HC_SA FaultCoverageReports/Sudoku_Fault.dat NG_FS   1000  258
+3 HC_FA FaultCoverageReports/Sudoku_Fault.dat NG_LS   1000  552
+4 HC_SA FaultCoverageReports/Sudoku_Fault.dat NG_LS   1000   57
+  |                                                                              |                                                                      |   0%  |                                                                              |==================                                                    |  25%  |                                                                              |===================================                                   |  50%  |                                                                              |====================================================                  |  75%  |                                                                              |======================================================================| 100%
+> write.table(SK_HC, "datasets/SK_HC.dat")
+> RP_HC <- HC_Multi_Rep(fFM = "FaultCoverageReports/Redupr_Fault.dat", 
++ HC = c("HC_FA", "HC_SA"), NG = c("NG_FS", "NG_LS"), Seed = 100, 
++ Trials = 1000)
+     HC                                   fFM    NG Trials Seed
+1 HC_FA FaultCoverageReports/Redupr_Fault.dat NG_FS   1000  308
+2 HC_SA FaultCoverageReports/Redupr_Fault.dat NG_FS   1000  258
+3 HC_FA FaultCoverageReports/Redupr_Fault.dat NG_LS   1000  552
+4 HC_SA FaultCoverageReports/Redupr_Fault.dat NG_LS   1000   57
+  |                                                                              |                                                                      |   0%  |                                                                              |==================                                                    |  25%  |                                                                              |===================================                                   |  50%  |                                                                              |====================================================                  |  75%  |                                                                              |======================================================================| 100%
+> write.table(RP_HC, "datasets/RP_HC.dat")
+> JD_HC <- HC_Multi_Rep(fFM = "FaultCoverageReports/JDepend_Fault.dat", 
++ HC = c("HC_FA", "HC_SA"), NG = c("NG_FS", "NG_LS"), Seed = 100, 
++ Trials = 1000)
+     HC                                    fFM    NG Trials Seed
+1 HC_FA FaultCoverageReports/JDepend_Fault.dat NG_FS   1000  308
+2 HC_SA FaultCoverageReports/JDepend_Fault.dat NG_FS   1000  258
+3 HC_FA FaultCoverageReports/JDepend_Fault.dat NG_LS   1000  552
+4 HC_SA FaultCoverageReports/JDepend_Fault.dat NG_LS   1000   57
+  |                                                                              |                                                                      |   0%  |                                                                              |==================                                                    |  25%  |                                                                              |===================================                                   |  50%  |                                                                              |====================================================                  |  75%  |                                                                              |======================================================================| 100%
+> write.table(JD_HC, "datasets/JD_HC.dat")
+> DS_HC <- HC_Multi_Rep(fFM = "FaultCoverageReports/DataStructures_Fault.dat", 
++ HC = c("HC_FA", "HC_SA"), NG = c("NG_FS", "NG_LS"), Seed = 100, 
++ Trials = 1000)
+     HC                                           fFM    NG Trials Seed
+1 HC_FA FaultCoverageReports/DataStructures_Fault.dat NG_FS   1000  308
+2 HC_SA FaultCoverageReports/DataStructures_Fault.dat NG_FS   1000  258
+3 HC_FA FaultCoverageReports/DataStructures_Fault.dat NG_LS   1000  552
+4 HC_SA FaultCoverageReports/DataStructures_Fault.dat NG_LS   1000   57
+  |                                                                              |                                                                      |   0%  |                                                                              |==================                                                    |  25%  |                                                                              |===================================                                   |  50%  |                                                                              |====================================================                  |  75%  |                                                                              |======================================================================| 100%
+> write.table(DS_HC, "datasets/DS_Rand.dat")
+> stopCluster(cl)

@@ -1,0 +1,149 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/DS/src/dataStructures
+END
+TestStack.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/DS/src/dataStructures/TestStack.java
+END
+AllTestDataStructures.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/DS/src/dataStructures/AllTestDataStructures.java
+END
+WrongKindOfIdentifierException.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/DS/src/dataStructures/WrongKindOfIdentifierException.java
+END
+intStackArray.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/DS/src/dataStructures/intStackArray.java
+END
+intStackRetObjectArray.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/DS/src/dataStructures/intStackRetObjectArray.java
+END
+TestIdentifier.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/DS/src/dataStructures/TestIdentifier.java
+END
+Identifier.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/DS/src/dataStructures/Identifier.java
+END
+intStackMaxArray.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/DS/src/dataStructures/intStackMaxArray.java
+END
+Teststack1oldMethod.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/DS/src/dataStructures/Teststack1oldMethod.java
+END
+Teststack1.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/DS/src/dataStructures/Teststack1.java
+END
+Teststack2oldMethod.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/DS/src/dataStructures/Teststack2oldMethod.java
+END
+TestStack2.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/DS/src/dataStructures/TestStack2.java
+END
+intStackRetObjectMaxArray.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/DS/src/dataStructures/intStackRetObjectMaxArray.java
+END
+Teststack3oldMethod.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/DS/src/dataStructures/Teststack3oldMethod.java
+END
+Teststack3.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/DS/src/dataStructures/Teststack3.java
+END
+Teststack4.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/DS/src/dataStructures/Teststack4.java
+END
+Teststack4oldMethod.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/DS/src/dataStructures/Teststack4oldMethod.java
+END
+TestIdentifierTable.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/DS/src/dataStructures/TestIdentifierTable.java
+END
+IdentifierTable.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/DS/src/dataStructures/IdentifierTable.java
+END
+AllTests.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/DS/src/dataStructures/AllTests.java
+END
+uniqueBoundedStackAxiomTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/DS/src/dataStructures/uniqueBoundedStackAxiomTest.java
+END
+TestUniqueBoundedStack.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/DS/src/dataStructures/TestUniqueBoundedStack.java
+END
+uniqueBoundedStack.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/DS/src/dataStructures/uniqueBoundedStack.java
+END
+uniqueBoundedStackTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/DS/src/dataStructures/uniqueBoundedStackTest.java
+END

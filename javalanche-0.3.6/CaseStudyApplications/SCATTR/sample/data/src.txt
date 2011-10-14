@@ -1,0 +1,16 @@
+name			notc	noo	ccn		ncss		anojpf
+edtftpj_src		0		0	2.20	2628.00		0.98
+jcollector_src	0		0	1.41	189.00		0.00
+jdepend_src		0		0	1.83	1808.00		0.42
+XMLSecur_src	0       0	2.81    15574.00	1.03
+JGap_src		0       0	2.30    14291.00	0.56
+JGraphT_src		0       0	1.98    5109.00		1.13
+JUNG_src		0       0	2.00    19460.00	0.79
+dbunit_src		0       0	2.37    8723.00		0.51
+jabref_src		0       0	3.08    41536.00	0.46
+JGB_src			0		0	2.02    2198.00		0.26
+cactus_src		1       10	1.79    3408.00		1.17
+ApacheAnt_src   0       0	2.77    66652.00	1.10
+JMeter_src      0       0	1.97    51711.00	0.53
+junitperf_src   0       0	1.59    295.00		0.87
+jfreechart_src  0       0	2.74    53377.00	1.09

@@ -1,0 +1,173 @@
+// class version 49.0 (49)
+// access flags 33
+public class reminder/TestBeforeAllTests extends org/dbunit/DatabaseTestCase  {
+
+
+  // access flags 2
+  private Ljava/sql/Connection; testConnection
+
+  // access flags 2
+  private Lreminder/DatabaseDescription; testDatabaseDescription
+
+  // access flags 10
+  private static Z databaseServerExists
+
+  // access flags 26
+  private final static Ljava/lang/String; URL = "jdbc:hsqldb:hsql://localhost/ReminderDBTestOnly"
+
+  // access flags 26
+  private final static Ljava/lang/String; USERNAME = "sa"
+
+  // access flags 26
+  private final static Ljava/lang/String; PASSWORD = ""
+
+  // access flags 8
+  static <clinit>()V
+  @Lorg/junit/Test;()
+    ICONST_0
+    PUTSTATIC reminder/TestBeforeAllTests.databaseServerExists : Z
+    RETURN
+    MAXSTACK = 1
+    MAXLOCALS = 0
+
+  // access flags 1
+  public <init>(Ljava/lang/String;)V
+    ALOAD 0
+    ALOAD 1
+    INVOKESPECIAL org/dbunit/DatabaseTestCase.<init> (Ljava/lang/String;)V
+    RETURN
+    MAXSTACK = 2
+    MAXLOCALS = 2
+
+  // access flags 2
+  private createDatabaseServerOnce()V
+  @Lorg/junit/Test;()
+    TRYCATCHBLOCK L0 L1 L2 java/lang/InterruptedException
+   L0
+    GETSTATIC reminder/TestBeforeAllTests.databaseServerExists : Z
+    IFNE L3
+    LDC "localhost"
+    LDC "ReminderDBTestOnly"
+    LDC "db/ReminderDBTestOnly"
+    INVOKESTATIC reminder/ReminderCreator.createDatabaseServer (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
+    POP
+    ICONST_1
+    PUTSTATIC reminder/TestBeforeAllTests.databaseServerExists : Z
+    INVOKESTATIC java/lang/Thread.currentThread ()Ljava/lang/Thread;
+    POP
+    LDC 5000
+    INVOKESTATIC java/lang/Thread.sleep (J)V
+   L1
+    GOTO L3
+   L2
+    ASTORE 1
+    ALOAD 1
+    INVOKEVIRTUAL java/lang/InterruptedException.printStackTrace ()V
+    GETSTATIC java/lang/System.out : Ljava/io/PrintStream;
+    LDC "Could not create database server"
+    INVOKEVIRTUAL java/io/PrintStream.println (Ljava/lang/String;)V
+   L3
+    RETURN
+    MAXSTACK = 3
+    MAXLOCALS = 2
+
+  // access flags 4
+  protected getConnection()Lorg/dbunit/database/IDatabaseConnection; throws java/lang/Exception 
+  @Lorg/junit/Test;()
+    ALOAD 0
+    NEW reminder/DatabaseDescription
+    DUP
+    LDC "jdbc:hsqldb:hsql://localhost/ReminderDBTestOnly"
+    LDC "sa"
+    LDC ""
+    INVOKESPECIAL reminder/DatabaseDescription.<init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    PUTFIELD reminder/TestBeforeAllTests.testDatabaseDescription : Lreminder/DatabaseDescription;
+    ALOAD 0
+    INVOKESPECIAL reminder/TestBeforeAllTests.createDatabaseServerOnce ()V
+    LDC "org.hsqldb.jdbcDriver"
+    INVOKESTATIC java/lang/Class.forName (Ljava/lang/String;)Ljava/lang/Class;
+    POP
+    ALOAD 0
+    ALOAD 0
+    GETFIELD reminder/TestBeforeAllTests.testDatabaseDescription : Lreminder/DatabaseDescription;
+    INVOKEVIRTUAL reminder/DatabaseDescription.getUrl ()Ljava/lang/String;
+    ALOAD 0
+    GETFIELD reminder/TestBeforeAllTests.testDatabaseDescription : Lreminder/DatabaseDescription;
+    INVOKEVIRTUAL reminder/DatabaseDescription.getUserName ()Ljava/lang/String;
+    ALOAD 0
+    GETFIELD reminder/TestBeforeAllTests.testDatabaseDescription : Lreminder/DatabaseDescription;
+    INVOKEVIRTUAL reminder/DatabaseDescription.getPassword ()Ljava/lang/String;
+    INVOKESTATIC java/sql/DriverManager.getConnection (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/sql/Connection;
+    PUTFIELD reminder/TestBeforeAllTests.testConnection : Ljava/sql/Connection;
+    NEW org/dbunit/database/DatabaseConnection
+    DUP
+    ALOAD 0
+    GETFIELD reminder/TestBeforeAllTests.testConnection : Ljava/sql/Connection;
+    INVOKESPECIAL org/dbunit/database/DatabaseConnection.<init> (Ljava/sql/Connection;)V
+    ARETURN
+    MAXSTACK = 6
+    MAXLOCALS = 1
+
+  // access flags 4
+  protected getDataSet()Lorg/dbunit/dataset/IDataSet; throws java/lang/Exception 
+  @Lorg/junit/Test;()
+    NEW org/dbunit/dataset/xml/FlatXmlDataSet
+    DUP
+    NEW java/io/FileInputStream
+    DUP
+    LDC "data/EmptyDataSet.xml"
+    INVOKESPECIAL java/io/FileInputStream.<init> (Ljava/lang/String;)V
+    INVOKESPECIAL org/dbunit/dataset/xml/FlatXmlDataSet.<init> (Ljava/io/InputStream;)V
+    ARETURN
+    MAXSTACK = 5
+    MAXLOCALS = 1
+
+  // access flags 1
+  public testDatabaseServerIsRunning()V
+  @Lorg/junit/Test;()
+    INVOKESTATIC reminder/ReminderCreator.databaseServerIsRunning ()Z
+    INVOKESTATIC reminder/TestBeforeAllTests.assertTrue (Z)V
+    RETURN
+    MAXSTACK = 1
+    MAXLOCALS = 1
+
+  // access flags 1
+  public testDoesNotStartServerAgain()V
+  @Lorg/junit/Test;()
+    LDC "localhost"
+    LDC "ReminderDBTestOnly"
+    LDC "db/ReminderDBTestOnly"
+    INVOKESTATIC reminder/ReminderCreator.createDatabaseServer (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
+    IFEQ L0
+    ICONST_0
+    GOTO L1
+   L0
+    ICONST_1
+   L1
+    INVOKESTATIC reminder/TestBeforeAllTests.assertTrue (Z)V
+    LDC "localhost"
+    LDC "ReminderDBTestOnly"
+    LDC "db/ReminderDBTestOnly"
+    INVOKESTATIC reminder/ReminderCreator.createDatabaseServer (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
+    IFEQ L2
+    ICONST_0
+    GOTO L3
+   L2
+    ICONST_1
+   L3
+    INVOKESTATIC reminder/TestBeforeAllTests.assertTrue (Z)V
+    LDC "localhost"
+    LDC "ReminderDBTestOnly"
+    LDC "db/ReminderDBTestOnly"
+    INVOKESTATIC reminder/ReminderCreator.createDatabaseServer (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
+    IFEQ L4
+    ICONST_0
+    GOTO L5
+   L4
+    ICONST_1
+   L5
+    INVOKESTATIC reminder/TestBeforeAllTests.assertTrue (Z)V
+    RETURN
+    MAXSTACK = 3
+    MAXLOCALS = 1
+}

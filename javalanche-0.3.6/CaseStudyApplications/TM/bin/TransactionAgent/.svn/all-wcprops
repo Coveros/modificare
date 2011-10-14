@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/TM/bin/TransactionAgent
+END
+AllTests.class
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/TM/bin/TransactionAgent/AllTests.class
+END
+DatabaseAgent.class
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/TM/bin/TransactionAgent/DatabaseAgent.class
+END
+TransactionAgentCreator.class
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/TM/bin/TransactionAgent/TransactionAgentCreator.class
+END
+DatabaseDescription.class
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/TM/bin/TransactionAgent/DatabaseDescription.class
+END
+MySQLDatabaseAgent.class
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/TM/bin/TransactionAgent/MySQLDatabaseAgent.class
+END
+TestMySQLDatabaseAgent.class
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/protect_protect/!svn/ver/16/Protect2/testStuff/CaseStudyApplications/TM/bin/TransactionAgent/TestMySQLDatabaseAgent.class
+END
