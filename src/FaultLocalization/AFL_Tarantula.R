@@ -10,36 +10,53 @@
 #
 # Jonathan Miller Kauffman
 
-# Use the Tarantula fault localization technique to rank the statements
-# in the program in order of suspiciousness.
+# Use the Tarantula fault localization technique to rank the
+# statements in the program in order of suspiciousness.
 runTarantula <- function(lFM, failingTests, liveTests)
 {
-    passFail <- calculateTotalLivePassFail(failingTests=failingTests,liveTests=liveTests)
+    passFail <- calculateTotalLivePassFail(failingTests=failingTests,
+    liveTests=liveTests)
 
-    passFailRatio <- calculatePassFailRatio(lFM=lFM,totalLivePass=passFail$TotalLivePass,totalLiveFail=passFail$TotalLiveFail,failingTests=failingTests,liveTests=liveTests)
+    passFailRatio <- calculatePassFailRatio(lFM=lFM,
+                     totalLivePass=passFail$TotalLivePass,
+                     totalLiveFail=passFail$TotalLiveFail,
+                     failingTests=failingTests,liveTests=liveTests)
 
-    suspiciousnessConfidence <- calculateSuspiciousnessConfidenceTarantula(passRatio=passFailRatio$PassRatio,failRatio=passFailRatio$FailRatio,totalLivePass=passFail$TotalLivePass,totalLiveFail=passFail$TotalLiveFail)
+    suspiciousnessConfidence <- 
+        calculateSuspiciousnessConfidenceTarantula(
+        passRatio=passFailRatio$PassRatio,
+        failRatio=passFailRatio$FailRatio,
+        totalLivePass=passFail$TotalLivePass,
+        totalLiveFail=passFail$TotalLiveFail)
 
-    rank <- calculateRankTarantula(suspiciousness=suspiciousnessConfidence$Suspiciousness,confidence=suspiciousnessConfidence$Confidence)
+    rank <- calculateRankTarantula(
+            suspiciousness=suspiciousnessConfidence$Suspiciousness,
+            confidence=suspiciousnessConfidence$Confidence)
 
-    return(list(Suspiciousness=suspiciousnessConfidence$Suspiciousness,Confidence=suspiciousnessConfidence$Confidence,Rank=rank))
+    return(list(
+           Suspiciousness=suspiciousnessConfidence$Suspiciousness,
+           Confidence=suspiciousnessConfidence$Confidence,Rank=rank))
 }
 
 # Compute the ranking of each statement based on the suspiciousness
 # and confidence scores.
 calculateRankTarantula <- function(suspiciousness, confidence)
 {
-    temp <- as.data.frame(cbind(seq(1:length(suspiciousness)),suspiciousness,confidence))
+    temp <- as.data.frame(cbind(seq(1:length(suspiciousness)),
+            suspiciousness,confidence))
     names(temp) <- c("one","two","three")
     temp <- temp[order(temp$two,temp$three,decreasing=TRUE),]
     
     return(list(Rank=temp$one))
 }
 
-# Calculates the suspiciousness and confidence scores for each statement
-# given the passRatio, failRatio, and number of live passing and failing
-# test cases.
-calculateSuspiciousnessConfidenceTarantula <- function(passRatio, failRatio, totalLivePass, totalLiveFail)
+# Calculates the suspiciousness and confidence scores for each
+# statement given the passRatio, failRatio, and number of live passing
+# and failing test cases.
+calculateSuspiciousnessConfidenceTarantula <- function(passRatio,
+                                              failRatio,
+                                              totalLivePass,
+                                              totalLiveFail)
 {
     # The number of statements.
     numStmts <- length(passRatio)
@@ -66,7 +83,8 @@ calculateSuspiciousnessConfidenceTarantula <- function(passRatio, failRatio, tot
         # Calculate suspiciousness and confidence per their equations.
         else
         {
-            suspiciousness[i] <- failRatio[i] / (failRatio[i] + passRatio[i])
+            suspiciousness[i] <- failRatio[i] / (failRatio[i] +
+                                 passRatio[i])
             confidence[i] <- max(failRatio[i], passRatio[i])
         }
     }

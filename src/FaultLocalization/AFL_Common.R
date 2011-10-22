@@ -1,11 +1,12 @@
 # AFL_Common.R
 #
-# Holds fault localization functions that are common to each techinque.
+# Holds fault localization functions that are common to each techinque
 
 # Calculates the passRatio and failRatio for each statement given
 # a binary coverage matrix and the total number of live passing
 # and failing test cases.
-calculatePassFailRatio <- function(lFM, totalLivePass, totalLiveFail, failingTests, liveTests)
+calculatePassFailRatio <- function(lFM, totalLivePass, totalLiveFail,
+                          failingTests, liveTests)
 {
     # The number of tests and statements.
     numTests <- ncol(lFM)
@@ -60,14 +61,16 @@ calculateTotalLivePassFail <- function(failingTests, liveTests)
     }
 
     # Return pass and fail counts in a list.
-    return(list(TotalLivePass=totalLivePass,TotalLiveFail=totalLiveFail))
+    return(list(TotalLivePass=totalLivePass,
+           TotalLiveFail=totalLiveFail))
 }
 
 # Compute the ranking of each statement based on the suspiciousness
 # scores.
 calculateRank <- function(suspiciousness)
 {
-    temp <- as.data.frame(cbind(seq(1:length(suspiciousness)),suspiciousness))
+    temp <- as.data.frame(cbind(seq(1:length(suspiciousness)),
+            suspiciousness))
     names(temp) <- c("one","two")
     temp <- temp[order(temp$two,decreasing=TRUE),]
     

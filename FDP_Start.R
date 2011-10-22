@@ -6,26 +6,26 @@
 # Loads all of the prioritization algorithms.
 zTryReload <- function()
 {
-	source("src/Fitness/FDP_Fit.R")
-	source("src/Random/FDP_Rand.R")
-	source("src/HillClimbing/FDP_HC.R")
-	source("src/Sann/FDP_SA.R")
-	source("src/AdaptiveRandom/FDP_ART.R")
-	source("src/Greedy/FDP_GRD.R")
+    source("src/Fitness/FDP_Fit.R")
+    source("src/Random/FDP_Rand.R")
+    source("src/HillClimbing/FDP_HC.R")
+    source("src/Sann/FDP_SA.R")
+    source("src/AdaptiveRandom/FDP_ART.R")
+    source("src/Greedy/FDP_GRD.R")
 }
 
 # Loads the libraries, fitness calculator, synthetic report generator,
 # and prioritization algorithms.
 zLoadFaultExperiment <- function() 
 {
-	zLoadFaultLibraries()
-	zLoadFit()
-	zLoadRand()
-	zLoadHC()
-	zLoadSANN()
-	zLoadGA()
-	zLoadART()
-	zLoadGRD()
+    zLoadFaultLibraries()
+    zLoadFit()
+    zLoadRand()
+    zLoadHC()
+    zLoadSANN()
+    zLoadGA()
+    zLoadART()
+    zLoadGRD()
     zLoadOPT()
 }
 
@@ -40,72 +40,72 @@ zLoadFaultLocalizationExperiment <- function()
 # Loads libraries and the prioritization algorithms.
 zLoadFaultLibraries <- function()
 {
-	library(plyr)
-	library(snowfall)
-	library(snow)
-	library(doMC)
+    library(plyr)
+    library(snowfall)
+    library(snow)
+    library(doMC)
     library(gtools)
-	
-	zTryReload()
+    
+    zTryReload()
 }
 
 # Load the fitness function and the synthetic report generator.
 zLoadFit <- function() 
 {
-	source("src/Fitness/FDP_Fit.R")
-  	source("src/GenerateSynthetic.R")
+    source("src/Fitness/FDP_Fit.R")
+      source("src/GenerateSynthetic.R")
     source("src/FaultLocalization/AFL_Metrics.R")
 }
 
 # Load the random prioritization algorithm.
 zLoadRand <- function() 
 {
-	source("src/Random/FDP_Rand.R")
+    source("src/Random/FDP_Rand.R")
 }
 
 # Load the hill climbing prioritization algorithm.
 zLoadHC <- function()
 {
-	source("src/HillClimbing/FDP_HC.R")
-	source("src/HillClimbing/FDP_HC_NG.R")
+    source("src/HillClimbing/FDP_HC.R")
+    source("src/HillClimbing/FDP_HC_NG.R")
 }
 
 # Load the simulated annealing prioritization algorithm.
 zLoadSANN <- function()
 {
-	source("src/Sann/FDP_SA.R")
-	source("src/Sann/FDP_SA_NF.R")
-	source("src/Sann/FDP_SA_CF.R")
-	source("src/Sann/FDP_SA_AF.R")	
-}	
+    source("src/Sann/FDP_SA.R")
+    source("src/Sann/FDP_SA_NF.R")
+    source("src/Sann/FDP_SA_CF.R")
+    source("src/Sann/FDP_SA_AF.R")    
+}    
 
 # Load the genetic algorithm prioritization algorithm.
 zLoadGA <- function()
 {
-	source("src/Genetic/FDP_GA.R")
-	source("src/Genetic/FDP_GA_CrossOps.R")
-	source("src/Genetic/FDP_GA_MutOps.R")
-	source("src/Genetic/FDP_GA_SelOps.R")
-	source("src/Genetic/FDP_GA_TransOps.R")
-	source("src/FDP_Termination.R")
+    source("src/Genetic/FDP_GA.R")
+    source("src/Genetic/FDP_GA_CrossOps.R")
+    source("src/Genetic/FDP_GA_MutOps.R")
+    source("src/Genetic/FDP_GA_SelOps.R")
+    source("src/Genetic/FDP_GA_TransOps.R")
+    source("src/FDP_Termination.R")
 }
 
 # Load the adaptive random prioritization algorithm.
 zLoadART <- function()
 {
-	source("src/AdaptiveRandom/FDP_ART.R")
+    source("src/AdaptiveRandom/FDP_ART.R")
 }
 
 # Load the greedy prioritization algorithm.
 zLoadGRD <- function()
 {
-	source("src/Greedy/FDP_GRD.R")
+    source("src/Greedy/FDP_GRD.R")
 }
 
 # Loads functions for creating clusters of computers.
 zLoadCluster <- function()
 {
-	source("src/exp/DistExp.R")
+    source("src/exp/DistExp.R")
 }
 
 zLoadTarantula <- function()

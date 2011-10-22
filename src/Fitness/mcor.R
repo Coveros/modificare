@@ -15,7 +15,8 @@ MCOR <- function(Ord, Observlist)
           pval <- sum(!is.na(reveal)) / nF
           
           # Calculate p - (SigmaReveal / nm)  
-          fitscore <- pval - (sum(reveal, na.rm=TRUE) / (nT * nF)) + (pval / (2 * nT))
+          fitscore <- pval - (sum(reveal, na.rm=TRUE) / (nT * nF)) +
+            (pval / (2 * nT))
 
           return(fitscore)
       }, Ord=Ord)

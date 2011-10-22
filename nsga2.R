@@ -15,7 +15,8 @@ nsga2 <- function(pEnv) {
   iParents <- do.call(pEnv$SelOp, list(TransFit, cParentSize))
   Children <- GetChildren(Pop, iParents, CrossOp=pEnv$CrossOp)
   iTargetMuts <- sample(1:cChildSize, cMutSize)
-  Children[,iTargetMuts] <- apply(Children[,iTargetMuts], 2, function(x) { do.call(pEnv$MutOp, list(x))})
+  Children[,iTargetMuts] <- apply(Children[,iTargetMuts], 2,
+    function(x) { do.call(pEnv$MutOp, list(x))})
 	dimnames(Children) <- NULL
   
   
@@ -82,7 +83,8 @@ cda <- function(inSet)
   work[1, "dist"] <- work[nP, "dist"] <- Inf
   
   for(i in c(2:(nP - 1))) {
-    work[i, "dist"] <- work[i, "dist"] + ((work[(i+1), m]) - (work[(i-1), m]))  
+    work[i, "dist"] <- work[i, "dist"] +
+        ((work[(i+1), m]) - (work[(i-1), m]))  
   }
  }
  return(work)

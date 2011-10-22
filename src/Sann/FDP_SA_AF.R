@@ -4,12 +4,12 @@
 AF_kirklin <- function(DeltaFitness, Temperature)
 {
   # euler's number, google did not return  this as predefined in R
-	e <- 2.71828183
-	# compute the exponent
-	APexponent =  ((-DeltaFitness) / Temperature)
+    e <- 2.71828183
+    # compute the exponent
+    APexponent =  ((-DeltaFitness) / Temperature)
 
-	accprob<-e^APexponent
+    accprob<-e^APexponent
 
-	# return the resulting acceptance probability
-	return(accprob)
+    # return the resulting acceptance probability
+    return(accprob)
 }

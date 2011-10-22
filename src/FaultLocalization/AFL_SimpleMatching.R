@@ -4,25 +4,38 @@
 #
 # Jonathan Miller Kauffman
 
-# Use the Simple Matching fault localization technique to rank the statements
-# in the program in order of suspiciousness.
+# Use the Simple Matching fault localization technique to rank the
+# statements in the program in order of suspiciousness.
 runSimpleMatching <- function(lFM, failingTests, liveTests)
 {
-    passFail <- calculateTotalLivePassFail(failingTests=failingTests,liveTests=liveTests)
+    passFail <- calculateTotalLivePassFail(failingTests=failingTests,
+                liveTests=liveTests)
 
-    passFailRatio <- calculatePassFailRatio(lFM=lFM,totalLivePass=passFail$TotalLivePass,totalLiveFail=passFail$TotalLiveFail,failingTests=failingTests,liveTests=liveTests)
+    passFailRatio <- calculatePassFailRatio(lFM=lFM,
+                     totalLivePass=passFail$TotalLivePass,
+                     totalLiveFail=passFail$TotalLiveFail,
+                     failingTests=failingTests,liveTests=liveTests)
 
-    suspiciousnessConfidence <- calculateSuspiciousnessSimpleMatching(passRatio=passFailRatio$PassRatio,failRatio=passFailRatio$FailRatio,totalLivePass=passFail$TotalLivePass,totalLiveFail=passFail$TotalLiveFail)
+    suspiciousnessConfidence <- calculateSuspiciousnessSimpleMatching(
+                                passRatio=passFailRatio$PassRatio,
+                                failRatio=passFailRatio$FailRatio,
+                                totalLivePass=passFail$TotalLivePass,
+                                totalLiveFail=passFail$TotalLiveFail)
 
-    rank <- calculateRank(suspiciousness=suspiciousnessConfidence$Suspiciousness)
+    rank <- calculateRank(
+            suspiciousness=suspiciousnessConfidence$Suspiciousness)
 
-    return(list(Suspiciousness=suspiciousnessConfidence$Suspiciousness,Confidence=suspiciousnessConfidence$Confidence,Rank=rank))
+    return(list(
+           Suspiciousness=suspiciousnessConfidence$Suspiciousness,
+           Confidence=suspiciousnessConfidence$Confidence,Rank=rank))
 }
 
-# Calculates the suspiciousness score for each statement
-# given the passRatio, failRatio, and number of live passing and failing
+# Calculates the suspiciousness score for each statement given the
+# passRatio, failRatio, and number of live passing and failing
 # test cases.
-calculateSuspiciousnessSimpleMatching <- function(passRatio, failRatio, totalLivePass, totalLiveFail)
+calculateSuspiciousnessSimpleMatching <- function(passRatio,
+                                         failRatio, totalLivePass,
+                                         totalLiveFail)
 {
     # The number of statements.
     numStmts <- length(passRatio)

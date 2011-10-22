@@ -9,7 +9,8 @@ makeaprc <- function(inDat, inlFM) {
 
   covScore <- inDat[,"Fit"]
     
-  outdf <- cbind(subset(inDat, select=-c(Fit)), APRC=covScore, APFD=detectScore)
+  outdf <- cbind(subset(inDat, select=-c(Fit)), APRC=covScore,
+           APFD=detectScore)
   
   return(outdf)
 }

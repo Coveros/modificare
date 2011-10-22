@@ -4,5 +4,5 @@
 #   taken from Brian Kirklin's senior thesis
 CF_kirklin <- function(Temperature)
 {
-	return((Temperature * .99))
+    return((Temperature * .99))
 }

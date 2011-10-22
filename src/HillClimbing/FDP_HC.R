@@ -11,12 +11,14 @@ require(plyr)
 
 # quoted string or numeric params, or sequence of these
 # All permutations will be generated and executed
-HC_Multi_Rep <- function(HC, fFM, NG, Trials=10, RandSeed=100, Par=FALSE)
+HC_Multi_Rep <- function(HC, fFM, NG, Trials=10, RandSeed=100,
+                Par=FALSE)
 {
     set.seed(RandSeed)
     HC_Multi_Rep_real(HC, fFM, NG, Trials, RandSeed, Par)
 }
-HC_Multi_Rep_real <- function(HC, fFM, NG, Trials=10, RandSeed=100, Par=FALSE)
+HC_Multi_Rep_real <- function(HC, fFM, NG, Trials=10, RandSeed=100,
+                     Par=FALSE)
 {
   #set.seed(RandSeed)
   
@@ -25,14 +27,16 @@ HC_Multi_Rep_real <- function(HC, fFM, NG, Trials=10, RandSeed=100, Par=FALSE)
   
   print(c("Configurarions to be executed: ", ParamMatrix))
   
-	resDF <- adply(ParamMatrix, 1, function(pDF) 
+    resDF <- adply(ParamMatrix, 1, function(pDF) 
   {
     print(c("Current configuration under execution: ", pDF))
   
-    pList <- list(lFM=makeLogFM(read.table(pDF$fFM)), HC=pDF$HC, NG=pDF$NG)
+    pList <- list(lFM=makeLogFM(read.table(pDF$fFM)), HC=pDF$HC,
+             NG=pDF$NG)
     #print(c("The Param List", pList))
     
-    batchDF <- ldply(runif(pDF$Trials, 1, 1000), function(tSeed, argList)
+    batchDF <- ldply(runif(pDF$Trials, 1, 1000), function(tSeed,
+               argList)
     {
       argList$Seed <- tSeed
 
@@ -42,15 +46,16 @@ HC_Multi_Rep_real <- function(HC, fFM, NG, Trials=10, RandSeed=100, Par=FALSE)
       expOut[[1]] <- unname(expOut$Ord)
       expOut$Runtime <- rTime
       
-      theReturn <- data.frame(rbind(unlist(expOut)), stringsAsFactors=FALSE)
+      theReturn <- data.frame(rbind(unlist(expOut)),
+                   stringsAsFactors=FALSE)
       
       return(theReturn)
     }, argList=pList, .parallel=FALSE)
     
-		return(cbind(batchDF, fFM=pDF$fFM))
+        return(cbind(batchDF, fFM=pDF$fFM))
   }, .parallel=Par, .progress="text")
 
-	return(resDF)
+    return(resDF)
 }
 
 # Needs lFM, NG, Seed
@@ -61,49 +66,49 @@ HC_FA <- function(lFM, NG="NG_FS", Ord=NA, Seed=100)
     HC_FA_real(lFM, NG, Ord, Seed)
 }
 HC_FA_real = function(lFM, NG="NG_FS", Ord=NA, Seed=100)
-{	
+{    
   #set.seed(Seed)
   
-	nT <- ncol(lFM)
+    nT <- ncol(lFM)
   
   # If a starting Order is defined, use it, otherwise 
   #create a random starting location
   if(!is.na(Ord))
- 	  CurrOrd <- Ord 
+       CurrOrd <- Ord 
   else
      CurrOrd <- sample(1:nT)
  
  # Fitness value for the initial sequence
-	CurrOrdFit <- APFD(Ord=CurrOrd, lFM)
+    CurrOrdFit <- APFD(Ord=CurrOrd, lFM)
   
   NumberOfIterations <- 0
 
-	repeat 
-	{
+    repeat 
+    {
     OldOrd <- CurrOrd
-		Neighborhood <- do.call(NG, list(Ordering=CurrOrd))
-		
-		for(i in 1:ncol(Neighborhood)) 
-		{
+        Neighborhood <- do.call(NG, list(Ordering=CurrOrd))
+        
+        for(i in 1:ncol(Neighborhood)) 
+        {
       NeighborFit <- APFD(Neighborhood[,i], lFM)
-			
-			if(NeighborFit > CurrOrdFit) 
-			{
-				CurrOrdFit <- NeighborFit
-				CurrOrd <- Neighborhood[,i]
+            
+            if(NeighborFit > CurrOrdFit) 
+            {
+                CurrOrdFit <- NeighborFit
+                CurrOrd <- Neighborhood[,i]
 
-				break
-			}			
-		}
-		
-		if(identical(CurrOrd, OldOrd))
-			break
+                break
+            }            
+        }
+        
+        if(identical(CurrOrd, OldOrd))
+            break
 
-		NumberOfIterations <- NumberOfIterations + 1
-	}
-		
-	return(list(Ord=CurrOrd, Fit=CurrOrdFit, Pri="HC_FA", Conf=NG,
-    TotalIt=NumberOfIterations, Seed=Seed))	
+        NumberOfIterations <- NumberOfIterations + 1
+    }
+        
+    return(list(Ord=CurrOrd, Fit=CurrOrdFit, Pri="HC_FA", Conf=NG,
+    TotalIt=NumberOfIterations, Seed=Seed))    
 }
 HC_FA_reduction <- function(lFM, NG="NG_RO", Ord=NA, Seed=100)
 {
@@ -123,7 +128,7 @@ HC_FA_reduction_real <- function(lFM, NG="NG_RO", Ord=NA, Seed=100)
     print(CurrOrd)
     InitialReductionLength <- length(CurrOrd)
 
-	CurrOrdFit <- ReqsCovered(Ord=CurrOrd, lFM)
+    CurrOrdFit <- ReqsCovered(Ord=CurrOrd, lFM)
 
     NumberOfIterations <- 0
 
@@ -154,13 +159,15 @@ HC_FA_reduction_real <- function(lFM, NG="NG_RO", Ord=NA, Seed=100)
         NumberOfIterations <- NumberOfIterations + 1
     }
 
-	return(list(Ord=CurrOrd[!is.na(CurrOrd)], Fit=Reduction(InitialReductionLength,length(CurrOrd[!is.na(CurrOrd)])), Pri="HC_FA_reduction", Conf=NG,
-    TotalIt=NumberOfIterations, Seed=Seed))
-}	
+    return(list(Ord=CurrOrd[!is.na(CurrOrd)],
+           Fit=Reduction(InitialReductionLength,length(
+           CurrOrd[!is.na(CurrOrd)])), Pri="HC_FA_reduction", Conf=NG,
+           TotalIt=NumberOfIterations, Seed=Seed))
+}    
 
 ## FDP_HCSA : Steepest-ascent hill climbing
-#  Climbes the hill by evaluating each neighborhood and choosing the most fit
-#  individual
+#  Climbes the hill by evaluating each neighborhood and choosing the
+#  most fit individual
 HC_SA <- function(lFM, NG="NG_FS", Ord=NA, Seed=100)
 {
     set.seed(Seed)
@@ -170,46 +177,46 @@ HC_SA_real = function(lFM, NG="NG_FS", Ord=NA, Seed=100)
 {
   #set.seed(Seed)
   
-	nT <- ncol(lFM)
+    nT <- ncol(lFM)
   
   # If a starting Order is defined, use it, otherwise create a random 
   #starting location
   if(!is.na(Ord))
- 	  CurrOrd <- Ord
- 	else 
- 	  CurrOrd <- sample.int(nT)
+       CurrOrd <- Ord
+     else 
+       CurrOrd <- sample.int(nT)
  
   # Fitness value for the initial sequence
-	CurrOrdFit <- APFD(Ord=CurrOrd, lFM)
+    CurrOrdFit <- APFD(Ord=CurrOrd, lFM)
   
   NumberOfIterations <- 0
   
-	repeat 
-	{
+    repeat 
+    {
     OldOrd <- CurrOrd
-  	
+      
     Neighborhood <- do.call(NG, list(Ordering=CurrOrd))
     NeighborhoodFit <- apply(Neighborhood, 2, APFD, lFM)
     
     # Get the index of the ordering with greatest fitness
     BestNeighbor <- which.max(NeighborhoodFit)
     
-		if(NeighborhoodFit[BestNeighbor] > CurrOrdFit)
-		{
-			CurrOrdFit <- NeighborhoodFit[BestNeighbor]
-			CurrOrd <- Neighborhood[,BestNeighbor]
-		}
-		
-		if(identical(CurrOrd, OldOrd))
-		{
-			break
-		}
-		
+        if(NeighborhoodFit[BestNeighbor] > CurrOrdFit)
+        {
+            CurrOrdFit <- NeighborhoodFit[BestNeighbor]
+            CurrOrd <- Neighborhood[,BestNeighbor]
+        }
+        
+        if(identical(CurrOrd, OldOrd))
+        {
+            break
+        }
+        
     # Keep track of the Iterations
-		NumberOfIterations <- NumberOfIterations + 1
-	}
-	
-	return(list(Ord=CurrOrd, Fit=CurrOrdFit, Pri="HC_SA", Conf=NG, 
+        NumberOfIterations <- NumberOfIterations + 1
+    }
+    
+    return(list(Ord=CurrOrd, Fit=CurrOrdFit, Pri="HC_SA", Conf=NG, 
     TotalIt=NumberOfIterations, Seed=Seed))
 }
 
@@ -223,45 +230,45 @@ HC_RA <- function(lFM, NG, Ord=NA, Seed)
 HC_RA_real <- function(lFM, NG, Ord=NA, Seed)
 {
   # Reproducibility
-	#set.seed(Seed)
-	
-	# Number of Tests
-	nT <- ncol(lFM)
-	
-	# Initialize the individual, calculate the fitness
-	if(is.na(Ord))
-	{
-		CurrOrd <- sample.int(nT)
-	} else 
-	{
-		CurrOrd <- Ord
-	}
+    #set.seed(Seed)
+    
+    # Number of Tests
+    nT <- ncol(lFM)
+    
+    # Initialize the individual, calculate the fitness
+    if(is.na(Ord))
+    {
+        CurrOrd <- sample.int(nT)
+    } else 
+    {
+        CurrOrd <- Ord
+    }
 
-	CurrOrdFit <- APFD(CurrOrd, lFM)
+    CurrOrdFit <- APFD(CurrOrd, lFM)
           
-	# Iteration Counter
-	It <- 0
-	LastItOfImprovement <- 0
-	
-	while(It < ItLimit)
-	{
-		# Choose a neigbor and evaluate its fitness
-		Neighbor <- do.call(NG, list(Ordering=BestIndividual))
-		NeighborFit <- APFD(Neighbor, lFM)
-	
+    # Iteration Counter
+    It <- 0
+    LastItOfImprovement <- 0
+    
+    while(It < ItLimit)
+    {
+        # Choose a neigbor and evaluate its fitness
+        Neighbor <- do.call(NG, list(Ordering=BestIndividual))
+        NeighborFit <- APFD(Neighbor, lFM)
+    
     # Move to the neighbor if it offers a fitness improvement
-		if(NeighborFit > CurrOrdFit)
-		{
-			CurrOrd <- Neighbor
-			CurrOrdFit <- NeighborFit
-			LastItOfImprovement <- It
-		}
-		
-		# Increment Iterations
-		It <- It + 1
-	}
-	
-	return(list(Ord=BestIndividual, Fit=BestIndividualFitness, 
-			TotalIt=It, Seed=Seed))
-	
+        if(NeighborFit > CurrOrdFit)
+        {
+            CurrOrd <- Neighbor
+            CurrOrdFit <- NeighborFit
+            LastItOfImprovement <- It
+        }
+        
+        # Increment Iterations
+        It <- It + 1
+    }
+    
+    return(list(Ord=BestIndividual, Fit=BestIndividualFitness, 
+            TotalIt=It, Seed=Seed))
+    
 }

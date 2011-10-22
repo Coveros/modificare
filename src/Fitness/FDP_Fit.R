@@ -14,13 +14,15 @@ APFD <- function(Ord, lFM)
   
   reveal <- apply(lFM[,Ord], 1, function(x) {which(x)[1]})
   # Removes NA values before computing reveal.
-  # reveal <- apply(lFM[,Ord][ , !apply(is.na(lFM[,Ord]), 2, all)], 1, function(x) {which(x)[1]})
+  # reveal <- apply(lFM[,Ord][ , !apply(is.na(lFM[,Ord]), 2, all)], 1,
+  # function(x) {which(x)[1]})
 
   # calculate p
   pval <- sum(!is.na(reveal)) / FbyT[1]
 
   # Calculate p - (SigmaReveal / nm)  
-  fitscore <- pval - (sum(reveal, na.rm=TRUE) / (FbyT[1] * FbyT[2])) + (pval / (2 * FbyT[2]))
+  fitscore <- pval - (sum(reveal, na.rm=TRUE) / (FbyT[1] * FbyT[2])) +
+              (pval / (2 * FbyT[2]))
   
   return(fitscore)
 }
