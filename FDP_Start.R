@@ -6,12 +6,13 @@
 # Loads all of the prioritization algorithms.
 zTryReload <- function()
 {
-    source("src/Fitness/FDP_Fit.R")
-    source("src/Random/FDP_Rand.R")
-    source("src/HillClimbing/FDP_HC.R")
-    source("src/Sann/FDP_SA.R")
-    source("src/AdaptiveRandom/FDP_ART.R")
-    source("src/Greedy/FDP_GRD.R")
+    zLoadFit()
+    zLoadRand()
+    zLoadHC()
+    zLoadSANN()
+    zLoadGA()
+    zLoadART()
+    zLoadGRD()
 }
 
 # Loads the libraries, fitness calculator, synthetic report generator,
@@ -26,9 +27,9 @@ zLoadFaultExperiment <- function()
     zLoadGA()
     zLoadART()
     zLoadGRD()
-    zLoadOPT()
 }
 
+# Loads the fault localization algorithms.
 zLoadFaultLocalizationExperiment <- function()
 {
     zLoadTarantula()
@@ -53,7 +54,7 @@ zLoadFaultLibraries <- function()
 zLoadFit <- function() 
 {
     source("src/Fitness/FDP_Fit.R")
-      source("src/GenerateSynthetic.R")
+    source("src/GenerateSynthetic.R")
     source("src/FaultLocalization/AFL_Metrics.R")
 }
 

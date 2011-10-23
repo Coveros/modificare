@@ -74,5 +74,6 @@ calculateRank <- function(suspiciousness)
     names(temp) <- c("one","two")
     temp <- temp[order(temp$two,decreasing=TRUE),]
     
-    return(list(Rank=temp$one))
+    #return(list(Rank=temp$one))
+    return(temp$one)
 }
