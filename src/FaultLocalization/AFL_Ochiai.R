@@ -8,33 +8,21 @@
 # in the program in order of suspiciousness.
 runOchiai <- function(lFM, failingTests, liveTests)
 {
-    passFail <- calculateTotalLivePassFail(failingTests=failingTests,
-                liveTests=liveTests)
+    passFail <- calculateTotalLivePassFail(failingTests=failingTests,liveTests=liveTests)
 
-    passFailRatio <- calculatePassFailRatio(lFM=lFM,
-                     totalLivePass=passFail$TotalLivePass,
-                     totalLiveFail=passFail$TotalLiveFail,
-                     failingTests=failingTests,liveTests=liveTests)
+    passFailRatio <- calculatePassFailRatio(lFM=lFM,totalLivePass=passFail$TotalLivePass,totalLiveFail=passFail$TotalLiveFail,failingTests=failingTests,liveTests=liveTests)
 
-    suspiciousnessConfidence <- calculateSuspiciousnessOchiai(
-                                passRatio=passFailRatio$PassRatio,
-                                failRatio=passFailRatio$FailRatio,
-                                totalLivePass=passFail$TotalLivePass,
-                                totalLiveFail=passFail$TotalLiveFail)
+    suspiciousnessConfidence <- calculateSuspiciousnessOchiai(passRatio=passFailRatio$PassRatio,failRatio=passFailRatio$FailRatio,totalLivePass=passFail$TotalLivePass,totalLiveFail=passFail$TotalLiveFail)
 
-    rank <- calculateRank(
-            suspiciousness=suspiciousnessConfidence$Suspiciousness)
+    rank <- calculateRank(suspiciousness=suspiciousnessConfidence$Suspiciousness)
 
-    return(list(
-           Suspiciousness=suspiciousnessConfidence$Suspiciousness,
-           Confidence=suspiciousnessConfidence$Confidence,Rank=rank))
+    return(list(Suspiciousness=suspiciousnessConfidence$Suspiciousness,Confidence=suspiciousnessConfidence$Confidence,Rank=rank))
 }
 
 # Calculates the suspiciousness score for each statement given the
 # passRatio, failRatio, and number of live passing and failing
 # test cases.
-calculateSuspiciousnessOchiai <- function(passRatio, failRatio,
-                                 totalLivePass, totalLiveFail)
+calculateSuspiciousnessOchiai <- function(passRatio, failRatio,totalLivePass, totalLiveFail)
 {
     # The number of statements.
     numStmts <- length(passRatio)
@@ -58,9 +46,7 @@ calculateSuspiciousnessOchiai <- function(passRatio, failRatio,
         # Calculate suspiciousness per its equation.
         else
         {
-            suspiciousness[i] <- (failRatio[i]*totalLiveFail) /
-                sqrt(totalLiveFail * ((failRatio[i]*totalLiveFail) +
-                (passRatio[i]*totalLivePass)))
+            suspiciousness[i] <- (failRatio[i]*totalLiveFail) /sqrt(totalLiveFail * ((failRatio[i]*totalLiveFail) + (passRatio[i]*totalLivePass)))
         }
     }
 
