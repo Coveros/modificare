@@ -36,6 +36,7 @@ zLoadFaultLocalizationExperiment <- function()
     zLoadSimpleMatching()
     zLoadJaccard()
     zLoadOchiai()
+    source("src/FaultLocalization/AFL_Common.R")
 }
 
 # Loads libraries and the prioritization algorithms.
@@ -127,4 +128,9 @@ zLoadJaccard <- function()
 zLoadOchiai <- function()
 {
     source("src/FaultLocalization/AFL_Ochiai.R")
+}
+
+zLoadProduceOrderingReductionDataFile <- function()
+{
+    source("src/ProduceOrderingReductionDataFile.R")
 }
