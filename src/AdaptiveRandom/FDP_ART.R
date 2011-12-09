@@ -105,7 +105,7 @@ ART_reduction <- function(matrixName, similarityMetric,
 {
     set.seed(Seed)
     ART_reduction_real(matrixName, similarityMetric,
-        furthestAwayMetric)
+        furthestAwayMetric,Seed)
 }
 ART_reduction_real <- function(matrixName, similarityMetric,
                       furthestAwayMetric, Seed)
