@@ -52,7 +52,7 @@ This will load several functions into your R environment.  Running
 these functions will load other functions that you need in order to
 use this framework.  Some of the key functions that you should run are
 
-zTryReload() - Runs all of the prioritization algorithms.
+zTryReload() - Loads all of the prioritization algorithms.
 
 zLoadFaultExperiment() - Loads the libraries, fitness calculator,
                          synthetic report generator, and
@@ -63,6 +63,9 @@ zLoadFaultLocalizationExperiment() - Loads the fault localization
 
 zLoadFaultLibraries() - Loads libraries and the prioritization
                         algorithms.
+
+zLoadProduceOrderingReductionDataFile() - Loads a function that maps test case
+                                          indices to fully-qualified names.
 
 The remaining functions provided by FDP_Start.R load algorithms
 individually.  In order to run one of these functions; for example,
