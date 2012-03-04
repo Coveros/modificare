@@ -1,4 +1,4 @@
-require(plyr)
+# require(plyr)
 # HILLCLIMBING - First, Steepest, Random ascent
 # See readme
 
@@ -115,55 +115,78 @@ HC_FA_reduction <- function(lFM, NG="NG_RO", Ord=NA, Seed=100)
     set.seed(Seed)
     HC_FA_reduction_real(lFM,NG,Ord,Seed)
 }
-HC_FA_reduction_real <- function(lFM, NG="NG_RO", Ord=NA, Seed=100)
-{
+HC_FA_reduction_real = function(lFM, NG="NG_FS", Ord=NA, Seed=100)
+{ 
+  print("herefirst")
+  #set.seed(Seed)
+  
     nT <- ncol(lFM)
+	print("heresecond")
+  
+  # If a starting Order is defined, use it, otherwise 
+  #create a random starting location
+  if(!is.na(Ord))
+       CurrOrd <- Ord 
+  else
+     CurrOrd <- sample(1:nT)
 
-    if(!is.na(Ord))
-        CurrOrd <- Ord
-    else
-        CurrOrd <- Rand_LIN_reduction_real(lFM)$Ord
+	print("here1")
+ 
+ # Fitness value for the initial sequence
+    CurrOrdFit <- APFD(Ord=CurrOrd, lFM)
+ # Initial number of requirements covered, used to determine if we can remove
+ # a test case.
+    InitReqsCov <- ReqsCovered(Ord=CurrOrd, lFM)
+  
+  NumberOfIterations <- 0
 
-   print("Initial Reduction")
-    print(CurrOrd)
-    InitialReductionLength <- length(CurrOrd)
-
-    CurrOrdFit <- ReqsCovered(Ord=CurrOrd, lFM)
-
-    NumberOfIterations <- 0
-
-    repeat
+    repeat 
     {
-        OldOrd <- CurrOrd
+    OldOrd <- CurrOrd
+		print("before neighborhood generation")
         Neighborhood <- do.call(NG, list(Ordering=CurrOrd))
-
-        for(i in 1:ncol(Neighborhood))
+		print("generated neighborhood")
+        
+        for(i in 1:ncol(Neighborhood)) 
         {
-            # [!is.na(Neighborhood[,i])]
-            NeighborFit <- ReqsCovered(Neighborhood[,i], lFM)
-
-            if(identical(NeighborFit,CurrOrdFit))
+      NeighborFit <- APFD(Neighborhood[,i], lFM)
+            
+            if(NeighborFit > CurrOrdFit) 
             {
                 CurrOrdFit <- NeighborFit
                 CurrOrd <- Neighborhood[,i]
+
                 break
-            }
+            }            
         }
 
+		# Remove a test case from the ordering.  Choose the first test case
+		# if the first swap neighborhood generator is being used, and choose the
+		# last test case if the last swap neighborhood generator is being used.
+		if(NG == "NG_LS")
+			ReducedCurrOrd <- CurrOrd[-length(CurrOrd)]
+		else
+			ReducedCurrOrd <- CurrOrd[-1]
+
+		# Calculate requirements covered by the reduced ordering.
+		NeighborReqs <- ReqsCovered(ReducedCurrOrd, lFM)
+
+		# If removing the last test case doesn't change the number of
+		# requirements covered, keep the reduced ordering.
+		if(identical(InitReqsCov,NeighborReqs))
+			CurrOrd <- ReducedCurrOrd
+        
         if(identical(CurrOrd, OldOrd))
-        {
-            print("here")
             break
-        }
 
         NumberOfIterations <- NumberOfIterations + 1
+		print("CurrOrd")
+		print(CurrOrd)
     }
-
-    return(list(Ord=CurrOrd[!is.na(CurrOrd)],
-           Fit=Reduction(InitialReductionLength,length(
-           CurrOrd[!is.na(CurrOrd)])), Pri="HC_FA_reduction", Conf=NG,
-           TotalIt=NumberOfIterations, Seed=Seed))
-}    
+        
+    return(list(Ord=CurrOrd, Fit=CurrOrdFit, Pri="HC_FA", Conf=NG,
+    TotalIt=NumberOfIterations, Seed=Seed))    
+}   
 
 ## FDP_HCSA : Steepest-ascent hill climbing
 #  Climbes the hill by evaluating each neighborhood and choosing the
@@ -206,6 +229,82 @@ HC_SA_real = function(lFM, NG="NG_FS", Ord=NA, Seed=100)
             CurrOrdFit <- NeighborhoodFit[BestNeighbor]
             CurrOrd <- Neighborhood[,BestNeighbor]
         }
+        
+        if(identical(CurrOrd, OldOrd))
+        {
+            break
+        }
+        
+    # Keep track of the Iterations
+        NumberOfIterations <- NumberOfIterations + 1
+    }
+    
+    return(list(Ord=CurrOrd, Fit=CurrOrdFit, Pri="HC_SA", Conf=NG, 
+    TotalIt=NumberOfIterations, Seed=Seed))
+}
+
+HC_SA_reduction <- function(lFM, NG="NG_FS", Ord=NA, Seed=100)
+{
+    set.seed(Seed)
+    HC_SA_reduction_real(lFM, NG, Ord, Seed)
+}
+HC_SA_reduction_real = function(lFM, NG="NG_FS", Ord=NA, Seed=100)
+{
+  #set.seed(Seed)
+  
+    nT <- ncol(lFM)
+  
+  # If a starting Order is defined, use it, otherwise create a random 
+  #starting location
+  if(!is.na(Ord))
+       CurrOrd <- Ord
+     else 
+       CurrOrd <- sample.int(nT)
+
+# Initial number of requirements covered, used to determine if we can remove
+ # a test case.
+    InitReqsCov <- ReqsCovered(Ord=CurrOrd, lFM)
+ 
+  # Fitness value for the initial sequence
+    CurrOrdFit <- APFD(Ord=CurrOrd, lFM)
+  
+  NumberOfIterations <- 0
+  
+    repeat 
+    {
+    OldOrd <- CurrOrd
+      
+    Neighborhood <- do.call(NG, list(Ordering=CurrOrd))
+    NeighborhoodFit <- apply(Neighborhood, 2, APFD, lFM)
+    
+    # Get the index of the ordering with greatest fitness
+    BestNeighbor <- which.max(NeighborhoodFit)
+    
+        if(NeighborhoodFit[BestNeighbor] > CurrOrdFit)
+        {
+			print("i found a better neighbor")
+            CurrOrdFit <- NeighborhoodFit[BestNeighbor]
+            CurrOrd <- Neighborhood[,BestNeighbor]
+        }
+
+		# Remove a test case from the ordering.  Choose the first test case
+		# if the first swap neighborhood generator is being used, and choose the
+		# last test case if the last swap neighborhood generator is being used.
+		if(NG == "NG_LS")
+			ReducedCurrOrd <- CurrOrd[-length(CurrOrd)]
+		else
+			ReducedCurrOrd <- CurrOrd[-1]
+
+		# Calculate requirements covered by the reduced ordering.
+		NeighborReqs <- ReqsCovered(ReducedCurrOrd, lFM)
+
+		# If removing the last test case doesn't change the number of
+		# requirements covered, keep the reduced ordering.
+		if(identical(InitReqsCov,NeighborReqs))
+		{
+			print("i removed a test case")
+			CurrOrd <- ReducedCurrOrd
+		}
         
         if(identical(CurrOrd, OldOrd))
         {

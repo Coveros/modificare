@@ -1,4 +1,4 @@
-require(plyr)
+#require(plyr)
 
 Rand_Multi_Rep <- function(Rand, fFM, cPopSize, Trials=10,
                   RandSeed=100, Par=FALSE)

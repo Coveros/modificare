@@ -1,19 +1,19 @@
 require(plyr)
 ## Experiment Generator for the SANN alg
 SANN_Multi_Rep <- function(fFM, NF="NF_FS", AF="AF_kirklin",
-                  CF="CF_kirklin", Trials=10, RandSeed=100, Par=FALSE)
+                  CF="CF_kirklin", Trials=10, itLimit=25, RandSeed=100, Par=FALSE)
 {
     set.seed(RandSeed)
-    SANN_Multi_Rep_real(fFM, NF, AF, CF, Trials, RandSeed, Par)
+    SANN_Multi_Rep_real(fFM, NF, AF, CF, Trials, itLimit, RandSeed, Par)
 }
 SANN_Multi_Rep_real <- function(fFM, NF="NF_FS", AF="AF_kirklin",
-                       CF="CF_kirklin", Trials=10, RandSeed=100,
+                       CF="CF_kirklin", Trials=10, itLimit=25, RandSeed=100,
                        Par=FALSE)
 {
   #set.seed(RandSeed)
   
     ParamMatrix <- expand.grid(fFM=fFM, NF=NF, AF=AF, CF=CF,
-                               Trials=Trials,stringsAsFactors=FALSE,
+                               Trials=Trials, itLimit=itLimit, stringsAsFactors=FALSE,
                                KEEP.OUT.ATTRS=FALSE)
       
   print(c("Configurations to be executed: ", ParamMatrix))
@@ -21,7 +21,7 @@ SANN_Multi_Rep_real <- function(fFM, NF="NF_FS", AF="AF_kirklin",
     resDF <- adply(ParamMatrix, 1, function(pDF)
     {
     pList <- list(lFM=makeLogFM(read.table(pDF$fFM)), NF=pDF$NF,
-                  AF=pDF$AF, CF=pDF$CF)
+                  AF=pDF$AF, CF=pDF$CF, itLimit=pDF$itLimit)
     
     batchDF <- ldply(runif(pDF$Trials, 1, 1000), function(tSeed,
                argList)

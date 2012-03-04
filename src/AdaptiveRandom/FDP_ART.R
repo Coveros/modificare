@@ -35,10 +35,11 @@ ART <- function(matrixName, similarityMetric, furthestAwayMetric,
     set.seed(seed)
     ART_real(matrixName, similarityMetric, furthestAwayMetric)
 }
-ART_real <- function(matrixName, similarityMetric, furthestAwayMetric)
+ART_real <- function(matrixName, similarityMetric, furthestAwayMetric,Seed)
 {
     # Read in the coverage matrix.
-    matrix <- read.table(matrixName)
+    #matrix <- read.table(matrixName)
+	matrix <- matrixName
     
     # The number of tests and requirements.
     numberOfTests <- ncol(matrix) - 1
@@ -94,8 +95,8 @@ ART_real <- function(matrixName, similarityMetric, furthestAwayMetric)
     #write.table(prioritizedOrdering, file="prioritizedOrdering",
     #row.names=FALSE, col.names=FALSE)
     return(list(Ord=prioritizedOrdering,Fit=APFD(prioritizedOrdering,
-        makeLogFM(read.table(matrixName))), Pri="ART",
-        SIM=similarityMetric, FAM=furthestAwayMetric))    
+        makeLogFM(matrixName)), Pri="ART",
+        SIM=similarityMetric, FAM=furthestAwayMetric,Seed=Seed))    
     #return(prioritizedOrdering)
 }
 
@@ -111,7 +112,8 @@ ART_reduction_real <- function(matrixName, similarityMetric,
                       furthestAwayMetric, Seed)
 {
     # Read in the coverage matrix.
-    matrix <- read.table(matrixName)
+    #matrix <- read.table(matrixName)
+	matrix <- matrixName
 
     # Find the requirements covered by the entire test suite.
     testSuiteReqs <-
@@ -179,7 +181,7 @@ ART_reduction_real <- function(matrixName, similarityMetric,
     #write.table(prioritizedOrdering, file="prioritizedOrdering",
     #row.names=FALSE, col.names=FALSE)
     return(list(Ord=reducedTestSuite, Fit=APFD(reducedTestSuite,
-        makeLogFM(read.table(matrixName))), Pri="ART_reduction",
+        makeLogFM(matrixName)), Pri="ART_reduction",
         SIM=similarityMetric, FAM=furthestAwayMetric,Seed=Seed))    
     #return(prioritizedOrdering)
 }
@@ -189,24 +191,24 @@ ART_Multi_Rep <- function(ART, similarityMetric, furthestAwayMetric,
 {
     set.seed(RandSeed)
     ART_Multi_Rep_real(ART, similarityMetric, furthestAwayMetric, fFM,
-        Trials, Par)
+        Trials, Par,RandSeed)
 }
 ART_Multi_Rep_real <- function(ART, similarityMetric,
-                      furthestAwayMetric, fFM, Trials=10, Par=FALSE)
+                      furthestAwayMetric, fFM, Trials=10, Par=FALSE,RandSeed)
 {
   #set.seed(RandSeed)
   ParamMatrix <- expand.grid(fFM=fFM, ART=ART,
                  similarityMetric=similarityMetric,
-                 furthestAwayMetric=furthestAwayMetric, Trials=Trials, 
+                 furthestAwayMetric=furthestAwayMetric, Seed=RandSeed, Trials=Trials, 
                  stringsAsFactors=FALSE, KEEP.OUT.ATTRS=FALSE)
-  print("here")
+  #print("here")
   print(c("Configurarions to be executed: ", ParamMatrix))
   
     resDF <- adply(ParamMatrix, 1, function(pDF) 
   {
     print(c("Current configuration under execution: ", pDF))
   
-    pList <- list(matrixName=pDF$fFM,
+    pList <- list(matrixName=read.table(pDF$fFM),
              similarityMetric=pDF$similarityMetric,
              furthestAwayMetric=pDF$furthestAwayMetric, ART=pDF$ART)
     #print(c("The Param List", pList))
@@ -217,7 +219,7 @@ ART_Multi_Rep_real <- function(ART, similarityMetric,
       #argList$Seed <- tSeed
 
       rTime <- system.time(expOut <- do.call(argList$ART, 
-                                             args=argList[-4]))[[3]]
+                                             args=argList[-5]))[[3]]
       
       expOut[[1]] <- unname(expOut$Ord)
       expOut$Runtime <- rTime
