@@ -117,11 +117,9 @@ HC_FA_reduction <- function(lFM, NG="NG_RO", Ord=NA, Seed=100)
 }
 HC_FA_reduction_real = function(lFM, NG="NG_FS", Ord=NA, Seed=100)
 { 
-  print("herefirst")
   #set.seed(Seed)
   
     nT <- ncol(lFM)
-	print("heresecond")
   
   # If a starting Order is defined, use it, otherwise 
   #create a random starting location
@@ -130,7 +128,6 @@ HC_FA_reduction_real = function(lFM, NG="NG_FS", Ord=NA, Seed=100)
   else
      CurrOrd <- sample(1:nT)
 
-	print("here1")
  
  # Fitness value for the initial sequence
     CurrOrdFit <- APFD(Ord=CurrOrd, lFM)
@@ -143,9 +140,7 @@ HC_FA_reduction_real = function(lFM, NG="NG_FS", Ord=NA, Seed=100)
     repeat 
     {
     OldOrd <- CurrOrd
-		print("before neighborhood generation")
         Neighborhood <- do.call(NG, list(Ordering=CurrOrd))
-		print("generated neighborhood")
         
         for(i in 1:ncol(Neighborhood)) 
         {
@@ -180,8 +175,6 @@ HC_FA_reduction_real = function(lFM, NG="NG_FS", Ord=NA, Seed=100)
             break
 
         NumberOfIterations <- NumberOfIterations + 1
-		print("CurrOrd")
-		print(CurrOrd)
     }
         
     return(list(Ord=CurrOrd, Fit=CurrOrdFit, Pri="HC_FA", Conf=NG,
@@ -282,7 +275,6 @@ HC_SA_reduction_real = function(lFM, NG="NG_FS", Ord=NA, Seed=100)
     
         if(NeighborhoodFit[BestNeighbor] > CurrOrdFit)
         {
-			print("i found a better neighbor")
             CurrOrdFit <- NeighborhoodFit[BestNeighbor]
             CurrOrd <- Neighborhood[,BestNeighbor]
         }
@@ -302,7 +294,6 @@ HC_SA_reduction_real = function(lFM, NG="NG_FS", Ord=NA, Seed=100)
 		# requirements covered, keep the reduced ordering.
 		if(identical(InitReqsCov,NeighborReqs))
 		{
-			print("i removed a test case")
 			CurrOrd <- ReducedCurrOrd
 		}
         
