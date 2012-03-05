@@ -1,18 +1,18 @@
 #require(plyr)
 ## Experiment Generator for the SANN alg
-SANN_Multi_Rep <- function(fFM, NF="NF_FS", AF="AF_kirklin",
+SANN_Multi_Rep <- function(fFM, SANN="SANN_real", NF="NF_FS", AF="AF_kirklin",
                   CF="CF_kirklin", Trials=10, itLimit=25, RandSeed=100, Par=FALSE)
 {
     set.seed(RandSeed)
-    SANN_Multi_Rep_real(fFM, NF, AF, CF, Trials, itLimit, RandSeed, Par)
+    SANN_Multi_Rep_real(fFM, SANN, NF, AF, CF, Trials, itLimit, RandSeed, Par)
 }
-SANN_Multi_Rep_real <- function(fFM, NF="NF_FS", AF="AF_kirklin",
+SANN_Multi_Rep_real <- function(fFM, SANN="SANN_real", NF="NF_FS", AF="AF_kirklin",
                        CF="CF_kirklin", Trials=10, itLimit=25, RandSeed=100,
                        Par=FALSE)
 {
   #set.seed(RandSeed)
   
-    ParamMatrix <- expand.grid(fFM=fFM, NF=NF, AF=AF, CF=CF,
+    ParamMatrix <- expand.grid(fFM=fFM, SANN=SANN, NF=NF, AF=AF, CF=CF,
                                Trials=Trials, itLimit=itLimit, stringsAsFactors=FALSE,
                                KEEP.OUT.ATTRS=FALSE)
       
@@ -20,7 +20,7 @@ SANN_Multi_Rep_real <- function(fFM, NF="NF_FS", AF="AF_kirklin",
   
     resDF <- adply(ParamMatrix, 1, function(pDF)
     {
-    pList <- list(lFM=makeLogFM(read.table(pDF$fFM)), NF=pDF$NF,
+    pList <- list(lFM=makeLogFM(read.table(pDF$fFM)), SANN=pDF$SANN, NF=pDF$NF,
                   AF=pDF$AF, CF=pDF$CF, itLimit=pDF$itLimit)
     
     batchDF <- ldply(runif(pDF$Trials, 1, 1000), function(tSeed,
@@ -28,8 +28,8 @@ SANN_Multi_Rep_real <- function(fFM, NF="NF_FS", AF="AF_kirklin",
     {
       argList$Seed <- tSeed
       
-      rTime <- system.time(expOut <- do.call("SANN_real",
-               args=argList))[[3]]
+      rTime <- system.time(expOut <- do.call(argList$SANN,
+               args=argList[-2]))[[3]]
       
       expOut$Ord <- unname(expOut$Ord)
       expOut$Runtime <- rTime
