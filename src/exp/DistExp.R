@@ -172,10 +172,11 @@ ClusterHC <- function(outPath, fFM, cluster="Alden101", RandSeed=100,
   clusterExport(cl, c("APFD", "makeLogFM", "NG_FS", "NG_LS",
                 "HC_Multi_Rep", "HC_Multi_Rep_real", "HC_FA",
                 "HC_FA_real", "HC_SA", "HC_SA_real", "HC_RA",
-                "HC_RA_real"))
+                "HC_RA_real","HC_SA_reduction","HC_SA_reduction_real",
+				"HC_FA_reduction","HC_FA_reduction_real"))
   registerDoSNOW(cl)
   
-  out <- HC_Multi_Rep(fFM=fFM, HC=c("HC_FA_real","HC_SA_real"),
+  out <- HC_Multi_Rep(fFM=fFM, HC=c("HC_FA_reduction_real","HC_SA_reduction_real"),
          NG=c("NG_FS","NG_LS"),Trials=Trials, RandSeed=RandSeed,
          Par=Par)
   

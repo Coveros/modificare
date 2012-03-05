@@ -141,6 +141,9 @@ HC_FA_reduction_real = function(lFM, NG="NG_FS", Ord=NA, Seed=100)
     {
     OldOrd <- CurrOrd
         Neighborhood <- do.call(NG, list(Ordering=CurrOrd))
+
+		if(length(Neighborhood) == 1)
+			break
         
         for(i in 1:ncol(Neighborhood)) 
         {
@@ -268,7 +271,10 @@ HC_SA_reduction_real = function(lFM, NG="NG_FS", Ord=NA, Seed=100)
     OldOrd <- CurrOrd
       
     Neighborhood <- do.call(NG, list(Ordering=CurrOrd))
-    NeighborhoodFit <- apply(Neighborhood, 2, APFD, lFM)
+	if(length(Neighborhood) == 1)
+		NeighborhoodFit <- APFD(Neighborhood,lFM)
+	else
+    	NeighborhoodFit <- apply(Neighborhood, 2, APFD, lFM)
     
     # Get the index of the ordering with greatest fitness
     BestNeighbor <- which.max(NeighborhoodFit)

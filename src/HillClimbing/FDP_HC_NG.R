@@ -20,8 +20,14 @@ NG_RO <- function(Ordering)
 #  Returns column bound matrix of orderings
 NG_FS <- function(Ordering) 
 {
+	if(length(Ordering) == 1)
+	{
+		Neighborhood <- Ordering
+	}
   #print("NF_FS")
   ## Laply -> array of neighboring orderings by ROWS
+	else
+	{
   Neighborhood <- vapply(c(2:length(Ordering)), function(x) 
         {
             # Initialize the neighbor to the Ordering
@@ -31,6 +37,7 @@ NG_FS <- function(Ordering)
 
             return(Neighbor)
         }, FUN.VALUE=Ordering)
+	}
 
     return(Neighborhood)
 }
@@ -39,6 +46,12 @@ NG_FS <- function(Ordering)
 #  Returns column bound matrix of orderings
 NG_LS <- function(Ordering)
 {
+	if(length(Ordering) == 1)
+	{
+		Neighborhood <- Ordering
+	}
+	else
+	{
     LastPosn <- length(Ordering) 
     
     Neighborhood <- vapply(c(1:(LastPosn - 1)), function(x)
@@ -50,6 +63,7 @@ NG_LS <- function(Ordering)
 
         return(Neighbor)
     }, FUN.VALUE=Ordering)
+	}
 
     return(Neighborhood)
 }

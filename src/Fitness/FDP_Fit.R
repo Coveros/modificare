@@ -56,8 +56,15 @@ ReqsCovered <- function(Ord, lFM)
     # logical vector that will hold the requirements covered
     Reqs <- c()
 
-    for(i in 1:nrow(lFM[,Ord]))
-        Reqs <- c(Reqs,(TRUE %in% lFM[,Ord][i,]))
+	if(length(Ord) == 1)
+	{
+		Reqs <- lFM[,Ord]
+	}
+	else
+	{
+    	for(i in 1:nrow(lFM[,Ord]))
+        	Reqs <- c(Reqs,(TRUE %in% lFM[,Ord][i,]))
+	}
 
 
     return(Reqs)
