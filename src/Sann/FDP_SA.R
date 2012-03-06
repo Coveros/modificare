@@ -203,7 +203,7 @@ SANN_reduction_real <- function(lFM, NF="NF_FS", AF="AF_kirklin",
         totalIterations <- totalIterations + 1    
     }
 
-    return(list(Ord=CurrOrd, Fit=CurrOrdFit, Pri="SANN", Conf=NF, 
+    return(list(Ord=CurrOrd, Fit=CurrOrdFit, Pri="SANN_reduction", Conf=NF, 
              TotalIt=totalIterations,Seed=Seed,
              Temp=currentTemperature))
 }

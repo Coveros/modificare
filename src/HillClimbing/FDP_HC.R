@@ -180,7 +180,7 @@ HC_FA_reduction_real = function(lFM, NG="NG_FS", Ord=NA, Seed=100)
         NumberOfIterations <- NumberOfIterations + 1
     }
         
-    return(list(Ord=CurrOrd, Fit=CurrOrdFit, Pri="HC_FA", Conf=NG,
+    return(list(Ord=CurrOrd, Fit=CurrOrdFit, Pri="HC_FA_reduction", Conf=NG,
     TotalIt=NumberOfIterations, Seed=Seed))    
 }   
 
@@ -312,7 +312,7 @@ HC_SA_reduction_real = function(lFM, NG="NG_FS", Ord=NA, Seed=100)
         NumberOfIterations <- NumberOfIterations + 1
     }
     
-    return(list(Ord=CurrOrd, Fit=CurrOrdFit, Pri="HC_SA", Conf=NG, 
+    return(list(Ord=CurrOrd, Fit=CurrOrdFit, Pri="HC_SA_reduction", Conf=NG, 
     TotalIt=NumberOfIterations, Seed=Seed))
 }
 
