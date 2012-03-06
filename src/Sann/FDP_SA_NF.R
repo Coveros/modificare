@@ -2,6 +2,8 @@
 # the first position As described in the kirklin thesis  
 NF_FS <- function(Ordering)
 {
+	if(length(Ordering) == 1)
+		return(Ordering)
   # Pick a random index (other than 1) in the ordering
     swapPosn <- as.integer(runif(1,2,length(Ordering)))
 
@@ -16,6 +18,8 @@ NF_FS <- function(Ordering)
 #  As descrikirklin thesis  
 NF_LS<- function(Ordering)
 {
+	if(length(Ordering) == 1)
+		return(Ordering)
     nT <- length(Ordering)
     # Pick a random index (other than the last) in the ordering
     swapPosn <- as.integer(runif(1,1,(nT - 1)))
@@ -36,6 +40,8 @@ NF_LS<- function(Ordering)
 # kirklin thesis
 NF_FLS <- function(Ordering) 
 {
+	if(length(Ordering) == 1)
+		return(Ordering)
     # random number for acceptance probability of an elements
     rand <- runif(1)
     # Determine one swap position
@@ -74,6 +80,8 @@ NF_FLS <- function(Ordering)
 # thesis
 NF_BLS <- function(Ordering) 
 {
+	if(length(Ordering) == 1)
+		return(Ordering)
     # random number for acceptance probability of an elements
     rand <- runif(1)
     # Determine one swap position
