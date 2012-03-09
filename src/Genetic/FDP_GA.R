@@ -238,8 +238,6 @@ GA_reduction_real <-function(lFM, cPopSize=100, cChildDens=0.2, cMutRate=0.2,
 			Best <- ReducedBest
 		}
 
-		print(Best)
-
         TermList$currTotalIt <- TermList$currTotalIt + 1
         TermList$currExecTime <- proc.time()[3] - TermList$Epoch
     }

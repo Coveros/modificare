@@ -14,10 +14,10 @@ ClusterSann <- function(outPath, fFM, cluster="Alden101", Trials=1000,
   clusterExport(cl, c("APFD", "makeLogFM", "InOrdSwap", "NF_FS",
                 "NF_LS", "NF_FLS", "NF_BLS", "AF_kirklin",
                 "CF_kirklin", "SANN", "SANN_real", "SANN_Multi_Rep",
-                "SANN_Multi_Rep_real"))
+                "SANN_Multi_Rep_real","SANN_reduction","SANN_reduction_real"))
   registerDoSNOW(cl)
   
-  out <- SANN_Multi_Rep(fFM=fFM, NF=c("NF_FS", "NF_LS", "NF_FLS",
+  out <- SANN_Multi_Rep(fFM=fFM, SANN="SANN_reduction_real", NF=c("NF_FS", "NF_LS", "NF_FLS",
          "NF_BLS"), AF="AF_kirklin", CF="CF_kirklin", Trials=Trials,
          RandSeed=RandSeed,Par=Par)
   
@@ -75,7 +75,7 @@ ClusterGA <- function(outPath, fFM, cluster="Alden101", RandSeed=100,
                 "MO_ISM", "MO_IVM", "MO_SIM", "MO_SM", "GA_Multi_Rep",
                 "GA_Multi_Rep_real","GA","GA_real","GetChildren",
                 "SO_ROU", "SO_TRU","TO_EXP","TO_LIN","TO_UNT",
-                "TermTime","TermStag","TermTotalIt"))
+                "TermTime","TermStag","TermTotalIt","GA_reduction","GA_reduction_real"))
   registerDoSNOW(cl)
   
   out <- GA_Multi_Rep(fFM=fFM, cPopSize=c(20),
