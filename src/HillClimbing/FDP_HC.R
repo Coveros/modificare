@@ -123,8 +123,11 @@ HC_FA_reduction_real = function(lFM, NG="NG_FS", Ord=NA, Seed=100)
   
   # If a starting Order is defined, use it, otherwise 
   #create a random starting location
-  if(!is.na(Ord))
-       CurrOrd <- Ord 
+  if((!is.na(Ord))[1])
+	{
+		print("here")
+       CurrOrd <- Ord
+} 
   else
      CurrOrd <- sample(1:nT)
 

@@ -62,6 +62,8 @@ ReqsCovered <- function(Ord, lFM)
 	}
 	else
 	{
+		#print("Ord")
+		#print(Ord)
     	for(i in 1:nrow(lFM[,Ord]))
         	Reqs <- c(Reqs,(TRUE %in% lFM[,Ord][i,]))
 	}
