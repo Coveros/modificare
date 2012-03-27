@@ -36,9 +36,59 @@ mergeDataFiles <- function(directory="datasets/KauffmanThesisData/raw/", pattern
 	}
 
 	# Remove the NA row.
-	# TODO: This does not work.  However, since I am going to be subsetting the
-	# data, and the NA row will never be selected, I will fix this later.
-	dataFrame <- dataFrame[-1]
+	dataFrame<-subset(dataFrame,fFM != "NA")
+
+
+	return(dataFrame)
+}
+
+# Takes in the aggregate data frame and changes the coverage/fault matrix file names
+# an application name and a coverage criteria.
+# TODO: This function assumes that the filenames will be in the format that I used
+# (which is not entirely uniform).  Create a uniform naming format and include
+# this information in the documentation.
+filenameToApplicationAndCriteria <- function(dataFrame)
+{
+	dataFrame$Criteria <- apply(dataFrame,1,
+		function(row)
+		{
+			# TODO: I refer to the column containing the name of the matrix file,
+			# but this is likely to change in the future.  Find a way to refer
+			# to column fFM (note that 'row$fFM' does not work.
+			filename <- as.character(row[217])
+			matrixName <- strsplit(filename, split="/")[[1]][3]
+			splitMatrixName <- strsplit(matrixName, split="_")
+			criteria <- splitMatrixName[[1]][length(splitMatrixName[[1]])]
+			if(criteria == "FDM.dat")
+				return("fault")
+			else if(criteria == "Coverage.dat")
+				return(splitMatrixName[[1]][3])
+		})
+
+	dataFrame$Application <- apply(dataFrame,1,
+		function(row)
+		{
+			# TODO: I refer to the column containing the name of the matrix file,
+			# but this is likely to change in the future.  Find a way to refer
+			# to column fFM (note that 'row$fFM' does not work.
+			filename <- as.character(row[217])
+			matrixName <- strsplit(filename, split="/")[[1]][3]
+			splitMatrixName <- strsplit(matrixName, split="_")
+			application <- splitMatrixName[[1]][1]
+			return(application)
+		})
+
+	dataFrame$Type <- apply(dataFrame,1,
+		function(row)
+		{
+			# TODO: I refer to the column containing the name of the technique,
+			# but this is likely to change in the future.  Find a way to refer
+			# to column Pri (note that 'row$Pri' does not work.
+			technique <- as.character(row[212])
+			if("reduction" %in% strsplit(technique,split="_")[[1]])
+				return("reduction")
+			return("prioritization")
+		})
 
 	return(dataFrame)
 }
