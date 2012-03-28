@@ -75,6 +75,28 @@ filenameToApplicationAndCriteria <- function(dataFrame)
 			matrixName <- strsplit(filename, split="/")[[1]][3]
 			splitMatrixName <- strsplit(matrixName, split="_")
 			application <- splitMatrixName[[1]][1]
+			if(application == "Barbecue")
+				return("BQ")
+			else if(application == "DataStructures")
+				return("DS")
+			else if(application == "ReductionAndPrioritization")
+				return("RP")
+			else if(application == "Sudoku")
+				return("SK")
+			else if(application == "Employee")
+				return("EP")
+			else if(application == "CommissionEmployee")
+				return("CE")
+			else if(application == "Point")
+				return("PT")
+			else if(application == "JDepend")
+				return("JD")
+			else if(application == "LoopFinder")
+				return("LF")
+			else if(application == "CommonsMath")
+				return("CM")
+			else if(application == "JodaTime")
+				return("JT")
 			return(application)
 		})
 
@@ -88,6 +110,24 @@ filenameToApplicationAndCriteria <- function(dataFrame)
 			if("reduction" %in% strsplit(technique,split="_")[[1]])
 				return("reduction")
 			return("prioritization")
+		})
+
+	dataFrame$NS <- apply(dataFrame,1,
+		function(row)
+		{
+			# TODO: I refer to the column containing the name of the technique,
+			# but this is likely to change in the future.  Find a way to refer
+			# to column Pri (note that 'row$Pri' does not work.
+			technique <- as.character(row[212])
+			if(technique == "HC_FA")
+				return("FA")
+			else if(technique == "HC_SA")
+				return("SA")
+			else if(technique == "HC_FA_reduction")
+				return("FA")
+			else if(technique == "HC_SA_reduction")
+				return("SA")
+			return(NA)
 		})
 
 	return(dataFrame)
