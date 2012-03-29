@@ -3,7 +3,13 @@
 # TODO: Remove references to column numbers.
 computeFaultLocalizationResults <- function(dataFrame)
 {
-	dataFrame$Tarantula <- apply(dataFrame,1,
+	# I return a matrix of results, where each row contains one column of fault
+	# localization results.
+	#  row 1 - Tarantula
+	#  row 2 - Jaccard
+	#  row 3 - Ochiai
+	#  row 4 - Simple Matching
+	temp <- apply(dataFrame,1,
 		function(row)
 		{
 			# Extract the reduction from the row.
@@ -18,7 +24,7 @@ computeFaultLocalizationResults <- function(dataFrame)
 
 			# Read in the matrix and store information about it.
 			filename <- as.character(row["fFM"])
-			matrix<-makeLogFM(read.table(filename))‭
+			matrix<-makeLogFM(read.table(filename))
 			numStatements <- nrow(matrix)
 			numTests <- ncol(matrix)
 

@@ -33,7 +33,7 @@ ART <- function(matrixName, similarityMetric, furthestAwayMetric,
        seed=100)
 {
     set.seed(seed)
-    ART_real(matrixName, similarityMetric, furthestAwayMetric)
+    ART_real(matrixName, similarityMetric, furthestAwayMetric,seed)
 }
 ART_real <- function(matrixName, similarityMetric, furthestAwayMetric,Seed)
 {
