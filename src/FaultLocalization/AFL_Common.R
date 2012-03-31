@@ -29,6 +29,11 @@ calculatePassFailRatio <- function(lFM, totalLivePass, totalLiveFail,failingTest
         # Divide by the number of total passing a failing test cases.
         passRatio[i] <- passRatio[i] / totalLivePass
         failRatio[i] <- failRatio[i] / totalLiveFail
+
+		if(totalLivePass == 0)
+			passRatio[i] <- 0
+		if(totalLiveFail == 0)
+			failRatio[i] <- 0
     }
 
     # Return the passRatio and failRatio vectors in a list.

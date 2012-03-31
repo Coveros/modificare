@@ -27,6 +27,14 @@ computeFaultLocalizationResults <- function(dataFrame)
 			matrix<-makeLogFM(read.table(filename))
 			numStatements <- nrow(matrix)
 			numTests <- ncol(matrix)
+			#print("Filename")
+			#print(filename)
+
+			# Generate the list of live test cases.
+			liveTests <- rep(FALSE,numTests)
+			liveTests[reduction] <- TRUE
+			#print("Live Tests")
+			#print(liveTests)
 
 			# All tests initially pass.
 			passFail <- rep(FALSE,numTests)
@@ -208,23 +216,65 @@ computeFaultLocalizationResults <- function(dataFrame)
 				passFail[c(4,5,6,7,11,14,19,20,21,25)] <- TRUE
 			}
 			else
-				return(NA)
+				return(NA,NA,NA,NA,NA,NA)
 
-			# Generate the list of lives test cases.
-			
-			#matrixName <- strsplit(filename, split="/")[[1]][3]
-			#splitMatrixName <- strsplit(matrixName, split="_")
-			#criteria <- splitMatrixName[[1]][length(splitMatrixName[[1]])]
-			#if(criteria == "FDM.dat")
-		#		return("fault")
-		#	else if(criteria == "Coverage.dat")
-		#		return(splitMatrixName[[1]][3])
+			#print("Pass/Fail")
+			#print(passFail)
+
+			# Perform fault localization on the reduced test suites.
+			#print("Tarantula Reduction")
+			tarantulaReduction <- Expense(rankings=runTarantula(lFM=matrix, failingTests=passFail, liveTests=liveTests)$Rank$Rank,faultyStatement=faultyEntity)$Expense
+			#if(is.na(tarantulaReduction))
+			#{
+				#print("tarantulaReduction")
+				#print(runTarantula(lFM=matrix, failingTests=passFail, liveTests=liveTests)$Rank)
+				#Sys.sleep(5)
+			#}
+			#print("Jaccard Reduction")
+			jaccardReduction <- Expense(rankings=runJaccard(lFM=matrix, failingTests=passFail, liveTests=liveTests)$Rank,faultyStatement=faultyEntity)$Expense
+			#if(is.na(jaccardReduction))
+			#{
+			#	print("jaccardReduction")
+			#	print(runJaccard(lFM=matrix, failingTests=passFail, liveTests=liveTests)$Rank)
+			#	Sys.sleep(5)
+			#}
+			#print("Ochiai Reduction")
+			ochiaiReduction <- Expense(rankings=runOchiai(lFM=matrix, failingTests=passFail, liveTests=liveTests)$Rank,faultyStatement=faultyEntity)$Expense
+			#if(is.na(ochiaiReduction))
+			#{
+			#	print("ochiaiReduction")
+			#	Sys.sleep(5)
+			#}
+			#print("Simple Matching Reduction")
+			simpleMatchingReduction <- Expense(rankings=runSimpleMatching(lFM=matrix, failingTests=passFail, liveTests=liveTests)$Rank,faultyStatement=faultyEntity)$Expense
+			#if(is.na(simpleMatchingReduction))
+			#{
+			#	print("simpleMatchingReduction")
+			#	Sys.sleep(5)
+			#}
+
+			liveTests <- rep(TRUE,numTests)
+
+			# Perform fault localization on the original test suites.
+			tarantulaOriginal <- Expense(rankings=runTarantula(lFM=matrix, failingTests=passFail, liveTests=liveTests)$Rank$Rank,faultyStatement=faultyEntity)$Expense
+			jaccardOriginal <- Expense(rankings=runJaccard(lFM=matrix, failingTests=passFail, liveTests=liveTests)$Rank,faultyStatement=faultyEntity)$Expense
+			ochiaiOriginal <- Expense(runOchiai(lFM=matrix, failingTests=passFail, liveTests=liveTests)$Rank,faultyStatement=faultyEntity)$Expense
+			simpleMatchingOriginal <- Expense(runSimpleMatching(lFM=matrix, failingTests=passFail, liveTests=liveTests)$Rank,faultyStatement=faultyEntity)$Expense
+
+			return(c(tarantulaReduction,jaccardReduction,ochiaiReduction,simpleMatchingReduction,
+				tarantulaOriginal,jaccardOriginal,ochiaiOriginal,simpleMatchingOriginal))
 		})
 
-	dataFrame$Tarantula <- temp[1,]
-	dataFrame$Jaccard <- temp[2,]
-	dataFrame$Ochiai <- temp[3,]
-	dataFrame$SimpleMatching <- temp[4,]
+	print(temp)
+
+	dataFrame$TarantulaReduction <- temp[1,]
+	dataFrame$JaccardReduction <- temp[2,]
+	dataFrame$OchiaiReduction <- temp[3,]
+	dataFrame$SimpleMatchingReduction <- temp[4,]
+	dataFrame$TarantulaOriginal <- temp[5,]
+	dataFrame$JaccardOriginal <- temp[6,]
+	dataFrame$OchiaiOriginal <- temp[7,]
+	dataFrame$SimpleMatchingOriginal <- temp[8,]
 
 	return(dataFrame)
 }

@@ -67,6 +67,10 @@ calculateSuspiciousnessConfidenceTarantula <- function(passRatio,
 
     for(i in 1:numStmts)
     {
+		#print("Fail Ratio")
+		#print(failRatio)
+		#print("Pass Ratio")
+		#print(passRatio)
         # This shouldn't be possible.
         if(totalLiveFail==0 && totalLivePass==0)
         {

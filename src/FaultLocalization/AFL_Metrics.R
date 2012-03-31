@@ -29,6 +29,14 @@ Reduction <- function(originalSize, reducedSize)
 # faulty statement is too large.
 Expense <- function(rankings, faultyStatement)
 {
+	#print(rankings)
+	#print(is.character(rankings))
+	#print(faultyStatement)
+	#print(is.numeric(faultyStatement))
+	#print(length(rankings))
+	#print("Expense Rankings")
+	#print(rankings)
+	#rankings <- rankings[[1]]
     expense <- rankings[faultyStatement] / length(rankings) * 100
 
     return(list(Expense=expense))
