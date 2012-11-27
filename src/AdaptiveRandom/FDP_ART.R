@@ -210,16 +210,15 @@ ART_Multi_Rep_real <- function(ART, similarityMetric,
   
     pList <- list(matrixName=read.table(pDF$fFM),
              similarityMetric=pDF$similarityMetric,
-             furthestAwayMetric=pDF$furthestAwayMetric, ART=pDF$ART)
+             furthestAwayMetric=pDF$furthestAwayMetric, ART=pDF$ART,Seed=pDF$Seed)
     #print(c("The Param List", pList))
     
     batchDF <- ldply(runif(pDF$Trials, 1, 1000), function(tSeed,
                argList)
     {
       #argList$Seed <- tSeed
-
       rTime <- system.time(expOut <- do.call(argList$ART, 
-                                             args=argList[-5]))[[3]]
+                                             args=argList[-4]))[[3]]
       
       expOut[[1]] <- unname(expOut$Ord)
       expOut$Runtime <- rTime
