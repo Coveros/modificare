@@ -35,16 +35,17 @@ GA_Multi_Rep_real <- function(fFM, GA="GA_real", cPopSize=100, cChildDens=0.2,
   {
     print(c("Current configuration under execution: ", pDF))
     
-    pList <- as.list(pDF[-c(1,9)])
+    pList <- as.list(pDF[-c(1,10)])
     pList$lFM <- makeLogFM(read.table(pDF$fFM))
     
     batchDF <- ldply(runif(pDF$Trials, 1, 1000),
                function(tSeed, argList)
     {
       argList$Seed <- tSeed
-      
+      print("Arg List")
+      print(argList[1])
       rTime <- system.time(expOut <- do.call(argList$GA,
-               args=argList[-2]))[[3]]
+               args=argList[-1]))[[3]]
       
       expOut[[1]] <- unname(expOut$Ord)
       expOut$Runtime <- rTime
